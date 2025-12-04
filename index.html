@@ -19,6 +19,19 @@
       border-radius: 16px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     }
+
+    /* LOGO ALANI */
+    .logo-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .logo {
+      height: 56px;     /* İstersen 40–80 px arası oynat */
+      width: auto;
+      display: block;
+    }
+
     h1 { margin-top: 0; }
     .tagline { color: #666; margin-bottom: 16px; }
     .contact { margin-top: 24px; font-size: 0.95rem; color: #444; }
@@ -47,6 +60,11 @@
 </head>
 <body>
   <div class="card">
+    <!-- LOGO BURADA -->
+    <div class="logo-wrapper">
+      <img src="logo.png" alt="ReggBook Logo" class="logo">
+    </div>
+
     <h1>ReggBook</h1>
     <p class="tagline">
       Randevu, müşteri ve işletme yönetimini tek uygulamada toplayan akıllı çözüm.
