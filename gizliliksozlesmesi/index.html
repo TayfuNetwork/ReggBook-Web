@@ -117,4 +117,492 @@
       display:flex;
       gap:8px;
       flex-wrap:wrap;
-      align-items:c
+      align-items:center;
+    }
+    .badge{
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      backdrop-filter: blur(10px);
+    }
+    .badge.ok{ border-color: rgba(34,197,94,.35); color: var(--text); }
+    .badge.info{ border-color: rgba(124,58,237,.35); color: var(--text); }
+    .badge.warn{ border-color: rgba(245,158,11,.40); color: var(--text); }
+
+    .subtitle{
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    @media(min-width: 980px){
+      .grid{
+        grid-template-columns: 320px 1fr;
+        align-items:start;
+      }
+      .side{
+        position: sticky;
+        top: 14px;
+      }
+    }
+
+    .card{
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 30px rgba(0,0,0,.18);
+      padding: 16px;
+    }
+
+    .side h2{
+      font-size: 14px;
+      margin: 0 0 10px;
+      letter-spacing: .3px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .toc{
+      display:flex;
+      flex-direction: column;
+      gap: 6px;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+    .toc a{
+      display:block;
+      padding: 10px 10px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      color: var(--text);
+      background: rgba(255,255,255,.04);
+    }
+    .toc a:hover{
+      border-color: var(--border);
+      background: rgba(255,255,255,.06);
+      text-decoration:none;
+    }
+
+    .hint{
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px dashed var(--border);
+      color: var(--muted);
+      font-size: 13px;
+      background: rgba(255,255,255,.03);
+    }
+
+    .main h2{
+      font-size: 18px;
+      margin: 0 0 8px;
+      letter-spacing: .2px;
+    }
+    .main h3{
+      font-size: 15px;
+      margin: 14px 0 6px;
+      color: var(--text);
+    }
+
+    .section{
+      padding: 14px 14px;
+      border-radius: var(--radius2);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      margin-bottom: 12px;
+    }
+
+    p{ margin: 8px 0; color: var(--text); }
+    .muted{ color: var(--muted); }
+
+    ul{ margin: 8px 0; padding-left: 18px; }
+    li{ margin: 6px 0; color: var(--text); }
+
+    .callout{
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      padding: 12px 12px;
+      margin: 10px 0;
+      color: var(--muted);
+    }
+    .callout strong{ color: var(--text); }
+    .callout.ok{ border-color: rgba(34,197,94,.35); }
+    .callout.warn{ border-color: rgba(245,158,11,.45); }
+    .callout.danger{ border-color: rgba(239,68,68,.45); }
+
+    .kpi{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin: 10px 0 0;
+    }
+    @media(min-width: 720px){
+      .kpi{ grid-template-columns: repeat(3, 1fr); }
+    }
+    .kpi .box{
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(255,255,255,.03);
+      padding: 12px;
+    }
+    .kpi .box .t{ font-size: 12px; color: var(--muted); }
+    .kpi .box .v{ margin-top: 6px; font-size: 14px; color: var(--text); }
+
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.02);
+    }
+    th, td{
+      padding: 10px 10px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      text-align: left;
+      font-size: 13px;
+    }
+    th{
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-weight: 650;
+    }
+    td{ color: var(--text); }
+    tr:last-child td{ border-bottom: 0; }
+
+    .mono{ font-family: var(--mono); font-size: 12.5px; }
+
+    .footer{
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items:center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .print{
+      display:inline-flex;
+      gap: 8px;
+      align-items:center;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      cursor: pointer;
+      user-select:none;
+    }
+    .print:hover{ background: rgba(255,255,255,.06); }
+
+    @media print {
+      body{ background: #fff; color:#111; }
+      .hero, .card, .section, table{ box-shadow:none !important; }
+      .print{ display:none !important; }
+      a{ color:#0b57d0; text-decoration: underline; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header class="hero" id="top">
+      <div class="topline">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1>ReggBook – Gizlilik Politikası &amp; KVKK Aydınlatma Metni</h1>
+            <div class="subtitle">Kullanıcı verilerinin hangi amaçla işlendiğini, hangi sistemlerden geçtiğini ve nasıl silebileceğinizi açıklar.</div>
+          </div>
+        </div>
+
+        <div class="badges">
+          <span class="badge info">KVKK</span>
+          <span class="badge ok">Reklam yok</span>
+          <span class="badge warn">Güncellenebilir metin</span>
+          <span class="print" onclick="window.print()" title="Yazdır / PDF">
+            🖨️ Yazdır / PDF
+          </span>
+        </div>
+      </div>
+
+      <div class="kpi" role="group" aria-label="Özet bilgiler">
+        <div class="box">
+          <div class="t">Veri sorumlusu</div>
+          <div class="v"><strong>ReggBook</strong> (Sorumlu kişi: Tayfun Kaya)</div>
+        </div>
+        <div class="box">
+          <div class="t">İletişim</div>
+          <div class="v"><a href="mailto:info@reggbook.com">info@reggbook.com</a></div>
+        </div>
+        <div class="box">
+          <div class="t">Son güncelleme</div>
+          <div class="v"><strong>04.12.2025</strong></div>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <strong>Önemli:</strong> ReggBook bir muhasebe / mali müşavirlik hizmeti sunmaz. Uygulamadaki bakiye–borç–alacak ekranları yalnızca işletme içi takip amaçlıdır.
+      </div>
+    </header>
+
+    <div class="grid">
+      <aside class="side">
+        <div class="card">
+          <h2>İçindekiler</h2>
+          <ul class="toc">
+            <li><a href="#veri-sorumlusu">1. Veri Sorumlusu</a></li>
+            <li><a href="#reggbook-nedir">2. ReggBook Nedir?</a></li>
+            <li><a href="#veri-haritasi">3. Hangi Veri Neden Çekiliyor? (Veri Haritası)</a></li>
+            <li><a href="#amaclar">4. İşleme Amaçları</a></li>
+            <li><a href="#hukuki-sebepler">5. Hukuki Sebepler</a></li>
+            <li><a href="#paylasim">6. Paylaşım ve Hizmet Sağlayıcılar</a></li>
+            <li><a href="#saklama">7. Saklama Süreleri</a></li>
+            <li><a href="#silme">8. Silme / Hesap Kapatma</a></li>
+            <li><a href="#haklar">9. KVKK Hakları</a></li>
+            <li><a href="#iletisim">10. İletişim</a></li>
+            <li><a href="#degisiklik">11. Değişiklikler</a></li>
+          </ul>
+
+          <div class="hint">
+            Metinde geçen bazı teknik terimler (Firebase, Play Billing, FCM) uygulamanın altyapı bileşenlerini ifade eder.
+            Amacımız açık anlatım ve veri minimizasyonudur.
+          </div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <div class="card">
+
+          <section class="section" id="veri-sorumlusu">
+            <h2>1. Veri Sorumlusu</h2>
+            <p>
+              ReggBook mobil uygulaması ve <strong>reggbook.com</strong> üzerinden sunulan hizmetlerin veri sorumlusu:
+            </p>
+            <p class="mono">
+              <strong>ReggBook Uygulaması</strong><br />
+              Sorumlu kişi: Tayfun Kaya<br />
+              E-posta: <a href="mailto:info@reggbook.com">info@reggbook.com</a>
+            </p>
+          </section>
+
+          <section class="section" id="reggbook-nedir">
+            <h2>2. ReggBook Nedir?</h2>
+            <p>
+              ReggBook; berber, kuaför, güzellik salonu, pet kuaförü, nail art stüdyosu ve benzeri işletmeler için
+              randevu, müşteri ve işletme yönetimini kolaylaştıran bir organizasyon aracıdır.
+            </p>
+            <div class="callout">
+              <strong>ReggBook, mali müşavirlik / muhasebe / vergi danışmanlığı hizmeti değildir.</strong>
+              Uygulama içindeki raporlar yalnızca işletme içi takip amaçlıdır.
+            </div>
+          </section>
+
+          <section class="section" id="veri-haritasi">
+            <h2>3. Hangi Veri Neden Çekiliyor? (Veri Haritası)</h2>
+            <p class="muted">
+              Aşağıdaki tablo, uygulamanın pratikte ihtiyaç duyduğu ana veri kategorilerini ve amaçlarını özetler.
+              “Çekiliyor” ifadesi; verinin kullanıcı tarafından girilmesi, cihazdan alınması veya altyapı servislerince üretilmesi anlamına gelebilir.
+            </p>
+
+            <h3>3.1. Veri–Amaç–Süre Özeti</h3>
+            <table aria-label="Veri işleme haritası">
+              <thead>
+                <tr>
+                  <th>Veri / Kategori</th>
+                  <th>Neden işlenir?</th>
+                  <th>Kaynak</th>
+                  <th>Saklama (genel)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Hesap bilgileri</strong><br><span class="muted">ad, e-posta, profil/işletme bilgileri</span></td>
+                  <td>Hesap oluşturma, giriş, profil ve işletme görünümü</td>
+                  <td>Kullanıcı + Google oturum sağlayıcısı (Google Sign-In)</td>
+                  <td>Hesap aktif oldukça</td>
+                </tr>
+                <tr>
+                  <td><strong>Randevular</strong><br><span class="muted">tarih/saat, hizmet türü, notlar</span></td>
+                  <td>Randevu yönetimi, gün/hafta görünümü, hatırlatma</td>
+                  <td>Kullanıcı girişi</td>
+                  <td>Hesap aktif oldukça / silme talebiyle kaldırılır</td>
+                </tr>
+                <tr>
+                  <td><strong>Müşteri kayıtları</strong><br><span class="muted">isim/takma ad, telefon (varsa)</span></td>
+                  <td>Hızlı seçim, geçmiş işlemleri görüntüleme, takip kolaylığı</td>
+                  <td>Kullanıcı girişi</td>
+                  <td>Hesap aktif oldukça</td>
+                </tr>
+                <tr>
+                  <td><strong>Bakiye &amp; işlem kayıtları</strong><br><span class="muted">borç–alacak, tahsilat/ödeme</span></td>
+                  <td>İşletme içi takip ve raporlama</td>
+                  <td>Kullanıcı girişi</td>
+                  <td>Hesap aktif oldukça (genel) + olası uyuşmazlıklar için sınırlı süre</td>
+                </tr>
+                <tr>
+                  <td><strong>Çalışan/şirket ilişkisi</strong><br><span class="muted">rol, companyId, onay süreçleri</span></td>
+                  <td>Şirket içi erişim, onay bekleyenler, kayıtlı üyeler akışı</td>
+                  <td>Kullanıcı + işletme sahibi onayı</td>
+                  <td>İlişki sürdükçe</td>
+                </tr>
+                <tr>
+                  <td><strong>Bildirim verileri</strong><br><span class="muted">push token (FCM), bildirim tercihleri</span></td>
+                  <td>Randevu hatırlatma/uyarı bildirimleri gönderebilmek</td>
+                  <td>Cihaz + Firebase Cloud Messaging</td>
+                  <td>Token geçerli oldukça / değiştiğinde güncellenir</td>
+                </tr>
+                <tr>
+                  <td><strong>Abonelik/Premium</strong><br><span class="muted">entitlement, trial, plan durumu</span></td>
+                  <td>Premium özellik kontrolü, deneme suistimalini azaltma</td>
+                  <td>Google Play Billing + uygulama içi kayıt</td>
+                  <td>Hesap aktif oldukça + sınırlı log/kanıt süresi</td>
+                </tr>
+                <tr>
+                  <td><strong>Geri bildirim/şikâyet</strong><br><span class="muted">mesaj içerikleri, durum (pending/completed…)</span></td>
+                  <td>Destek sağlama, talep takibi</td>
+                  <td>Kullanıcı mesajları</td>
+                  <td>Talep sonuçlanana kadar + makul süre</td>
+                </tr>
+                <tr>
+                  <td><strong>Teknik kayıtlar</strong><br><span class="muted">uygulama sürümü, cihaz/OS, hata logları</span></td>
+                  <td>Hata ayıklama, güvenlik, performans iyileştirme</td>
+                  <td>Cihaz + altyapı servisleri</td>
+                  <td>En kısa süre (amacı kadar)</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="callout ok">
+              <strong>SMS konusu:</strong> ReggBook SMS’i otomatik göndermez. Uygulama yalnızca mesaj taslağını cihazın mesajlaşma uygulamasında açabilir; gönderim kullanıcı tarafından yapılır.
+            </div>
+
+            <div class="callout">
+              <strong>Ödeme bilgileri:</strong> Abonelik ödemeleri Google Play üzerinden yürütülür. ReggBook, kart/IBAN gibi ödeme bilgilerini doğrudan toplamaz.
+            </div>
+          </section>
+
+          <section class="section" id="amaclar">
+            <h2>4. Verilerinizi Hangi Amaçlarla İşliyoruz?</h2>
+            <ul>
+              <li>Üyelik hesabının oluşturulması, giriş yaptırılması ve yönetilmesi</li>
+              <li>Randevu oluşturma, takip, iptal ve hatırlatma bildirimleri</li>
+              <li>Müşteri ve çalışan kayıtlarını yönetebilmenizi sağlama</li>
+              <li>Bakiye/borç–alacak takibi ve raporlama (işletme içi takip)</li>
+              <li>Performans ölçümü, hata tespiti ve ürün geliştirme</li>
+              <li>Yetkisiz/kötüye kullanım girişimlerini tespit etme ve güvenlik</li>
+            </ul>
+          </section>
+
+          <section class="section" id="hukuki-sebepler">
+            <h2>5. Hukuki Sebepler (KVKK Kapsamında)</h2>
+            <ul>
+              <li><strong>Sözleşmenin kurulması/ifası</strong> (üyelik, randevu yönetimi, hizmetin sunulması)</li>
+              <li><strong>Hukuki yükümlülük</strong> (mevzuat kaynaklı zorunlu saklamalar varsa)</li>
+              <li><strong>Meşru menfaat</strong> (güvenlik, hata ayıklama, iyileştirme)</li>
+              <li><strong>Açık rıza</strong> gerektiren durumlar varsa ayrıca sorulur (ör. pazarlama izni)</li>
+            </ul>
+          </section>
+
+          <section class="section" id="paylasim">
+            <h2>6. Verileriniz Kimlerle Paylaşılır?</h2>
+            <p>
+              ReggBook, kullanıcı verilerini <strong>satmaz</strong> ve pazarlama amacıyla üçüncü taraflara <strong>devretmez</strong>.
+              Veriler, yalnızca hizmetin çalışması için gerekli ölçüde aşağıdaki taraflarla işlenebilir/aktarılabilir:
+            </p>
+            <ul>
+              <li><strong>Bulut altyapısı</strong>: Firebase (kimlik doğrulama, veritabanı, bildirim)</li>
+              <li><strong>Abonelik altyapısı</strong>: Google Play Billing</li>
+              <li><strong>Yasal zorunluluk</strong>: Yetkili kamu kurumları (talep halinde)</li>
+            </ul>
+
+            <div class="callout warn">
+              <strong>Yurt dışına aktarım notu:</strong> Kullanılan altyapı servisleri (ör. Firebase/Google) nedeniyle veriler,
+              sunucu konumuna bağlı olarak yurt dışında işlenebilir/saklanabilir.
+            </div>
+          </section>
+
+          <section class="section" id="saklama">
+            <h2>7. Veri Saklama Süreleri</h2>
+            <ul>
+              <li>Hesap aktif kaldığı sürece temel veriler saklanır.</li>
+              <li>Hesap silme talebinde, aktif veriler makul süre içinde silinir veya anonim hale getirilir.</li>
+              <li>
+                Bazı <strong>ilişkilendirilmiş</strong> veriler (ör. abonelik suistimalini azaltma, hizmet sürekliliği ve olası uyuşmazlıklar)
+                <strong>en fazla 1 yıl</strong> süreyle saklanabilir; süre sonunda silinir/anonimleştirilir.
+              </li>
+              <li>Mevzuat gereği daha uzun saklama zorunluluğu doğarsa ilgili süre uygulanır.</li>
+            </ul>
+          </section>
+
+          <section class="section" id="silme">
+            <h2>8. Silme / Hesap Kapatma</h2>
+            <p>
+              Verilerinizi silmek için uygulama içinde <strong>Ayarlar → Verilerimi Sil</strong> adımını kullanabilirsiniz.
+              Silme işlemi; aktif kullanım verilerini kaldırmayı hedefler. Güvenlik/uyuşmazlık/abonelik akışlarıyla ilişkili sınırlı kayıtlar
+              <strong>en fazla 1 yıl</strong> istisnasıyla saklanabilir.
+            </p>
+            <div class="callout danger">
+              <strong>Uyarı:</strong> Hesap silme işlemi geri alınamayabilir. (İstersen uygulama içindeki metinle uyumlu olacak şekilde daha net bir “geri dönüşsüz silme” açıklaması da ekleriz.)
+            </div>
+          </section>
+
+          <section class="section" id="haklar">
+            <h2>9. Kullanıcının Hakları (KVKK m.11)</h2>
+            <ul>
+              <li>Kişisel verinizin işlenip işlenmediğini öğrenme</li>
+              <li>İşlenmişse bilgi talep etme</li>
+              <li>İşleme amacını ve uygun kullanımı öğrenme</li>
+              <li>Aktarılan üçüncü kişileri bilme</li>
+              <li>Eksik/yanlışsa düzeltilmesini isteme</li>
+              <li>Silinmesini/yok edilmesini isteme</li>
+              <li>Aktarılan üçüncü kişilere bildirim yapılmasını isteme</li>
+              <li>Otomatik analiz aleyhe sonuç doğurursa itiraz etme</li>
+              <li>Zarar halinde tazmin talep etme</li>
+            </ul>
+          </section>
+
+          <section class="section" id="iletisim">
+            <h2>10. Haklarınızı Nasıl Kullanabilirsiniz?</h2>
+            <p>
+              Taleplerinizi <a href="mailto:info@reggbook.com">info@reggbook.com</a> adresine e-posta göndererek iletebilirsiniz.
+            </p>
+          </section>
+
+          <section class="section" id="degisiklik">
+            <h2>11. Metinde Yapılabilecek Değişiklikler</h2>
+            <p>
+              Bu metin, ReggBook’un ürün/altyapı değişiklikleri ve mevzuat güncellemelerine göre yenilenebilir.
+              Güncel sürüm her zaman <strong>reggbook.com</strong> üzerinde yayımlanır.
+            </p>
+          </section>
+
+          <div class="footer">
+            <div>© ReggBook • Bir Tayfun Kaya projesi</div>
+            <div><a href="#top">Yukarı çık ↑</a></div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
