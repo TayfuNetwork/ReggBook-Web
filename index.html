@@ -4,89 +4,445 @@
   <meta charset="UTF-8" />
   <title>ReggBook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- İstersen paylaşım önizlemesi için -->
+  <meta name="description" content="ReggBook – Randevu, müşteri ve işletme yönetimini tek uygulamada toplayan akıllı çözüm." />
+
   <style>
-    body {
+    :root{
+      --bg:#0b0f1a;
+      --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.04);
+      --line:rgba(255,255,255,.10);
+      --text:#eaf0ff;
+      --muted:rgba(234,240,255,.72);
+      --shadow:0 18px 55px rgba(0,0,0,.50);
+      --r:18px;
+      --accent1:#7c5cff; /* mor */
+      --accent2:#5dd6ff; /* mavi */
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      padding:40px 16px;
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 40px;
-      background: #f5f5f5;
+      color:var(--text);
+      background:
+        radial-gradient(900px 650px at 15% 10%, rgba(124,92,255,.25), transparent 60%),
+        radial-gradient(900px 650px at 85% 20%, rgba(93,214,255,.18), transparent 60%),
+        radial-gradient(900px 650px at 50% 110%, rgba(124,92,255,.14), transparent 60%),
+        var(--bg);
     }
-    .card {
-      max-width: 600px;
+
+    .card{
+      max-width: 980px;
       margin: 0 auto;
-      background: white;
-      padding: 32px;
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border: 1px solid var(--line);
+      padding: 28px;
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+
+    /* LOGO */
+    .logo-area{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 220px;
+    }
+    .logo{
+      height:64px;
+      width:auto;
+      display:block;
+      border-radius:14px;
+      box-shadow: 0 10px 28px rgba(0,0,0,.35);
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .brand{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+    }
+    .brand b{ font-size:20px; letter-spacing:.2px; }
+    .brand span{ color:var(--muted); font-size:12.5px; margin-top:4px; }
+
+    /* PLAY STORE BUTON */
+    .store{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:10px 12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      text-decoration:none;
+      transition: transform .10s ease, background .2s ease, border-color .2s ease;
+    }
+    .store:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.22);
+    }
+    .store img{
+      height:44px;
+      width:auto;
+      display:block;
+      border-radius:10px;
+      background:#fff;
+      padding:6px;
+    }
+    .store .txt{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+    .store .txt small{ color:var(--muted); font-size:12px; }
+    .store .txt strong{ font-size:14px; }
+
+    /* HERO */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:18px;
+      align-items:stretch;
+      margin-top:10px;
+    }
+    .hero-left{
+      padding:18px;
+      border-radius: var(--r);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    h1{ margin:0 0 10px; font-size:34px; line-height:1.08; }
+    .tagline{ color:var(--muted); margin:0 0 14px; font-size:15px; }
+    .p{ margin:0 0 14px; color:rgba(234,240,255,.86); font-size:14.5px; }
+
+    .pills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:12px;
+    }
+    .pill{
+      font-size:12.5px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color:rgba(234,240,255,.86);
+    }
+
+    .hero-right{
+      border-radius: var(--r);
+      border:1px solid var(--line);
+      background: linear-gradient(135deg, rgba(124,92,255,.16), rgba(93,214,255,.12));
+      padding:14px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .preview{
+      position:relative;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      overflow:hidden;
+      background: rgba(0,0,0,.25);
+      min-height: 300px;
+      display:grid;
+      place-items:center;
+    }
+    .preview img{
+      width:100%;
+      height:auto;
+      display:block;
       border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     }
 
-    /* LOGO ALANI */
-    .logo-wrapper {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 16px;
+    /* GALERİ */
+    .section-title{
+      margin:22px 0 12px;
+      font-size:18px;
     }
-    .logo {
-      height: 96px;     /* İstersen 40–80 px arası oynat */
-      width: auto;
-      display: block;
+    .shots{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    .shot{
+      cursor:pointer;
+      padding:10px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      transition: transform .12s ease, background .2s ease, border-color .2s ease;
+    }
+    .shot:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.05);
+      border-color: rgba(255,255,255,.20);
+    }
+    .shot img{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.20);
+    }
+    .shot .cap{
+      margin-top:8px;
+      color:var(--muted);
+      font-size:12.5px;
     }
 
-    h1 { margin-top: 0; }
-    .tagline { color: #666; margin-bottom: 16px; }
-    .contact { margin-top: 24px; font-size: 0.95rem; color: #444; }
-
-    .legal-links {
-      margin-top: 16px;
-      font-size: 0.85rem;
-      text-align: left;
+    /* CONTACT + LINKS */
+    .bottom{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      margin-top:18px;
     }
-    .legal-links a {
-      color: #007bff;          /* mavi link */
+    .box{
+      padding:16px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+    }
+    .contact{
+      font-size: 14px;
+      color: rgba(234,240,255,.86);
+    }
+    .contact strong{ color: var(--text); }
+
+    .legal-links{
+      margin-top: 10px;
+      font-size: 13px;
+    }
+    .legal-links a{
+      color: #79b7ff;
       text-decoration: none;
-      margin-right: 8px;
     }
-    .legal-links a:hover {
-      text-decoration: underline;
+    .legal-links a:hover{ text-decoration: underline; }
+
+    .footer{
+      margin-top: 16px;
+      font-size: 12.5px;
+      color: rgba(234,240,255,.55);
+      text-align: right;
     }
 
-    .footer {
-      margin-top: 16px;
-      font-size: 0.85rem;
-      color: #888;
-      text-align: right;
+    /* MODAL */
+    .modal{
+      position:fixed;
+      inset:0;
+      background: rgba(0,0,0,.72);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index:9999;
+    }
+    .modal.open{ display:flex; }
+    .modal-inner{
+      max-width: 960px;
+      width:100%;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(15,18,28,.92);
+      box-shadow: 0 25px 80px rgba(0,0,0,.6);
+      overflow:hidden;
+    }
+    .modal-bar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:10px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .modal-bar b{ font-size:13px; color: rgba(234,240,255,.85); }
+    .close{
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      border-radius: 12px;
+      padding:8px 10px;
+      cursor:pointer;
+    }
+    .modal-img{
+      display:block;
+      width:100%;
+      height:auto;
+      background: rgba(0,0,0,.25);
+    }
+
+    @media (max-width: 860px){
+      .hero{ grid-template-columns: 1fr; }
+      .shots{ grid-template-columns: 1fr; }
+      .bottom{ grid-template-columns: 1fr; }
+      h1{ font-size:30px; }
     }
   </style>
 </head>
+
 <body>
   <div class="card">
-    <!-- LOGO BURADA -->
-    <div class="logo-wrapper">
-      <img src="logo.png" alt="ReggBook Logo" class="logo">
+    <div class="top">
+      <!-- LOGO -->
+      <div class="logo-area">
+        <img src="logo.png" alt="ReggBook Logo" class="logo">
+        <div class="brand">
+          <b>ReggBook</b>
+          <span>Randevu • Müşteri • İşletme</span>
+        </div>
+      </div>
+
+      <!-- Play Store (şimdilik reggbook.com) -->
+      <a class="store" href="https://www.reggbook.com" target="_blank" rel="noopener">
+        <img src="Pstore.jpg" alt="Google Play">
+        <div class="txt">
+          <small>Yakında Google Play’de</small>
+          <strong>İndir / Bilgi için tıkla</strong>
+        </div>
+      </a>
     </div>
 
-    <h1>ReggBook</h1>
-    <p class="tagline">
-      Randevu, müşteri ve işletme yönetimini tek uygulamada toplayan akıllı çözüm.
-    </p>
-    <p>
-      Şu anda ReggBook uygulamasını son dokunuşlarına hazırlıyoruz. Çok yakında berberler,
-      kuaförler, nail art stüdyoları, pet kuaförleri ve daha birçok işletme için özel
-      özelliklerle yayında olacağız.
-    </p>
+    <div class="hero">
+      <div class="hero-left">
+        <h1>Randevuları toparla, günü rahat yönet.</h1>
+        <p class="tagline">
+          ReggBook; kuaför, berber, nail art stüdyosu, pet kuaför ve benzeri işletmeler için pratik randevu yönetimi sunar.
+        </p>
+        <p class="p">
+          Şu anda ReggBook’u son dokunuşlarına hazırlıyoruz. Uygulama yayına çıktığında indirme bağlantısı burada aktif olacak.
+          Dilersen şimdiden erken erişim / iş birliği için bizimle iletişime geçebilirsin.
+        </p>
 
-    <div class="contact">
-      İş birliği, erken erişim veya sorularınız için:<br/>
-      <strong>info@reggbook.com</strong>
+        <div class="pills">
+          <span class="pill">✅ Tek ekranda yönetim</span>
+          <span class="pill">✅ Randevu akışı</span>
+          <span class="pill">✅ Sade arayüz</span>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="preview" title="Tıklayıp büyütebilirsin">
+          <img src="reggbook_7in_01.jpg" alt="ReggBook ekran görüntüsü" id="heroImg">
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="store" style="flex:1; justify-content:center" href="https://www.reggbook.com" target="_blank" rel="noopener">
+            <div class="txt" style="text-align:center">
+              <small>Şimdilik</small>
+              <strong>www.reggbook.com</strong>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
 
-    <div class="legal-links">
-      <a href="gizliliksozlesmesi/">Gizlilik Sözleşmesi</a> ·
-      <a href="kullanim-kosullari/">Kullanım Koşulları</a> ·
-      <a href="acik-riza/">Açık Rıza Metni</a>
+    <div class="section-title">Ekran görüntüleri</div>
+    <div class="shots">
+      <div class="shot" data-src="reggbook_7in_01.jpg" data-title="Tarafını seç">
+        <img src="reggbook_7in_01.jpg" alt="Tarafını seç">
+        <div class="cap">Tarafını seç</div>
+      </div>
+
+      <div class="shot" data-src="reggbook_7in_04.jpg" data-title="Takvim seçimi">
+        <img src="reggbook_7in_04.jpg" alt="Takvim seçimi">
+        <div class="cap">Takvim seçimi</div>
+      </div>
+
+      <div class="shot" data-src="reggbook_7in_06.jpg" data-title="Onayla veya reddet">
+        <img src="reggbook_7in_06.jpg" alt="Onayla veya reddet">
+        <div class="cap">Onayla / reddet</div>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div class="box">
+        <div class="section-title" style="margin:0 0 10px">İletişim</div>
+        <div class="contact">
+          İş birliği, erken erişim veya sorularınız için:<br />
+          <strong>info@reggbook.com</strong>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="section-title" style="margin:0 0 10px">Yasal</div>
+        <div class="legal-links">
+          <a href="gizliliksozlesmesi/">Gizlilik Sözleşmesi</a> ·
+          <a href="kullanim-kosullari/">Kullanım Koşulları</a> ·
+          <a href="acik-riza/">Açık Rıza Metni</a>
+        </div>
+        <div style="margin-top:12px;color:var(--muted);font-size:12.5px">
+          Not: Google Play bağlantısı yayın sonrası güncellenecek.
+        </div>
+      </div>
     </div>
 
     <p class="footer">Bir Tayfun Kaya Projesi</p>
   </div>
+
+  <!-- Modal (büyütme) -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-inner">
+      <div class="modal-bar">
+        <b id="modalTitle">Önizleme</b>
+        <button class="close" id="closeBtn">Kapat</button>
+      </div>
+      <img class="modal-img" id="modalImg" src="" alt="Önizleme">
+    </div>
+  </div>
+
+  <script>
+    // Basit galeri + büyütme
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modalImg");
+    const modalTitle = document.getElementById("modalTitle");
+    const closeBtn = document.getElementById("closeBtn");
+
+    function openModal(src, title){
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      modalImg.src = src;
+      modalTitle.textContent = title || "Önizleme";
+    }
+    function closeModal(){
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      modalImg.src = "";
+    }
+
+    document.querySelectorAll(".shot").forEach(el => {
+      el.addEventListener("click", () => {
+        openModal(el.dataset.src, el.dataset.title);
+      });
+    });
+
+    // Hero görsele de büyütme ekle
+    const heroImg = document.getElementById("heroImg");
+    heroImg.addEventListener("click", () => openModal(heroImg.src, "ReggBook"));
+
+    closeBtn.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+  </script>
 </body>
 </html>
