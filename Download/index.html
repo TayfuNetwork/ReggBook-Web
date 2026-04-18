@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ReggBook İndir</title>
+
+  <script>
+    const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.tayfunetwork.reggbook";
+    const APP_STORE_URL  = "https://apps.apple.com/tr/app/reggbook/id6761694998?l=tr";
+    const FALLBACK_URL   = "https://reggbook.com";
+
+    function redirectUser() {
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+      // Android
+      if (/android/i.test(ua)) {
+        window.location.replace(PLAY_STORE_URL);
+        return;
+      }
+
+      // iOS
+      if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+        window.location.replace(APP_STORE_URL);
+        return;
+      }
+
+      // Diğer cihazlar
+      window.location.replace(FALLBACK_URL);
+    }
+
+    window.onload = redirectUser;
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      background: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h2>ReggBook açılıyor...</h2>
+    <p>Lütfen bekleyin</p>
+  </div>
+</body>
+</html>
