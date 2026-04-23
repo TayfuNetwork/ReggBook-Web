@@ -372,6 +372,7 @@
             <li><a href="#veri-sorumlusu">1. Veri Sorumlusu</a></li>
             <li><a href="#reggbook-nedir">2. ReggBook Nedir?</a></li>
             <li><a href="#veri-haritasi">3. Hangi Veri Neden Çekiliyor? (Veri Haritası)</a></li>
+            <li><a href="#yuz-analizi">3.2. Yüz Analizi ve Saç Tarzı Önerisi</a></li>
             <li><a href="#amaclar">4. İşleme Amaçları</a></li>
             <li><a href="#hukuki-sebepler">5. Hukuki Sebepler</a></li>
             <li><a href="#paylasim">6. Paylaşım ve Hizmet Sağlayıcılar</a></li>
@@ -508,6 +509,12 @@
                   <td>En kısa süre (amacı kadar)</td>
                 </tr>
                 <tr>
+                  <tr>
+  <td><strong>Yüz analizi verisi</strong><br><span class="muted">anlık piksel ölçümleri, yüz oranları, yüz tipi sonucu</span></td>
+  <td>Berber/kuaför hizmetlerinde saç tarzı önerisi sunabilmek</td>
+  <td>Kullanıcının açık işlemiyle kamera üzerinden anlık analiz</td>
+  <td>Fotoğraf/video kaydedilmez. Anlık piksel verileri kalıcı olarak saklanmaz.</td>
+</tr>
   <td><strong>Konum bilgisi</strong><br><span class="muted">yaklaşık konum / şehir bazlı konum</span></td>
   <td>Kullanıcıların çevresindeki işletmeleri bulabilmesi ve konum bazlı hizmetlerin çalışabilmesi</td>
   <td>Kullanıcının açık izni ile cihazdan alınır</td>
@@ -544,6 +551,28 @@ Alınan konum bilgisi cihaz üzerinde işlenir ve yalnızca kullanıcı “Kayde
 
   <strong>Paylaşım:</strong> Konum verileri üçüncü taraflarla paylaşılmaz ve yalnızca uygulama içi işlevler için kullanılır.
 </div>
+            <h3 id="yuz-analizi">3.2. Yüz Analizi ve Saç Tarzı Önerisi</h3>
+
+<div class="callout ok">
+  <strong>Yüz analizi hakkında:</strong><br><br>
+
+  ReggBook içinde sunulan saç tarzı önerisi özelliği, kamera görüntüsünden yalnızca anlık piksel ve yüz oranı bilgilerini işleyerek çalışır.
+
+  <br><br>
+
+  Bu işlem sırasında:
+  <ul>
+    <li>Fotoğraf çekilmez.</li>
+    <li>Video kaydı yapılmaz.</li>
+    <li>Kamera görüntüsü sunucularımıza gönderilmez.</li>
+    <li>Görüntü cihazda veya bulut sistemlerinde saklanmaz.</li>
+    <li>Analiz yalnızca yüz tipi ve saç tarzı önerisi üretmek için anlık olarak kullanılır.</li>
+  </ul>
+
+  <br>
+
+  Kullanıcı veya işletme tarafından seçilen saç tarzı tercihi, sonraki randevularda hatırlanabilmesi amacıyla müşteri kaydında stil adı/görsel referansı olarak saklanabilir. Bu kayıt, kamera görüntüsü değil; yalnızca seçilen saç modeli bilgisidir.
+</div>
           </section>
 
           <section class="section" id="amaclar">
@@ -555,6 +584,7 @@ Alınan konum bilgisi cihaz üzerinde işlenir ve yalnızca kullanıcı “Kayde
               <li>Bakiye/borç–alacak takibi ve raporlama (işletme içi takip)</li>
               <li>Performans ölçümü, hata tespiti ve ürün geliştirme</li>
               <li>Yetkisiz/kötüye kullanım girişimlerini tespit etme ve güvenlik</li>
+              <li>Yüz oranlarına göre saç tarzı önerisi sunma ve seçilen stil bilgisini müşteri kaydında hatırlatma</li>
             </ul>
           </section>
 
@@ -598,6 +628,7 @@ Platform üzerindeki işletme profilleri kullanıcı beyanına dayalıdır ve Re
                 Bazı <strong>ilişkilendirilmiş</strong> veriler (ör. abonelik suistimalini azaltma, hizmet sürekliliği ve olası uyuşmazlıklar)
                 <strong>en fazla 1 yıl</strong> süreyle saklanabilir; süre sonunda silinir/anonimleştirilir.
               </li>
+              <li>Yüz analizi sırasında kullanılan kamera görüntüsü, fotoğraf veya video olarak saklanmaz. Seçilen saç modeli bilgisi, müşteri kaydıyla ilişkili olarak hesap aktif kaldığı sürece saklanabilir.</li>
               <li>Mevzuat gereği daha uzun saklama zorunluluğu doğarsa ilgili süre uygulanır.</li>
             </ul>
           </section>
