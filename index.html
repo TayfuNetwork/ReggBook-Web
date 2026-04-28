@@ -446,15 +446,17 @@
     .download-fixed {
   position: sticky;
   top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 9999;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
 .download-fixed img {
-  width: 180px;
+  width: 170px;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  filter: drop-shadow(0 10px 22px rgba(0,0,0,.45));
+  transition: transform .15s ease;
 }
 
 .download-fixed img:hover {
