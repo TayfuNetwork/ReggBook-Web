@@ -489,6 +489,14 @@ fbq('track', 'PageView');
 
 <body>
   <div class="card">
+    <div class="download-fixed">
+  <a href="https://reggbook.com/download"
+     target="_blank"
+     rel="noopener"
+     onclick="if (window.fbq) fbq('track','Lead');">
+    <img src="download.png" alt="ReggBook indir">
+  </a>
+</div>
     <div class="top">
       <div class="logo-area">
         <img src="logoo.png" alt="ReggBook Logo" class="logo">
@@ -497,7 +505,7 @@ fbq('track', 'PageView');
           <span>Randevu • Müşteri • İşletme Yönetimi</span>
         </div>
       </div>
-
+  </div>
     <div class="hero">
       <div class="hero-left">
        <h1>Randevu ile Çalışan İşletmeler İçin Dijital Çözüm: ReggBook</h1>
@@ -684,34 +692,5 @@ fbq('track', 'PageView');
     });
   </script>
   <script>
-document.getElementById("downloadBtn").addEventListener("click", function() {
-
-  // Pixel event
-  fbq('track', 'Lead');
-
-  // Kullanıcıyı yönlendir (cihaz tespiti)
-  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
-  if (/android/i.test(userAgent)) {
-    window.open("https://play.google.com/store/apps/details?id=com.tayfunetwork.reggbook", "_blank");
-  } else if (/iPad|iPhone|iPod/.test(userAgent)) {
-    window.open("https://apps.apple.com/tr/app/reggbook/id6761694998?l=tr", "_blank");
-  } else {
-    // Desktop fallback → ister landing ister Play Store
-    window.open("https://reggbook.com", "_blank");
-  }
-
-});
-</script>
-  <div class="download-fixed">
-  <img src="download.png" id="downloadBtn" alt="İndir">
-</div>
-    <a href="https://reggbook.com/Download"
-   target="_blank"
-   onclick="fbq && fbq('track','Lead');"
-   class="download-fixed">
-
-  <img src="download.png" alt="ReggBook indir">
-</a>
 </body>
 </html>
