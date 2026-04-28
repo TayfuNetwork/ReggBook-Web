@@ -443,7 +443,46 @@
         flex:1 1 100%;
       }
     }
+    .download-fixed {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+}
+
+.download-fixed img {
+  width: 180px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.download-fixed img:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .download-fixed img {
+    width: 140px;
+  }
+}
   </style>
+  <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)
+}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', 'BURAYA_PIXEL_ID'); 
+fbq('track', 'PageView');
+</script>
+<!-- End Meta Pixel Code -->
 </head>
 
 <body>
@@ -671,5 +710,28 @@
       if (e.key === "Escape") closeModal();
     });
   </script>
+  <script>
+document.getElementById("downloadBtn").addEventListener("click", function() {
+
+  // Pixel event
+  fbq('track', 'Lead');
+
+  // Kullanıcıyı yönlendir (cihaz tespiti)
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+  if (/android/i.test(userAgent)) {
+    window.open("https://play.google.com/store/apps/details?id=com.tayfunetwork.reggbook", "_blank");
+  } else if (/iPad|iPhone|iPod/.test(userAgent)) {
+    window.open("https://apps.apple.com/tr/app/reggbook/id6761694998?l=tr", "_blank");
+  } else {
+    // Desktop fallback → ister landing ister Play Store
+    window.open("https://reggbook.com", "_blank");
+  }
+
+});
+</script>
+  <div class="download-fixed">
+  <img src="download.png" id="downloadBtn" alt="İndir">
+</div>
 </body>
 </html>
