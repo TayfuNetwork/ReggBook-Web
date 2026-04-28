@@ -65,9 +65,11 @@
     </ul>
 
     <h2>2. Hizmetin Konusu</h2>
-  <p>
-  ReggBook içerisinde sunulan “saç tarzı önerisi” özelliği, kullanıcının açık izni ile
-  cihaz kamerası üzerinden çalışır ve yüz hatlarını analiz ederek anlık öneri üretir.
+  <h3>2.1. AI Destekli Saç Tarzı Önerisi</h3>
+
+<p>
+  ReggBook içerisinde sunulan “AI destekli saç tarzı önerisi” özelliği, kullanıcının açık işlemiyle
+  cihaz kamerası üzerinden çalışır ve yalnızca saç modeli önerisi sunmak amacıyla kullanılır.
 </p>
 
 <p>
@@ -75,12 +77,20 @@
 </p>
 
 <ul>
-  <li>Herhangi bir fotoğraf veya video kaydı yapılmaz.</li>
+  <li>Fotoğraf çekilmez ve kaydedilmez.</li>
+  <li>Video kaydı yapılmaz.</li>
   <li>Kamera görüntüsü cihaz dışında bir sunucuya gönderilmez.</li>
-  <li>Analiz yalnızca anlık piksel ve yüz oranları üzerinden gerçekleştirilir.</li>
-  <li>Görüntü verileri kalıcı olarak saklanmaz.</li>
-  <li>Bu özellik biyometrik kimlik doğrulama amacıyla kullanılmaz.</li>
+  <li>Kamera görüntüsü Firebase’e veya ReggBook sunucularına yüklenmez.</li>
+  <li>Yüz görüntüsü, yüz haritası, biyometrik şablon veya benzeri kalıcı bir yüz verisi oluşturulmaz.</li>
+  <li>Yüz ölçümleri, yüz oranları, piksel değerleri veya yüz tipi sonucu metin olarak dahi veritabanına kaydedilmez.</li>
+  <li>Analiz tamamlandıktan sonra kamera görüntüsü ve geçici analiz verileri saklanmadan atılır.</li>
+  <li>Bu özellik biyometrik kimlik doğrulama, kimlik tespiti veya kullanıcıyı tanıma amacıyla kullanılmaz.</li>
 </ul>
+
+<p>
+  Kullanıcı veya işletme yetkilisi bir saç stili seçerse, yalnızca seçilen saç stilinin dosya adı veya görsel referansı
+  sonraki randevularda tavsiye ve hatırlatma amacıyla müşteri kaydıyla ilişkilendirilebilir. Bu kayıt, yüz verisi değildir.
+</p>
     <p>
       ReggBook; işletmelerin randevu planlaması yapmasını, müşterilerini ve çalışanlarını takip etmesini,
       basit düzeyde gelir–gider ve bakiye takibi yapmasını sağlayan bir yazılım hizmetidir.
@@ -122,10 +132,9 @@
         Uygulama; hukuka aykırı, hakaret içeren, şiddet veya nefret söylemi barındıran içeriklerin
         kaydedilmesi için kullanılamaz.
       </li>
-      <li>
-  Kullanıcı, yüz analizi ve saç önerisi özelliğini kullanırken kameraya erişim izni verdiğini
-  ve bu özelliğin yalnızca öneri amaçlı olduğunu kabul eder. Bu özellik profesyonel
-  bir estetik veya danışmanlık hizmeti yerine geçmez.
+     <li>
+  Kullanıcı, AI destekli saç tarzı önerisi özelliğinin yalnızca tavsiye amaçlı olduğunu kabul eder.
+  Bu özellik profesyonel estetik, sağlık, dermatoloji, kuaförlük veya kişisel bakım danışmanlığı yerine geçmez.
 </li>
     </ul>
 
@@ -202,11 +211,10 @@
   Platform üzerinde oluşturulan işletme profillerinin doğruluğu, sahipliği veya yetkilendirilmesi ReggBook
   tarafından garanti edilmez. Bu profillerden doğabilecek uyuşmazlıklarda ReggBook taraf değildir.
 </li>
-      <li>
-  Yüz analizi ve saç tarzı önerisi özelliği, algoritmik bir öneri sistemidir.
-  Kullanıcıya sunulan sonuçların kişisel beklentileri tam olarak karşılayacağı
-  garanti edilmez. Bu öneriler doğrultusunda alınan kararların sorumluluğu
-  tamamen kullanıcıya aittir.
+     <li>
+  AI destekli saç tarzı önerisi özelliği, algoritmik ve tavsiye amaçlı bir sistemdir.
+  Sunulan önerilerin kullanıcının kişisel beklentilerini, yüz yapısını, saç tipini veya tarz tercihlerini tam olarak karşılayacağı garanti edilmez.
+  Bu öneriler doğrultusunda alınan kararların sorumluluğu kullanıcıya aittir.
 </li>
     </ul>
 
@@ -237,6 +245,10 @@
         Yasal mevzuat gereği daha uzun süre saklanması zorunlu olan (örneğin fatura ve mali kayıtlar)
         için ilgili kanuni saklama süreleri geçerlidir.
       </li>
+      <li>
+  AI destekli saç tarzı önerisi sırasında kamera görüntüsü, fotoğraf, video, yüz metriği, yüz tipi sonucu veya biyometrik şablon saklanmadığı için hesap silme kapsamında bu tür bir yüz verisi silme işlemi bulunmaz.
+  Kullanıcı veya işletme yetkilisi tarafından seçilmiş saç stili dosya adı/görsel referansı varsa, bu bilgi müşteri kaydıyla birlikte silinir veya anonimleştirilir.
+</li>
     </ul>
 
     <h2>10. Değişiklikler</h2>
