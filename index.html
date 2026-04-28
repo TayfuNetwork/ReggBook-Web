@@ -427,12 +427,54 @@
         grid-template-columns: 1fr;
       }
 
+      body{
+        padding:18px 10px 28px;
+      }
+
+      .card{
+        padding:16px;
+        border-radius:16px;
+      }
+
+      .top{
+        justify-content:center;
+        text-align:center;
+        margin-bottom:12px;
+      }
+
+      .logo-area{
+        justify-content:center;
+        min-width:0;
+        width:100%;
+      }
+
+      .logo{
+        height:54px;
+      }
+
+      .hero{
+        gap:14px;
+      }
+
+      .hero-right{
+        order:-1;
+        padding:10px;
+      }
+
+      .hero-left{
+        padding:18px;
+      }
+
+      .preview{
+        min-height:180px;
+      }
+
       .shots{
         grid-template-columns: 1fr;
       }
 
       h1{
-        font-size:31px;
+        font-size:28px;
       }
 
       .stores{
@@ -464,8 +506,43 @@
 }
 
 @media (max-width: 768px) {
+  .download-fixed {
+    top: 8px;
+    margin-bottom: 14px;
+  }
+
   .download-fixed img {
-    width: 140px;
+    width: 150px;
+  }
+
+  .store-row{
+    gap:8px;
+  }
+
+  .store{
+    min-width:0;
+    padding:11px 12px;
+    border-radius:14px;
+  }
+
+  .seo-box,
+  .box{
+    padding:15px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1{
+    font-size:25px;
+  }
+
+  .tagline,
+  .p{
+    font-size:14px;
+  }
+
+  .pill{
+    font-size:12px;
   }
 }
   </style>
@@ -481,8 +558,17 @@ s.parentNode.insertBefore(t,s)
 }(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 
-fbq('init', 'BURAYA_PIXEL_ID'); 
+fbq('init', '4403577006598103');
 fbq('track', 'PageView');
+
+window.ReggBookTrack = function(eventName, params, standardEventName){
+  if (!window.fbq) return;
+  var eventParams = params || {};
+  if (standardEventName) {
+    fbq('track', standardEventName, eventParams);
+  }
+  fbq('trackCustom', eventName, eventParams);
+};
 </script>
 <!-- End Meta Pixel Code -->
 </head>
@@ -493,7 +579,7 @@ fbq('track', 'PageView');
   <a href="https://reggbook.com/Download"
      target="_blank"
      rel="noopener"
-     onclick="if (window.fbq) fbq('track','Lead');">
+     onclick="ReggBookTrack('DownloadClick', {location: 'top_fixed_download'}, 'Lead');">
     <img src="download.png" alt="ReggBook indir">
   </a>
 </div>
@@ -544,6 +630,7 @@ fbq('track', 'PageView');
             href="https://play.google.com/store/apps/details?id=com.tayfunetwork.reggbook"
             target="_blank"
             rel="noopener"
+            onclick="ReggBookTrack('StoreButtonClick', {store: 'google_play', location: 'hero_store_buttons'});"
           >
             <div class="txt" style="text-align:center;">
               <small>Android kullanıcıları için</small>
@@ -556,6 +643,7 @@ fbq('track', 'PageView');
             href="https://apps.apple.com/tr/app/reggbook/id6761694998?l=tr"
             target="_blank"
             rel="noopener"
+            onclick="ReggBookTrack('StoreButtonClick', {store: 'app_store', location: 'hero_store_buttons'});"
           >
             <div class="txt" style="text-align:center;">
               <small>iPhone kullanıcıları için</small>
@@ -627,9 +715,9 @@ fbq('track', 'PageView');
       <div class="box">
         <div class="section-title" style="margin:0 0 10px">Yasal</div>
         <div class="legal-links">
-          <a href="gizliliksozlesmesi/">Gizlilik Sözleşmesi</a> ·
-          <a href="kullanim-kosullari/">Kullanım Koşulları</a> ·
-          <a href="acik-riza/">Açık Rıza Metni</a>
+          <a href="gizliliksozlesmesi/" onclick="ReggBookTrack('LegalLinkClick', {link_name: 'privacy_policy'});">Gizlilik Sözleşmesi</a> ·
+          <a href="kullanim-kosullari/" onclick="ReggBookTrack('LegalLinkClick', {link_name: 'terms_of_use'});">Kullanım Koşulları</a> ·
+          <a href="acik-riza/" onclick="ReggBookTrack('LegalLinkClick', {link_name: 'explicit_consent'});">Açık Rıza Metni</a>
         </div>
         <div style="margin-top:12px;color:var(--muted);font-size:12.5px">
           ReggBook artık hem Google Play hem de App Store üzerinden indirilebilir.
@@ -674,12 +762,24 @@ fbq('track', 'PageView');
 
     document.querySelectorAll(".shot").forEach(el => {
       el.addEventListener("click", () => {
+        ReggBookTrack("ImageClick", {
+          image_name: el.dataset.title || "screenshot",
+          image_src: el.dataset.src || "",
+          location: "screenshots"
+        });
         openModal(el.dataset.src, el.dataset.title);
       });
     });
 
     const heroImg = document.getElementById("heroImg");
-    heroImg.addEventListener("click", () => openModal(heroImg.src, "ReggBook"));
+    heroImg.addEventListener("click", () => {
+      ReggBookTrack("ImageClick", {
+        image_name: "hero_preview",
+        image_src: "as.jpeg",
+        location: "hero_preview"
+      });
+      openModal(heroImg.src, "ReggBook");
+    });
 
     closeBtn.addEventListener("click", closeModal);
 
@@ -691,6 +791,5 @@ fbq('track', 'PageView');
       if (e.key === "Escape") closeModal();
     });
   </script>
-  <script>
 </body>
 </html>
