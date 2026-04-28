@@ -496,35 +496,6 @@ fbq('track', 'PageView');
         </div>
       </div>
 
-      <div class="stores">
-        <a
-          class="store"
-          href="https://play.google.com/store/apps/details?id=com.tayfunetwork.reggbook"
-          target="_blank"
-          rel="noopener"
-        >
-          <img src="Pstore.jpg" alt="Google Play">
-          <div class="txt">
-            <small>Google Play’de</small>
-            <strong>Android için indir</strong>
-          </div>
-        </a>
-
-        <a
-          class="store"
-          href="https://apps.apple.com/tr/app/reggbook/id6761694998?l=tr"
-          target="_blank"
-          rel="noopener"
-        >
-          <img src="iosapp.webp" alt="App Store">
-          <div class="txt">
-            <small>App Store’da</small>
-            <strong>iPhone için indir</strong>
-          </div>
-        </a>
-      </div>
-    </div>
-
     <div class="hero">
       <div class="hero-left">
        <h1>Randevu ile Çalışan İşletmeler İçin Dijital Çözüm: ReggBook</h1>
@@ -733,5 +704,12 @@ document.getElementById("downloadBtn").addEventListener("click", function() {
   <div class="download-fixed">
   <img src="download.png" id="downloadBtn" alt="İndir">
 </div>
+    <a href="https://reggbook.com/Download"
+   target="_blank"
+   onclick="fbq && fbq('track','Lead');"
+   class="download-fixed">
+
+  <img src="download.png" alt="ReggBook indir">
+</a>
 </body>
 </html>
