@@ -507,12 +507,13 @@
 
 @media (max-width: 768px) {
   .download-fixed {
-    top: 8px;
-    margin-bottom: 14px;
+    top: 6px;
+    margin-bottom: 8px;
   }
 
   .download-fixed img {
-    width: 150px;
+    width: 230px;
+    max-width: 92%;
   }
 
   .store-row{
@@ -533,16 +534,28 @@
 
 @media (max-width: 480px) {
   h1{
-    font-size:25px;
+    font-size:23px;
+    line-height:1.15;
+    text-align:center;
   }
 
-  .tagline,
+  .tagline{
+    font-size:15px;
+    line-height:1.45;
+    text-align:center;
+    color:rgba(234,240,255,.9);
+  }
+
   .p{
-    font-size:14px;
+    display:none;
   }
 
   .pill{
     font-size:12px;
+  }
+
+  .pills{
+    justify-content:center;
   }
 }
   </style>
@@ -594,10 +607,10 @@ window.ReggBookTrack = function(eventName, params, standardEventName){
   </div>
     <div class="hero">
       <div class="hero-left">
-       <h1>Randevu ile Çalışan İşletmeler İçin Dijital Çözüm: ReggBook</h1>
+      <h1>Müşteri kaybetmeden randevularını yönet.</h1>
         <p class="tagline">
-          ReggBook; berberler, kuaförler, güzellik salonları ve randevu ile çalışan işletmeler için geliştirilen profesyonel bir randevu ve müşteri yönetim çözümüdür.
-        </p>
+  ReggBook ile müşterilerin boş saatlerini görsün, sen de randevularını tek yerden yönet.
+</p>
 
         <p class="p">
           ReggBook ile işletmeler, günlük randevu akışını dijital olarak yönetebilir; müşteriler ise uygun işletmeleri bulup müsait saatleri görüntüleyerek kolayca randevu oluşturabilir.
