@@ -23,7 +23,7 @@
     content="Türkiye'nin ilk AI tabanlı saç analizi ve stil önerisi sunan randevu sistemi. Berber, kuaför ve güzellik salonları için müşteri, randevu ve işletme yönetimi."
   />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="as-optimized.jpeg" />
+  <meta property="og:image" content="as-optimized.png" />
 
   <style>
     :root{
@@ -450,64 +450,15 @@
       display:none;
     }
 
-    @media (max-width: 920px){
-      .hero,
-      .seo-sections,
-      .bottom,
-      .trust-strip{
-        grid-template-columns: 1fr;
-      }
-
-      body{
-        padding:8px 10px 28px;
-      }
-
-      .card{
-        padding:10px 16px 16px;
-        border-radius:16px;
-      }
-
-      .top{
-        justify-content:center;
-        text-align:center;
-        margin-bottom:8px;
-      }
-
-      .logo-area{
-        justify-content:center;
-        min-width:0;
-        width:100%;
-      }
-
-      .logo{
-        height:54px;
-      }
-
-      .hero{
-        gap:12px;
-        margin-top:0;
-      }
-
-      .hero-right{
-        order:-1;
-        padding:10px;
-      }
-
-      .hero-left{
-        padding:18px;
-      }
-
-      .preview{
-        min-height:0;
-        max-height:260px;
-      }
+    .preview{
+  height:220px;
+}
 
       .preview img{
-        width:auto;
-        max-width:100%;
-        max-height:260px;
-        object-fit:contain;
-      }
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 
       .mobile-intro{
         display:block;
@@ -726,7 +677,7 @@ window.ReggBookTrack = function(eventName, params, standardEventName){
 
       <div class="hero-right">
         <div class="preview" title="Tıklayıp büyütebilirsin">
-          <img src="as-optimized.jpeg" alt="ReggBook ekran görüntüsü" id="heroImg">
+          <img src="as-optimized.png" alt="ReggBook ekran görüntüsü" id="heroImg">
         </div>
 
         <div class="store-row">
@@ -880,7 +831,7 @@ window.ReggBookTrack = function(eventName, params, standardEventName){
     heroImg.addEventListener("click", () => {
       ReggBookTrack("ImageClick", {
         image_name: "hero_preview",
-        image_src: "as-optimized.jpeg",
+        image_src: "as-optimized.png",
         location: "hero_preview"
       });
       openModal(heroImg.src, "ReggBook");
