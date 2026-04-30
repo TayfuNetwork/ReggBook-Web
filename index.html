@@ -27,16 +27,16 @@
 
   <style>
     :root{
-      --bg:#0b0f1a;
-      --card:rgba(255,255,255,.06);
-      --card2:rgba(255,255,255,.04);
-      --line:rgba(255,255,255,.10);
-      --text:#eaf0ff;
-      --muted:rgba(234,240,255,.72);
-      --shadow:0 18px 55px rgba(0,0,0,.50);
+      --bg:#f3f8ff;
+      --card:rgba(255,255,255,.82);
+      --card2:rgba(255,255,255,.66);
+      --line:rgba(28,55,96,.14);
+      --text:#14233b;
+      --muted:rgba(20,35,59,.68);
+      --shadow:0 18px 55px rgba(28,55,96,.16);
       --r:18px;
-      --accent1:#7c5cff;
-      --accent2:#5dd6ff;
+      --accent1:#4f73ff;
+      --accent2:#18a8c8;
     }
 
     *{ box-sizing:border-box; }
@@ -47,16 +47,16 @@
       font-family: Arial, sans-serif;
       color:var(--text);
       background:
-        radial-gradient(900px 650px at 15% 10%, rgba(124,92,255,.25), transparent 60%),
-        radial-gradient(900px 650px at 85% 20%, rgba(93,214,255,.18), transparent 60%),
-        radial-gradient(900px 650px at 50% 110%, rgba(124,92,255,.14), transparent 60%),
+        radial-gradient(900px 650px at 15% 10%, rgba(79,115,255,.16), transparent 60%),
+        radial-gradient(900px 650px at 85% 20%, rgba(24,168,200,.14), transparent 60%),
+        radial-gradient(900px 650px at 50% 110%, rgba(79,115,255,.09), transparent 60%),
         var(--bg);
     }
 
     .card{
       max-width: 1120px;
       margin: 0 auto;
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.78));
       border: 1px solid var(--line);
       padding: 28px;
       border-radius: var(--r);
@@ -85,9 +85,9 @@
       width:auto;
       display:block;
       border-radius:14px;
-      box-shadow: 0 10px 28px rgba(0,0,0,.35);
-      background: rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
+      box-shadow: 0 10px 28px rgba(28,55,96,.16);
+      background: rgba(255,255,255,.76);
+      border:1px solid rgba(28,55,96,.12);
     }
 
     .brand{
@@ -120,8 +120,8 @@
       gap:12px;
       padding:10px 12px;
       border-radius:16px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.04);
+      border:1px solid rgba(28,55,96,.13);
+      background: rgba(255,255,255,.72);
       text-decoration:none;
       transition: transform .10s ease, background .2s ease, border-color .2s ease;
       min-width: 225px;
@@ -129,8 +129,8 @@
 
     .store:hover{
       transform: translateY(-1px);
-      background: rgba(255,255,255,.06);
-      border-color: rgba(255,255,255,.22);
+      background: rgba(255,255,255,.92);
+      border-color: rgba(79,115,255,.26);
     }
 
     .store img{
@@ -159,6 +159,31 @@
       color:var(--text);
     }
 
+    .trust-strip{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+      margin:10px 0 14px;
+    }
+
+    .trust-item{
+      border:1px solid rgba(28,55,96,.13);
+      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(242,248,255,.78));
+      border-radius:14px;
+      padding:12px 13px;
+      color:rgba(20,35,59,.82);
+      font-size:13px;
+      line-height:1.45;
+      box-shadow:0 10px 24px rgba(28,55,96,.08);
+    }
+
+    .trust-item strong{
+      display:block;
+      margin-bottom:3px;
+      color:var(--text);
+      font-size:13.5px;
+    }
+
     .hero{
       display:grid;
       grid-template-columns: 1.08fr .92fr;
@@ -171,7 +196,7 @@
       padding:22px;
       border-radius: var(--r);
       border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      background: rgba(255,255,255,.58);
     }
 
     h1{
@@ -188,7 +213,7 @@
 
     .p{
       margin:0 0 14px;
-      color:rgba(234,240,255,.86);
+      color:rgba(20,35,59,.78);
       font-size:14.8px;
       line-height:1.7;
     }
@@ -204,15 +229,15 @@
       font-size:12.5px;
       padding:8px 10px;
       border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      color:rgba(234,240,255,.86);
+      border:1px solid rgba(28,55,96,.13);
+      background: rgba(255,255,255,.74);
+      color:rgba(20,35,59,.80);
     }
 
     .hero-right{
       border-radius: var(--r);
       border:1px solid var(--line);
-      background: linear-gradient(135deg, rgba(124,92,255,.16), rgba(93,214,255,.12));
+      background: linear-gradient(135deg, rgba(79,115,255,.11), rgba(24,168,200,.10));
       padding:14px;
       display:flex;
       flex-direction:column;
@@ -222,9 +247,9 @@
     .preview{
       position:relative;
       border-radius:16px;
-      border:1px solid rgba(255,255,255,.14);
+      border:1px solid rgba(28,55,96,.13);
       overflow:hidden;
-      background: rgba(0,0,0,.25);
+      background: rgba(255,255,255,.74);
       min-height: 300px;
       display:grid;
       place-items:center;
@@ -259,8 +284,8 @@
     .seo-box{
       padding:18px;
       border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
+      border:1px solid rgba(28,55,96,.13);
+      background: rgba(255,255,255,.62);
     }
 
     .seo-box h2{
@@ -271,7 +296,7 @@
 
     .seo-box p{
       margin:0;
-      color:rgba(234,240,255,.82);
+      color:rgba(20,35,59,.76);
       font-size:14.5px;
       line-height:1.7;
     }
@@ -291,15 +316,15 @@
       cursor:pointer;
       padding:10px;
       border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
+      border:1px solid rgba(28,55,96,.13);
+      background: rgba(255,255,255,.62);
       transition: transform .12s ease, background .2s ease, border-color .2s ease;
     }
 
     .shot:hover{
       transform: translateY(-1px);
-      background: rgba(255,255,255,.05);
-      border-color: rgba(255,255,255,.20);
+      background: rgba(255,255,255,.86);
+      border-color: rgba(79,115,255,.24);
     }
 
     .shot img{
@@ -307,8 +332,8 @@
       height:auto;
       display:block;
       border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.20);
+      border:1px solid rgba(28,55,96,.10);
+      background: rgba(255,255,255,.64);
     }
 
     .shot .cap{
@@ -327,13 +352,13 @@
     .box{
       padding:16px;
       border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
+      border:1px solid rgba(28,55,96,.13);
+      background: rgba(255,255,255,.62);
     }
 
     .contact{
       font-size:14px;
-      color:rgba(234,240,255,.86);
+      color:rgba(20,35,59,.78);
       line-height:1.8;
     }
 
@@ -347,7 +372,7 @@
     }
 
     .legal-links a{
-      color:#79b7ff;
+      color:#285ed8;
       text-decoration:none;
     }
 
@@ -358,9 +383,9 @@
     .footer{
       margin-top: 18px;
       padding-top: 14px;
-      border-top: 1px solid rgba(255,255,255,.08);
+      border-top: 1px solid rgba(28,55,96,.10);
       font-size: 12.8px;
-      color: rgba(234,240,255,.62);
+      color: rgba(20,35,59,.58);
       line-height:1.8;
     }
 
@@ -386,7 +411,7 @@
       width:100%;
       border-radius:18px;
       border:1px solid rgba(255,255,255,.16);
-      background: rgba(15,18,28,.92);
+      background: rgba(255,255,255,.96);
       box-shadow: 0 25px 80px rgba(0,0,0,.6);
       overflow:hidden;
     }
@@ -397,17 +422,17 @@
       justify-content:space-between;
       gap:10px;
       padding:10px 12px;
-      border-bottom: 1px solid rgba(255,255,255,.10);
+      border-bottom: 1px solid rgba(28,55,96,.10);
     }
 
     .modal-bar b{
       font-size:13px;
-      color: rgba(234,240,255,.85);
+      color: rgba(20,35,59,.85);
     }
 
     .close{
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
+      border:1px solid rgba(28,55,96,.16);
+      background: rgba(255,255,255,.74);
       color: var(--text);
       border-radius: 12px;
       padding:8px 10px;
@@ -418,7 +443,7 @@
       display:block;
       width:100%;
       height:auto;
-      background: rgba(0,0,0,.25);
+      background: rgba(255,255,255,.80);
     }
 
     .mobile-intro{
@@ -428,7 +453,8 @@
     @media (max-width: 920px){
       .hero,
       .seo-sections,
-      .bottom{
+      .bottom,
+      .trust-strip{
         grid-template-columns: 1fr;
       }
 
@@ -472,14 +498,22 @@
       }
 
       .preview{
-        min-height:180px;
+        min-height:0;
+        max-height:260px;
+      }
+
+      .preview img{
+        width:auto;
+        max-width:100%;
+        max-height:260px;
+        object-fit:contain;
       }
 
       .mobile-intro{
         display:block;
         max-width:720px;
         margin:0 auto 10px;
-        color:rgba(234,240,255,.84);
+        color:rgba(20,35,59,.72);
         font-size:13.5px;
         line-height:1.45;
         text-align:center;
@@ -567,11 +601,19 @@
     text-align:center;
   }
 
-  .tagline{
+    .tagline{
     font-size:15px;
     line-height:1.45;
     text-align:center;
-    color:rgba(234,240,255,.9);
+    color:rgba(20,35,59,.84);
+  }
+
+  .preview{
+    max-height:220px;
+  }
+
+  .preview img{
+    max-height:220px;
   }
 
   .p{
@@ -633,6 +675,32 @@ window.ReggBookTrack = function(eventName, params, standardEventName){
         </div>
       </div>
   </div>
+    <div class="trust-strip">
+      <div class="trust-item">
+        <strong>20+ profesyonel tester ile test edildi</strong>
+        Tayfun Kaya kontrolünde Profesyonel Randevu Takip Uygulaması.
+      </div>
+      <div class="trust-item">
+        <strong>1 milyon kullanıcıya kadar sorunsuz altyapı</strong>
+        Büyüyen işletmeler için ölçeklenebilir randevu ve müşteri takip sistemi.
+      </div>
+      <div class="trust-item">
+        <strong>Google Play ve App Store'da yayında</strong>
+        Google Analytics ve Apple Crash Management takibiyle 24 saat izlenir.
+      </div>
+      <div class="trust-item">
+        <strong>7/24 uygulama içi sorun bildirme</strong>
+        Kullanıcı geri bildirimi doğrudan geliştiriciye ulaşır.
+      </div>
+      <div class="trust-item">
+        <strong>İşletme güveni için onaylı mağaza deneyimi</strong>
+        Android ve iOS tarafında profesyonel indirme akışı sunar.
+      </div>
+      <div class="trust-item">
+        <strong>Modern işletmeler için sade takip</strong>
+        Randevu, müşteri ve işletme yönetimi tek mobil deneyimde birleşir.
+      </div>
+    </div>
     <p class="mobile-intro">
       Randevularını tek yerden yönet, müşterilerini kolayca takip et.<br>
       AI destekli saç stili önerisiyle işletmene profesyonel güç kat.
