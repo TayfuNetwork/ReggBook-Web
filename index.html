@@ -5,7 +5,6 @@
   <meta charset="UTF-8" />
   <title>ReggBook | Dijital Randevu Defteri ve İşletme Yönetim Sistemi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <meta
     name="description"
     content="ReggBook; kuaförden iş makinesi kiralamaya kadar randevu ile çalışan tüm işletmeler için profesyonel dijital randevu defteri ve müşteri takip uygulamasıdır. Türkiye'nin ilk AI destekli stil önerisi sunan randevu sistemi."
@@ -16,7 +15,6 @@
   />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Tayfun Kaya" />
-
   <meta property="og:title" content="ReggBook | AI Tabanlı Randevu ve İşletme Yönetim Sistemi" />
   <meta
     property="og:description"
@@ -24,7 +22,6 @@
   />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="as-optimized.png" />
-
   <style>
     :root{
       --bg:#f3f8ff;
@@ -38,9 +35,7 @@
       --accent1:#4f73ff;
       --accent2:#18a8c8;
     }
-
     *{ box-sizing:border-box; }
-
     body{
       margin:0;
       padding:40px 16px;
@@ -52,7 +47,6 @@
         radial-gradient(900px 650px at 50% 110%, rgba(79,115,255,.09), transparent 60%),
         var(--bg);
     }
-
     .card{
       max-width: 1120px;
       margin: 0 auto;
@@ -63,23 +57,22 @@
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
     }
-
     .top{
       display:flex;
       align-items:center;
-      justify-content:space-between;
+      justify-content:center;
       gap:14px;
       flex-wrap:wrap;
-      margin-bottom:18px;
+      margin-bottom:12px;
+      text-align:center;
     }
-
     .logo-area{
       display:flex;
       align-items:center;
+      justify-content:center;
       gap:12px;
       min-width: 220px;
     }
-
     .logo{
       height:64px;
       width:auto;
@@ -89,31 +82,26 @@
       background: rgba(255,255,255,.76);
       border:1px solid rgba(28,55,96,.12);
     }
-
     .brand{
       display:flex;
       flex-direction:column;
       line-height:1.1;
     }
-
     .brand b{
       font-size:20px;
       letter-spacing:.2px;
     }
-
     .brand span{
       color:var(--muted);
       font-size:12.5px;
       margin-top:4px;
     }
-
     .stores{
       display:flex;
       align-items:center;
       gap:12px;
       flex-wrap:wrap;
     }
-
     .store{
       display:flex;
       align-items:center;
@@ -126,13 +114,11 @@
       transition: transform .10s ease, background .2s ease, border-color .2s ease;
       min-width: 225px;
     }
-
     .store:hover{
       transform: translateY(-1px);
       background: rgba(255,255,255,.92);
       border-color: rgba(79,115,255,.26);
     }
-
     .store img{
       height:44px;
       width:auto;
@@ -142,30 +128,25 @@
       padding:6px;
       object-fit:contain;
     }
-
     .store .txt{
       display:flex;
       flex-direction:column;
       gap:2px;
     }
-
     .store .txt small{
       color:var(--muted);
       font-size:12px;
     }
-
     .store .txt strong{
       font-size:14px;
       color:var(--text);
     }
-
     .trust-strip{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap:10px;
       margin:10px 0 14px;
     }
-
     .trust-item{
       border:1px solid rgba(28,55,96,.13);
       background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(242,248,255,.78));
@@ -176,14 +157,12 @@
       line-height:1.45;
       box-shadow:0 10px 24px rgba(28,55,96,.08);
     }
-
     .trust-item strong{
       display:block;
       margin-bottom:3px;
       color:var(--text);
       font-size:13.5px;
     }
-
     .hero{
       display:grid;
       grid-template-columns: 1.08fr .92fr;
@@ -191,723 +170,7 @@
       align-items:stretch;
       margin-top:10px;
     }
-
     .hero-left{
       padding:22px;
       border-radius: var(--r);
       border:1px solid var(--line);
-      background: rgba(255,255,255,.58);
-    }
-
-    h1{
-      margin:0 0 12px;
-      font-size:38px;
-      line-height:1.08;
-    }
-
-    .tagline{
-      color:var(--muted);
-      margin:0 0 14px;
-      font-size:15.5px;
-    }
-
-    .p{
-      margin:0 0 14px;
-      color:rgba(20,35,59,.78);
-      font-size:14.8px;
-      line-height:1.7;
-    }
-
-    .pills{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:12px;
-    }
-
-    .pill{
-      font-size:12.5px;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid rgba(28,55,96,.13);
-      background: rgba(255,255,255,.74);
-      color:rgba(20,35,59,.80);
-    }
-
-    .hero-right{
-      border-radius: var(--r);
-      border:1px solid var(--line);
-      background: linear-gradient(135deg, rgba(79,115,255,.11), rgba(24,168,200,.10));
-      padding:14px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-
-    .preview{
-      position:relative;
-      border-radius:16px;
-      border:1px solid rgba(28,55,96,.13);
-      overflow:hidden;
-      background: rgba(255,255,255,.74);
-      min-height: 300px;
-      display:grid;
-      place-items:center;
-    }
-
-    .preview img{
-      width:100%;
-      height:auto;
-      display:block;
-      border-radius:16px;
-      cursor:pointer;
-    }
-
-    .store-row{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .store-row .store{
-      flex:1 1 220px;
-      justify-content:center;
-    }
-
-    .seo-sections{
-      margin-top:24px;
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap:14px;
-    }
-
-    .seo-box{
-      padding:18px;
-      border-radius:16px;
-      border:1px solid rgba(28,55,96,.13);
-      background: rgba(255,255,255,.62);
-    }
-
-    .seo-box h2{
-      margin:0 0 10px;
-      font-size:20px;
-      line-height:1.3;
-    }
-
-    .seo-box p{
-      margin:0;
-      color:rgba(20,35,59,.76);
-      font-size:14.5px;
-      line-height:1.7;
-    }
-
-    .section-title{
-      margin:24px 0 12px;
-      font-size:18px;
-    }
-
-    .shots{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
-    }
-
-    .shot{
-      cursor:pointer;
-      padding:10px;
-      border-radius:16px;
-      border:1px solid rgba(28,55,96,.13);
-      background: rgba(255,255,255,.62);
-      transition: transform .12s ease, background .2s ease, border-color .2s ease;
-    }
-
-    .shot:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.86);
-      border-color: rgba(79,115,255,.24);
-    }
-
-    .shot img{
-      width:100%;
-      height:auto;
-      display:block;
-      border-radius:14px;
-      border:1px solid rgba(28,55,96,.10);
-      background: rgba(255,255,255,.64);
-    }
-
-    .shot .cap{
-      margin-top:8px;
-      color:var(--muted);
-      font-size:12.5px;
-    }
-
-    .bottom{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
-      margin-top:18px;
-    }
-
-    .box{
-      padding:16px;
-      border-radius:16px;
-      border:1px solid rgba(28,55,96,.13);
-      background: rgba(255,255,255,.62);
-    }
-
-    .contact{
-      font-size:14px;
-      color:rgba(20,35,59,.78);
-      line-height:1.8;
-    }
-
-    .contact strong{
-      color:var(--text);
-    }
-
-    .legal-links{
-      margin-top:10px;
-      font-size:13px;
-    }
-
-    .legal-links a{
-      color:#285ed8;
-      text-decoration:none;
-    }
-
-    .legal-links a:hover{
-      text-decoration:underline;
-    }
-
-    .footer{
-      margin-top: 18px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(28,55,96,.10);
-      font-size: 12.8px;
-      color: rgba(20,35,59,.58);
-      line-height:1.8;
-    }
-
-    .footer strong{
-      color:var(--text);
-    }
-
-    .modal{
-      position:fixed;
-      inset:0;
-      background: rgba(0,0,0,.72);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
-      z-index:9999;
-    }
-
-    .modal.open{ display:flex; }
-
-    .modal-inner{
-      max-width: 960px;
-      width:100%;
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.96);
-      box-shadow: 0 25px 80px rgba(0,0,0,.6);
-      overflow:hidden;
-    }
-
-    .modal-bar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding:10px 12px;
-      border-bottom: 1px solid rgba(28,55,96,.10);
-    }
-
-    .modal-bar b{
-      font-size:13px;
-      color: rgba(20,35,59,.85);
-    }
-
-    .close{
-      border:1px solid rgba(28,55,96,.16);
-      background: rgba(255,255,255,.74);
-      color: var(--text);
-      border-radius: 12px;
-      padding:8px 10px;
-      cursor:pointer;
-    }
-
-    .modal-img{
-      display:block;
-      width:100%;
-      height:auto;
-      background: rgba(255,255,255,.80);
-    }
-
-    .mobile-intro{
-  display:none;
-}
-
-@media (max-width: 920px){
-  .hero,
-  .seo-sections,
-  .bottom,
-  .trust-strip{
-    grid-template-columns: 1fr;
-  }
-
-  body{
-    padding:8px 10px 28px;
-  }
-
-  .card{
-    padding:10px 16px 16px;
-    border-radius:16px;
-  }
-
-  .top{
-    justify-content:center;
-    text-align:center;
-    margin-bottom:8px;
-  }
-
-  .logo-area{
-    justify-content:center;
-    min-width:0;
-    width:100%;
-  }
-
-  .logo{
-    height:54px;
-  }
-
-  .hero{
-    gap:12px;
-    margin-top:0;
-  }
-
-  .hero-right{
-    order:-1;
-    padding:10px;
-  }
-
-  .hero-left{
-    padding:18px;
-  }
-
-  .preview{
-    height:220px;
-  }
-
-  .preview img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center center;
-  }
-
-  .mobile-intro{
-    display:block;
-    max-width:720px;
-    margin:0 auto 10px;
-    color:rgba(20,35,59,.72);
-    font-size:13.5px;
-    line-height:1.45;
-    text-align:center;
-  }
-
-  .shots{
-    grid-template-columns: 1fr;
-  }
-
-  h1{
-    font-size:28px;
-  }
-
-  .stores{
-    width:100%;
-  }
-
-  .store{
-    flex:1 1 100%;
-  }
-}
-
-    .download-fixed {
-  position: sticky;
-  top: 10px;
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
-.download-fixed img {
-  width: 170px;
-  cursor: pointer;
-  filter: drop-shadow(0 10px 22px rgba(0,0,0,.45));
-  transition: transform .15s ease;
-}
-
-.download-fixed img:hover {
-  transform: scale(1.05);
-}
-
-@media (max-width: 768px) {
-  .download-fixed {
-    top: 0;
-    height:72px;
-    align-items:center;
-    overflow:hidden;
-    margin-bottom:0;
-  }
-
-  .download-fixed a{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    height:72px;
-    overflow:hidden;
-  }
-
-  .download-fixed img {
-    width: 230px;
-    max-width: 92%;
-    display:block;
-  }
-
-  .store-row{
-    gap:8px;
-  }
-
-  .store{
-    min-width:0;
-    padding:11px 12px;
-    border-radius:14px;
-  }
-
-  .seo-box,
-  .box{
-    padding:15px;
-  }
-}
-
-@media (max-width: 480px) {
-  h1{
-    font-size:23px;
-    line-height:1.15;
-    text-align:center;
-  }
-
-    .tagline{
-    font-size:15px;
-    line-height:1.45;
-    text-align:center;
-    color:rgba(20,35,59,.84);
-  }
-
-   .preview{
-    height:220px;
-  }
-
-  .preview img{
-    height:100%;
-    object-fit:cover;
-    object-position:center center;
-  }
-
-  .p{
-    display:none;
-  }
-
-  .pill{
-    font-size:12px;
-  }
-
-  .pills{
-    justify-content:center;
-  }
-  .brand b {
-  display: block;
-  font-size: 22px;
-  font-weight: 700;
-}
-
-.brand span {
-  display: block;
-  font-size: 14px;
-  opacity: 0.7;
-}
-}
-  </style>
-  <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)
-}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-
-fbq('init', '4403577006598103');
-fbq('track', 'PageView');
-
-window.ReggBookTrack = function(eventName, params, standardEventName){
-  if (!window.fbq) return;
-  var eventParams = params || {};
-  if (standardEventName) {
-    fbq('track', standardEventName, eventParams);
-  }
-  fbq('trackCustom', eventName, eventParams);
-};
-</script>
-<!-- End Meta Pixel Code -->
-</head>
-
-<body>
-  <div class="card">
-    <div class="download-fixed">
-  <a href="https://reggbook.com/Download"
-     target="_blank"
-     rel="noopener"
-     onclick="ReggBookTrack('DownloadClick', {location: 'top_fixed_download'}, 'Lead');">
-    <img src="download.png" alt="ReggBook indir">
-  </a>
-</div>
-    <div class="top">
-      <div class="logo-area">
-        <img src="logoo.png" alt="ReggBook Logo" class="logo">
-        <div class="brand">
-          <b>ReggBook</b>
-          <span>Randevu • Müşteri • İşletme Yönetimi</span>
-        </div>
-      </div>
-  </div>
-    <div class="trust-strip">
-            <div class="trust-item">
-        <strong>Artvin'de kullanılmaya başlandı.</strong>
-      
-            </div>
-      <div class="trust-item">
-        <strong>20+ profesyonel tester ile test edildi</strong>
-    
-      </div>
-      <div class="trust-item">
-        <strong>Randevularını yönet, hatırlatma al.</strong>
-      
-      </div>
-      <div class="trust-item">
-        <strong>Müşterilerin müsait vakitlerini görsün.</strong>
-      
-      </div>
-      <div class="trust-item">
-        <strong>7/24 uygulama içi sorun bildirme</strong>
-        Kullanıcı geri bildirimi doğrudan geliştiriciye ulaşır.
-      </div>
-    </div>
-    <div class="hero">
-      <div class="hero-left">
-      <h1>Müşteri kaybetmeden randevularını yönet.</h1>
-        <p class="tagline">
-  ReggBook ile müşterilerin boş saatlerini görsün, sen de randevularını tek yerden yönet.
-</p>
-
-        <p class="p">
-          ReggBook ile işletmeler, günlük randevu akışını dijital olarak yönetebilir; müşteriler ise uygun işletmeleri bulup müsait saatleri görüntüleyerek kolayca randevu oluşturabilir.
-        </p>
-
-        <p class="p">
-          Sistem yalnızca klasik randevu takibi sunmaz; aynı zamanda yapay zeka destekli saç analizi ve stil önerisi gibi yenilikçi özelliklerle kullanıcı deneyimini güçlendirir. Böylece işletmeler daha profesyonel görünür, müşteriler ise daha bilinçli karar verir.
-        </p>
-
-        <p class="p">
-          Defter, telefon ve dağınık mesaj trafiği yerine; tek merkezden çalışan sade, hızlı ve modern bir yapı sunar. ReggBook’un amacı küçük ve orta ölçekli işletmelerin dijitalleşmesini kolaylaştırmak ve müşteri yönetimini daha verimli hale getirmektir.
-        </p>
-
-        <div class="pills">
-          <span class="pill">✅ Android ve iOS yayında</span>
-          <span class="pill">✅ AI saç analizi</span>
-          <span class="pill">✅ Müşteri ve randevu takibi</span>
-          <span class="pill">✅ Profesyonel işletme yönetimi</span>
-        </div>
-      </div>
-
-      <div class="hero-right">
-        <div class="preview" title="Tıklayıp büyütebilirsin">
-          <img src="as-optimized.png" alt="ReggBook ekran görüntüsü" id="heroImg">
-        </div>
-
-        <div class="store-row">
-          <a
-            class="store"
-            href="https://play.google.com/store/apps/details?id=com.tayfunetwork.reggbook"
-            target="_blank"
-            rel="noopener"
-            onclick="ReggBookTrack('StoreButtonClick', {store: 'google_play', location: 'hero_store_buttons'});"
-          >
-            <div class="txt" style="text-align:center;">
-              <small>Android kullanıcıları için</small>
-              <strong>Google Play’den indir</strong>
-            </div>
-          </a>
-
-          <a
-            class="store"
-            href="https://apps.apple.com/tr/app/reggbook/id6761694998?l=tr"
-            target="_blank"
-            rel="noopener"
-            onclick="ReggBookTrack('StoreButtonClick', {store: 'app_store', location: 'hero_store_buttons'});"
-          >
-            <div class="txt" style="text-align:center;">
-              <small>iPhone kullanıcıları için</small>
-              <strong>App Store’dan indir</strong>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="seo-sections">
-      <div class="seo-box">
-        <h2>Müşteri katılım oranı takibi ile randevu iptallerine son.</h2>
-        <p>
-          ReggBook, yalnızca randevu oluşturmayı değil; müşteri devamlılığını, katılım alışkanlıklarını ve işletme düzenini daha görünür hale getirmeyi hedefler. Böylece işletmeler hem planlarını daha doğru yapabilir hem de zaman kaybını azaltabilir. Bunların yanı sıra, ilgili işletmleri yalnızca onaylanmış randevuları bulunan ziyaretçiler puanlayabilir.
-        </p>
-      </div>
-
-      <div class="seo-box">
-        <h2>Profesyonel Randevu Defteri, Berber Yönetim Yazılımı, Kuaför Randevu Sistemi ve Modern İşletme Paneli Bir Arada.</h2>
-        <p>
-          Berberler, kuaförler, güzellik salonları, bakım merkezleri ve randevu sistemi ile çalışan diğer işletmeler için geliştirilen ReggBook; sade arayüzü, müşteri yönetimi ve profesyonel görünümü tek bir mobil deneyimde birleştirir.
-        </p>
-      </div>
-
-      <div class="seo-box">
-        <h2>Saç tasarımı yapay zeka desteği ile daha güçlü müşteri deneyimi.</h2>
-        <p>
-          Yapay zeka destekli analiz yapısı sayesinde kullanıcılar kendilerine uygun saç stili hakkında daha bilinçli fikir edinebilir. Bu da işletme tarafında güven oluşturur, müşteri tarafında ise uygulamayı daha değerli hale getirir.
-        </p>
-      </div>
-
-      <div class="seo-box">
-        <h2>ReggBook profesyonel randevu yönetimi ile dijitalleşmeyi kolaylaştırır.</h2>
-        <p>
-          Telefon trafiği, defter karmaşası ve unutulan saatler yerine; işletmeler için düzenli bir operasyon akışı, müşteriler için ise hızlı ve pratik bir randevu deneyimi sunar. ReggBook, yerli bir girişim olarak erişilebilir dijital dönüşüm hedefi taşır.
-        </p>
-      </div>
-    </div>
-
-    <div class="section-title">Ekran görüntüleri</div>
-    <div class="shots">
-      <div class="shot" data-src="reggbook_7in_01.jpeg" data-title="AI Stil Önerisi">
-        <img src="reggbook_7in_01.jpeg" alt="AI Stil Önerisi ekranı">
-        <div class="cap">AI Stil Önerisi</div>
-      </div>
-
-      <div class="shot" data-src="reggbook_7in_04.jpg" data-title="Müşteri Detay">
-        <img src="reggbook_7in_04.jpg" alt="Müşteri Detay ekranı">
-        <div class="cap">Müşteri Detay</div>
-      </div>
-
-      <div class="shot" data-src="reggbook_7in_06.jpg" data-title="Çalışan Takibi">
-        <img src="reggbook_7in_06.jpg" alt="Çalışan Takibi ekranı">
-        <div class="cap">Çalışan Takibi</div>
-      </div>
-    </div>
-
-    <div class="bottom">
-      <div class="box">
-        <div class="section-title" style="margin:0 0 10px">İletişim</div>
-        <div class="contact">
-          İş birliği, erken erişim veya sorularınız için:<br />
-          <strong>info@reggbook.com</strong><br />
-          Android ve iOS sürümleri üzerinden ReggBook’u hemen inceleyebilirsiniz.
-        </div>
-      </div>
-
-      <div class="box">
-        <div class="section-title" style="margin:0 0 10px">Yasal</div>
-        <div class="legal-links">
-          <a href="gizliliksozlesmesi/" onclick="ReggBookTrack('LegalLinkClick', {link_name: 'privacy_policy'});">Gizlilik Sözleşmesi</a> ·
-          <a href="kullanim-kosullari/" onclick="ReggBookTrack('LegalLinkClick', {link_name: 'terms_of_use'});">Kullanım Koşulları</a> ·
-          <a href="acik-riza/" onclick="ReggBookTrack('LegalLinkClick', {link_name: 'explicit_consent'});">Açık Rıza Metni</a>
-        </div>
-        <div style="margin-top:12px;color:var(--muted);font-size:12.5px">
-          ReggBook artık hem Google Play hem de App Store üzerinden indirilebilir.
-        </div>
-      </div>
-    </div>
-
-    <div class="footer">
-      <strong>Bir Tayfun Kaya Projesi</strong><br />
-     ReggBook; randevu uygulaması, dijital randevu defteri, iş makinesi kiralama takip, kuaför randevu sistemi, organizasyon yönetim yazılımı, saç tasarımı yapay zeka desteği, müşteri takip sistemi ve profesyonel işletme yönetim çözümü arayanlar için geliştirilmiştir.
-    </div>
-  </div>
-
-  <div class="modal" id="modal" aria-hidden="true">
-    <div class="modal-inner">
-      <div class="modal-bar">
-        <b id="modalTitle">Önizleme</b>
-        <button class="close" id="closeBtn">Kapat</button>
-      </div>
-      <img class="modal-img" id="modalImg" src="" alt="Önizleme">
-    </div>
-  </div>
-
-  <script>
-    const modal = document.getElementById("modal");
-    const modalImg = document.getElementById("modalImg");
-    const modalTitle = document.getElementById("modalTitle");
-    const closeBtn = document.getElementById("closeBtn");
-
-    function openModal(src, title){
-      modal.classList.add("open");
-      modal.setAttribute("aria-hidden", "false");
-      modalImg.src = src;
-      modalTitle.textContent = title || "Önizleme";
-    }
-
-    function closeModal(){
-      modal.classList.remove("open");
-      modal.setAttribute("aria-hidden", "true");
-      modalImg.src = "";
-    }
-
-    document.querySelectorAll(".shot").forEach(el => {
-      el.addEventListener("click", () => {
-        ReggBookTrack("ImageClick", {
-          image_name: el.dataset.title || "screenshot",
-          image_src: el.dataset.src || "",
-          location: "screenshots"
-        });
-        openModal(el.dataset.src, el.dataset.title);
-      });
-    });
-
-    const heroImg = document.getElementById("heroImg");
-    heroImg.addEventListener("click", () => {
-      ReggBookTrack("ImageClick", {
-        image_name: "hero_preview",
-        image_src: "as-optimized.png",
-        location: "hero_preview"
-      });
-      openModal(heroImg.src, "ReggBook");
-    });
-
-    closeBtn.addEventListener("click", closeModal);
-
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) closeModal();
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeModal();
-    });
-  </script>
-</body>
-</html>
