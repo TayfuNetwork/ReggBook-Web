@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta name="facebook-domain-verification" content="m9rh152es8l3a9wf638x05gocqn4mj" />
   <meta charset="UTF-8" />
   <title>ReggBook | Dijital Randevu Defteri ve İşletme Yönetim Sistemi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
-  <meta name="description" content="ReggBook; profesyonel dijital randevu defteri ve müşteri takip uygulamasıdır." />
-  <meta name="author" content="Tayfun Kaya" />
 
   <style>
     :root{
       --bg:#f3f8ff;
       --text:#14233b;
       --muted:rgba(20,35,59,.68);
-      --accent1:#4f73ff;
-      --shadow:0 -10px 30px rgba(28,55,96,.1);
       --r:18px;
     }
 
@@ -23,13 +17,14 @@
 
     body{
       margin:0;
-      padding:10px 10px 100px; /* Alt boşluk sticky bar için artırıldı */
+      /* padding-bottom kısmını içeriğin barın altında kalmaması için artırdık */
+      padding: 10px 10px 140px; 
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       color:var(--text);
       background: var(--bg);
+      line-height: 1.5;
     }
 
-    /* Kart Yapısı */
     .card{
       max-width: 800px;
       margin: 0 auto;
@@ -44,65 +39,13 @@
       width: 100%;
       border-radius: 12px;
       display: block;
-    }
-
-    /* --- YENİ AKILLI STICKY BAR (ALT KISIM) --- */
-    .sticky-bottom-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 9999;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      padding: 12px 16px env(safe-area-inset-bottom); /* iPhone çentiği uyumlu */
-      border-top: 1px solid rgba(28,55,96,0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      box-shadow: var(--shadow);
-    }
-
-    .trust-text {
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 8px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .download-link {
-      width: 100%;
-      max-width: 340px;
-      display: block;
-      transition: transform 0.2s active;
-    }
-
-    .download-link:active {
-      transform: scale(0.96);
-    }
-
-    .download-link img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* Hero ve İçerik Düzenlemeleri */
-    h1 { font-size: 26px; line-height: 1.2; margin: 20px 0 10px; text-align: center; }
-    .tagline { text-align: center; color: var(--muted); font-size: 15px; margin-bottom: 20px; }
-    
-    .preview-box {
-      background: #f8faff;
-      border-radius: 15px;
-      padding: 10px;
-      border: 1px solid rgba(28,55,96,0.05);
       margin-bottom: 20px;
     }
+
+    h1 { font-size: 24px; line-height: 1.2; margin: 0 0 10px; text-align: center; }
+    .tagline { text-align: center; color: var(--muted); font-size: 15px; margin-bottom: 20px; }
     
-    .preview-box img { width: 100%; border-radius: 10px; }
+    .preview-box img { width: 100%; border-radius: 10px; display: block; }
 
     .trust-strip { display: grid; gap: 8px; margin: 20px 0; }
     .trust-item { 
@@ -111,30 +54,63 @@
       border-radius: 10px; 
       font-size: 13px; 
       text-align: center;
-      border: 1px solid rgba(28,55,96,0.05);
+      border: 1px solid rgba(28,55,96,.05);
     }
 
-    /* Masaüstü için Sticky Bar'ı gizle veya üste al opsiyonu (isteğe bağlı) */
+    .seo-box { margin-top: 20px; padding: 15px; border-top: 1px solid #eee; }
+    .seo-box h2 { font-size: 18px; margin-bottom: 10px; }
+    .seo-box p { font-size: 14px; color: #555; margin-bottom: 15px; }
+
+    /* --- STICKY BOTTOM BAR DÜZELTMESİ --- */
+    .sticky-bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      background: rgba(255, 255, 255, 0.90);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      padding: 10px 15px calc(10px + env(safe-area-inset-bottom)); 
+      border-top: 1px solid rgba(28,55,96,0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 -5px 25px rgba(0,0,0,0.08);
+    }
+
+    .trust-text {
+      font-size: 10px;
+      color: #4f73ff;
+      margin-bottom: 6px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .download-link {
+      width: 100%;
+      max-width: 280px; /* Görselin çok devasa olmasını engelledik */
+      display: block;
+    }
+
+    .download-link img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
     @media (min-width: 1024px) {
-        .sticky-bottom-bar {
-            bottom: auto;
-            top: 0;
-            border-bottom: 1px solid rgba(28,55,96,0.1);
-            border-top: none;
-        }
+      body { padding-bottom: 40px; padding-top: 100px; }
+      .sticky-bottom-bar { bottom: auto; top: 0; border-bottom: 1px solid rgba(0,0,0,0.1); border-top: none; }
     }
   </style>
 
   <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '4403577006598103');
-    fbq('track', 'PageView');
-
-    // Akıllı Yönlendirme ve Takip Fonksiyonu
+    // Akıllı Yönlendirme
     function handleDownloadClick(e) {
       e.preventDefault();
       var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      var targetUrl = "https://reggbook.com/Download"; // Varsayılan
+      var targetUrl = "https://reggbook.com/Download";
       var device = "unknown";
 
       if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
@@ -145,16 +121,11 @@
         device = "android";
       }
 
-      // Pixel Event Gönderimi
       if (window.fbq) {
-        fbq('track', 'Lead', { content_name: 'SmartDownload', device_type: device });
-        fbq('trackCustom', 'DownloadClick', { location: 'sticky_footer', platform: device });
+        fbq('track', 'Lead', { device: device });
       }
 
-      // Kısa bir gecikme ile yönlendir (Pixel verisinin gitmesi için)
-      setTimeout(function() {
-        window.location.href = targetUrl;
-      }, 150);
+      setTimeout(function() { window.location.href = targetUrl; }, 100);
     }
   </script>
 </head>
@@ -167,20 +138,24 @@
     </div>
 
     <h1>Müşteri kaybetmeden randevularını yönet.</h1>
-    <p class="tagline">Hızla büyüyen işletme ağımıza katılın, dijitalleşmenin rahatlığını yaşayın.</p>
+    <p class="tagline">Hızla büyüyen işletme ağına sen de katıl.</p>
 
     <div class="preview-box">
-      <img src="as-optimized.png" alt="ReggBook Uygulama Görünümü">
+      <img src="as-optimized.png" alt="ReggBook Ekranı">
     </div>
 
     <div class="trust-strip">
-      <div class="trust-item">✅ <b>Ücretsiz ve Reklamsız</b> Kullanım</div>
-      <div class="trust-item">✅ <b>AI Destekli</b> Stil Analizi</div>
-      <div class="trust-item">✅ <b>Otomatik</b> Randevu Hatırlatıcı</div>
+      <div class="trust-item">✅ <b>Ücretsiz ve Reklamsız</b></div>
+      <div class="trust-item">✅ <b>AI Destekli</b> Analiz</div>
+      <div class="trust-item">✅ <b>Otomatik</b> Hatırlatma</div>
     </div>
 
-    <div style="font-size: 14px; line-height: 1.6; color: #555;">
-        <p>ReggBook, berber ve kuaförler için geliştirilmiş, işletmenizi cebinizden yönetmenizi sağlayan profesyonel bir sistemdir.</p>
+    <div class="seo-box">
+      <h2>Profesyonel İşletme Yönetimi</h2>
+      <p>Defter karmaşasına son verin. Tüm randevularınızı, müşteri geçmişinizi ve işletme performansınızı tek bir ekrandan takip edin.</p>
+      
+      <h2>Müşterileriniz İçin Kolaylık</h2>
+      <p>Müşterileriniz telefon trafiğine girmeden, sizin uygun olduğunuz saatleri görerek anında randevu alabilir.</p>
     </div>
   </div>
 
@@ -193,4 +168,5 @@
 
 </body>
 </html>
+
 
