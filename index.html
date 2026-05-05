@@ -292,7 +292,11 @@
 
     function handleStoreClick(platform, url) {
       if (window.fbq) {
-        fbq('track', 'Lead', { platform: platform, source: 'store_button' });
+       fbq('track', 'Lead', {
+  platform: platform,
+  source: 'store_button',
+  eventID: 'lead_' + Date.now()
+});
       }
 
       setTimeout(function() {
@@ -364,6 +368,10 @@
       });
     });
   </script>
+  <noscript>
+  <img height="1" width="1" style="display:none"
+       src="https://www.facebook.com/tr?id=4403577006598103&ev=PageView&noscript=1"/>
+</noscript>
 </head>
 
 <body>
