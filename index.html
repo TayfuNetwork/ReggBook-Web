@@ -25,7 +25,7 @@
 
     body{
       margin:0;
-      padding: 0 10px 118px; /* Alttaki buton için boşluk */
+      padding: 0 10px 118px;
       font-family: Arial, sans-serif;
       color:var(--text);
       background: radial-gradient(900px 650px at 15% 10%, rgba(79,115,255,.16), transparent 60%), var(--bg);
@@ -50,6 +50,7 @@
       background: #fff;
       border-radius: var(--r) var(--r) 12px 12px;
     }
+
     .banner-area img {
       width: 100%;
       height: 100%;
@@ -58,43 +59,42 @@
       display: block;
     }
 
-    /* Modern Başlık Düzeni */
-    h1 { font-size: 28px; line-height: 1.2; text-align: center; margin: 8px 0 10px; }
-    .tagline { text-align: center; color: var(--muted); font-size: 16px; margin: 0 0 20px; }
+    h1 {
+      font-size: 28px;
+      line-height: 1.2;
+      text-align: center;
+      margin: 8px 0 10px;
+    }
 
-    .trust-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0; }
-    .trust-item { border: 1px solid var(--line); background: #fff; padding: 12px; border-radius: 14px; text-align: center; font-size: 13px; font-weight: bold; }
+    .tagline {
+      text-align: center;
+      color: var(--muted);
+      font-size: 16px;
+      margin: 0 0 20px;
+    }
 
-    /* Görsel ve SEO Bölümleri */
-    .preview { margin: 18px -4px 0; overflow: hidden; }
-    .store-buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin: 8px auto 22px;
-  max-width: 620px;
-}
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 20px 0;
+    }
 
-.store-buttons a {
-  flex: 1;
-  max-width: 280px;
-  display: block;
-}
+    .trust-item {
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 12px;
+      border-radius: 14px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: bold;
+    }
 
-.store-buttons img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 10px;
-}
+    .preview {
+      margin: 18px -4px 0;
+      overflow: hidden;
+    }
 
-@media (max-width: 480px) {
-  .store-buttons {
-    gap: 8px;
-    padding: 0 2px;
-  }
-}
     .album {
       display: flex;
       gap: 12px;
@@ -102,11 +102,13 @@
       scroll-snap-type: x mandatory;
       padding: 0 48px 12px 0;
       -webkit-overflow-scrolling: touch;
-      touch-action: pan-y;
+      touch-action: pan-x pan-y;
       overscroll-behavior-x: contain;
       scrollbar-width: none;
     }
+
     .album::-webkit-scrollbar { display: none; }
+
     .album-slide {
       flex: 0 0 84%;
       height: clamp(260px, 72vw, 620px);
@@ -121,79 +123,182 @@
       align-items: center;
       justify-content: center;
     }
+
     .album-slide img {
       width: 100%;
       height: 100%;
       object-fit: contain;
       object-position: center;
       display: block;
+      user-select: none;
+      pointer-events: none;
     }
+
     .album-slide.fill img { object-fit: cover; }
-    
-    .seo-sections { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 30px; }
-    .seo-box { padding: 18px; border-radius: 16px; border: 1px solid var(--line); background: rgba(255,255,255,.6); }
+
+    .store-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin: 8px auto 22px;
+      max-width: 620px;
+    }
+
+    .store-buttons a {
+      flex: 1;
+      max-width: 280px;
+      display: block;
+    }
+
+    .store-buttons img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .seo-sections {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .seo-box {
+      padding: 18px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.6);
+    }
+
     .seo-box h2 { font-size: 19px; margin-bottom: 10px; }
-    .seo-box p { font-size: 14px; line-height: 1.6; color: #444; }
 
-    /* Alt Bilgiler */
-    .bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--line); }
-    .contact { font-size: 14px; line-height: 1.8; }
-    .legal-links a { color: #285ed8; text-decoration: none; margin-right: 15px; font-size: 13px; }
+    .seo-box p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #444;
+    }
 
-    /* STICKY BOTTOM BAR */
+    .bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .contact {
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .legal-links a {
+      color: #285ed8;
+      text-decoration: none;
+      margin-right: 15px;
+      font-size: 13px;
+    }
+
     .sticky-bottom-bar {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
       background: transparent;
       padding: 0 12px calc(6px + env(safe-area-inset-bottom));
       display: flex;
       justify-content: center;
       pointer-events: none;
     }
+
     .trust-text { display: none; }
-    .download-link { width: 100%; max-width: 320px; display: block; pointer-events: auto; }
-    .download-link img { width: 100%; height: auto; display: block; }
+
+    .download-link {
+      width: 100%;
+      max-width: 320px;
+      display: block;
+      pointer-events: auto;
+    }
+
+    .download-link img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
     @media (max-width: 768px) {
-      .trust-strip, .seo-sections, .bottom { grid-template-columns: 1fr; }
+      .trust-strip, .seo-sections, .bottom {
+        grid-template-columns: 1fr;
+      }
+
       h1 { font-size: 24px; }
+
       .album-slide { flex-basis: 86%; }
+    }
+
+    @media (max-width: 480px) {
+      .store-buttons {
+        gap: 8px;
+        padding: 0 2px;
+      }
     }
   </style>
 
   <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;
+      n=f.fbq=function(){
+        n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)
+      };
+      if(!f._fbq)f._fbq=n;
+      n.push=n;
+      n.loaded=!0;
+      n.version='2.0';
+      n.queue=[];
+      t=b.createElement(e);
+      t.async=!0;
+      t.src=v;
+      s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
     fbq('init', '4403577006598103');
     fbq('track', 'PageView');
 
     function handleDownloadClick(e) {
       e.preventDefault();
+
       var ua = navigator.userAgent.toLowerCase();
       var url = "https://reggbook.com/Download";
       var dev = "other";
-      if (ua.indexOf("iphone") > -1 || ua.indexOf("ipad") > -1) { url = "https://apps.apple.com/tr/app/reggbook/id6761694998?l=tr"; dev = "ios"; }
-      else if (ua.indexOf("android") > -1) { url = "https://play.google.com/store/apps/details?id=com.tayfunetwork.reggbook"; dev = "android"; }
-      if (window.fbq) fbq('track', 'Lead', { platform: dev });
-      setTimeout(function() { window.location.href = url; }, 150);
-    }
-    function handleStoreClick(platform, url) {
-  if (window.fbq) {
-    fbq('track', 'Lead', { platform: platform, source: 'store_button' });
-  }
-  setTimeout(function() {
-    window.location.href = url;
-  }, 150);
-}
-    <div class="store-buttons">
-  <a href="https://apps.apple.com/tr/app/reggbook/id6761694998?l=tr"
-     onclick="handleStoreClick('ios', 'https://apps.apple.com/tr/app/reggbook/id6761694998?l=tr'); return false;">
-    <img src="iosapp.webp" alt="ReggBook App Store indir">
-  </a>
 
-  <a href="https://play.google.com/store/apps/details?id=com.tayfunetwork.reggbook"
-     onclick="handleStoreClick('android', 'https://play.google.com/store/apps/details?id=com.tayfunetwork.reggbook'); return false;">
-    <img src="Pstore.jpg" alt="ReggBook Google Play indir">
-  </a>
-</div>
+      if (ua.indexOf("iphone") > -1 || ua.indexOf("ipad") > -1) {
+        url = "https://apps.apple.com/tr/app/reggbook/id6761694998?l=tr";
+        dev = "ios";
+      } else if (ua.indexOf("android") > -1) {
+        url = "https://play.google.com/store/apps/details?id=com.tayfunetwork.reggbook";
+        dev = "android";
+      }
+
+      if (window.fbq) fbq('track', 'Lead', { platform: dev, source: 'sticky_download' });
+
+      setTimeout(function() {
+        window.location.href = url;
+      }, 150);
+    }
+
+    function handleStoreClick(platform, url) {
+      if (window.fbq) {
+        fbq('track', 'Lead', { platform: platform, source: 'store_button' });
+      }
+
+      setTimeout(function() {
+        window.location.href = url;
+      }, 150);
+    }
 
     document.addEventListener('DOMContentLoaded', function() {
       var album = document.querySelector('.album');
@@ -212,6 +317,7 @@
         slides.forEach(function(slide, index) {
           var slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
           var distance = Math.abs(center - slideCenter);
+
           if (distance < closestDistance) {
             closest = index;
             closestDistance = distance;
@@ -223,7 +329,10 @@
 
       function goToSlide(index) {
         var next = Math.max(0, Math.min(slides.length - 1, index));
-        album.scrollTo({ left: slides[next].offsetLeft, behavior: 'smooth' });
+        album.scrollTo({
+          left: slides[next].offsetLeft,
+          behavior: 'smooth'
+        });
       }
 
       album.addEventListener('touchstart', function(e) {
@@ -238,14 +347,14 @@
 
         if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 10) {
           draggingX = true;
-          e.preventDefault();
         }
-      }, { passive: false });
+      }, { passive: true });
 
       album.addEventListener('touchend', function(e) {
         if (!draggingX) return;
 
         var diffX = e.changedTouches[0].clientX - startX;
+
         if (Math.abs(diffX) < 35) {
           goToSlide(currentIndex());
           return;
@@ -259,7 +368,9 @@
 
 <body>
   <div class="card">
-    <div class="banner-area"><img src="banner.png" alt="ReggBook"></div>
+    <div class="banner-area">
+      <img src="banner.png" alt="ReggBook">
+    </div>
 
     <h1>WhatsApp Karmaşasını Bitir.</h1>
     <p class="tagline">Boş saatlerini müşteriler görsün, hızlıca talep göndersinler.</p>
@@ -271,17 +382,29 @@
     </div>
 
     <div class="preview">
-      <div class="album" aria-label="ReggBook gorsel albumu">
-        <div class="album-slide fill"><img src="as-optimized.jpg" alt="as-optimized.jpg"></div>
-        <div class="album-slide"><img src="1.png" alt="1.png"></div>
-        <div class="album-slide"><img src="2.png" alt="2.png"></div>
-        <div class="album-slide"><img src="hm.jpeg" alt="hm.jpeg"></div>
-        <div class="album-slide"><img src="re.jpeg" alt="re.jpeg"></div>
-        <div class="album-slide"><img src="reggbook_7in_01.jpeg" alt="reggbook_7in_01.jpeg"></div>
-        <div class="album-slide"><img src="reggbook_7in_04.jpg" alt="reggbook_7in_04.jpg"></div>
-        <div class="album-slide"><img src="reggbook_7in_06.jpg" alt="reggbook_7in_06.jpg"></div>
-        <div class="album-slide"><img src="rt.jpeg" alt="rt.jpeg"></div>
+      <div class="album" aria-label="ReggBook görsel albümü">
+        <div class="album-slide fill"><img src="as-optimized.jpg" alt="ReggBook randevu takip ekranı"></div>
+        <div class="album-slide"><img src="1.png" alt="ReggBook ekran görüntüsü 1"></div>
+        <div class="album-slide"><img src="2.png" alt="ReggBook ekran görüntüsü 2"></div>
+        <div class="album-slide"><img src="hm.jpeg" alt="ReggBook ekran görüntüsü 3"></div>
+        <div class="album-slide"><img src="re.jpeg" alt="ReggBook ekran görüntüsü 4"></div>
+        <div class="album-slide"><img src="reggbook_7in_01.jpeg" alt="ReggBook tanıtım görseli 1"></div>
+        <div class="album-slide"><img src="reggbook_7in_04.jpg" alt="ReggBook tanıtım görseli 2"></div>
+        <div class="album-slide"><img src="reggbook_7in_06.jpg" alt="ReggBook tanıtım görseli 3"></div>
+        <div class="album-slide"><img src="rt.jpeg" alt="ReggBook ekran görüntüsü 5"></div>
       </div>
+    </div>
+
+    <div class="store-buttons">
+      <a href="https://apps.apple.com/tr/app/reggbook/id6761694998?l=tr"
+         onclick="handleStoreClick('ios', 'https://apps.apple.com/tr/app/reggbook/id6761694998?l=tr'); return false;">
+        <img src="iosapp.webp" alt="ReggBook App Store indir">
+      </a>
+
+      <a href="https://play.google.com/store/apps/details?id=com.tayfunetwork.reggbook"
+         onclick="handleStoreClick('android', 'https://play.google.com/store/apps/details?id=com.tayfunetwork.reggbook'); return false;">
+        <img src="Pstore.jpg" alt="ReggBook Google Play indir">
+      </a>
     </div>
 
     <div class="seo-sections">
@@ -289,20 +412,23 @@
         <h2>Randevu İptallerine Son</h2>
         <p>ReggBook ile müşteri katılım oranlarını takip edin. Onaylanmış randevular ve otomatik hatırlatmalarla işletme düzeninizi koruyun.</p>
       </div>
+
       <div class="seo-box">
         <h2>Yapay Zeka Desteği</h2>
         <p>Türkiye'nin ilk AI tabanlı saç analizi sunan randevu sistemi ile müşterilerinize teknolojik ve modern bir hizmet sunun.</p>
       </div>
+
       <div class="seo-box">
         <h2>Profesyonel Randevu Defteri, Berber Yönetim Yazılımı, Kuaför Randevu Sistemi ve Modern İşletme Paneli Bir Arada.</h2>
         <p>
           Berberler, kuaförler, güzellik salonları, bakım merkezleri ve randevu sistemi ile çalışan diğer işletmeler için geliştirilen ReggBook; sade arayüzü, müşteri yönetimi ve profesyonel görünümü tek bir mobil deneyimde birleştirir.
         </p>
       </div>
-       <div class="seo-box">
+
+      <div class="seo-box">
         <h2>Müşteri katılım oranı takibi ile randevu iptallerine son.</h2>
         <p>
-          ReggBook, yalnızca randevu oluşturmayı değil; müşteri devamlılığını, katılım alışkanlıklarını ve işletme düzenini daha görünür hale getirmeyi hedefler. Böylece işletmeler hem planlarını daha doğru yapabilir hem de zaman kaybını azaltabilir. Bunların yanı sıra, ilgili işletmleri yalnızca onaylanmış randevuları bulunan ziyaretçiler puanlayabilir.
+          ReggBook, yalnızca randevu oluşturmayı değil; müşteri devamlılığını, katılım alışkanlıklarını ve işletme düzenini daha görünür hale getirmeyi hedefler. Böylece işletmeler hem planlarını daha doğru yapabilir hem de zaman kaybını azaltabilir. Bunların yanı sıra, ilgili işletmeleri yalnızca onaylanmış randevuları bulunan ziyaretçiler puanlayabilir.
         </p>
       </div>
     </div>
@@ -312,6 +438,7 @@
         <strong>İletişim:</strong> info@reggbook.com<br>
         <strong>Tayfun Kaya</strong> tarafından geliştirilmiştir.
       </div>
+
       <div class="legal-links">
         <a href="/kvkk">KVKK Aydınlatma Metni</a>
         <a href="/cerez">Çerez Politikası</a>
@@ -328,6 +455,3 @@
   </div>
 </body>
 </html>
-
-
-
