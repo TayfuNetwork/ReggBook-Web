@@ -268,27 +268,33 @@
     fbq('init', '4403577006598103');
     fbq('track', 'PageView');
 
-    function handleDownloadClick(e) {
-      e.preventDefault();
+    function handleDownloadClick(e, source = 'general') {
+  e.preventDefault();
 
-      var ua = navigator.userAgent.toLowerCase();
-      var url = "https://reggbook.com/Download";
-      var dev = "other";
+  var ua = navigator.userAgent.toLowerCase();
+  var url = "https://reggbook.com/Download";
+  var dev = "other";
 
-      if (ua.indexOf("iphone") > -1 || ua.indexOf("ipad") > -1) {
-        url = "https://apps.apple.com/tr/app/reggbook/id6761694998?l=tr";
-        dev = "ios";
-      } else if (ua.indexOf("android") > -1) {
-        url = "https://play.google.com/store/apps/details?id=com.tayfunetwork.reggbook";
-        dev = "android";
-      }
+  if (ua.indexOf("iphone") > -1 || ua.indexOf("ipad") > -1) {
+    url = "https://apps.apple.com/tr/app/reggbook/id6761694998?l=tr";
+    dev = "ios";
+  } else if (ua.indexOf("android") > -1) {
+    url = "https://play.google.com/store/apps/details?id=com.tayfunetwork.reggbook";
+    dev = "android";
+  }
 
-      if (window.fbq) fbq('track', 'Lead', { platform: dev, source: 'sticky_download' });
+  // Meta'ya Lead (Potansiyel Müşteri) olayını gönderiyoruz
+  if (window.fbq) {
+    fbq('track', 'Lead', { 
+      platform: dev, 
+      source: source 
+    });
+  }
 
-      setTimeout(function() {
-        window.location.href = url;
-      }, 150);
-    }
+  setTimeout(function() {
+    window.location.href = url;
+  }, 150);
+}
 
     function handleStoreClick(platform, url) {
       if (window.fbq) {
@@ -404,16 +410,14 @@
     </div>
 
     <div class="store-buttons">
-      <a href="https://apps.apple.com/tr/app/reggbook/id6761694998?l=tr"
-         onclick="handleStoreClick('ios', 'https://apps.apple.com/tr/app/reggbook/id6761694998?l=tr'); return false;">
-        <img src="iosapp.webp" alt="ReggBook App Store indir">
-      </a>
+  <a href="#" onclick="handleDownloadClick(event)">
+    <img src="iosapp.webp" alt="ReggBook App Store indir">
+  </a>
 
-      <a href="https://play.google.com/store/apps/details?id=com.tayfunetwork.reggbook"
-         onclick="handleStoreClick('android', 'https://play.google.com/store/apps/details?id=com.tayfunetwork.reggbook'); return false;">
-        <img src="Pstore.jpg" alt="ReggBook Google Play indir">
-      </a>
-    </div>
+  <a href="#" onclick="handleDownloadClick(event)">
+    <img src="Pstore.jpg" alt="ReggBook Google Play indir">
+  </a>
+</div>
 
     <div class="seo-sections">
       <div class="seo-box">
