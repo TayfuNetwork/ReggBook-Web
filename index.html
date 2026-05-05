@@ -74,6 +74,8 @@
       scroll-snap-type: x mandatory;
       padding: 0 48px 12px 0;
       -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
+      overscroll-behavior-x: contain;
       scrollbar-width: none;
     }
     .album::-webkit-scrollbar { display: none; }
@@ -81,6 +83,7 @@
       flex: 0 0 84%;
       height: clamp(260px, 72vw, 620px);
       scroll-snap-align: start;
+      scroll-snap-stop: always;
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 16px;
@@ -94,8 +97,10 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
+      object-position: center;
       display: block;
     }
+    .album-slide.fill img { object-fit: cover; }
     
     .seo-sections { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 30px; }
     .seo-box { padding: 18px; border-radius: 16px; border: 1px solid var(--line); background: rgba(255,255,255,.6); }
@@ -142,6 +147,66 @@
       if (window.fbq) fbq('track', 'Lead', { platform: dev });
       setTimeout(function() { window.location.href = url; }, 150);
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var album = document.querySelector('.album');
+      if (!album) return;
+
+      var slides = Array.prototype.slice.call(album.querySelectorAll('.album-slide'));
+      var startX = 0;
+      var startY = 0;
+      var draggingX = false;
+
+      function currentIndex() {
+        var center = album.scrollLeft + album.clientWidth / 2;
+        var closest = 0;
+        var closestDistance = Infinity;
+
+        slides.forEach(function(slide, index) {
+          var slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+          var distance = Math.abs(center - slideCenter);
+          if (distance < closestDistance) {
+            closest = index;
+            closestDistance = distance;
+          }
+        });
+
+        return closest;
+      }
+
+      function goToSlide(index) {
+        var next = Math.max(0, Math.min(slides.length - 1, index));
+        album.scrollTo({ left: slides[next].offsetLeft, behavior: 'smooth' });
+      }
+
+      album.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        draggingX = false;
+      }, { passive: true });
+
+      album.addEventListener('touchmove', function(e) {
+        var diffX = e.touches[0].clientX - startX;
+        var diffY = e.touches[0].clientY - startY;
+
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 10) {
+          draggingX = true;
+          e.preventDefault();
+        }
+      }, { passive: false });
+
+      album.addEventListener('touchend', function(e) {
+        if (!draggingX) return;
+
+        var diffX = e.changedTouches[0].clientX - startX;
+        if (Math.abs(diffX) < 35) {
+          goToSlide(currentIndex());
+          return;
+        }
+
+        goToSlide(currentIndex() + (diffX < 0 ? 1 : -1));
+      });
+    });
   </script>
 </head>
 
@@ -160,7 +225,7 @@
 
     <div class="preview">
       <div class="album" aria-label="ReggBook gorsel albumu">
-        <div class="album-slide"><img src="as-optimized.png" alt="as-optimized.png"></div>
+        <div class="album-slide fill"><img src="as-optimized.png" alt="as-optimized.png"></div>
         <div class="album-slide"><img src="1.png" alt="1.png"></div>
         <div class="album-slide"><img src="2.png" alt="2.png"></div>
         <div class="album-slide"><img src="hm.jpeg" alt="hm.jpeg"></div>
