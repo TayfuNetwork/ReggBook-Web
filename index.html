@@ -67,6 +67,34 @@
 
     /* Görsel ve SEO Bölümleri */
     .preview { margin: 18px -4px 0; overflow: hidden; }
+    .store-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 8px auto 22px;
+  max-width: 620px;
+}
+
+.store-buttons a {
+  flex: 1;
+  max-width: 280px;
+  display: block;
+}
+
+.store-buttons img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+@media (max-width: 480px) {
+  .store-buttons {
+    gap: 8px;
+    padding: 0 2px;
+  }
+}
     .album {
       display: flex;
       gap: 12px;
@@ -147,6 +175,25 @@
       if (window.fbq) fbq('track', 'Lead', { platform: dev });
       setTimeout(function() { window.location.href = url; }, 150);
     }
+    function handleStoreClick(platform, url) {
+  if (window.fbq) {
+    fbq('track', 'Lead', { platform: platform, source: 'store_button' });
+  }
+  setTimeout(function() {
+    window.location.href = url;
+  }, 150);
+}
+    <div class="store-buttons">
+  <a href="https://apps.apple.com/tr/app/reggbook/id6761694998?l=tr"
+     onclick="handleStoreClick('ios', 'https://apps.apple.com/tr/app/reggbook/id6761694998?l=tr'); return false;">
+    <img src="iosapp.webp" alt="ReggBook App Store indir">
+  </a>
+
+  <a href="https://play.google.com/store/apps/details?id=com.tayfunetwork.reggbook"
+     onclick="handleStoreClick('android', 'https://play.google.com/store/apps/details?id=com.tayfunetwork.reggbook'); return false;">
+    <img src="Pstore.jpg" alt="ReggBook Google Play indir">
+  </a>
+</div>
 
     document.addEventListener('DOMContentLoaded', function() {
       var album = document.querySelector('.album');
@@ -214,8 +261,8 @@
   <div class="card">
     <div class="banner-area"><img src="banner.png" alt="ReggBook"></div>
 
-    <h1>Müşteri kaybetmeden randevularını yönet.</h1>
-    <p class="tagline">Hızla büyüyen işletme ağına sen de katıl, profesyonel yönetimin keyfini çıkar.</p>
+    <h1>WhatsApp Karmaşasını Bitir.</h1>
+    <p class="tagline">Boş saatlerini müşteriler görsün, hızlıca talep göndersinler.</p>
 
     <div class="trust-strip">
       <div class="trust-item">✅ Ücretsiz ve Reklamsız</div>
