@@ -4,85 +4,197 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ReggBook İndir</title>
-<script>
-!function(f,b,e,v,n,t,s){
-if(f.fbq)return;
-n=f.fbq=function(){
-n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)
-};
-if(!f._fbq)f._fbq=n;
-n.push=n;
-n.loaded=!0;
-n.version='2.0';
-n.queue=[];
-t=b.createElement(e);
-t.async=!0;
-t.src=v;
-s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)
-}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
-fbq('init', '4403577006598103');
-fbq('track', 'PageView');
-fbq('trackCustom', 'DownloadPage');
-</script>
+  <!-- Facebook Pixel -->
   <script>
-    const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.tayfunetwork.reggbook";
-    const APP_STORE_URL  = "https://apps.apple.com/tr/app/reggbook/id6761694998?l=tr";
-    const WINDOWS_ZIP_URL = "https://github.com/TayfuNetwork/ReggBook-Web/releases/latest/download/reggbook-windows.zip";
-    const FALLBACK_URL   = "https://reggbook.com";
-    
+  !function(f,b,e,v,n,t,s){
+  if(f.fbq)return;
+  n=f.fbq=function(){
+  n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)
+  };
+  if(!f._fbq)f._fbq=n;
+  n.push=n;
+  n.loaded=!0;
+  n.version='2.0';
+  n.queue=[];
+  t=b.createElement(e);
+  t.async=!0;
+  t.src=v;
+  s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)
+  }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
+  fbq('init', '4403577006598103');
+  fbq('track', 'PageView');
+  fbq('trackCustom', 'DownloadPage');
+  </script>
 
-    function redirectUser() {
+  <script>
+    const PLAY_STORE_URL =
+      "https://play.google.com/store/apps/details?id=com.tayfunetwork.reggbook";
+
+    const APP_STORE_URL =
+      "https://apps.apple.com/tr/app/reggbook/id6761694998?l=tr";
+
+    const WINDOWS_ZIP_URL =
+      "https://github.com/TayfuNetwork/ReggBook-Web/releases/latest/download/reggbook-windows.zip";
+
+    const FALLBACK_URL = "https://reggbook.com";
+
+    let redirectUrl = FALLBACK_URL;
+    let platformName = "uygun sayfaya";
+
+    function detectPlatform() {
       const ua = navigator.userAgent || navigator.vendor || window.opera;
 
       // Android
       if (/android/i.test(ua)) {
-        window.location.replace(PLAY_STORE_URL);
+        redirectUrl = PLAY_STORE_URL;
+        platformName = "Google Play Mağazası";
         return;
       }
 
       // iOS
       if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-        window.location.replace(APP_STORE_URL);
+        redirectUrl = APP_STORE_URL;
+        platformName = "Apple App Store";
         return;
       }
-// Windows desktop
-if (/Windows NT/i.test(ua)) {
-  fbq('trackCustom', 'WindowsDesktopDownload');
-  window.location.replace(WINDOWS_ZIP_URL);
-  return;
-}
+
+      // Windows
+      if (/Windows NT/i.test(ua)) {
+        redirectUrl = WINDOWS_ZIP_URL;
+        platformName = "Windows sürümü";
+        return;
+      }
 
       // Diğer cihazlar
-      window.location.replace(FALLBACK_URL);
+      redirectUrl = FALLBACK_URL;
+      platformName = "ReggBook";
     }
 
-    window.onload = function () {
-  setTimeout(redirectUser, 300);
-};
+    function startCountdown() {
+      detectPlatform();
+
+      const redirectText = document.getElementById("redirectText");
+      const countdownEl = document.getElementById("countdown");
+
+      redirectText.innerText =
+        `${platformName} yönlendirmesi hazırlanıyor...`;
+
+      let countdown = 4;
+      countdownEl.innerText = countdown;
+
+      const timer = setInterval(() => {
+        countdown--;
+        countdownEl.innerText = countdown;
+
+        if (countdown <= 0) {
+          clearInterval(timer);
+
+          // Windows özel pixel eventi
+          if (/Windows NT/i.test(navigator.userAgent)) {
+            fbq('trackCustom', 'WindowsDesktopDownload');
+          }
+
+          window.location.replace(redirectUrl);
+        }
+      }, 1000);
+    }
+
+    window.onload = startCountdown;
   </script>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      background: #0f172a;
+      background: linear-gradient(135deg, #0f172a, #111827);
       color: white;
       font-family: Arial, sans-serif;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
       text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 40px 30px;
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .note {
+      font-size: 16px;
+      line-height: 1.6;
+      opacity: 0.9;
+      margin-bottom: 30px;
+    }
+
+    .redirect-text {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #cbd5e1;
+    }
+
+    .countdown {
+      font-size: 72px;
+      font-weight: bold;
+      color: #38bdf8;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .small {
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 26px;
+      }
+
+      .countdown {
+        font-size: 56px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div>
-    <h2>ReggBook açılıyor...</h2>
-    <p>Lütfen bekleyin</p>
+  <div class="container">
+    <h1>ReggBook</h1>
+
+    <div class="note">
+      Lütfen denemeden karar vermeyin 🙂<br />
+      Destek verdiğiniz için teşekkür ederiz.
+    </div>
+
+    <div class="redirect-text" id="redirectText">
+      Mağaza yönlendirmesi hazırlanıyor...
+    </div>
+
+    <div class="countdown" id="countdown">4</div>
+
+    <div class="small">
+      Otomatik yönlendirme yapılacaktır.
+    </div>
   </div>
 </body>
 </html>
