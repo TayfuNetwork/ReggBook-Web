@@ -283,11 +283,15 @@
     dev = "android";
   }
 
-  // Meta'ya Lead (Potansiyel Müşteri) olayını gönderiyoruz
   if (window.fbq) {
-    fbq('track', 'Lead', { 
-      platform: dev, 
-      source: source 
+    fbq('trackCustom', 'downloadButton', {
+      platform: dev,
+      source: source
+    });
+
+    fbq('track', 'Lead', {
+      platform: dev,
+      source: source
     });
   }
 
@@ -297,14 +301,6 @@
 }
 
     function handleStoreClick(platform, url) {
-      if (window.fbq) {
-       fbq('track', 'Lead', {
-  platform: platform,
-  source: 'store_button',
-  eventID: 'lead_' + Date.now()
-});
-      }
-
       setTimeout(function() {
         window.location.href = url;
       }, 150);
