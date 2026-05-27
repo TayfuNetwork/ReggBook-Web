@@ -286,12 +286,16 @@
   if (window.fbq) {
     fbq('trackCustom', 'downloadButton', {
       platform: dev,
-      source: source
+      source: source,
+       value: 0,
+    currency: 'TRY'
     });
 
     fbq('track', 'Lead', {
       platform: dev,
-      source: source
+      source: source,
+       value: 0,
+    currency: 'TRY'
     });
   }
 
