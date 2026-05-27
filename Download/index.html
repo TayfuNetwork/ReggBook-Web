@@ -25,9 +25,12 @@
   }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
   fbq('init', '4403577006598103');
-  fbq('track', 'PageView');
-  fbq('trackCustom', 'DownloadPage');
-  </script>
+
+fbq('trackCustom', 'DownloadPage', {
+  value: 0,
+  currency: 'TRY'
+});
+</script>
 
   <script>
     const PLAY_STORE_URL =
