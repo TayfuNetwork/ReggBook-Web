@@ -1,1 +1,381 @@
-Burası düzeltilecek 
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YasevYa Gizlilik Politikası</title>
+  <style>
+    :root {
+      --bg: #fff7fb;
+      --card: #ffffff;
+      --text: #2b2430;
+      --muted: #6f6277;
+      --primary: #b83280;
+      --primary-dark: #7a1f55;
+      --border: #f0d7e7;
+      --soft: #fdeaf4;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #fff7fb 0%, #f8efff 100%);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      padding: 56px 20px 36px;
+      text-align: center;
+      background: linear-gradient(135deg, #b83280 0%, #6c2bd9 100%);
+      color: white;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 34px;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      max-width: 780px;
+      margin: 14px auto 0;
+      font-size: 16px;
+      opacity: 0.95;
+    }
+
+    main {
+      width: min(980px, calc(100% - 32px));
+      margin: 32px auto;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 12px 32px rgba(122, 31, 85, 0.08);
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    h3 {
+      color: var(--primary);
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    ul {
+      padding-left: 22px;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    .notice {
+      background: var(--soft);
+      border-left: 5px solid var(--primary);
+      padding: 16px 18px;
+      border-radius: 12px;
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    .meta {
+      color: rgba(255,255,255,0.92);
+      font-size: 14px;
+      text-align: center;
+      margin-top: 14px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 28px 16px 44px;
+      font-size: 14px;
+    }
+
+    a {
+      color: var(--primary-dark);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    code {
+      background: #fff1f8;
+      border: 1px solid #f5d6e7;
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-size: 0.95em;
+    }
+
+    @media (max-width: 640px) {
+      header h1 {
+        font-size: 27px;
+      }
+
+      .card {
+        padding: 20px;
+        border-radius: 15px;
+      }
+
+      h2 {
+        font-size: 21px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>YasevYa Gizlilik Politikası</h1>
+  <p>
+    Bu Gizlilik Politikası, YasevYa uygulamasını kullanırken hangi bilgilerin işlendiğini,
+    hangi bilgilerin saklanmadığını ve verilerin hangi amaçlarla kullanıldığını açıklar.
+  </p>
+  <div class="meta">Son güncelleme: 06.06.2026</div>
+</header>
+
+<main>
+
+  <section class="card">
+    <h2>1. Veri Sorumlusu</h2>
+    <p>
+      Bu Gizlilik Politikası kapsamında veri sorumlusu / hizmet sağlayıcı
+      <strong>Tayfun Kaya</strong>’dır.
+    </p>
+    <p>
+      YasevYa, bireysel geliştirici Tayfun Kaya tarafından geliştirilen ve sunulan
+      bir mobil uygulamadır.
+    </p>
+    <p>
+      Uygulama ile ilgili gizlilik, veri işleme veya kullanıcı talepleriniz için
+      bizimle şu e-posta adresi üzerinden iletişime geçebilirsiniz:
+      <a href="mailto:info@reggbook.com">info@reggbook.com</a>
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>2. Bu Politikanın Kapsamı</h2>
+    <p>
+      Bu politika, YasevYa mobil uygulaması ve buna bağlı dijital hizmetler kapsamında
+      işlenen sınırlı teknik veriler ile kullanıcı etkileşimlerine ilişkindir.
+    </p>
+    <p>
+      YasevYa, ilişki uyumu testi sunan bir uygulamadır. Testin temel kullanımı ücretsizdir.
+      Kullanıcı dilerse ücretli detaylı PDF raporu satın alabilir.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>3. Hangi Verileri İşliyoruz?</h2>
+
+    <h3>3.1. Kalıcı olarak saklamadığımız veriler</h3>
+    <ul>
+      <li>Kullanıcının test cevapları</li>
+      <li>Kullanıcının test sonucu geçmişi</li>
+      <li>Kullanıcının oluşturduğu hizmet geçmişi</li>
+      <li>İndirilen PDF raporunun kullanıcı adına kalıcı kopyası</li>
+    </ul>
+
+    <p>
+      YasevYa, kullanıcıların test geçmişini kalıcı bir kullanıcı profili halinde tutmamayı esas alır.
+      Kullanıcının uygulama içinde verdiği test cevapları, sürekli bir hesap geçmişi oluşturmak amacıyla saklanmaz.
+    </p>
+
+    <h3>3.2. Teknik olarak işlenebilecek sınırlı veriler</h3>
+    <ul>
+      <li>Uygulama kullanımına ilişkin anonim veya sınırlı teknik analiz verileri</li>
+      <li>Cihaz / uygulama performansına ilişkin hata ve teşhis kayıtları</li>
+      <li>Satın alma sürecinde gerekli geçici işlem tanımlayıcıları</li>
+      <li>Hizmetin güvenli ve doğru sunulması için gerekli sistem verileri</li>
+    </ul>
+
+    <div class="notice">
+      YasevYa, kullanıcıların ilişki test sonuçlarını kalıcı kişisel profil olarak saklamaz.
+      Ancak uygulamanın çalışması, analiz edilmesi ve ödeme işlemlerinin doğrulanması için
+      sınırlı teknik veriler işlenebilir.
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>4. Ödeme Sırasında İşlenen Veriler</h2>
+    <p>
+      Kullanıcı ücretli PDF raporu satın almak istediğinde, satın alma işleminin tamamlanabilmesi için
+      ödeme altyapısı veya uygulama mağazası tarafından bazı işlem bilgileri işlenebilir.
+    </p>
+    <p>
+      Bu kapsamda:
+    </p>
+    <ul>
+      <li>Ödeme doğrulaması için gerekli geçici tanımlama bilgileri işlenebilir.</li>
+      <li>Kart bilgileri veya hassas ödeme verileri tarafımızca doğrudan saklanmaz.</li>
+      <li>Ödeme sonrasında, hizmet sunumu için gerekli olmayan geçici işlem bilgileri silinir veya tutulmaz.</li>
+    </ul>
+    <p>
+      Kullanıcı ödeme yapmasına rağmen teknik bir sorun nedeniyle hizmete ulaşamazsa,
+      destek talebi üzerine mağduriyetin giderilmesi amacıyla gerekli kontrol yapılabilir.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>5. Firebase Kullanımı</h2>
+
+    <h3>5.1. Firebase Analytics</h3>
+    <p>
+      Uygulamanın nasıl kullanıldığını genel olarak anlamak, performansı ölçmek,
+      teknik geliştirmeler yapmak ve hata eğilimlerini görmek amacıyla
+      <strong>Firebase Analytics</strong> kullanılabilir.
+    </p>
+    <p>
+      Bu hizmet kapsamında, uygulama açılışları, ekran etkileşimleri, oturum bilgileri,
+      genel cihaz/uygulama teknik verileri gibi sınırlı analiz verileri işlenebilir.
+    </p>
+
+    <h3>5.2. Firebase Database / Firebase Altyapısı</h3>
+    <p>
+      YasevYa uygulamasında teknik hizmet sunumu, sistemin doğru çalışması,
+      ödeme doğrulama akışı ve gerekli hizmet operasyonları için
+      <strong>Firebase Database</strong> ve diğer Firebase altyapı servisleri kullanılabilir.
+    </p>
+
+    <h3>5.3. Yurt dışı veri aktarımı</h3>
+    <p>
+      Firebase hizmetleri Google tarafından sağlanır ve veriler, kullanılan hizmete bağlı olarak
+      yurt dışındaki sunucularda işlenebilir. Uygulamayı kullanarak, teknik altyapının bu şekilde çalıştığını
+      kabul etmiş sayılırsınız.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>6. Reklam ve Üçüncü Taraf Reklamcılık</h2>
+    <p>
+      YasevYa uygulamasında reklam gösterimi bulunmaz.
+      Uygulama içinde üçüncü taraf reklam ağı, banner reklam, geçiş reklamı veya ödüllü reklam kullanılmaz.
+    </p>
+    <p>
+      Kullanıcı verileri reklam hedeflemesi amacıyla tarafımızca satılmaz veya paylaşılmaz.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>7. Verileri Hangi Amaçlarla İşliyoruz?</h2>
+    <ul>
+      <li>Uygulamanın güvenli ve doğru şekilde çalışmasını sağlamak</li>
+      <li>Ücretsiz test ve ücretli PDF hizmetini sunmak</li>
+      <li>Satın alma işlemini doğrulamak</li>
+      <li>Teknik hata ve performans sorunlarını tespit etmek</li>
+      <li>Uygulama deneyimini geliştirmek</li>
+      <li>Kullanıcı destek taleplerini değerlendirmek</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>8. Verileri Ne Kadar Süre Tutarız?</h2>
+    <p>
+      YasevYa, kullanıcı test geçmişini kalıcı olarak tutmamayı amaçlar.
+      Test cevapları ve sonuçlar, sürekli kullanıcı kaydı oluşturma amacıyla saklanmaz.
+    </p>
+    <p>
+      Ödeme sürecinde işlenen geçici tanımlama bilgileri, işlem tamamlandıktan sonra
+      gerekli olmadığı ölçüde silinir veya sistemde kalıcı kullanıcı profili oluşturmayacak şekilde kaldırılır.
+    </p>
+    <p>
+      Ancak güvenlik, hata analizi, sistem bütünlüğü veya yasal yükümlülükler kapsamında
+      bazı teknik kayıtlar sınırlı süreyle tutulabilir.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>9. PDF Raporları Hakkında</h2>
+    <p>
+      Kullanıcı tarafından satın alınıp indirilen PDF raporu, kullanıcıya dijital içerik olarak sunulur.
+      Bu PDF dosyasının cihazda saklanması, korunması ve gerektiğinde yedeklenmesi kullanıcının sorumluluğundadır.
+    </p>
+    <p>
+      YasevYa, indirilen PDF raporunu kullanıcı adına sürekli erişilebilir bir arşiv olarak tutmayı taahhüt etmez.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>10. Veri Güvenliği</h2>
+    <p>
+      Verilerin korunması için makul teknik ve idari önlemler alınır.
+      Bununla birlikte, internet üzerinden yapılan veri iletiminin veya dijital sistemlerin
+      tamamen risksiz olduğu garanti edilemez.
+    </p>
+    <p>
+      Uygulama altyapısında kullanılan üçüncü taraf servislerin güvenliği de,
+      ilgili sağlayıcıların kendi teknik ve hukuki yükümlülüklerine tabidir.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>11. Kullanıcı Hakları</h2>
+    <p>
+      Uygulanabilir mevzuat kapsamında kullanıcılar, kendileriyle ilgili veri işlenip işlenmediğini öğrenme,
+      veriye ilişkin bilgi talep etme ve uygun durumlarda düzeltme veya silme talebinde bulunma hakkına sahip olabilir.
+    </p>
+    <p>
+      Bu tür talepler için bizimle şu adresten iletişime geçebilirsiniz:
+      <a href="mailto:info@reggbook.com">info@reggbook.com</a>
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>12. Çocukların Gizliliği</h2>
+    <p>
+      YasevYa genel kullanıcı kitlesine yönelik bir uygulamadır. Uygulamanın küçük yaştaki çocuklara özel olarak
+      hedeflenmesi amaçlanmaz. Gerekli hallerde ebeveyn veya yasal temsilci gözetimi önerilir.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>13. Politika Değişiklikleri</h2>
+    <p>
+      Bu Gizlilik Politikası zaman zaman güncellenebilir. Güncel sürüm bu sayfada yayınlanır.
+      Önemli değişiklikler yapılması halinde, uygun olduğu ölçüde uygulama veya web sitesi üzerinden bilgilendirme yapılabilir.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>14. İletişim</h2>
+    <p>
+      Gizlilik politikası, veri işleme süreçleri veya kullanıcı talepleriniz için bize aşağıdaki adresten ulaşabilirsiniz:
+    </p>
+    <p>
+      <strong>E-posta:</strong> <a href="mailto:info@reggbook.com">info@reggbook.com</a>
+    </p>
+    <p>
+      <strong>Hizmet Sağlayıcı / Geliştirici:</strong> Tayfun Kaya
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 YasevYa. Geliştirici: Tayfun Kaya. Tüm hakları saklıdır.
+</footer>
+
+</body>
+</html>
+```
