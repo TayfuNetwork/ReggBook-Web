@@ -1,1 +1,341 @@
-burası da doldurulacak.
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YasevYa Kullanıcı Sözleşmesi ve Hizmet Şartları</title>
+  <style>
+    :root {
+      --bg: #fff7fb;
+      --card: #ffffff;
+      --text: #2b2430;
+      --muted: #6f6277;
+      --primary: #b83280;
+      --primary-dark: #7a1f55;
+      --border: #f0d7e7;
+      --soft: #fdeaf4;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #fff7fb 0%, #f8efff 100%);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      padding: 56px 20px 36px;
+      text-align: center;
+      background: linear-gradient(135deg, #b83280 0%, #6c2bd9 100%);
+      color: white;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 34px;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      max-width: 780px;
+      margin: 14px auto 0;
+      font-size: 16px;
+      opacity: 0.95;
+    }
+
+    main {
+      width: min(980px, calc(100% - 32px));
+      margin: 32px auto;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 12px 32px rgba(122, 31, 85, 0.08);
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    h3 {
+      color: var(--primary);
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    ul {
+      padding-left: 22px;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    .notice {
+      background: var(--soft);
+      border-left: 5px solid var(--primary);
+      padding: 16px 18px;
+      border-radius: 12px;
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+      margin-top: 14px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 28px 16px 44px;
+      font-size: 14px;
+    }
+
+    a {
+      color: var(--primary-dark);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      header h1 {
+        font-size: 27px;
+      }
+
+      .card {
+        padding: 20px;
+        border-radius: 15px;
+      }
+
+      h2 {
+        font-size: 21px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>YasevYa Kullanıcı Sözleşmesi</h1>
+  <p>
+    Bu sayfa, YasevYa uygulamasının kullanım şartlarını, ücretli PDF hizmetini,
+    veri işleme ilkelerini ve kullanıcı sorumluluklarını açıklar.
+  </p>
+  <div class="meta">Son güncelleme: [SON GÜNCELLEME TARİHİ]</div>
+</header>
+
+<main>
+
+  <section class="card">
+    <h2>1. Taraflar ve Kapsam</h2>
+    <p>
+      İşbu Kullanıcı Sözleşmesi ve Hizmet Şartları, YasevYa mobil uygulamasını
+      kullanan kullanıcılar ile uygulama sahibi/hizmet sağlayıcı
+      <strong>[ŞİRKET/AD SOYAD]</strong> arasında geçerlidir.
+    </p>
+    <p>
+      YasevYa, kullanıcıların ilişki uyumu hakkında test yapmasına ve dilerse
+      detaylı sonuç PDF’i satın almasına imkân sağlayan dijital bir uygulamadır.
+      Uygulamayı kullanan her kullanıcı, bu sözleşmede yer alan şartları kabul etmiş sayılır.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>2. Hizmetin Tanımı</h2>
+    <p>
+      YasevYa, kullanıcıların verdikleri cevaplara göre ilişki uyumu hakkında
+      dijital bir değerlendirme sunar. Uygulamada yer alan testin temel kullanımı ücretsizdir.
+    </p>
+    <p>
+      Kullanıcılar dilerse, test sonucuna ilişkin daha detaylı yorumları içeren
+      ücretli PDF raporunu satın alabilir. Ücretli PDF raporu satın alınmadan önce
+      ilgili ücret kullanıcıya uygulama ekranında açıkça gösterilir.
+    </p>
+    <div class="notice">
+      Ücretsiz test sonucu ile ücretli detaylı PDF raporu farklı hizmetlerdir.
+      Ücretli PDF raporu, yalnızca kullanıcının açık satın alma işlemi sonrasında oluşturulur.
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>3. Ücretsiz Test ve Ücretli PDF</h2>
+    <h3>3.1. Ücretsiz Test</h3>
+    <p>
+      YasevYa uygulamasında testin temel kullanımı ücretsizdir. Kullanıcılar,
+      uygulama içerisindeki soruları cevaplayarak ücretsiz değerlendirme alabilir.
+    </p>
+
+    <h3>3.2. Ücretli PDF Hizmeti</h3>
+    <p>
+      Detaylı PDF raporu ücretlidir. Bu ücret, satın alma işleminden önce kullanıcıya
+      uygulama ekranında gösterilir. Kullanıcı, ödeme adımını onayladığında ilgili
+      ücreti kabul etmiş sayılır.
+    </p>
+    <p>
+      Ücretli PDF raporu dijital içerik niteliğindedir. Kullanıcı, ödeme sonrası
+      oluşturulan ve indirilen PDF dosyasını kendi cihazında saklamakla sorumludur.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>4. Kayıt, Hesap ve Hizmet Geçmişi</h2>
+    <p>
+      YasevYa, kullanıcıların kişisel test geçmişlerini kalıcı olarak saklamaz.
+      Kullanıcının yaptığı testler, ödeme sonrası oluşturulan PDF raporu haricinde
+      kullanıcı adına kayıtlı bir hizmet geçmişi olarak tutulmaz.
+    </p>
+    <p>
+      Kullanıcı, ödeme sonrasında PDF dosyasını indirip saklamakla yükümlüdür.
+      PDF dosyasının cihazdan silinmesi, kaybolması veya erişilemez hâle gelmesi
+      durumunda sorumluluk kullanıcıya aittir.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>5. Kişisel Veriler ve Gizlilik</h2>
+    <p>
+      YasevYa, uygulamanın çalışma mantığı gereği kullanıcıların kişisel verilerini
+      kalıcı olarak saklamamayı esas alır. Kullanıcıların test cevapları ve sonuçları,
+      kalıcı kullanıcı profili oluşturmak amacıyla tutulmaz.
+    </p>
+    <p>
+      Ödeme işlemi sırasında, ödemenin doğrulanması ve ücretli PDF hizmetinin
+      kullanıcıya sunulabilmesi için geçici tanımlama bilgileri işlenebilir.
+      Bu bilgiler, ödeme ve hizmet sunumu tamamlandıktan sonra silinir veya kalıcı
+      kullanıcı profili oluşturmayacak şekilde sistemden kaldırılır.
+    </p>
+    <p>
+      Uygulamada reklam bulunmaz. Ancak uygulama performansını, kullanım yoğunluğunu,
+      hata durumlarını ve genel kullanıcı deneyimini analiz edebilmek amacıyla
+      Firebase Analytics kullanılabilir.
+    </p>
+    <p>
+      Uygulamanın teknik altyapısında Firebase hizmetleri ve Firebase Database
+      kullanılabilir. Bu kullanım, uygulamanın çalışması, ödeme sürecinin doğrulanması,
+      hata takibi ve hizmetin güvenli şekilde sunulması amaçlarıyla sınırlıdır.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>6. Ödeme Hataları ve Telafi Hakkı</h2>
+    <p>
+      Kullanıcı ödeme yaptığı hâlde teknik bir hata sebebiyle ücretli PDF hizmetine
+      ulaşamazsa, kullanıcı mağduriyetini gidermek amacıyla kendisine
+      <strong>2 ücretsiz test hakkı</strong> tanınır.
+    </p>
+    <p>
+      Bu hak, yalnızca ödeme yapıldığı hâlde hizmete erişilemediğinin makul şekilde
+      tespit edilmesi durumunda geçerlidir. Kullanıcı, bu tür durumlarda
+      <strong>[E-POSTA]</strong> adresi üzerinden destek talebi oluşturabilir.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>7. Kullanıcı Sorumlulukları</h2>
+    <ul>
+      <li>Kullanıcı, uygulamada verdiği cevapların doğruluğundan kendisi sorumludur.</li>
+      <li>Kullanıcı, satın aldığı PDF raporunu indirmek ve saklamakla sorumludur.</li>
+      <li>Kullanıcı, ödeme sırasında yanlış işlem yapmamak için ekranda gösterilen ücret ve bilgileri kontrol etmelidir.</li>
+      <li>Kullanıcı, uygulamayı hukuka aykırı, kötüye kullanım oluşturacak veya hizmetin çalışmasını engelleyecek şekilde kullanamaz.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>8. Değerlendirme Sonuçlarının Niteliği</h2>
+    <p>
+      YasevYa tarafından sunulan test sonuçları, kullanıcıların verdikleri cevaplara
+      göre oluşturulan dijital değerlendirme niteliğindedir. Bu sonuçlar kesin,
+      bilimsel, tıbbi, psikolojik, hukuki veya profesyonel danışmanlık yerine geçmez.
+    </p>
+    <p>
+      Kullanıcı, uygulamada sunulan sonuçları kişisel farkındalık ve eğlence/değerlendirme
+      amacıyla kullanmalıdır. İlişki, evlilik, psikoloji veya sağlıkla ilgili ciddi
+      konularda uzman desteği alınması önerilir.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>9. Reklam Politikası</h2>
+    <p>
+      YasevYa uygulamasında reklam gösterimi yapılmaz. Uygulama içerisinde üçüncü taraf
+      reklam alanları bulunmaz. Ancak uygulamanın geliştirilmesi ve teknik analiz
+      amacıyla Firebase Analytics gibi analiz araçları kullanılabilir.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>10. Hizmetin Değiştirilmesi veya Sonlandırılması</h2>
+    <p>
+      Hizmet sağlayıcı, uygulamanın teknik altyapısını, içeriklerini, ücretli hizmet
+      kapsamını veya kullanım şartlarını zaman içinde güncelleyebilir. Yapılan önemli
+      değişiklikler, mümkün olduğu ölçüde uygulama veya web sitesi üzerinden duyurulur.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>11. Sorumluluğun Sınırlandırılması</h2>
+    <p>
+      YasevYa, kullanıcının verdiği cevaplara göre dijital değerlendirme sunar.
+      Kullanıcının bu değerlendirme sonucuna dayanarak aldığı kişisel kararlar,
+      kullanıcı sorumluluğundadır.
+    </p>
+    <p>
+      Teknik aksaklıklar, bağlantı sorunları, cihaz kaynaklı problemler, kullanıcının
+      PDF dosyasını saklamaması veya ödeme platformlarından kaynaklanan gecikmeler
+      nedeniyle oluşabilecek dolaylı zararlardan hizmet sağlayıcı sorumlu tutulamaz.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>12. İletişim</h2>
+    <p>
+      Kullanıcılar, ödeme hataları, teknik sorunlar, veri işleme talepleri veya sözleşme
+      ile ilgili sorular için aşağıdaki iletişim adresinden hizmet sağlayıcıya ulaşabilir:
+    </p>
+    <p>
+      <strong>E-posta:</strong> <a href="mailto:[E-POSTA]">[E-POSTA]</a>
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>13. Yürürlük</h2>
+    <p>
+      Bu Kullanıcı Sözleşmesi ve Hizmet Şartları, web sitesinde yayınlandığı tarihte
+      yürürlüğe girer. Kullanıcının YasevYa uygulamasını kullanmaya devam etmesi,
+      güncel şartları kabul ettiği anlamına gelir.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 YasevYa. Tüm hakları saklıdır.
+</footer>
+
+</body>
+</html>
+```
+
