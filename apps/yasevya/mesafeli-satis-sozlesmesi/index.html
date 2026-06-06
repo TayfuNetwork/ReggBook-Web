@@ -1,1 +1,336 @@
-burası da doldurulacak.
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YasevYa Mesafeli Satış Sözleşmesi</title>
+  <style>
+    :root {
+      --bg: #fff7fb;
+      --card: #ffffff;
+      --text: #2b2430;
+      --muted: #6f6277;
+      --primary: #b83280;
+      --primary-dark: #7a1f55;
+      --border: #f0d7e7;
+      --soft: #fdeaf4;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #fff7fb 0%, #f8efff 100%);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      padding: 56px 20px 36px;
+      text-align: center;
+      background: linear-gradient(135deg, #b83280 0%, #6c2bd9 100%);
+      color: white;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 34px;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      max-width: 780px;
+      margin: 14px auto 0;
+      font-size: 16px;
+      opacity: 0.95;
+    }
+
+    main {
+      width: min(980px, calc(100% - 32px));
+      margin: 32px auto;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 12px 32px rgba(122, 31, 85, 0.08);
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    h3 {
+      color: var(--primary);
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    ul {
+      padding-left: 22px;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    .notice {
+      background: var(--soft);
+      border-left: 5px solid var(--primary);
+      padding: 16px 18px;
+      border-radius: 12px;
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    .meta {
+      color: rgba(255,255,255,0.92);
+      font-size: 14px;
+      text-align: center;
+      margin-top: 14px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 28px 16px 44px;
+      font-size: 14px;
+    }
+
+    a {
+      color: var(--primary-dark);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      header h1 {
+        font-size: 27px;
+      }
+
+      .card {
+        padding: 20px;
+        border-radius: 15px;
+      }
+
+      h2 {
+        font-size: 21px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>YasevYa Mesafeli Satış Sözleşmesi</h1>
+  <p>
+    Bu sözleşme, YasevYa uygulaması üzerinden sunulan ücretli dijital PDF raporu
+    satın alma işlemlerine ilişkin ön bilgilendirme ve mesafeli satış şartlarını açıklar.
+  </p>
+  <div class="meta">Son güncelleme: 06.06.2026</div>
+</header>
+
+<main>
+
+  <section class="card">
+    <h2>1. Taraflar</h2>
+
+    <h3>1.1. Satıcı / Hizmet Sağlayıcı</h3>
+    <p>
+      <strong>Ad Soyad:</strong> Tayfun Kaya
+    </p>
+    <p>
+      <strong>E-posta:</strong>
+      <a href="mailto:info@reggbook.com">info@reggbook.com</a>
+    </p>
+    <p>
+      <strong>Hizmet:</strong> YasevYa mobil uygulaması üzerinden sunulan dijital ilişki uyumu değerlendirme hizmeti ve ücretli detaylı PDF raporu.
+    </p>
+
+    <h3>1.2. Alıcı / Kullanıcı</h3>
+    <p>
+      YasevYa uygulamasını kullanan ve uygulama içinden ücretli detaylı PDF raporu satın alan gerçek kişidir.
+      Kullanıcı, satın alma işlemini tamamladığında bu sözleşme hükümlerini kabul etmiş sayılır.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>2. Sözleşmenin Konusu</h2>
+    <p>
+      İşbu Mesafeli Satış Sözleşmesi’nin konusu, kullanıcının YasevYa uygulaması üzerinden satın aldığı
+      ücretli detaylı PDF raporunun elektronik ortamda sunulmasına ilişkin tarafların hak ve yükümlülüklerinin belirlenmesidir.
+    </p>
+    <p>
+      YasevYa uygulamasında temel test kullanımı ücretsizdir. Ücretli hizmet, kullanıcının test sonuçlarına ilişkin
+      daha detaylı yorum ve değerlendirme içeren dijital PDF raporudur.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>3. Ürün / Hizmet Bilgileri</h2>
+    <ul>
+      <li><strong>Hizmet adı:</strong> YasevYa Detaylı İlişki Uyumu PDF Raporu</li>
+      <li><strong>Hizmet türü:</strong> Dijital içerik / elektronik ortamda sunulan PDF raporu</li>
+      <li><strong>Teslim şekli:</strong> Ödeme sonrası uygulama içinde elektronik ortamda PDF olarak sunulur.</li>
+      <li><strong>Fiyat:</strong> Satın alma ekranında kullanıcıya gösterilen güncel tutardır.</li>
+      <li><strong>Ödeme yöntemi:</strong> Uygulama mağazası, uygulama içi satın alma sistemi veya kullanılan ödeme altyapısı üzerinden gerçekleştirilir.</li>
+    </ul>
+
+    <div class="notice">
+      Bu sayfada sabit fiyat belirtilmez. Geçerli ücret, satın alma işleminden önce uygulama ekranında kullanıcıya açıkça gösterilen tutardır.
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>4. Ön Bilgilendirme</h2>
+    <p>
+      Kullanıcı, satın alma işlemini tamamlamadan önce ücretli PDF raporunun dijital içerik olduğunu,
+      fiyatın satın alma ekranında gösterildiğini, raporun elektronik ortamda sunulacağını ve PDF dosyasını
+      indirdikten sonra saklama sorumluluğunun kendisine ait olduğunu kabul eder.
+    </p>
+    <p>
+      Kullanıcı, satın alma işlemi öncesinde uygulama ekranında gösterilen fiyatı, hizmet kapsamını ve
+      bu sözleşme hükümlerini inceleme imkanına sahiptir.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>5. Teslimat ve İfa</h2>
+    <p>
+      Ücretli detaylı PDF raporu, ödeme işleminin başarıyla tamamlanmasının ardından elektronik ortamda oluşturulur
+      ve kullanıcıya uygulama içinde erişilebilir veya indirilebilir şekilde sunulur.
+    </p>
+    <p>
+      PDF raporunun kullanıcının cihazına indirilmesi, saklanması, yedeklenmesi ve korunması kullanıcının sorumluluğundadır.
+      YasevYa, indirilen PDF raporunu kullanıcı adına sürekli erişilebilir bir arşiv olarak saklamayı taahhüt etmez.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>6. Cayma Hakkı</h2>
+    <p>
+      Mesafeli satışlarda tüketicinin kural olarak 14 gün içinde cayma hakkı bulunur.
+      Ancak elektronik ortamda anında ifa edilen hizmetler ve kullanıcıya anında teslim edilen dijital içerikler bakımından,
+      hizmetin ifasına başlanması veya dijital içeriğin kullanıcıya sunulması sonrasında cayma hakkı kullanılamayabilir.
+    </p>
+    <p>
+      YasevYa kapsamında satın alınan detaylı PDF raporu, ödeme sonrası elektronik ortamda oluşturulan ve kullanıcıya sunulan
+      dijital içerik niteliğindedir. Kullanıcı, satın alma işlemini tamamlayarak dijital PDF raporunun ödeme sonrası
+      elektronik ortamda sunulacağını ve rapor teslim edildikten sonra cayma hakkının kullanılamayacağını kabul eder.
+    </p>
+
+    <div class="notice">
+      PDF raporu kullanıcıya elektronik ortamda sunulduktan sonra, hizmet ifa edilmiş sayılır.
+      Bu nedenle teslim edilmiş dijital PDF raporu için cayma hakkı kullanılamaz.
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>7. İade ve Teknik Hata Durumları</h2>
+    <p>
+      Kullanıcı ödeme yaptığı halde teknik bir hata sebebiyle ücretli PDF raporuna erişemezse,
+      kullanıcı destek talebi oluşturarak durumu bildirebilir.
+    </p>
+    <p>
+      Ödeme yapıldığı halde hizmete erişilemediğinin makul şekilde tespit edilmesi durumunda,
+      kullanıcının mağduriyetini gidermek amacıyla kendisine <strong>2 ücretsiz test hakkı</strong> tanınır.
+    </p>
+    <p>
+      Ödeme işlemleri uygulama mağazası veya ödeme altyapısı üzerinden gerçekleştiriliyorsa,
+      iade süreçleri ilgili platformun kendi kurallarına ve değerlendirmesine tabi olabilir.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>8. Kullanıcının Sorumlulukları</h2>
+    <ul>
+      <li>Kullanıcı, satın alma ekranında gösterilen ücreti ve hizmet kapsamını kontrol etmekle sorumludur.</li>
+      <li>Kullanıcı, test sorularına verdiği cevapların doğruluğundan kendisi sorumludur.</li>
+      <li>Kullanıcı, ödeme sonrası sunulan PDF raporunu indirmek, saklamak ve yedeklemekle sorumludur.</li>
+      <li>Kullanıcı, uygulamayı kötüye kullanamaz, yanıltıcı işlem yapamaz veya teknik sistemi bozacak şekilde kullanamaz.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>9. Hizmetin Niteliği ve Sorumluluk Sınırı</h2>
+    <p>
+      YasevYa tarafından sunulan test sonuçları ve PDF raporu, kullanıcının verdiği cevaplara göre oluşturulan
+      dijital değerlendirme niteliğindedir.
+    </p>
+    <p>
+      Bu sonuçlar kesin, bilimsel, tıbbi, psikolojik, hukuki veya profesyonel danışmanlık yerine geçmez.
+      Kullanıcının bu değerlendirmelere dayanarak aldığı kişisel kararlar kullanıcının kendi sorumluluğundadır.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>10. Kişisel Veriler</h2>
+    <p>
+      Kişisel verilerin işlenmesine ilişkin detaylı açıklamalar
+      <strong>YasevYa Gizlilik Politikası</strong> sayfasında yer alır.
+    </p>
+    <p>
+      YasevYa, kullanıcıların test geçmişini kalıcı kullanıcı profili olarak saklamamayı esas alır.
+      Ödeme sırasında gerekli olan geçici işlem bilgileri, ödeme doğrulama ve hizmet sunumu amacıyla sınırlı şekilde işlenebilir.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>11. Uyuşmazlıkların Çözümü</h2>
+    <p>
+      İşbu sözleşmeden doğabilecek uyuşmazlıklarda, yürürlükteki Türkiye Cumhuriyeti mevzuatı uygulanır.
+    </p>
+    <p>
+      Kullanıcılar, uyuşmazlık halinde ilgili mevzuatta belirtilen parasal sınırlar dahilinde
+      Tüketici Hakem Heyetleri’ne veya yetkili Tüketici Mahkemeleri’ne başvurabilir.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>12. Yürürlük</h2>
+    <p>
+      Kullanıcı, satın alma işlemini tamamlamadan önce bu Mesafeli Satış Sözleşmesi’ni okuyup kabul ettiğini beyan eder.
+      Satın alma işleminin tamamlanmasıyla birlikte bu sözleşme yürürlüğe girer.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>13. İletişim</h2>
+    <p>
+      Mesafeli satış, ödeme, teknik hata veya destek talepleri için bizimle aşağıdaki e-posta adresinden iletişime geçebilirsiniz:
+    </p>
+    <p>
+      <strong>E-posta:</strong>
+      <a href="mailto:info@reggbook.com">info@reggbook.com</a>
+    </p>
+    <p>
+      <strong>Hizmet Sağlayıcı / Geliştirici:</strong> Tayfun Kaya
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 YasevYa. Geliştirici: Tayfun Kaya. Tüm hakları saklıdır.
+</footer>
+
+</body>
+</html>
+```
