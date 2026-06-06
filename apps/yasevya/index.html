@@ -1,0 +1,163 @@
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>YasevYa</title>
+  <meta name="description" content="YasevYa - İlişkiniz için doğru tercih." />
+
+  <style>
+    :root {
+      --bg: #fff7fb;
+      --text: #2b2430;
+      --muted: #6f6277;
+      --primary: #b83280;
+      --primary-dark: #7a1f55;
+      --border: #f0d7e7;
+      --card: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #fff7fb 0%, #f8efff 100%);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 18px;
+    }
+
+    .hero {
+      width: min(620px, 100%);
+      text-align: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 42px 24px;
+      box-shadow: 0 14px 36px rgba(122, 31, 85, 0.08);
+    }
+
+    .brand {
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      letter-spacing: -0.6px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 25px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .links {
+      margin-top: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    .links a {
+      color: var(--primary-dark);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    .separator {
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      padding: 22px 16px 30px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer strong {
+      color: var(--primary-dark);
+    }
+
+    @media (max-width: 520px) {
+      .hero {
+        padding: 34px 18px;
+        border-radius: 20px;
+      }
+
+      .brand {
+        font-size: 32px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      .links {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .separator {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <section class="hero">
+      <div class="brand">YasevYa</div>
+
+      <h1>İlişkiniz için doğru tercih</h1>
+
+      <nav class="links" aria-label="Yasal bağlantılar">
+        <a href="https://reggbook.com/apps/yasevya/gizliliksozlesmesi/">
+          Gizlilik Sözleşmesi
+        </a>
+
+        <span class="separator">-</span>
+
+        <a href="https://reggbook.com/apps/yasevya/kullanim-kosullari/">
+          Kullanıcı Sözleşmesi
+        </a>
+
+        <span class="separator">-</span>
+
+        <a href="https://reggbook.com/apps/yasevya/mesafeli-satis-sozlesmesi/">
+          Mesafeli Satış Sözleşmesi
+        </a>
+      </nav>
+    </section>
+  </main>
+
+  <footer>
+    <strong>ReggBook</strong> sponsorluğunda
+  </footer>
+
+</body>
+</html>
+```
