@@ -7,30 +7,25 @@
 
   <!-- Facebook Pixel -->
   <script>
-  !function(f,b,e,v,n,t,s){
-  if(f.fbq)return;
-  n=f.fbq=function(){
-  n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)
-  };
-  if(!f._fbq)f._fbq=n;
-  n.push=n;
-  n.loaded=!0;
-  n.version='2.0';
-  n.queue=[];
-  t=b.createElement(e);
-  t.async=!0;
-  t.src=v;
-  s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)
-  }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;
+      n=f.fbq=function(){
+        n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)
+      };
+      if(!f._fbq)f._fbq=n;
+      n.push=n;
+      n.loaded=!0;
+      n.version='2.0';
+      n.queue=[];
+      t=b.createElement(e);
+      t.async=!0;
+      t.src=v;
+      s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
-  fbq('init', '4403577006598103');
-
-fbq('trackCustom', 'DownloadPage', {
-  value: 1,
-  currency: 'TRY'
-});
-</script>
+    fbq('init', '4403577006598103');
+  </script>
 
   <script>
     const PLAY_STORE_URL =
@@ -44,68 +39,82 @@ fbq('trackCustom', 'DownloadPage', {
 
     const FALLBACK_URL = "https://reggbook.com";
 
-    let redirectUrl = FALLBACK_URL;
-    let platformName = "uygun sayfaya";
-
-    function detectPlatform() {
+    function getRedirectTarget() {
       const ua = navigator.userAgent || navigator.vendor || window.opera;
 
-      // Android
       if (/android/i.test(ua)) {
-        redirectUrl = PLAY_STORE_URL;
-        platformName = "Google Play Mağazası";
-        return;
+        return {
+          url: PLAY_STORE_URL,
+          platform: "android"
+        };
       }
 
-      // iOS
       if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-        redirectUrl = APP_STORE_URL;
-        platformName = "Apple App Store";
-        return;
+        return {
+          url: APP_STORE_URL,
+          platform: "ios"
+        };
       }
 
-      // Windows
       if (/Windows NT/i.test(ua)) {
-        redirectUrl = WINDOWS_ZIP_URL;
-        platformName = "Windows sürümü";
-        return;
+        return {
+          url: WINDOWS_ZIP_URL,
+          platform: "windows"
+        };
       }
 
-      // Diğer cihazlar
-      redirectUrl = FALLBACK_URL;
-      platformName = "ReggBook";
+      return {
+        url: FALLBACK_URL,
+        platform: "fallback"
+      };
     }
 
-    function startCountdown() {
-      detectPlatform();
+    const redirectTarget = getRedirectTarget();
+    const redirectUrl = redirectTarget.url;
 
-      const redirectText = document.getElementById("redirectText");
-      const countdownEl = document.getElementById("countdown");
+    function redirectNow() {
+      const manualLink = document.getElementById("manualLink");
 
-      redirectText.innerText =
-        `${platformName} yönlendirmesi hazırlanıyor...`;
+      if (manualLink) {
+        manualLink.href = redirectUrl;
+      }
 
-      let countdown = 3;
-      countdownEl.innerText = countdown;
+      // Yönlendirme niyeti sadece Android / iOS / Windows için oluşursa Pixel at
+      if (redirectTarget.platform !== "fallback") {
+        if (typeof fbq === "function") {
+          fbq('trackCustom', 'DownloadPage', {
+            value: 2,
+            currency: 'TRY'
+          });
 
-      const timer = setInterval(() => {
-        countdown--;
-        countdownEl.innerText = countdown;
-
-        if (countdown <= 0) {
-          clearInterval(timer);
-
-          // Windows özel pixel eventi
-          if (/Windows NT/i.test(navigator.userAgent)) {
+          if (redirectTarget.platform === "windows") {
             fbq('trackCustom', 'WindowsDesktopDownload');
           }
-
-          window.location.replace(redirectUrl);
         }
-      }, 1000);
+
+        // Pixel'in kuyruğa girmesi için çok kısa bekleme
+        setTimeout(() => {
+          window.location.replace(redirectUrl);
+        }, 150);
+
+        // Bazı tarayıcılarda replace takılırsa ikinci deneme
+        setTimeout(() => {
+          window.location.href = redirectUrl;
+        }, 1000);
+
+      } else {
+        // Uygun platform bulunamazsa Pixel atma, sadece ana siteye yönlendir
+        setTimeout(() => {
+          window.location.replace(redirectUrl);
+        }, 300);
+      }
     }
 
-    window.onload = startCountdown;
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", redirectNow);
+    } else {
+      redirectNow();
+    }
   </script>
 
   <style>
@@ -115,89 +124,56 @@ fbq('trackCustom', 'DownloadPage', {
 
     body {
       margin: 0;
-      background: linear-gradient(135deg, #0f172a, #111827);
+      min-height: 100vh;
+      background: #0f172a;
       color: white;
       font-family: Arial, sans-serif;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
       text-align: center;
       padding: 20px;
     }
 
-    .container {
-      max-width: 500px;
+    .box {
+      max-width: 420px;
       width: 100%;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 40px 30px;
-      backdrop-filter: blur(10px);
     }
 
     h1 {
-      margin-top: 0;
-      font-size: 32px;
-      margin-bottom: 10px;
+      font-size: 24px;
+      margin-bottom: 12px;
     }
 
-    .note {
+    p {
       font-size: 16px;
-      line-height: 1.6;
-      opacity: 0.9;
-      margin-bottom: 30px;
-    }
-
-    .redirect-text {
-      font-size: 18px;
-      margin-bottom: 20px;
+      line-height: 1.5;
       color: #cbd5e1;
+      margin: 0;
     }
 
-    .countdown {
-      font-size: 72px;
-      font-weight: bold;
+    a {
       color: #38bdf8;
-      line-height: 1;
-      margin-bottom: 10px;
-    }
-
-    .small {
-      font-size: 14px;
-      opacity: 0.7;
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 26px;
-      }
-
-      .countdown {
-        font-size: 56px;
-      }
+      text-decoration: none;
+      font-weight: bold;
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>ReggBook</h1>
-
-    <div class="note">
-      Lütfen denemeden karar vermeyin 🙂<br />
-      Destek verdiğiniz için teşekkür ederiz.
-    </div>
-
-    <div class="redirect-text" id="redirectText">
-      Mağaza yönlendirmesi hazırlanıyor...
-    </div>
-
-    <div class="countdown" id="countdown">4</div>
-
-    <div class="small">
-      Otomatik yönlendirme yapılacaktır.
-    </div>
+  <div class="box">
+    <h1>ReggBook sizi yönlendiriyor...</h1>
+    <p>
+      Yönlendirme otomatik başlamazsa
+      <a id="manualLink" href="https://reggbook.com">buraya dokunun.</a>
+    </p>
   </div>
+
+  <noscript>
+    <p>
+      JavaScript kapalı olduğu için otomatik yönlendirme yapılamadı.
+      <a href="https://reggbook.com">ReggBook sitesine git</a>
+    </p>
+  </noscript>
 </body>
 </html>
