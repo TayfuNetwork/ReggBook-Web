@@ -1,1 +1,122 @@
-Bu sayfa kodlanacak
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0f766e" />
+    <meta name="description" content="ReggBook ile işletmeden kolayca randevu alın." />
+    <meta property="og:title" content="ReggBook | Randevu Al" />
+    <meta property="og:description" content="İşletmeden randevu almak için ReggBook'u indirin." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://reggbook.com/route/providerprofile/logo.png" />
+    <title>ReggBook | Randevu Al</title>
+
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        background: #f4fbfa;
+        color: #102a2a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: radial-gradient(
+          circle at top,
+          #dff7f2 0,
+          #f7fbfb 52%,
+          #eef7f6 100%
+        );
+      }
+
+      main {
+        width: min(100%, 460px);
+        padding: 34px 26px;
+        border: 1px solid #d8ece9;
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 22px 60px rgba(15, 118, 110, 0.16);
+        text-align: center;
+      }
+
+      .logo {
+        display: block;
+        width: min(190px, 62vw);
+        height: auto;
+        margin: 0 auto 24px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(25px, 7vw, 34px);
+        line-height: 1.15;
+      }
+
+      p {
+        margin: 14px auto 26px;
+        color: #526b69;
+        font-size: 17px;
+        line-height: 1.6;
+      }
+
+      .download-link {
+        display: inline-block;
+        border-radius: 18px;
+        transition: transform 160ms ease, filter 160ms ease;
+      }
+
+      .download-link:hover,
+      .download-link:focus-visible {
+        transform: translateY(-2px);
+        filter: brightness(1.03);
+      }
+
+      .download-link img {
+        display: block;
+        width: min(300px, 78vw);
+        height: auto;
+        border-radius: 18px;
+      }
+
+      .note {
+        margin: 20px 0 0;
+        font-size: 13px;
+        color: #76908d;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <img class="logo" src="logo.png" alt="ReggBook" />
+
+      <h1>Uygulamayı yüklemek ister misiniz?</h1>
+
+      <p>
+        İşletmenin profilini görüntülemek ve randevu almak için ReggBook'u
+        cihazınıza indirin.
+      </p>
+
+      <a
+        class="download-link"
+        href="https://reggbook.com/download/"
+        aria-label="ReggBook'u indir"
+      >
+        <img src="download.png" alt="ReggBook'u indir" />
+      </a>
+
+      <div class="note">
+        Cihazınıza uygun mağazaya yönlendirileceksiniz.
+      </div>
+    </main>
+  </body>
+</html>
