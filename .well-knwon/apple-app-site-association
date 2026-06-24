@@ -1,1 +1,17 @@
-
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "2WH6D3K987.com.tayfunetwork.reggbook"
+        ],
+        "components": [
+          {
+            "/": "/route/providerprofile/index.html",
+            "comment": "ReggBook provider profil linkleri"
+          }
+        ]
+      }
+    ]
+  }
+}
