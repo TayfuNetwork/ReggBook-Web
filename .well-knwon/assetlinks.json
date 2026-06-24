@@ -1,1 +1,15 @@
-
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.tayfunetwork.reggbook",
+      "sha256_cert_fingerprints": [
+        "7B:B7:1E:4E:9C:CF:FA:6B:37:DB:A8:09:7B:F0:F9:23:3C:08:C4:92:F2:98:95:D3:9A:1E:65:5D:E5:65:85:14"
+      ]
+    }
+  }
+]
