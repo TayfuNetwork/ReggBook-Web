@@ -149,12 +149,12 @@
       align-items: center;
       gap: 10px;
       margin: 8px auto 22px;
-      max-width: 620px;
+      max-width: 496px;
     }
 
     .store-buttons a {
       flex: 1;
-      max-width: 280px;
+      max-width: 224px;
       display: block;
     }
 
@@ -188,6 +188,13 @@
       grid-template-columns: 1.4fr .9fr;
       gap: 14px;
       margin: 0 0 16px;
+    }
+
+    .info-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 0 0 14px;
     }
 
     .pricing-card {
@@ -228,6 +235,19 @@
       line-height: 1.2;
       padding: 7px 10px;
       white-space: nowrap;
+    }
+
+    .audience-toggle {
+      display: none;
+      margin-top: 12px;
+      border: 1px solid rgba(40,94,216,.22);
+      border-radius: 999px;
+      background: #fff;
+      color: #285ed8;
+      font-size: 13px;
+      font-weight: bold;
+      padding: 9px 13px;
+      cursor: pointer;
     }
 
     .pricing-scroll {
@@ -398,7 +418,7 @@
     }
 
     @media (max-width: 768px) {
-      .trust-strip, .pricing-cards, .seo-sections, .bottom {
+      .trust-strip, .info-cards, .pricing-cards, .seo-sections, .bottom {
         grid-template-columns: 1fr;
       }
 
@@ -408,8 +428,27 @@
 
       .pricing-section h2 { font-size: 21px; }
 
-      .audience-list li {
-        white-space: normal;
+      .audience-card.is-collapsed .audience-list {
+        max-height: 74px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .audience-card.is-collapsed .audience-list::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 30px;
+        background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,.96));
+        pointer-events: none;
+      }
+
+      .audience-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
     }
 
@@ -597,6 +636,19 @@
 
         goToSlide(currentIndex() + (diffX < 0 ? 1 : -1));
       });
+
+      var audienceCard = document.querySelector('.audience-card');
+      var audienceToggle = document.querySelector('.audience-toggle');
+
+      if (audienceCard && audienceToggle) {
+        audienceToggle.addEventListener('click', function() {
+          var expanded = audienceToggle.getAttribute('aria-expanded') === 'true';
+
+          audienceToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+          audienceToggle.textContent = expanded ? 'Tümünü gör' : 'Daha az göster';
+          audienceCard.classList.toggle('is-collapsed', expanded);
+        });
+      }
     });
   </script>
   <noscript>
@@ -648,10 +700,33 @@
       <h2 id="pricing-title">ReggBook Paketleri</h2>
       <p class="pricing-note">İşletmeler, tüm paketlerde makul ücretsiz deneme süresiyle başlayabilir.</p>
 
-      <div class="pricing-cards" aria-label="ReggBook kullanım alanları ve paket avantajları">
+      <div class="info-cards" aria-label="ReggBook hakkında kısa bilgiler">
         <div class="pricing-card">
+          <h3>ReggBook Nedir?</h3>
+          <p>
+            ReggBook; kuaförler, güzellik uzmanları, antrenörler, dövme sanatçıları,
+            temizlik firmaları ve randevu ile çalışan işletmeler için geliştirilmiş
+            dijital randevu ve işletme yönetim sistemidir.
+          </p>
+        </div>
+
+        <div class="pricing-card">
+          <h3>Çalışanlar Nasıl Eklenir?</h3>
+          <p>
+            Çalışanlar ReggBook'a üye olurken 2. aşamada
+            <strong>"ReggBook'a üye olan bir işletme çalışanıyım"</strong> seçeneğini işaretler,
+            sadece kişisel bilgilerini girer ve devam eden aşamada şirket arama sayfasına ulaşır.
+            Buradan ReggBook'a üye olan işletme adını aratır ve tek tık ile başvuru gönderir.
+            İlgili işletme, ana sayfanın sol üst kısmında bulunan Seçenekler butonu -
+            Çalışan yönetimi - Çalışan Başvurusu yolunu takip ederek başvuruyu onaylar.
+          </p>
+        </div>
+      </div>
+
+      <div class="pricing-cards" aria-label="ReggBook kullanım alanları ve paket avantajları">
+        <div class="pricing-card audience-card is-collapsed">
           <h3>Kimler İçin?</h3>
-          <ul class="audience-list">
+          <ul class="audience-list" id="audience-list">
             <li>Erkek kuaförü</li>
             <li>Kadın kuaförü</li>
             <li>Pet kuaförü</li>
@@ -679,6 +754,7 @@
             <li>İş Makinesi - Vinç</li>
             <li>Oto Kurtarıcı</li>
           </ul>
+          <button class="audience-toggle" type="button" aria-expanded="false" aria-controls="audience-list">Tümünü gör</button>
         </div>
 
         <div class="pricing-card">
