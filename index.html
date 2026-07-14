@@ -183,6 +183,53 @@
       margin: 0 0 14px;
     }
 
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: 1.4fr .9fr;
+      gap: 14px;
+      margin: 0 0 16px;
+    }
+
+    .pricing-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.68);
+      padding: 16px;
+    }
+
+    .pricing-card h3 {
+      font-size: 17px;
+      line-height: 1.25;
+      margin: 0 0 10px;
+    }
+
+    .pricing-card p {
+      margin: 0;
+      color: #334155;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .audience-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .audience-list li {
+      border: 1px solid rgba(28,55,96,.14);
+      border-radius: 999px;
+      background: #fff;
+      color: #23324a;
+      font-size: 12px;
+      line-height: 1.2;
+      padding: 7px 10px;
+      white-space: nowrap;
+    }
+
     .pricing-scroll {
       overflow-x: auto;
       border: 1px solid var(--line);
@@ -275,8 +322,8 @@
     }
 
     .no {
-      color: #9ca3af;
-      background: rgba(156,163,175,.12);
+      color: #dc2626;
+      background: rgba(220,38,38,.1);
     }
 
     .seo-sections {
@@ -351,7 +398,7 @@
     }
 
     @media (max-width: 768px) {
-      .trust-strip, .seo-sections, .bottom {
+      .trust-strip, .pricing-cards, .seo-sections, .bottom {
         grid-template-columns: 1fr;
       }
 
@@ -360,6 +407,10 @@
       .album-slide { flex-basis: 86%; }
 
       .pricing-section h2 { font-size: 21px; }
+
+      .audience-list li {
+        white-space: normal;
+      }
     }
 
     @media (max-width: 480px) {
@@ -596,6 +647,49 @@
     <section class="pricing-section" aria-labelledby="pricing-title">
       <h2 id="pricing-title">ReggBook Paketleri</h2>
       <p class="pricing-note">İşletmeler, tüm paketlerde makul ücretsiz deneme süresiyle başlayabilir.</p>
+
+      <div class="pricing-cards" aria-label="ReggBook kullanım alanları ve paket avantajları">
+        <div class="pricing-card">
+          <h3>Kimler İçin?</h3>
+          <ul class="audience-list">
+            <li>Erkek kuaförü</li>
+            <li>Kadın kuaförü</li>
+            <li>Pet kuaförü</li>
+            <li>Nail art</li>
+            <li>Oto kuaför</li>
+            <li>Halı Yıkama</li>
+            <li>Masör</li>
+            <li>Güzellik Uzmanı</li>
+            <li>Halı Saha</li>
+            <li>Personal Trainer</li>
+            <li>Bireysel Antrenör - Bisiklet</li>
+            <li>Bireysel Antrenör - Boks</li>
+            <li>Bireysel Antrenör - Tenis</li>
+            <li>Temizlik Firması</li>
+            <li>Dövme - Tattoo</li>
+            <li>Aile Terapisti</li>
+            <li>Terzi</li>
+            <li>Özel Ders Matematik</li>
+            <li>Özel Ders İngilizce</li>
+            <li>Usta - Su Tesisatı</li>
+            <li>Usta - Elektrik Tesisatı</li>
+            <li>Usta - Boya Badana</li>
+            <li>Usta - Doğalgaz Tesisatı</li>
+            <li>Düğün - Organizasyon Salonu</li>
+            <li>İş Makinesi - Vinç</li>
+            <li>Oto Kurtarıcı</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card">
+          <h3>Gold Business Neden Avantajlı?</h3>
+          <p>
+            Tek tek Gold almak yerine işletmeniz Gold Business ile ekibini tek paket altında toplar.
+            Çalışanlarınız Gold özelliklerinden yararlanır; 3 çalışanlı ekipte bile maliyet avantajı başlar,
+            ekip büyüdükçe fark daha da artar.
+          </p>
+        </div>
+      </div>
 
       <div class="pricing-scroll">
         <table class="pricing-table">
