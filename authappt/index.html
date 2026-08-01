@@ -67,6 +67,11 @@
       background:#fff; color:#14233b; border:1px solid var(--line);
       display:flex; align-items:center; gap:10px; justify-content:center;
     }
+    .btn-apple{
+      background:#000; color:#fff; border:1px solid #000;
+      display:flex; align-items:center; gap:10px; justify-content:center;
+      margin-top:8px;
+    }
 
     .company-card{
       border:1px solid var(--line);
@@ -138,11 +143,11 @@
         </div>
         <div class="field">
           <label for="fCity">İl</label>
-          <input type="text" id="fCity" placeholder="Örn: İstanbul" />
+          <select id="fCity"><option value="">İl seçin</option></select>
         </div>
         <div class="field">
           <label for="fDistrict">İlçe</label>
-          <input type="text" id="fDistrict" placeholder="Örn: Kadıköy" />
+          <select id="fDistrict" disabled><option value="">Önce il seçin</option></select>
         </div>
       </div>
       <div class="row" style="margin-top:10px;">
@@ -179,6 +184,9 @@
         <p class="muted">Randevu talebi göndermek için Google hesabınızla giriş yapmanız gerekiyor.</p>
         <button class="btn-google" id="btnGoogleSignIn">
           Google ile giriş yap
+        </button>
+        <button class="btn-apple" id="btnAppleSignIn">
+          Apple ile giriş yap
         </button>
       </div>
 
@@ -266,6 +274,48 @@
       opt.value = s;
       opt.textContent = s;
       fServiceType.appendChild(opt);
+    });
+
+    // ============================================================
+    // 2b) İl / İlçe (assets/cityies.json - Flutter uygulamasıyla aynı
+    //     kaynak dosya; aynı klasöre kopyalanmalı: authappt/cityies.json)
+    // ============================================================
+    const fCity = document.getElementById("fCity");
+    const fDistrict = document.getElementById("fDistrict");
+    let CITY_DATA = [];
+
+    async function loadCityData() {
+      try {
+        const res = await fetch("./cityies.json", { cache: "force-cache" });
+        CITY_DATA = await res.json();
+        fCity.innerHTML = '<option value="">İl seçin</option>';
+        CITY_DATA.forEach((c) => {
+          const opt = document.createElement("option");
+          opt.value = c.text;
+          opt.textContent = c.text;
+          fCity.appendChild(opt);
+        });
+      } catch (e) {
+        console.error("İl/ilçe verisi yüklenemedi", e);
+      }
+    }
+    loadCityData();
+
+    fCity.addEventListener("change", () => {
+      const city = CITY_DATA.find((c) => c.text === fCity.value);
+      fDistrict.innerHTML = '<option value="">İlçe seçin</option>';
+      if (city && city.districts && city.districts.length) {
+        fDistrict.disabled = false;
+        city.districts.forEach((d) => {
+          const opt = document.createElement("option");
+          opt.value = d.text;
+          opt.textContent = d.text;
+          fDistrict.appendChild(opt);
+        });
+      } else {
+        fDistrict.disabled = true;
+        fDistrict.innerHTML = '<option value="">Önce il seçin</option>';
+      }
     });
 
     // ============================================================
@@ -382,6 +432,7 @@
     const authStatusText = document.getElementById("authStatusText");
     const btnSignOut = document.getElementById("btnSignOut");
     const btnGoogleSignIn = document.getElementById("btnGoogleSignIn");
+    const btnAppleSignIn = document.getElementById("btnAppleSignIn");
     const btnCloseBooking = document.getElementById("btnCloseBooking");
     const fDate = document.getElementById("fDate");
     const slotsEl = document.getElementById("slots");
@@ -428,6 +479,17 @@
     btnGoogleSignIn.addEventListener("click", async () => {
       try {
         const provider = new firebase.auth.GoogleAuthProvider();
+        await auth.signInWithPopup(provider);
+      } catch (e) {
+        alert("Giriş yapılamadı: " + (e.message || e));
+      }
+    });
+
+    btnAppleSignIn.addEventListener("click", async () => {
+      try {
+        const provider = new firebase.auth.OAuthProvider("apple.com");
+        provider.addScope("email");
+        provider.addScope("name");
         await auth.signInWithPopup(provider);
       } catch (e) {
         alert("Giriş yapılamadı: " + (e.message || e));
