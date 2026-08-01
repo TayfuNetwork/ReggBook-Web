@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>ReggBook | Web'den Randevu Al</title>
+  <meta name="description" content="ReggBook isletmelerinde arama yapin ve web uzerinden randevu talebi gonderin." />
+
+  <style>
+    :root{
+      --bg:#f3f8ff;
+      --card:#ffffff;
+      --text:#14233b;
+      --muted:rgba(20,35,59,.68);
+      --line:rgba(28,55,96,.14);
+      --accent:#285ed8;
+      --shadow:0 18px 55px rgba(28,55,96,.12);
+      --r:16px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      padding:16px 12px 60px;
+      font-family: Arial, sans-serif;
+      color:var(--text);
+      background: radial-gradient(900px 650px at 15% 10%, rgba(79,115,255,.12), transparent 60%), var(--bg);
+    }
+    .wrap{ max-width: 720px; margin: 0 auto; }
+    h1{ font-size:22px; margin:6px 0 4px; }
+    .sub{ color:var(--muted); font-size:14px; margin:0 0 18px; }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--r);
+      box-shadow:var(--shadow);
+      padding:16px;
+      margin-bottom:16px;
+    }
+
+    .row{ display:flex; gap:10px; flex-wrap:wrap; }
+    .field{ flex:1 1 140px; display:flex; flex-direction:column; gap:4px; }
+    label{ font-size:12px; font-weight:bold; color:var(--muted); }
+    select, input[type="text"], input[type="tel"], input[type="date"]{
+      padding:10px 10px;
+      border-radius:10px;
+      border:1px solid var(--line);
+      font-size:14px;
+      background:#fff;
+      color:var(--text);
+      width:100%;
+    }
+
+    button{
+      cursor:pointer;
+      border:none;
+      border-radius:12px;
+      padding:12px 16px;
+      font-size:14px;
+      font-weight:bold;
+    }
+    .btn-primary{ background:var(--accent); color:#fff; }
+    .btn-primary:disabled{ opacity:.55; cursor:not-allowed; }
+    .btn-secondary{ background:#eef3ff; color:var(--accent); }
+    .btn-google{
+      background:#fff; color:#14233b; border:1px solid var(--line);
+      display:flex; align-items:center; gap:10px; justify-content:center;
+    }
+
+    .company-card{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px;
+      margin-bottom:10px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .company-card img{
+      width:48px; height:48px; border-radius:10px; object-fit:cover;
+      background:#eef3ff; flex-shrink:0;
+    }
+    .company-info{ flex:1; min-width:0; }
+    .company-name{ font-weight:bold; font-size:15px; margin:0 0 2px; }
+    .company-meta{ font-size:12px; color:var(--muted); margin:0; }
+    .badge-gold{
+      display:inline-block; margin-left:6px; font-size:10px; font-weight:bold;
+      color:#a8710a; background:#fff4da; border-radius:999px; padding:2px 7px;
+    }
+
+    .warn{
+      font-size:12px; color:#b42318; background:#fff2f0; border:1px solid #ffd6d1;
+      border-radius:10px; padding:8px 10px; margin-top:6px;
+    }
+
+    .slots{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+    .slot-btn{
+      background:#fff; border:1px solid var(--line); color:var(--text);
+      border-radius:10px; padding:8px 10px; font-size:13px; font-weight:normal;
+    }
+    .slot-btn.selected{ background:var(--accent); color:#fff; border-color:var(--accent); }
+    .slot-btn:disabled{ opacity:.35; cursor:not-allowed; text-decoration:line-through; }
+
+    .msg{ font-size:13px; margin-top:10px; }
+    .msg.ok{ color:#047857; }
+    .msg.err{ color:#b42318; }
+
+    .hidden{ display:none !important; }
+    .muted{ color:var(--muted); font-size:13px; }
+
+    .userbar{
+      display:flex; align-items:center; justify-content:space-between;
+      font-size:13px; color:var(--muted); margin-bottom:8px;
+    }
+    .userbar b{ color:var(--text); }
+    .linklike{ background:none; border:none; color:var(--accent); font-weight:bold; padding:4px; font-size:13px; }
+
+    .spinner{
+      width:16px; height:16px; border-radius:50%;
+      border:2px solid rgba(40,94,216,.25); border-top-color:var(--accent);
+      animation:spin .8s linear infinite; display:inline-block; vertical-align:middle;
+    }
+    @keyframes spin{ to{ transform:rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>ReggBook'ta İşletme Bul</h1>
+    <p class="sub">Hizmet, il ve ilçe seçerek arama yapın; uygunsa doğrudan web üzerinden randevu talebi gönderin.</p>
+
+    <!-- ARAMA -->
+    <div class="card">
+      <div class="row">
+        <div class="field">
+          <label for="fServiceType">Hizmet</label>
+          <select id="fServiceType"></select>
+        </div>
+        <div class="field">
+          <label for="fCity">İl</label>
+          <input type="text" id="fCity" placeholder="Örn: İstanbul" />
+        </div>
+        <div class="field">
+          <label for="fDistrict">İlçe</label>
+          <input type="text" id="fDistrict" placeholder="Örn: Kadıköy" />
+        </div>
+      </div>
+      <div class="row" style="margin-top:10px;">
+        <div class="field">
+          <label for="fNeighborhood">Mahalle (opsiyonel)</label>
+          <input type="text" id="fNeighborhood" placeholder="Örn: Fenerbahçe" />
+        </div>
+      </div>
+      <div style="margin-top:12px;">
+        <button class="btn-primary" id="btnSearch">Ara</button>
+        <span id="searchSpinner" class="spinner hidden"></span>
+      </div>
+      <div id="searchMsg" class="msg"></div>
+    </div>
+
+    <!-- SONUÇLAR -->
+    <div id="resultsWrap" class="hidden">
+      <h2 style="font-size:16px;">Sonuçlar</h2>
+      <div id="results"></div>
+    </div>
+
+    <!-- RANDEVU PANELİ -->
+    <div id="bookingWrap" class="card hidden">
+      <div class="userbar">
+        <span id="authStatusText">Giriş yapılmadı.</span>
+        <div>
+          <button class="btn-secondary hidden" id="btnSignOut">Çıkış yap</button>
+        </div>
+      </div>
+
+      <h2 id="bookingCompanyName" style="font-size:16px; margin:4px 0 10px;"></h2>
+
+      <div id="signInGate">
+        <p class="muted">Randevu talebi göndermek için Google hesabınızla giriş yapmanız gerekiyor.</p>
+        <button class="btn-google" id="btnGoogleSignIn">
+          Google ile giriş yap
+        </button>
+      </div>
+
+      <div id="bookingForm" class="hidden">
+        <div class="row">
+          <div class="field">
+            <label for="fDate">Tarih</label>
+            <input type="date" id="fDate" />
+          </div>
+        </div>
+
+        <div id="slotsMsg" class="muted" style="margin-top:8px;"></div>
+        <div id="slots" class="slots"></div>
+
+        <div class="row" style="margin-top:14px;">
+          <div class="field">
+            <label for="fName">Ad Soyad</label>
+            <input type="text" id="fName" placeholder="Ad Soyad" />
+          </div>
+          <div class="field">
+            <label for="fPhone">Telefon</label>
+            <input type="tel" id="fPhone" placeholder="05xx xxx xx xx" />
+          </div>
+        </div>
+
+        <div style="margin-top:14px;">
+          <button class="btn-primary" id="btnSubmitRequest" disabled>Randevu Talebi Gönder</button>
+          <span id="submitSpinner" class="spinner hidden"></span>
+        </div>
+        <div id="submitMsg" class="msg"></div>
+      </div>
+
+      <button class="linklike" id="btnCloseBooking" style="margin-top:10px;">Kapat</button>
+    </div>
+  </div>
+
+  <!-- ================= Firebase SDK (compat) ================= -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-functions-compat.js"></script>
+
+  <script>
+    // ============================================================
+    // 1) FIREBASE CONFIG - Firebase Console > Project settings >
+    //    General > Your apps > Web app'teki config'i buraya yapistir.
+    //    Web app yoksa "Add app > Web" ile bir tane olustur.
+    // ============================================================
+    const firebaseConfig = {
+      apiKey: "REPLACE_ME",
+      authDomain: "REPLACE_ME.firebaseapp.com",
+      projectId: "REPLACE_ME",
+      storageBucket: "REPLACE_ME.appspot.com",
+      messagingSenderId: "REPLACE_ME",
+      appId: "REPLACE_ME"
+    };
+
+    const FUNCTIONS_REGION = "us-central1";
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const functions = firebase.app().functions(FUNCTIONS_REGION);
+
+    const callSearchWebCompanies = functions.httpsCallable("searchWebCompanies");
+    const callGetCompanyAvailability = functions.httpsCallable("getCompanyAvailability");
+    const callSubmitWebAppointmentRequest = functions.httpsCallable("submitWebAppointmentRequest");
+
+    // ============================================================
+    // 2) Sabitler (uygulamadaki hizmet listesiyle birebir ayni)
+    // ============================================================
+    const SERVICE_TYPES = [
+      "Erkek kuaförü", "Kadın kuaförü", "Pet kuaförü", "Nail art", "Oto kuaför",
+      "Halı Yıkama", "Masör", "Güzellik Uzmanı", "Halı Saha", "Personal Trainer",
+      "Bireysel Antrenör - Bisiklet", "Bireysel Antrenör - Boks", "Bireysel Antrenör - Tenis",
+      "Temizlik Firması", "Dövme - Tattoo", "Aile Terapisti", "Terzi",
+      "Özel Ders Matematik", "Özel Ders İngilizce", "Usta - Su Tesisatı",
+      "Usta - Elektrik Tesisatı", "Usta - Boya Badana", "Usta - Doğalgaz Tesisatı",
+      "Düğün - Organizasyon Salonu", "İş Makinesi - Vinç", "Oto Kurtarıcı"
+    ];
+
+    const fServiceType = document.getElementById("fServiceType");
+    SERVICE_TYPES.forEach((s) => {
+      const opt = document.createElement("option");
+      opt.value = s;
+      opt.textContent = s;
+      fServiceType.appendChild(opt);
+    });
+
+    // ============================================================
+    // 3) Arama
+    // ============================================================
+    const btnSearch = document.getElementById("btnSearch");
+    const searchSpinner = document.getElementById("searchSpinner");
+    const searchMsg = document.getElementById("searchMsg");
+    const resultsWrap = document.getElementById("resultsWrap");
+    const resultsEl = document.getElementById("results");
+
+    function minToTime(min) {
+      const h = Math.floor(min / 60).toString().padStart(2, "0");
+      const m = (min % 60).toString().padStart(2, "0");
+      return `${h}:${m}`;
+    }
+
+    function renderResults(companies) {
+      resultsEl.innerHTML = "";
+      if (!companies.length) {
+        resultsWrap.classList.remove("hidden");
+        resultsEl.innerHTML = '<p class="muted">Bu kriterlere uygun işletme bulunamadı.</p>';
+        return;
+      }
+
+      companies.forEach((c) => {
+        const card = document.createElement("div");
+        card.className = "company-card";
+
+        const img = document.createElement("img");
+        img.src = c.logoUrl || "https://reggbook.com/logoo.png";
+        img.alt = c.companyName;
+        img.onerror = () => { img.src = "https://reggbook.com/logoo.png"; };
+
+        const info = document.createElement("div");
+        info.className = "company-info";
+
+        const name = document.createElement("p");
+        name.className = "company-name";
+        name.textContent = c.companyName;
+        if (c.isGold) {
+          const badge = document.createElement("span");
+          badge.className = "badge-gold";
+          badge.textContent = "GOLD";
+          name.appendChild(badge);
+        }
+
+        const meta = document.createElement("p");
+        meta.className = "company-meta";
+        const parts = [c.serviceType, [c.district, c.city].filter(Boolean).join(" / ")].filter(Boolean);
+        meta.textContent = parts.join(" • ");
+
+        info.appendChild(name);
+        info.appendChild(meta);
+
+        if (c.webAppt) {
+          const btn = document.createElement("button");
+          btn.className = "btn-secondary";
+          btn.textContent = "Randevu Al";
+          btn.style.marginTop = "8px";
+          btn.onclick = () => openBooking(c);
+          info.appendChild(btn);
+        } else {
+          const warn = document.createElement("div");
+          warn.className = "warn";
+          warn.innerHTML = 'Bu işletme yalnızca ReggBook mobil uygulaması üzerinden randevu kabul ediyor. <a href="https://reggbook.com/download/" target="_blank" rel="noopener">Uygulamayı indir</a>';
+          info.appendChild(warn);
+        }
+
+        card.appendChild(img);
+        card.appendChild(info);
+        resultsEl.appendChild(card);
+      });
+
+      resultsWrap.classList.remove("hidden");
+    }
+
+    btnSearch.addEventListener("click", async () => {
+      const serviceType = fServiceType.value;
+      const city = document.getElementById("fCity").value.trim();
+      const district = document.getElementById("fDistrict").value.trim();
+      const neighborhood = document.getElementById("fNeighborhood").value.trim();
+
+      searchMsg.textContent = "";
+      searchMsg.className = "msg";
+
+      if (!serviceType || !city || !district) {
+        searchMsg.textContent = "Lütfen hizmet, il ve ilçe seçin.";
+        searchMsg.className = "msg err";
+        return;
+      }
+
+      btnSearch.disabled = true;
+      searchSpinner.classList.remove("hidden");
+      try {
+        const res = await callSearchWebCompanies({ serviceType, city, district, neighborhood });
+        renderResults(res.data.results || []);
+      } catch (e) {
+        searchMsg.textContent = "Arama sırasında hata oluştu: " + (e.message || e);
+        searchMsg.className = "msg err";
+      } finally {
+        btnSearch.disabled = false;
+        searchSpinner.classList.add("hidden");
+      }
+    });
+
+    // ============================================================
+    // 4) Randevu paneli (secim, tarih/saat, giris, gonderim)
+    // ============================================================
+    const bookingWrap = document.getElementById("bookingWrap");
+    const bookingCompanyName = document.getElementById("bookingCompanyName");
+    const signInGate = document.getElementById("signInGate");
+    const bookingForm = document.getElementById("bookingForm");
+    const authStatusText = document.getElementById("authStatusText");
+    const btnSignOut = document.getElementById("btnSignOut");
+    const btnGoogleSignIn = document.getElementById("btnGoogleSignIn");
+    const btnCloseBooking = document.getElementById("btnCloseBooking");
+    const fDate = document.getElementById("fDate");
+    const slotsEl = document.getElementById("slots");
+    const slotsMsg = document.getElementById("slotsMsg");
+    const fName = document.getElementById("fName");
+    const fPhone = document.getElementById("fPhone");
+    const btnSubmitRequest = document.getElementById("btnSubmitRequest");
+    const submitSpinner = document.getElementById("submitSpinner");
+    const submitMsg = document.getElementById("submitMsg");
+
+    let currentCompany = null;
+    let selectedSlot = null; // {startMin, endMin}
+
+    function dateToKey(dateStr) {
+      // dateStr: YYYY-MM-DD (input[type=date] formati)
+      return dateStr.replace(/-/g, "");
+    }
+
+    function openBooking(company) {
+      currentCompany = company;
+      selectedSlot = null;
+      bookingCompanyName.textContent = company.companyName;
+      submitMsg.textContent = "";
+      slotsEl.innerHTML = "";
+      slotsMsg.textContent = "";
+
+      const today = new Date();
+      const iso = today.toISOString().slice(0, 10);
+      fDate.value = iso;
+      fDate.min = iso;
+
+      updateAuthUi();
+      bookingWrap.classList.remove("hidden");
+      bookingWrap.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      if (auth.currentUser) loadAvailability();
+    }
+
+    btnCloseBooking.addEventListener("click", () => {
+      bookingWrap.classList.add("hidden");
+      currentCompany = null;
+    });
+
+    btnGoogleSignIn.addEventListener("click", async () => {
+      try {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        await auth.signInWithPopup(provider);
+      } catch (e) {
+        alert("Giriş yapılamadı: " + (e.message || e));
+      }
+    });
+
+    btnSignOut.addEventListener("click", () => auth.signOut());
+
+    auth.onAuthStateChanged((user) => {
+      updateAuthUi();
+      if (user && currentCompany) loadAvailability();
+    });
+
+    function updateAuthUi() {
+      const user = auth.currentUser;
+      if (user) {
+        authStatusText.innerHTML = "Giriş yapıldı: <b>" + (user.displayName || user.email || "Kullanıcı") + "</b>";
+        btnSignOut.classList.remove("hidden");
+        signInGate.classList.add("hidden");
+        bookingForm.classList.remove("hidden");
+        fName.value = fName.value || (user.displayName || "");
+      } else {
+        authStatusText.textContent = "Giriş yapılmadı.";
+        btnSignOut.classList.add("hidden");
+        signInGate.classList.remove("hidden");
+        bookingForm.classList.add("hidden");
+      }
+    }
+
+    fDate.addEventListener("change", () => {
+      if (auth.currentUser && currentCompany) loadAvailability();
+    });
+
+    async function loadAvailability() {
+      if (!currentCompany) return;
+      selectedSlot = null;
+      btnSubmitRequest.disabled = true;
+      slotsEl.innerHTML = "";
+      slotsMsg.textContent = "Uygun saatler yükleniyor...";
+
+      const dateKey = dateToKey(fDate.value);
+      try {
+        const res = await callGetCompanyAvailability({
+          companyId: currentCompany.companyId,
+          dateKey,
+        });
+        const slots = res.data.slots || [];
+        if (!slots.length) {
+          slotsMsg.textContent = "Bu gün için müsaitlik bilgisi bulunamadı, başka bir tarih deneyin.";
+          return;
+        }
+        slotsMsg.textContent = "Uygun bir saat seçin:";
+        slots.forEach((s) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "slot-btn";
+          btn.textContent = minToTime(s.startMin);
+          btn.disabled = !s.free;
+          btn.addEventListener("click", () => {
+            selectedSlot = { startMin: s.startMin, endMin: s.endMin };
+            [...slotsEl.children].forEach((b) => b.classList.remove("selected"));
+            btn.classList.add("selected");
+            btnSubmitRequest.disabled = false;
+          });
+          slotsEl.appendChild(btn);
+        });
+      } catch (e) {
+        slotsMsg.textContent = "Müsaitlik bilgisi alınamadı: " + (e.message || e);
+      }
+    }
+
+    btnSubmitRequest.addEventListener("click", async () => {
+      submitMsg.textContent = "";
+      submitMsg.className = "msg";
+
+      if (!currentCompany || !selectedSlot) {
+        submitMsg.textContent = "Lütfen bir saat seçin.";
+        submitMsg.className = "msg err";
+        return;
+      }
+      const customerName = fName.value.trim();
+      const customerPhone = fPhone.value.trim();
+      if (customerName.length < 2) {
+        submitMsg.textContent = "Lütfen ad soyad girin.";
+        submitMsg.className = "msg err";
+        return;
+      }
+      if (customerPhone.replace(/\D/g, "").length < 10) {
+        submitMsg.textContent = "Lütfen geçerli bir telefon numarası girin.";
+        submitMsg.className = "msg err";
+        return;
+      }
+
+      btnSubmitRequest.disabled = true;
+      submitSpinner.classList.remove("hidden");
+      try {
+        await callSubmitWebAppointmentRequest({
+          companyId: currentCompany.companyId,
+          customerName,
+          customerPhone,
+          dateKey: dateToKey(fDate.value),
+          startMin: selectedSlot.startMin,
+          endMin: selectedSlot.endMin,
+        });
+        submitMsg.textContent = "Randevu talebiniz gönderildi. İşletme onayladığında bilgilendirileceksiniz.";
+        submitMsg.className = "msg ok";
+        btnSubmitRequest.textContent = "Gönderildi";
+      } catch (e) {
+        submitMsg.textContent = e.message || "Talep gönderilemedi.";
+        submitMsg.className = "msg err";
+        btnSubmitRequest.disabled = false;
+      } finally {
+        submitSpinner.classList.add("hidden");
+      }
+    });
+  </script>
+</body>
+</html>
