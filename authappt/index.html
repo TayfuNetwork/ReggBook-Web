@@ -134,6 +134,22 @@
     <h1>ReggBook'ta İşletme Bul</h1>
     <p class="sub">Hizmet, il ve ilçe seçerek arama yapın; uygunsa doğrudan web üzerinden randevu talebi gönderin.</p>
 
+    <p class="muted" style="margin:-8px 0 16px;">
+      <a href="#" class="linklike" id="myRequestsLink" style="padding:0;">Önceki randevu taleplerinizi kontrol etmek için tıklayınız.</a>
+    </p>
+
+    <!-- TALEPLERİM İÇİN GİRİŞ -->
+    <div id="myReqAuthGate" class="card hidden">
+      <p class="muted" style="margin-top:0;">Taleplerinizi görmek için giriş yapmanız gerekiyor.</p>
+      <button class="btn-google" id="btnMyReqGoogleSignIn">
+        Google ile giriş yap
+      </button>
+      <button class="btn-apple" id="btnMyReqAppleSignIn">
+        Apple ile giriş yap
+      </button>
+      <div id="myReqAuthMsg" class="msg"></div>
+    </div>
+
     <!-- ARAMA -->
     <div class="card">
       <div class="row">
@@ -165,7 +181,7 @@
 
     <!-- SONUÇLAR -->
     <div id="resultsWrap" class="hidden">
-      <h2 style="font-size:16px;">Sonuçlar</h2>
+      <h2 id="resultsTitle" style="font-size:16px;">Sonuçlar</h2>
       <div id="results"></div>
     </div>
 
@@ -254,6 +270,7 @@
     const callSearchWebCompanies = functions.httpsCallable("searchWebCompanies");
     const callGetCompanyAvailability = functions.httpsCallable("getCompanyAvailability");
     const callSubmitWebAppointmentRequest = functions.httpsCallable("submitWebAppointmentRequest");
+    const callGetMyAppointmentRequests = functions.httpsCallable("getMyAppointmentRequests");
 
     // ============================================================
     // 2) Sabitler (uygulamadaki hizmet listesiyle birebir ayni)
@@ -326,6 +343,7 @@
     const searchMsg = document.getElementById("searchMsg");
     const resultsWrap = document.getElementById("resultsWrap");
     const resultsEl = document.getElementById("results");
+    const resultsTitle = document.getElementById("resultsTitle");
 
     function minToTime(min) {
       const h = Math.floor(min / 60).toString().padStart(2, "0");
@@ -423,6 +441,109 @@
     });
 
     // ============================================================
+    // 3b) Taleplerim (onceki randevu talepleri)
+    // ============================================================
+    const myRequestsLink = document.getElementById("myRequestsLink");
+    const myReqAuthGate = document.getElementById("myReqAuthGate");
+    const myReqAuthMsg = document.getElementById("myReqAuthMsg");
+    const btnMyReqGoogleSignIn = document.getElementById("btnMyReqGoogleSignIn");
+    const btnMyReqAppleSignIn = document.getElementById("btnMyReqAppleSignIn");
+
+    btnMyReqGoogleSignIn.addEventListener("click", () => doGoogleSignIn(myReqAuthMsg));
+    btnMyReqAppleSignIn.addEventListener("click", () => doAppleSignIn(myReqAuthMsg));
+
+    const STATUS_LABELS = {
+      pending: { text: "Beklemede", cls: "" },
+      approved: { text: "Onaylandı", cls: "ok" },
+      declined: { text: "Onaylanmadı", cls: "err" },
+      rejected: { text: "Onaylanmadı", cls: "err" },
+    };
+
+    function keyToDate(dateKey) {
+      const s = (dateKey || "").toString();
+      if (s.length !== 8) return s;
+      return `${s.substring(6, 8)}.${s.substring(4, 6)}.${s.substring(0, 4)}`;
+    }
+
+    function renderMyRequests(items) {
+      resultsEl.innerHTML = "";
+      resultsWrap.classList.remove("hidden");
+      resultsTitle.textContent = "Taleplerim";
+
+      const backBtn = document.createElement("button");
+      backBtn.className = "linklike";
+      backBtn.style.padding = "0";
+      backBtn.style.marginBottom = "10px";
+      backBtn.textContent = "← Aramaya dön";
+      backBtn.onclick = () => {
+        resultsWrap.classList.add("hidden");
+        resultsTitle.textContent = "Sonuçlar";
+      };
+      resultsEl.appendChild(backBtn);
+
+      if (!items.length) {
+        const p = document.createElement("p");
+        p.className = "muted";
+        p.textContent = "Henüz bir randevu talebiniz yok.";
+        resultsEl.appendChild(p);
+        return;
+      }
+
+      items.forEach((it) => {
+        const card = document.createElement("div");
+        card.className = "company-card";
+
+        const info = document.createElement("div");
+        info.className = "company-info";
+
+        const name = document.createElement("p");
+        name.className = "company-name";
+        name.textContent = it.companyName;
+
+        const meta = document.createElement("p");
+        meta.className = "company-meta";
+        const parts = [it.serviceType, `${keyToDate(it.dateKey)} ${minToTime(it.startMin)}`].filter(Boolean);
+        meta.textContent = parts.join(" • ");
+
+        const statusInfo = STATUS_LABELS[it.status] || { text: it.status, cls: "" };
+        const statusEl = document.createElement("p");
+        statusEl.className = "msg " + statusInfo.cls;
+        statusEl.style.marginTop = "4px";
+        statusEl.textContent = "Durum: " + statusInfo.text;
+
+        info.appendChild(name);
+        info.appendChild(meta);
+        info.appendChild(statusEl);
+        card.appendChild(info);
+        resultsEl.appendChild(card);
+      });
+    }
+
+    async function loadMyRequests() {
+      resultsEl.innerHTML = '<p class="muted">Yükleniyor...</p>';
+      resultsWrap.classList.remove("hidden");
+      resultsTitle.textContent = "Taleplerim";
+      try {
+        const res = await callGetMyAppointmentRequests();
+        renderMyRequests(res.data.items || []);
+      } catch (e) {
+        resultsEl.innerHTML = '<p class="msg err">Talepler yüklenemedi: ' + (e.message || e) + "</p>";
+      }
+    }
+
+    myRequestsLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      myReqAuthMsg.textContent = "";
+      myReqAuthMsg.className = "msg";
+      if (!auth.currentUser) {
+        myReqAuthGate.classList.remove("hidden");
+        myReqAuthGate.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+      loadMyRequests();
+    });
+
+    // ============================================================
     // 4) Randevu paneli (secim, tarih/saat, giris, gonderim)
     // ============================================================
     const bookingWrap = document.getElementById("bookingWrap");
@@ -476,31 +597,42 @@
       currentCompany = null;
     });
 
-    btnGoogleSignIn.addEventListener("click", async () => {
+    async function doGoogleSignIn(msgEl) {
       try {
         const provider = new firebase.auth.GoogleAuthProvider();
         await auth.signInWithPopup(provider);
       } catch (e) {
-        alert("Giriş yapılamadı: " + (e.message || e));
+        const text = "Giriş yapılamadı: " + (e.message || e);
+        if (msgEl) { msgEl.textContent = text; msgEl.className = "msg err"; }
+        else alert(text);
       }
-    });
+    }
 
-    btnAppleSignIn.addEventListener("click", async () => {
+    async function doAppleSignIn(msgEl) {
       try {
         const provider = new firebase.auth.OAuthProvider("apple.com");
         provider.addScope("email");
         provider.addScope("name");
         await auth.signInWithPopup(provider);
       } catch (e) {
-        alert("Giriş yapılamadı: " + (e.message || e));
+        const text = "Giriş yapılamadı: " + (e.message || e);
+        if (msgEl) { msgEl.textContent = text; msgEl.className = "msg err"; }
+        else alert(text);
       }
-    });
+    }
+
+    btnGoogleSignIn.addEventListener("click", () => doGoogleSignIn());
+    btnAppleSignIn.addEventListener("click", () => doAppleSignIn());
 
     btnSignOut.addEventListener("click", () => auth.signOut());
 
     auth.onAuthStateChanged((user) => {
       updateAuthUi();
       if (user && currentCompany) loadAvailability();
+      if (user && !myReqAuthGate.classList.contains("hidden")) {
+        myReqAuthGate.classList.add("hidden");
+        loadMyRequests();
+      }
     });
 
     function updateAuthUi() {
