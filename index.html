@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
   <meta name="description" content="ReggBook; profesyonel dijital randevu defteri ve müşteri takip uygulamasıdır." />
+  <script src="/i18n.js" defer></script>
   <meta name="keywords" content="randevu uygulaması, kuaför randevu uygulaması, berber yönetim yazılımı, müşteri takip sistemi, ReggBook" />
   <meta name="author" content="Tayfun Kaya" />
 
@@ -798,15 +799,32 @@
 
       var audienceCard = document.querySelector('.audience-card');
       var audienceToggle = document.querySelector('.audience-toggle');
+      var AUDIENCE_TOGGLE_LABELS = {
+        tr: { collapsed: 'Tümünü gör', expanded: 'Daha az göster' },
+        en: { collapsed: 'See all', expanded: 'Show less' }
+      };
+
+      function currentLang() {
+        return (window.ReggbookI18n && window.ReggbookI18n.getLang) ? window.ReggbookI18n.getLang() : 'tr';
+      }
+
+      function refreshAudienceToggleLabel() {
+        if (!audienceToggle) return;
+        var expanded = audienceToggle.getAttribute('aria-expanded') === 'true';
+        var labels = AUDIENCE_TOGGLE_LABELS[currentLang()] || AUDIENCE_TOGGLE_LABELS.tr;
+        audienceToggle.textContent = expanded ? labels.expanded : labels.collapsed;
+      }
 
       if (audienceCard && audienceToggle) {
         audienceToggle.addEventListener('click', function() {
           var expanded = audienceToggle.getAttribute('aria-expanded') === 'true';
 
           audienceToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-          audienceToggle.textContent = expanded ? 'Tümünü gör' : 'Daha az göster';
           audienceCard.classList.toggle('is-collapsed', expanded);
+          refreshAudienceToggleLabel();
         });
+        window.addEventListener('reggbook:langchange', refreshAudienceToggleLabel);
+        refreshAudienceToggleLabel();
       }
     });
   </script>
@@ -822,17 +840,17 @@
       <img src="banner.png" alt="ReggBook">
     </div>
 
-    <h1>WhatsApp Karmaşasını Bitir.</h1>
-    <p class="tagline">Boş saatlerini müşteriler görsün, hızlıca talep göndersinler.</p>
+    <h1 data-tr="WhatsApp Karmaşasını Bitir." data-en="End the WhatsApp Chaos.">WhatsApp Karmaşasını Bitir.</h1>
+    <p class="tagline" data-tr="Boş saatlerini müşteriler görsün, hızlıca talep göndersinler." data-en="Let customers see your open slots and send requests instantly.">Boş saatlerini müşteriler görsün, hızlıca talep göndersinler.</p>
 
     <div class="book-appt-wrap">
-      <a href="/authappt/" class="book-appt-btn">Randevu Al</a>
+      <a href="/authappt/" class="book-appt-btn" data-tr="Randevu Al" data-en="Book an Appointment">Randevu Al</a>
     </div>
 
     <div class="trust-strip">
-      <div class="trust-item">✅ Müşteri ve İşletmelere Tamamen Reklamsız</div>
-      <div class="trust-item">✅ Tüm Paketlerde Ücretsiz Deneme</div>
-      <div class="trust-item">✅ Otomatik Hatırlatma</div>
+      <div class="trust-item" data-tr="✅ Müşteri ve İşletmelere Tamamen Reklamsız" data-en="✅ Completely Ad-Free for Customers &amp; Businesses">✅ Müşteri ve İşletmelere Tamamen Reklamsız</div>
+      <div class="trust-item" data-tr="✅ Tüm Paketlerde Ücretsiz Deneme" data-en="✅ Free Trial on Every Plan">✅ Tüm Paketlerde Ücretsiz Deneme</div>
+      <div class="trust-item" data-tr="✅ Otomatik Hatırlatma" data-en="✅ Automatic Reminders">✅ Otomatik Hatırlatma</div>
     </div>
 
     <div class="preview">
@@ -851,22 +869,34 @@
 
     <div class="store-buttons">
   <a href="#" onclick="handleDownloadClick(event)">
-    <img src="iosapp.webp" alt="ReggBook App Store indir">
+    <img src="iosapp.webp" alt="ReggBook App Store indir" data-tr="ReggBook App Store indir" data-en="Download ReggBook on the App Store" data-i18n-attr="alt">
   </a>
 
   <a href="#" onclick="handleDownloadClick(event)">
-    <img src="Pstore.jpg" alt="ReggBook Google Play indir">
+    <img src="Pstore.jpg" alt="ReggBook Google Play indir" data-tr="ReggBook Google Play indir" data-en="Download ReggBook on Google Play" data-i18n-attr="alt">
   </a>
 </div>
 
     <section class="pricing-section" aria-labelledby="pricing-title">
-      <h2 id="pricing-title">ReggBook Paketleri</h2>
-      <p class="pricing-note">İşletmeler, tüm paketlerde makul ücretsiz deneme süresiyle başlayabilir.</p>
+      <h2 id="pricing-title" data-tr="ReggBook Paketleri" data-en="ReggBook Plans">ReggBook Paketleri</h2>
+      <p class="pricing-note" data-tr="İşletmeler, tüm paketlerde makul ücretsiz deneme süresiyle başlayabilir." data-en="Businesses can start on any plan with a fair free trial period.">İşletmeler, tüm paketlerde makul ücretsiz deneme süresiyle başlayabilir.</p>
 
       <div class="info-cards" aria-label="ReggBook hakkında kısa bilgiler">
         <div class="pricing-card">
-          <h3>ReggBook Nedir?</h3>
-          <p>
+          <h3 data-tr="ReggBook Nedir?" data-en="What is ReggBook?">ReggBook Nedir?</h3>
+          <p data-i18n-html
+             data-tr="ReggBook; kuaförler, güzellik uzmanları, antrenörler, ustalar, temizlik firmaları
+            ve randevuyla çalışan diğer işletmeler için geliştirilmiş dijital randevu defteri
+            ve işletme yönetim sistemidir. İşletmeler randevu taleplerini yönetebilir, manuel
+            randevu oluşturabilir, müşterilerine otomatik hatırlatma gönderebilir, çalışanlarını
+            ve müşteri kayıtlarını tek yerden takip edebilir. Müşteriler ise uygulama içerisinden
+            uygun işletmeleri bulabilir ve randevu talebi oluşturabilir."
+             data-en="ReggBook is a digital appointment book and business management system built for
+            hairdressers, beauty experts, personal trainers, tradespeople, cleaning companies
+            and other appointment-based businesses. Businesses can manage appointment requests,
+            add manual appointments, send automatic reminders to customers, and track their
+            staff and customer records in one place. Customers can find suitable businesses
+            within the app and send appointment requests.">
             ReggBook; kuaförler, güzellik uzmanları, antrenörler, ustalar, temizlik firmaları
             ve randevuyla çalışan diğer işletmeler için geliştirilmiş dijital randevu defteri
             ve işletme yönetim sistemidir. İşletmeler randevu taleplerini yönetebilir, manuel
@@ -877,8 +907,21 @@
         </div>
 
         <div class="pricing-card">
-          <h3>Çalışanlar Nasıl Eklenir?</h3>
-          <p>
+          <h3 data-tr="Çalışanlar Nasıl Eklenir?" data-en="How Are Employees Added?">Çalışanlar Nasıl Eklenir?</h3>
+          <p data-i18n-html
+             data-tr="Çalışanlar ReggBook'a üye olurken 2. aşamada
+            <strong>&quot;ReggBook'a üye olan bir işletme çalışanıyım&quot;</strong> seçeneğini işaretler,
+            sadece kişisel bilgilerini girer ve devam eden aşamada şirket arama sayfasına ulaşır.
+            Buradan ReggBook'a üye olan işletme adını aratır ve tek tık ile başvuru gönderir.
+            İlgili işletme, ana sayfanın sol üst kısmında bulunan Seçenekler butonu -
+            Çalışan yönetimi - Çalışan Başvurusu yolunu takip ederek başvuruyu onaylar."
+             data-en="When signing up for ReggBook, employees check the
+            <strong>&quot;I am an employee of a business already registered on ReggBook&quot;</strong> option
+            in step 2, enter only their personal details, and reach the company search page in the
+            following step. From there they search for the name of the business registered on
+            ReggBook and send an application with one tap. The business approves the application
+            by following Options button - Employee Management - Employee Applications in the
+            top-left corner of its home page.">
             Çalışanlar ReggBook'a üye olurken 2. aşamada
             <strong>"ReggBook'a üye olan bir işletme çalışanıyım"</strong> seçeneğini işaretler,
             sadece kişisel bilgilerini girer ve devam eden aşamada şirket arama sayfasına ulaşır.
@@ -891,41 +934,46 @@
 
       <div class="pricing-cards" aria-label="ReggBook kullanım alanları ve paket avantajları">
         <div class="pricing-card audience-card is-collapsed">
-          <h3>Kimler İçin?</h3>
+          <h3 data-tr="Kimler İçin?" data-en="Who Is It For?">Kimler İçin?</h3>
           <ul class="audience-list" id="audience-list">
-            <li>Erkek kuaförü</li>
-            <li>Kadın kuaförü</li>
-            <li>Pet kuaförü</li>
-            <li>Nail art</li>
-            <li>Oto kuaför</li>
-            <li>Halı Yıkama</li>
-            <li>Masör</li>
-            <li>Güzellik Uzmanı</li>
-            <li>Halı Saha</li>
-            <li>Personal Trainer</li>
-            <li>Bireysel Antrenör - Bisiklet</li>
-            <li>Bireysel Antrenör - Boks</li>
-            <li>Bireysel Antrenör - Tenis</li>
-            <li>Temizlik Firması</li>
-            <li>Dövme - Tattoo</li>
-            <li>Aile Terapisti</li>
-            <li>Terzi</li>
-            <li>Özel Ders Matematik</li>
-            <li>Özel Ders İngilizce</li>
-            <li>Usta - Su Tesisatı</li>
-            <li>Usta - Elektrik Tesisatı</li>
-            <li>Usta - Boya Badana</li>
-            <li>Usta - Doğalgaz Tesisatı</li>
-            <li>Düğün - Organizasyon Salonu</li>
-            <li>İş Makinesi - Vinç</li>
-            <li>Oto Kurtarıcı</li>
+            <li data-tr="Erkek kuaförü" data-en="Men's hairdresser">Erkek kuaförü</li>
+            <li data-tr="Kadın kuaförü" data-en="Women's hairdresser">Kadın kuaförü</li>
+            <li data-tr="Pet kuaförü" data-en="Pet groomer">Pet kuaförü</li>
+            <li data-tr="Nail art" data-en="Nail art">Nail art</li>
+            <li data-tr="Oto kuaför" data-en="Car detailing">Oto kuaför</li>
+            <li data-tr="Halı Yıkama" data-en="Carpet cleaning">Halı Yıkama</li>
+            <li data-tr="Masör" data-en="Massage therapist">Masör</li>
+            <li data-tr="Güzellik Uzmanı" data-en="Beauty expert">Güzellik Uzmanı</li>
+            <li data-tr="Halı Saha" data-en="Football field rental">Halı Saha</li>
+            <li data-tr="Personal Trainer" data-en="Personal trainer">Personal Trainer</li>
+            <li data-tr="Bireysel Antrenör - Bisiklet" data-en="Individual coach - Cycling">Bireysel Antrenör - Bisiklet</li>
+            <li data-tr="Bireysel Antrenör - Boks" data-en="Individual coach - Boxing">Bireysel Antrenör - Boks</li>
+            <li data-tr="Bireysel Antrenör - Tenis" data-en="Individual coach - Tennis">Bireysel Antrenör - Tenis</li>
+            <li data-tr="Temizlik Firması" data-en="Cleaning company">Temizlik Firması</li>
+            <li data-tr="Dövme - Tattoo" data-en="Tattoo artist">Dövme - Tattoo</li>
+            <li data-tr="Aile Terapisti" data-en="Family therapist">Aile Terapisti</li>
+            <li data-tr="Terzi" data-en="Tailor">Terzi</li>
+            <li data-tr="Özel Ders Matematik" data-en="Private tutor - Math">Özel Ders Matematik</li>
+            <li data-tr="Özel Ders İngilizce" data-en="Private tutor - English">Özel Ders İngilizce</li>
+            <li data-tr="Usta - Su Tesisatı" data-en="Tradesperson - Plumbing">Usta - Su Tesisatı</li>
+            <li data-tr="Usta - Elektrik Tesisatı" data-en="Tradesperson - Electrical">Usta - Elektrik Tesisatı</li>
+            <li data-tr="Usta - Boya Badana" data-en="Tradesperson - Painting">Usta - Boya Badana</li>
+            <li data-tr="Usta - Doğalgaz Tesisatı" data-en="Tradesperson - Gas installation">Usta - Doğalgaz Tesisatı</li>
+            <li data-tr="Düğün - Organizasyon Salonu" data-en="Wedding &amp; event venue">Düğün - Organizasyon Salonu</li>
+            <li data-tr="İş Makinesi - Vinç" data-en="Heavy equipment - Crane">İş Makinesi - Vinç</li>
+            <li data-tr="Oto Kurtarıcı" data-en="Tow truck / roadside assistance">Oto Kurtarıcı</li>
           </ul>
           <button class="audience-toggle" type="button" aria-expanded="false" aria-controls="audience-list">Tümünü gör</button>
         </div>
 
         <div class="pricing-card">
-          <h3>Gold Business Neden Avantajlı?</h3>
-          <p>
+          <h3 data-tr="Gold Business Neden Avantajlı?" data-en="Why Is Gold Business Worth It?">Gold Business Neden Avantajlı?</h3>
+          <p data-tr="Tek tek Gold almak yerine işletmeniz Gold Business ile ekibini tek paket altında toplar.
+            Çalışanlarınız Gold özelliklerinden yararlanır; 3 çalışanlı ekipte bile maliyet avantajı başlar,
+            ekip büyüdükçe fark daha da artar."
+             data-en="Instead of buying Gold one by one, Gold Business lets your business bring its whole
+            team under a single plan. Your employees benefit from Gold features; the cost advantage
+            starts with a team of just 3, and grows further as your team grows.">
             Tek tek Gold almak yerine işletmeniz Gold Business ile ekibini tek paket altında toplar.
             Çalışanlarınız Gold özelliklerinden yararlanır; 3 çalışanlı ekipte bile maliyet avantajı başlar,
             ekip büyüdükçe fark daha da artar.
@@ -937,7 +985,7 @@
         <table class="pricing-table">
           <thead>
             <tr>
-              <th scope="col">Paket Özelliği</th>
+              <th scope="col" data-tr="Paket Özelliği" data-en="Plan Feature">Paket Özelliği</th>
               <th scope="col">
                 <span class="plan-name">Premium</span>
               </th>
@@ -946,12 +994,12 @@
               </th>
               <th scope="col">
                 <span class="plan-name">Gold</span>
-                <span class="plan-note">Kadın - erkek kuaförlere özel</span>
+                <span class="plan-note" data-tr="Kadın - erkek kuaförlere özel" data-en="Exclusive to women's &amp; men's hairdressers">Kadın - erkek kuaförlere özel</span>
               </th>
               <th scope="col">
                 <span class="plan-name">Gold Business</span>
-                <span class="plan-note">Kadın - erkek kuaförlere özel</span>
-                <span class="plan-note">Ekipler için Gold avantajı</span>
+                <span class="plan-note" data-tr="Kadın - erkek kuaförlere özel" data-en="Exclusive to women's &amp; men's hairdressers">Kadın - erkek kuaförlere özel</span>
+                <span class="plan-note" data-tr="Ekipler için Gold avantajı" data-en="Gold advantage for teams">Ekipler için Gold avantajı</span>
               </th>
               <th scope="col">
                 <span class="plan-name">Platinum</span>
@@ -960,140 +1008,140 @@
           </thead>
           <tbody>
             <tr>
-              <td>Deneme süresi</td>
-              <td>15 gün</td>
-              <td>7 gün</td>
-              <td>7 gün</td>
-              <td>7 gün</td>
-              <td>7 gün</td>
+              <td data-tr="Deneme süresi" data-en="Trial period">Deneme süresi</td>
+              <td data-tr="15 gün" data-en="15 days">15 gün</td>
+              <td data-tr="7 gün" data-en="7 days">7 gün</td>
+              <td data-tr="7 gün" data-en="7 days">7 gün</td>
+              <td data-tr="7 gün" data-en="7 days">7 gün</td>
+              <td data-tr="7 gün" data-en="7 days">7 gün</td>
             </tr>
             <tr>
-              <td>Aylık fiyat</td>
-              <td><span class="price">150 TL / ay</span></td>
-              <td><span class="price">350 TL + KDV / ay</span></td>
-              <td><span class="price">350 TL + KDV / ay</span></td>
-              <td><span class="price">700 TL + KDV / ay</span></td>
-              <td><span class="price">2000 TL + KDV / ay</span></td>
+              <td data-tr="Aylık fiyat" data-en="Monthly price">Aylık fiyat</td>
+              <td><span class="price" data-tr="150 TL / ay" data-en="150 TL / month">150 TL / ay</span></td>
+              <td><span class="price" data-tr="350 TL + KDV / ay" data-en="350 TL + VAT / month">350 TL + KDV / ay</span></td>
+              <td><span class="price" data-tr="350 TL + KDV / ay" data-en="350 TL + VAT / month">350 TL + KDV / ay</span></td>
+              <td><span class="price" data-tr="700 TL + KDV / ay" data-en="700 TL + VAT / month">700 TL + KDV / ay</span></td>
+              <td><span class="price" data-tr="2000 TL + KDV / ay" data-en="2000 TL + VAT / month">2000 TL + KDV / ay</span></td>
             </tr>
             <tr>
-              <td>Randevu talebi alma</td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
+              <td data-tr="Randevu talebi alma" data-en="Receive appointment requests">Randevu talebi alma</td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
             </tr>
             <tr>
-              <td>Manuel randevu ekleme</td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
+              <td data-tr="Manuel randevu ekleme" data-en="Add manual appointments">Manuel randevu ekleme</td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
             </tr>
             <tr>
-              <td>Hatırlatma bildirimleri alma</td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
+              <td data-tr="Hatırlatma bildirimleri alma" data-en="Receive reminder notifications">Hatırlatma bildirimleri alma</td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
             </tr>
             <tr>
-              <td>Müşteri tarafından işletme numarası görünmesi</td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
+              <td data-tr="Müşteri tarafından işletme numarası görünmesi" data-en="Business phone number visible to customers">Müşteri tarafından işletme numarası görünmesi</td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
             </tr>
             <tr>
-              <td>Sınırsız çalışan kaydı</td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
+              <td data-tr="Sınırsız çalışan kaydı" data-en="Unlimited employee records">Sınırsız çalışan kaydı</td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
             </tr>
             <tr>
-              <td>Çalışanlara Premium paket ücretsiz tanımlanması</td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
+              <td data-tr="Çalışanlara Premium paket ücretsiz tanımlanması" data-en="Free Premium plan assigned to employees">Çalışanlara Premium paket ücretsiz tanımlanması</td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
             </tr>
             <tr>
-              <td>Çalışanların Gold özelliklerinden yararlanması</td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
+              <td data-tr="Çalışanların Gold özelliklerinden yararlanması" data-en="Employees benefit from Gold features">Çalışanların Gold özelliklerinden yararlanması</td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
             </tr>
             <tr>
-              <td>Gold paket kullanan kadın - erkek kuaförlere özel AI saç stili ve yüz tipi analizi</td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
+              <td data-tr="Gold paket kullanan kadın - erkek kuaförlere özel AI saç stili ve yüz tipi analizi" data-en="AI hairstyle &amp; face shape analysis for Gold women's/men's hairdressers">Gold paket kullanan kadın - erkek kuaförlere özel AI saç stili ve yüz tipi analizi</td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
             </tr>
             <tr>
-              <td>Gold paket kullanan kadın - erkek kuaförlere özel AI yüz tipi ve makyaj tavsiyesi</td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
+              <td data-tr="Gold paket kullanan kadın - erkek kuaförlere özel AI yüz tipi ve makyaj tavsiyesi" data-en="AI face shape &amp; makeup advice for Gold women's/men's hairdressers">Gold paket kullanan kadın - erkek kuaförlere özel AI yüz tipi ve makyaj tavsiyesi</td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
             </tr>
             <tr>
-              <td>Müşteri aramalarında ön planda görünme</td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
+              <td data-tr="Müşteri aramalarında ön planda görünme" data-en="Priority placement in customer searches">Müşteri aramalarında ön planda görünme</td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
             </tr>
             <tr>
-              <td>Müşteri istikrar filtresi ile randevu talebi koşulu koyabilme</td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
+              <td data-tr="Müşteri istikrar filtresi ile randevu talebi koşulu koyabilme" data-en="Set appointment conditions with the customer reliability filter">Müşteri istikrar filtresi ile randevu talebi koşulu koyabilme</td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
             </tr>
             <tr>
-              <td>Başka şubeleri tanımlama</td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
+              <td data-tr="Başka şubeleri tanımlama" data-en="Register additional branches">Başka şubeleri tanımlama</td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
             </tr>
             <tr>
-              <td>Şube çalışanları yetkilendirme</td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
+              <td data-tr="Şube çalışanları yetkilendirme" data-en="Authorize branch employees">Şube çalışanları yetkilendirme</td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
             </tr>
             <tr>
-              <td>Şube kapatma - açma</td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
+              <td data-tr="Şube kapatma - açma" data-en="Open / close branches">Şube kapatma - açma</td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
             </tr>
             <tr>
-              <td>Şube raporlarına erişim</td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="no" aria-label="Yok">x</span></td>
-              <td><span class="yes" aria-label="Var">✓</span></td>
+              <td data-tr="Şube raporlarına erişim" data-en="Access branch reports">Şube raporlarına erişim</td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="no" aria-label="Yok" data-tr="Yok" data-en="No" data-i18n-attr="aria-label">x</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
             </tr>
           </tbody>
         </table>
@@ -1102,49 +1150,55 @@
 
     <div class="seo-sections">
       <div class="seo-box">
-        <h2>Randevu İptallerine Son</h2>
-        <p>ReggBook ile müşteri katılım oranlarını takip edin. Onaylanmış randevular ve otomatik hatırlatmalarla işletme düzeninizi koruyun.</p>
+        <h2 data-tr="Randevu İptallerine Son" data-en="Put an End to Appointment Cancellations">Randevu İptallerine Son</h2>
+        <p data-tr="ReggBook ile müşteri katılım oranlarını takip edin. Onaylanmış randevular ve otomatik hatırlatmalarla işletme düzeninizi koruyun." data-en="Track customer attendance rates with ReggBook. Keep your business organized with confirmed appointments and automatic reminders.">ReggBook ile müşteri katılım oranlarını takip edin. Onaylanmış randevular ve otomatik hatırlatmalarla işletme düzeninizi koruyun.</p>
       </div>
 
       <div class="seo-box">
-        <h2>Yapay Zeka Desteği</h2>
-        <p>Gold paket kullanan kadın ve erkek kuaförlerine özel AI tabanlı saç stili, yüz tipi analizi ve makyaj tavsiyesiyle müşterilerinize modern bir deneyim sunun.</p>
+        <h2 data-tr="Yapay Zeka Desteği" data-en="AI-Powered Support">Yapay Zeka Desteği</h2>
+        <p data-tr="Gold paket kullanan kadın ve erkek kuaförlerine özel AI tabanlı saç stili, yüz tipi analizi ve makyaj tavsiyesiyle müşterilerinize modern bir deneyim sunun." data-en="Offer your customers a modern experience with AI-based hairstyle, face shape analysis and makeup advice, exclusive to women's and men's hairdressers on the Gold plan.">Gold paket kullanan kadın ve erkek kuaförlerine özel AI tabanlı saç stili, yüz tipi analizi ve makyaj tavsiyesiyle müşterilerinize modern bir deneyim sunun.</p>
       </div>
 
       <div class="seo-box">
-        <h2>Profesyonel Randevu Defteri, Berber Yönetim Yazılımı, Kuaför Randevu Sistemi ve Modern İşletme Paneli Bir Arada.</h2>
-        <p>
+        <h2 data-tr="Profesyonel Randevu Defteri, Berber Yönetim Yazılımı, Kuaför Randevu Sistemi ve Modern İşletme Paneli Bir Arada." data-en="Professional Appointment Book, Barber Management Software, Hairdresser Booking System and a Modern Business Panel — All in One.">Profesyonel Randevu Defteri, Berber Yönetim Yazılımı, Kuaför Randevu Sistemi ve Modern İşletme Paneli Bir Arada.</h2>
+        <p data-tr="Berberler, kuaförler, güzellik salonları, bakım merkezleri ve randevu sistemi ile çalışan diğer işletmeler için geliştirilen ReggBook; sade arayüzü, müşteri yönetimi ve profesyonel görünümü tek bir mobil deneyimde birleştirir." data-en="Built for barbers, hairdressers, beauty salons, care centers and other appointment-based businesses, ReggBook combines a clean interface, customer management and a professional look in a single mobile experience.">
           Berberler, kuaförler, güzellik salonları, bakım merkezleri ve randevu sistemi ile çalışan diğer işletmeler için geliştirilen ReggBook; sade arayüzü, müşteri yönetimi ve profesyonel görünümü tek bir mobil deneyimde birleştirir.
         </p>
       </div>
 
       <div class="seo-box">
-        <h2>Müşteri katılım oranı takibi ile randevu iptallerine son.</h2>
-        <p>
+        <h2 data-tr="Müşteri katılım oranı takibi ile randevu iptallerine son." data-en="Track customer attendance rates and put an end to appointment cancellations.">Müşteri katılım oranı takibi ile randevu iptallerine son.</h2>
+        <p data-tr="ReggBook, yalnızca randevu oluşturmayı değil; müşteri devamlılığını, katılım alışkanlıklarını ve işletme düzenini daha görünür hale getirmeyi hedefler. Böylece işletmeler hem planlarını daha doğru yapabilir hem de zaman kaybını azaltabilir. Bunların yanı sıra, ilgili işletmeleri yalnızca onaylanmış randevuları bulunan ziyaretçiler puanlayabilir." data-en="ReggBook aims to make not just appointment creation, but also customer retention, attendance habits and overall business organization more visible. This helps businesses plan more accurately and reduce wasted time. In addition, a business can only be rated by visitors who have a confirmed appointment with it.">
           ReggBook, yalnızca randevu oluşturmayı değil; müşteri devamlılığını, katılım alışkanlıklarını ve işletme düzenini daha görünür hale getirmeyi hedefler. Böylece işletmeler hem planlarını daha doğru yapabilir hem de zaman kaybını azaltabilir. Bunların yanı sıra, ilgili işletmeleri yalnızca onaylanmış randevuları bulunan ziyaretçiler puanlayabilir.
         </p>
       </div>
     </div>
 
     <div class="bottom">
-      <div class="contact">
+      <div class="contact" data-i18n-html
+           data-tr="<strong>© 2026 ReggBook. Tüm hakları saklıdır.</strong><br>
+        <strong>İletişim:</strong> info@reggbook.com<br>
+        <strong>Tayfun Kaya</strong> tarafından geliştirilmiştir."
+           data-en="<strong>© 2026 ReggBook. All rights reserved.</strong><br>
+        <strong>Contact:</strong> info@reggbook.com<br>
+        Developed by <strong>Tayfun Kaya</strong>.">
         <strong>© 2026 ReggBook. Tüm hakları saklıdır.</strong><br>
         <strong>İletişim:</strong> info@reggbook.com<br>
         <strong>Tayfun Kaya</strong> tarafından geliştirilmiştir.
       </div>
 
       <div class="legal-links">
-        <a href="/gizliliksozlesmesi">Gizlilik Sözleşmesi</a>
-        <a href="/acik-riza">Açık Rıza Metni</a>
-        <a href="/kullanim-kosullari">Kullanım Koşulları</a>
+        <a href="/gizliliksozlesmesi" data-tr="Gizlilik Sözleşmesi" data-en="Privacy Policy" data-href-tr="/gizliliksozlesmesi" data-href-en="/privacy-policy">Gizlilik Sözleşmesi</a>
+        <a href="/acik-riza" data-tr="Açık Rıza Metni" data-en="Consent Notice" data-href-tr="/acik-riza" data-href-en="/express-consent">Açık Rıza Metni</a>
+        <a href="/kullanim-kosullari" data-tr="Kullanım Koşulları" data-en="Terms of Use" data-href-tr="/kullanim-kosullari" data-href-en="/terms-of-use">Kullanım Koşulları</a>
       </div>
     </div>
   </div>
 
   <div class="sticky-bottom-bar">
-    <div class="trust-text">⭐ 1000+ İŞLETME VERİSİ & ÜCRETSİZ</div>
+    <div class="trust-text" data-tr="⭐ 1000+ İŞLETME VERİSİ &amp; ÜCRETSİZ" data-en="⭐ 1000+ BUSINESSES &amp; FREE">⭐ 1000+ İŞLETME VERİSİ &amp; ÜCRETSİZ</div>
     <a href="#" class="download-link" onclick="handleDownloadClick(event)">
-      <img src="download.png" alt="ReggBook İndir">
+      <img src="download.png" alt="ReggBook İndir" data-tr="ReggBook İndir" data-en="Download ReggBook" data-i18n-attr="alt">
     </a>
   </div>
 </body>

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ReggBook | Web'den Randevu Al</title>
   <meta name="description" content="ReggBook isletmelerinde arama yapin ve web uzerinden randevu talebi gonderin." />
+  <script src="/i18n.js" defer></script>
 
   <style>
     :root{
@@ -201,25 +202,25 @@
       <a href="https://reggbook.com/" class="brand-logo-link">
         <img src="https://reggbook.com/logoo.png" alt="ReggBook" class="brand-logo">
       </a>
-      <a href="https://reggbook.com/" class="home-btn">← Anasayfa</a>
-      <h1>ReggBook'ta İşletme Bul</h1>
-      <p class="sub">Hizmet, il ve ilçe seçerek arama yapın; uygunsa doğrudan web üzerinden randevu talebi gönderin.</p>
+      <a href="https://reggbook.com/" class="home-btn" data-tr="← Anasayfa" data-en="← Home">← Anasayfa</a>
+      <h1 data-tr="ReggBook'ta İşletme Bul" data-en="Find a Business on ReggBook">ReggBook'ta İşletme Bul</h1>
+      <p class="sub" data-tr="Hizmet, il ve ilçe seçerek arama yapın; uygunsa doğrudan web üzerinden randevu talebi gönderin." data-en="Search by service, province and district; if available, send an appointment request directly on the web.">Hizmet, il ve ilçe seçerek arama yapın; uygunsa doğrudan web üzerinden randevu talebi gönderin.</p>
     </div>
 
     <div class="my-requests-bar">
-      <a href="#" class="my-requests-link" id="myRequestsLink">📋 Önceki randevu taleplerinizi kontrol etmek için tıklayınız.</a>
+      <a href="#" class="my-requests-link" id="myRequestsLink" data-tr="📋 Önceki randevu taleplerinizi kontrol etmek için tıklayınız." data-en="📋 Click to check your previous appointment requests.">📋 Önceki randevu taleplerinizi kontrol etmek için tıklayınız.</a>
     </div>
 
     <!-- TALEPLERİM İÇİN GİRİŞ -->
     <div id="myReqAuthGate" class="card hidden">
-      <p class="muted" style="margin-top:0;">Taleplerinizi görmek için giriş yapmanız gerekiyor.</p>
+      <p class="muted" style="margin-top:0;" data-tr="Taleplerinizi görmek için giriş yapmanız gerekiyor." data-en="You need to sign in to see your requests.">Taleplerinizi görmek için giriş yapmanız gerekiyor.</p>
       <button class="btn-google" id="btnMyReqGoogleSignIn">
         <svg width="18" height="18" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 15.1 18.9 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.5 0 10.5-2.1 14.3-5.6l-6.6-5.6C29.6 34.7 26.9 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.6 5.1C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.2 4.3-4.1 5.8l6.6 5.6C39.9 37 44 31 44 24c0-1.3-.1-2.7-.4-3.5z"/></svg>
-        Google ile giriş yap
+        <span data-tr="Google ile giriş yap" data-en="Sign in with Google">Google ile giriş yap</span>
       </button>
       <button class="btn-apple" id="btnMyReqAppleSignIn">
         <svg width="16" height="18" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-        Apple ile giriş yap
+        <span data-tr="Apple ile giriş yap" data-en="Sign in with Apple">Apple ile giriş yap</span>
       </button>
       <div id="myReqAuthMsg" class="msg"></div>
     </div>
@@ -228,26 +229,26 @@
     <div class="card">
       <div class="row">
         <div class="field">
-          <label for="fServiceType">Hizmet</label>
+          <label for="fServiceType" data-tr="Hizmet" data-en="Service">Hizmet</label>
           <select id="fServiceType"></select>
         </div>
         <div class="field">
-          <label for="fCity">İl</label>
-          <select id="fCity"><option value="">İl seçin</option></select>
+          <label for="fCity" data-tr="İl" data-en="Province">İl</label>
+          <select id="fCity"><option value="" data-tr="İl seçin" data-en="Select a province">İl seçin</option></select>
         </div>
         <div class="field">
-          <label for="fDistrict">İlçe</label>
-          <select id="fDistrict" disabled><option value="">Önce il seçin</option></select>
+          <label for="fDistrict" data-tr="İlçe" data-en="District">İlçe</label>
+          <select id="fDistrict" disabled><option value="" data-tr="Önce il seçin" data-en="Select a province first">Önce il seçin</option></select>
         </div>
       </div>
       <div class="row" style="margin-top:10px;">
         <div class="field">
-          <label for="fNeighborhood">Mahalle (opsiyonel)</label>
-          <input type="text" id="fNeighborhood" placeholder="Örn: Fenerbahçe" />
+          <label for="fNeighborhood" data-tr="Mahalle (opsiyonel)" data-en="Neighborhood (optional)">Mahalle (opsiyonel)</label>
+          <input type="text" id="fNeighborhood" placeholder="Örn: Fenerbahçe" data-tr="Örn: Fenerbahçe" data-en="e.g. Fenerbahçe" data-i18n-attr="placeholder" />
         </div>
       </div>
       <div style="margin-top:12px;">
-        <button class="btn-primary" id="btnSearch">Ara</button>
+        <button class="btn-primary" id="btnSearch" data-tr="Ara" data-en="Search">Ara</button>
         <span id="searchSpinner" class="spinner hidden"></span>
       </div>
       <div id="searchMsg" class="msg"></div>
@@ -255,37 +256,37 @@
 
     <!-- SONUÇLAR -->
     <div id="resultsWrap" class="hidden">
-      <h2 id="resultsTitle" style="font-size:16px;">Sonuçlar</h2>
+      <h2 id="resultsTitle" style="font-size:16px;" data-tr="Sonuçlar" data-en="Results">Sonuçlar</h2>
       <div id="results"></div>
     </div>
 
     <!-- RANDEVU PANELİ -->
     <div id="bookingWrap" class="card hidden">
       <div class="userbar">
-        <span id="authStatusText">Giriş yapılmadı.</span>
+        <span id="authStatusText" data-tr="Giriş yapılmadı." data-en="Not signed in.">Giriş yapılmadı.</span>
         <div>
-          <button class="btn-secondary hidden" id="btnSignOut">Çıkış yap</button>
+          <button class="btn-secondary hidden" id="btnSignOut" data-tr="Çıkış yap" data-en="Sign out">Çıkış yap</button>
         </div>
       </div>
 
       <h2 id="bookingCompanyName" style="font-size:16px; margin:4px 0 10px;"></h2>
 
       <div id="signInGate">
-        <p class="muted">Randevu talebi göndermek için Google hesabınızla giriş yapmanız gerekiyor.</p>
+        <p class="muted" data-tr="Randevu talebi göndermek için Google hesabınızla giriş yapmanız gerekiyor." data-en="You need to sign in with your Google account to send an appointment request.">Randevu talebi göndermek için Google hesabınızla giriş yapmanız gerekiyor.</p>
         <button class="btn-google" id="btnGoogleSignIn">
           <svg width="18" height="18" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 15.1 18.9 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.5 0 10.5-2.1 14.3-5.6l-6.6-5.6C29.6 34.7 26.9 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.6 5.1C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.2 4.3-4.1 5.8l6.6 5.6C39.9 37 44 31 44 24c0-1.3-.1-2.7-.4-3.5z"/></svg>
-          Google ile giriş yap
+          <span data-tr="Google ile giriş yap" data-en="Sign in with Google">Google ile giriş yap</span>
         </button>
         <button class="btn-apple" id="btnAppleSignIn">
           <svg width="16" height="18" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-          Apple ile giriş yap
+          <span data-tr="Apple ile giriş yap" data-en="Sign in with Apple">Apple ile giriş yap</span>
         </button>
       </div>
 
       <div id="bookingForm" class="hidden">
         <div class="row">
           <div class="field">
-            <label for="fDate">Tarih</label>
+            <label for="fDate" data-tr="Tarih" data-en="Date">Tarih</label>
             <input type="date" id="fDate" />
           </div>
         </div>
@@ -295,36 +296,42 @@
 
         <div class="row" style="margin-top:14px;">
           <div class="field">
-            <label for="fName">Ad Soyad</label>
-            <input type="text" id="fName" placeholder="Ad Soyad" />
+            <label for="fName" data-tr="Ad Soyad" data-en="Full Name">Ad Soyad</label>
+            <input type="text" id="fName" placeholder="Ad Soyad" data-tr="Ad Soyad" data-en="Full Name" data-i18n-attr="placeholder" />
           </div>
           <div class="field">
-            <label for="fPhone">Telefon</label>
+            <label for="fPhone" data-tr="Telefon" data-en="Phone">Telefon</label>
             <input type="tel" id="fPhone" placeholder="05xx xxx xx xx" />
           </div>
         </div>
 
         <div style="margin-top:14px;">
-          <button class="btn-primary" id="btnSubmitRequest" disabled>Randevu Talebi Gönder</button>
+          <button class="btn-primary" id="btnSubmitRequest" disabled data-tr="Randevu Talebi Gönder" data-en="Send Appointment Request">Randevu Talebi Gönder</button>
           <span id="submitSpinner" class="spinner hidden"></span>
         </div>
         <div id="submitMsg" class="msg"></div>
       </div>
 
-      <button class="linklike" id="btnCloseBooking" style="margin-top:10px;">Kapat</button>
+      <button class="linklike" id="btnCloseBooking" style="margin-top:10px;" data-tr="Kapat" data-en="Close">Kapat</button>
     </div>
   </div>
 
   <div class="site-footer">
-    <div class="contact">
+    <div class="contact" data-i18n-html
+         data-tr="<strong>© 2026 ReggBook. Tüm hakları saklıdır.</strong><br>
+      <strong>İletişim:</strong> info@reggbook.com<br>
+      <strong>Tayfun Kaya</strong> tarafından geliştirilmiştir."
+         data-en="<strong>© 2026 ReggBook. All rights reserved.</strong><br>
+      <strong>Contact:</strong> info@reggbook.com<br>
+      Developed by <strong>Tayfun Kaya</strong>.">
       <strong>© 2026 ReggBook. Tüm hakları saklıdır.</strong><br>
       <strong>İletişim:</strong> info@reggbook.com<br>
       <strong>Tayfun Kaya</strong> tarafından geliştirilmiştir.
     </div>
     <div class="legal-links">
-      <a href="/gizliliksozlesmesi">Gizlilik Sözleşmesi</a>
-      <a href="/acik-riza">Açık Rıza Metni</a>
-      <a href="/kullanim-kosullari">Kullanım Koşulları</a>
+      <a href="/gizliliksozlesmesi" data-tr="Gizlilik Sözleşmesi" data-en="Privacy Policy" data-href-tr="/gizliliksozlesmesi" data-href-en="/privacy-policy">Gizlilik Sözleşmesi</a>
+      <a href="/acik-riza" data-tr="Açık Rıza Metni" data-en="Consent Notice" data-href-tr="/acik-riza" data-href-en="/express-consent">Açık Rıza Metni</a>
+      <a href="/kullanim-kosullari" data-tr="Kullanım Koşulları" data-en="Terms of Use" data-href-tr="/kullanim-kosullari" data-href-en="/terms-of-use">Kullanım Koşulları</a>
     </div>
   </div>
 
@@ -362,25 +369,137 @@
     const callGetMyAppointmentRequests = functions.httpsCallable("getMyAppointmentRequests");
 
     // ============================================================
+    // 1b) i18n yardımcıları
+    // ============================================================
+    function lang() {
+      return (window.ReggbookI18n && window.ReggbookI18n.getLang) ? window.ReggbookI18n.getLang() : "tr";
+    }
+
+    const STRINGS = {
+      tr: {
+        noResults: "Bu kriterlere uygun işletme bulunamadı.",
+        bookBtn: "Randevu Al",
+        webApptWarn: "Bu işletme yalnızca ReggBook mobil uygulaması üzerinden randevu kabul ediyor.",
+        downloadInline: "ReggBook indir",
+        searchValidation: "Lütfen hizmet, il ve ilçe seçin.",
+        searchError: "Arama sırasında hata oluştu: ",
+        resultsTitle: "Sonuçlar",
+        myRequestsTitle: "Taleplerim",
+        backToSearch: "← Aramaya dön",
+        noRequests: "Henüz bir randevu talebiniz yok.",
+        statusPrefix: "Durum: ",
+        statusPending: "Beklemede",
+        statusApproved: "Onaylandı",
+        statusDeclined: "Onaylanmadı",
+        loadingRequests: "Yükleniyor...",
+        requestsLoadError: "Talepler yüklenemedi: ",
+        signInError: "Giriş yapılamadı: ",
+        signedInAs: "Giriş yapıldı: ",
+        defaultUserName: "Kullanıcı",
+        notSignedIn: "Giriş yapılmadı.",
+        loadingSlots: "Uygun saatler yükleniyor...",
+        noSlotsForDay: "Bu gün için müsaitlik bilgisi bulunamadı, başka bir tarih deneyin.",
+        chooseSlot: "Uygun bir saat seçin:",
+        slotsError: "Müsaitlik bilgisi alınamadı: ",
+        pickSlotFirst: "Lütfen bir saat seçin.",
+        nameRequired: "Lütfen ad soyad girin.",
+        phoneRequired: "Lütfen geçerli bir telefon numarası girin.",
+        requestSent: "Randevu talebiniz gönderildi. İşletme onayladığında bilgilendirileceksiniz.",
+        sentBtn: "Gönderildi",
+        requestFailed: "Talep gönderilemedi.",
+        citySelect: "İl seçin",
+        districtSelect: "İlçe seçin",
+        districtSelectFirst: "Önce il seçin",
+      },
+      en: {
+        noResults: "No business matches these criteria.",
+        bookBtn: "Book Appointment",
+        webApptWarn: "This business only accepts appointments through the ReggBook mobile app.",
+        downloadInline: "Get ReggBook",
+        searchValidation: "Please select a service, province and district.",
+        searchError: "An error occurred while searching: ",
+        resultsTitle: "Results",
+        myRequestsTitle: "My Requests",
+        backToSearch: "← Back to search",
+        noRequests: "You don't have any appointment requests yet.",
+        statusPrefix: "Status: ",
+        statusPending: "Pending",
+        statusApproved: "Approved",
+        statusDeclined: "Not approved",
+        loadingRequests: "Loading...",
+        requestsLoadError: "Requests could not be loaded: ",
+        signInError: "Sign-in failed: ",
+        signedInAs: "Signed in as: ",
+        defaultUserName: "User",
+        notSignedIn: "Not signed in.",
+        loadingSlots: "Loading available times...",
+        noSlotsForDay: "No availability found for this day, try another date.",
+        chooseSlot: "Choose an available time:",
+        slotsError: "Availability could not be loaded: ",
+        pickSlotFirst: "Please choose a time.",
+        nameRequired: "Please enter your full name.",
+        phoneRequired: "Please enter a valid phone number.",
+        requestSent: "Your appointment request has been sent. You'll be notified once the business responds.",
+        sentBtn: "Sent",
+        requestFailed: "The request could not be sent.",
+        citySelect: "Select a province",
+        districtSelect: "Select a district",
+        districtSelectFirst: "Select a province first",
+      },
+    };
+
+    function t(key) {
+      return (STRINGS[lang()] || STRINGS.tr)[key];
+    }
+
+    // ============================================================
     // 2) Sabitler (uygulamadaki hizmet listesiyle birebir ayni)
+    //    value her zaman Turkce kalir (backend Firestore'da bu degerle
+    //    eslesiyor); sadece gorunen etiket dile gore degisir.
     // ============================================================
     const SERVICE_TYPES = [
-      "Erkek kuaförü", "Kadın kuaförü", "Pet kuaförü", "Nail art", "Oto kuaför",
-      "Halı Yıkama", "Masör", "Güzellik Uzmanı", "Halı Saha", "Personal Trainer",
-      "Bireysel Antrenör - Bisiklet", "Bireysel Antrenör - Boks", "Bireysel Antrenör - Tenis",
-      "Temizlik Firması", "Dövme - Tattoo", "Aile Terapisti", "Terzi",
-      "Özel Ders Matematik", "Özel Ders İngilizce", "Usta - Su Tesisatı",
-      "Usta - Elektrik Tesisatı", "Usta - Boya Badana", "Usta - Doğalgaz Tesisatı",
-      "Düğün - Organizasyon Salonu", "İş Makinesi - Vinç", "Oto Kurtarıcı"
+      { value: "Erkek kuaförü", en: "Men's hairdresser" },
+      { value: "Kadın kuaförü", en: "Women's hairdresser" },
+      { value: "Pet kuaförü", en: "Pet groomer" },
+      { value: "Nail art", en: "Nail art" },
+      { value: "Oto kuaför", en: "Car detailing" },
+      { value: "Halı Yıkama", en: "Carpet cleaning" },
+      { value: "Masör", en: "Massage therapist" },
+      { value: "Güzellik Uzmanı", en: "Beauty expert" },
+      { value: "Halı Saha", en: "Football field rental" },
+      { value: "Personal Trainer", en: "Personal Trainer" },
+      { value: "Bireysel Antrenör - Bisiklet", en: "Individual coach - Cycling" },
+      { value: "Bireysel Antrenör - Boks", en: "Individual coach - Boxing" },
+      { value: "Bireysel Antrenör - Tenis", en: "Individual coach - Tennis" },
+      { value: "Temizlik Firması", en: "Cleaning company" },
+      { value: "Dövme - Tattoo", en: "Tattoo artist" },
+      { value: "Aile Terapisti", en: "Family therapist" },
+      { value: "Terzi", en: "Tailor" },
+      { value: "Özel Ders Matematik", en: "Private tutor - Math" },
+      { value: "Özel Ders İngilizce", en: "Private tutor - English" },
+      { value: "Usta - Su Tesisatı", en: "Tradesperson - Plumbing" },
+      { value: "Usta - Elektrik Tesisatı", en: "Tradesperson - Electrical" },
+      { value: "Usta - Boya Badana", en: "Tradesperson - Painting" },
+      { value: "Usta - Doğalgaz Tesisatı", en: "Tradesperson - Gas installation" },
+      { value: "Düğün - Organizasyon Salonu", en: "Wedding & event venue" },
+      { value: "İş Makinesi - Vinç", en: "Heavy equipment - Crane" },
+      { value: "Oto Kurtarıcı", en: "Tow truck / roadside assistance" },
     ];
 
     const fServiceType = document.getElementById("fServiceType");
-    SERVICE_TYPES.forEach((s) => {
-      const opt = document.createElement("option");
-      opt.value = s;
-      opt.textContent = s;
-      fServiceType.appendChild(opt);
-    });
+    function renderServiceTypeOptions() {
+      const prevValue = fServiceType.value;
+      fServiceType.innerHTML = "";
+      SERVICE_TYPES.forEach((s) => {
+        const opt = document.createElement("option");
+        opt.value = s.value;
+        opt.textContent = lang() === "en" ? s.en : s.value;
+        fServiceType.appendChild(opt);
+      });
+      if (prevValue) fServiceType.value = prevValue;
+    }
+    renderServiceTypeOptions();
+    window.addEventListener("reggbook:langchange", renderServiceTypeOptions);
 
     // ============================================================
     // 2b) İl / İlçe (assets/cityies.json - Flutter uygulamasıyla aynı
@@ -394,34 +513,59 @@
       try {
         const res = await fetch("./cityies.json", { cache: "force-cache" });
         CITY_DATA = await res.json();
-        fCity.innerHTML = '<option value="">İl seçin</option>';
-        CITY_DATA.forEach((c) => {
-          const opt = document.createElement("option");
-          opt.value = c.text;
-          opt.textContent = c.text;
-          fCity.appendChild(opt);
-        });
+        renderCityOptions();
       } catch (e) {
         console.error("İl/ilçe verisi yüklenemedi", e);
       }
     }
-    loadCityData();
 
-    fCity.addEventListener("change", () => {
+    function renderCityOptions() {
+      const prevValue = fCity.value;
+      fCity.innerHTML = "";
+      const placeholder = document.createElement("option");
+      placeholder.value = "";
+      placeholder.textContent = t("citySelect");
+      fCity.appendChild(placeholder);
+      CITY_DATA.forEach((c) => {
+        const opt = document.createElement("option");
+        opt.value = c.text;
+        opt.textContent = c.text;
+        fCity.appendChild(opt);
+      });
+      if (prevValue) fCity.value = prevValue;
+    }
+
+    function renderDistrictOptions() {
+      const prevValue = fDistrict.value;
       const city = CITY_DATA.find((c) => c.text === fCity.value);
-      fDistrict.innerHTML = '<option value="">İlçe seçin</option>';
+      fDistrict.innerHTML = "";
+      const placeholder = document.createElement("option");
+      placeholder.value = "";
       if (city && city.districts && city.districts.length) {
         fDistrict.disabled = false;
+        placeholder.textContent = t("districtSelect");
+        fDistrict.appendChild(placeholder);
         city.districts.forEach((d) => {
           const opt = document.createElement("option");
           opt.value = d.text;
           opt.textContent = d.text;
           fDistrict.appendChild(opt);
         });
+        if (prevValue) fDistrict.value = prevValue;
       } else {
         fDistrict.disabled = true;
-        fDistrict.innerHTML = '<option value="">Önce il seçin</option>';
+        placeholder.textContent = t("districtSelectFirst");
+        fDistrict.appendChild(placeholder);
       }
+    }
+
+    loadCityData();
+
+    fCity.addEventListener("change", renderDistrictOptions);
+
+    window.addEventListener("reggbook:langchange", () => {
+      renderCityOptions();
+      renderDistrictOptions();
     });
 
     // ============================================================
@@ -440,11 +584,17 @@
       return `${h}:${m}`;
     }
 
+    let lastSearchResults = null;
+    let resultsMode = null; // "search" | "myRequests"
+
     function renderResults(companies) {
+      lastSearchResults = companies;
+      resultsMode = "search";
+      resultsTitle.textContent = t("resultsTitle");
       resultsEl.innerHTML = "";
       if (!companies.length) {
         resultsWrap.classList.remove("hidden");
-        resultsEl.innerHTML = '<p class="muted">Bu kriterlere uygun işletme bulunamadı.</p>';
+        resultsEl.innerHTML = '<p class="muted">' + t("noResults") + "</p>";
         return;
       }
 
@@ -481,14 +631,14 @@
         if (c.webAppt) {
           const btn = document.createElement("button");
           btn.className = "btn-secondary";
-          btn.textContent = "Randevu Al";
+          btn.textContent = t("bookBtn");
           btn.style.marginTop = "8px";
           btn.onclick = () => openBooking(c);
           info.appendChild(btn);
         } else {
           const warn = document.createElement("div");
           warn.className = "warn";
-          warn.innerHTML = 'Bu işletme yalnızca ReggBook mobil uygulaması üzerinden randevu kabul ediyor. <a class="download-inline" href="https://reggbook.com/download/" target="_blank" rel="noopener"><img src="https://reggbook.com/logoo.png" alt="">ReggBook indir</a>';
+          warn.innerHTML = t("webApptWarn") + ' <a class="download-inline" href="https://reggbook.com/download/" target="_blank" rel="noopener"><img src="https://reggbook.com/logoo.png" alt="">' + t("downloadInline") + "</a>";
           info.appendChild(warn);
         }
 
@@ -510,7 +660,7 @@
       searchMsg.className = "msg";
 
       if (!serviceType || !city || !district) {
-        searchMsg.textContent = "Lütfen hizmet, il ve ilçe seçin.";
+        searchMsg.textContent = t("searchValidation");
         searchMsg.className = "msg err";
         return;
       }
@@ -521,7 +671,7 @@
         const res = await callSearchWebCompanies({ serviceType, city, district, neighborhood });
         renderResults(res.data.results || []);
       } catch (e) {
-        searchMsg.textContent = "Arama sırasında hata oluştu: " + (e.message || e);
+        searchMsg.textContent = t("searchError") + (e.message || e);
         searchMsg.className = "msg err";
       } finally {
         btnSearch.disabled = false;
@@ -541,12 +691,14 @@
     btnMyReqGoogleSignIn.addEventListener("click", () => doGoogleSignIn(myReqAuthMsg));
     btnMyReqAppleSignIn.addEventListener("click", () => doAppleSignIn(myReqAuthMsg));
 
-    const STATUS_LABELS = {
-      pending: { text: "Beklemede", cls: "" },
-      approved: { text: "Onaylandı", cls: "ok" },
-      declined: { text: "Onaylanmadı", cls: "err" },
-      rejected: { text: "Onaylanmadı", cls: "err" },
-    };
+    function statusLabel(status) {
+      const key = status === "pending" ? "statusPending"
+        : status === "approved" ? "statusApproved"
+        : (status === "declined" || status === "rejected") ? "statusDeclined"
+        : null;
+      const cls = status === "approved" ? "ok" : (status === "declined" || status === "rejected") ? "err" : "";
+      return { text: key ? t(key) : status, cls };
+    }
 
     function keyToDate(dateKey) {
       const s = (dateKey || "").toString();
@@ -554,26 +706,31 @@
       return `${s.substring(6, 8)}.${s.substring(4, 6)}.${s.substring(0, 4)}`;
     }
 
+    let lastMyRequests = null;
+
     function renderMyRequests(items) {
+      lastMyRequests = items;
+      resultsMode = "myRequests";
       resultsEl.innerHTML = "";
       resultsWrap.classList.remove("hidden");
-      resultsTitle.textContent = "Taleplerim";
+      resultsTitle.textContent = t("myRequestsTitle");
 
       const backBtn = document.createElement("button");
       backBtn.className = "linklike";
       backBtn.style.padding = "0";
       backBtn.style.marginBottom = "10px";
-      backBtn.textContent = "← Aramaya dön";
+      backBtn.textContent = t("backToSearch");
       backBtn.onclick = () => {
         resultsWrap.classList.add("hidden");
-        resultsTitle.textContent = "Sonuçlar";
+        resultsMode = null;
+        resultsTitle.textContent = t("resultsTitle");
       };
       resultsEl.appendChild(backBtn);
 
       if (!items.length) {
         const p = document.createElement("p");
         p.className = "muted";
-        p.textContent = "Henüz bir randevu talebiniz yok.";
+        p.textContent = t("noRequests");
         resultsEl.appendChild(p);
         return;
       }
@@ -594,11 +751,11 @@
         const parts = [it.serviceType, `${keyToDate(it.dateKey)} ${minToTime(it.startMin)}`].filter(Boolean);
         meta.textContent = parts.join(" • ");
 
-        const statusInfo = STATUS_LABELS[it.status] || { text: it.status, cls: "" };
+        const statusInfo = statusLabel(it.status);
         const statusEl = document.createElement("p");
         statusEl.className = "msg " + statusInfo.cls;
         statusEl.style.marginTop = "4px";
-        statusEl.textContent = "Durum: " + statusInfo.text;
+        statusEl.textContent = t("statusPrefix") + statusInfo.text;
 
         info.appendChild(name);
         info.appendChild(meta);
@@ -609,14 +766,14 @@
     }
 
     async function loadMyRequests() {
-      resultsEl.innerHTML = '<p class="muted">Yükleniyor...</p>';
+      resultsEl.innerHTML = '<p class="muted">' + t("loadingRequests") + "</p>";
       resultsWrap.classList.remove("hidden");
-      resultsTitle.textContent = "Taleplerim";
+      resultsTitle.textContent = t("myRequestsTitle");
       try {
         const res = await callGetMyAppointmentRequests();
         renderMyRequests(res.data.items || []);
       } catch (e) {
-        resultsEl.innerHTML = '<p class="msg err">Talepler yüklenemedi: ' + (e.message || e) + "</p>";
+        resultsEl.innerHTML = '<p class="msg err">' + t("requestsLoadError") + (e.message || e) + "</p>";
       }
     }
 
@@ -630,6 +787,14 @@
         return;
       }
       loadMyRequests();
+    });
+
+    window.addEventListener("reggbook:langchange", () => {
+      if (resultsMode === "search" && lastSearchResults) {
+        renderResults(lastSearchResults);
+      } else if (resultsMode === "myRequests" && lastMyRequests) {
+        renderMyRequests(lastMyRequests);
+      }
     });
 
     // ============================================================
@@ -691,7 +856,7 @@
         const provider = new firebase.auth.GoogleAuthProvider();
         await auth.signInWithPopup(provider);
       } catch (e) {
-        const text = "Giriş yapılamadı: " + (e.message || e);
+        const text = t("signInError") + (e.message || e);
         if (msgEl) { msgEl.textContent = text; msgEl.className = "msg err"; }
         else alert(text);
       }
@@ -704,7 +869,7 @@
         provider.addScope("name");
         await auth.signInWithPopup(provider);
       } catch (e) {
-        const text = "Giriş yapılamadı: " + (e.message || e);
+        const text = t("signInError") + (e.message || e);
         if (msgEl) { msgEl.textContent = text; msgEl.className = "msg err"; }
         else alert(text);
       }
@@ -727,18 +892,20 @@
     function updateAuthUi() {
       const user = auth.currentUser;
       if (user) {
-        authStatusText.innerHTML = "Giriş yapıldı: <b>" + (user.displayName || user.email || "Kullanıcı") + "</b>";
+        authStatusText.innerHTML = t("signedInAs") + "<b>" + (user.displayName || user.email || t("defaultUserName")) + "</b>";
         btnSignOut.classList.remove("hidden");
         signInGate.classList.add("hidden");
         bookingForm.classList.remove("hidden");
         fName.value = fName.value || (user.displayName || "");
       } else {
-        authStatusText.textContent = "Giriş yapılmadı.";
+        authStatusText.textContent = t("notSignedIn");
         btnSignOut.classList.add("hidden");
         signInGate.classList.remove("hidden");
         bookingForm.classList.add("hidden");
       }
     }
+
+    window.addEventListener("reggbook:langchange", updateAuthUi);
 
     fDate.addEventListener("change", () => {
       if (auth.currentUser && currentCompany) loadAvailability();
@@ -749,7 +916,7 @@
       selectedSlot = null;
       btnSubmitRequest.disabled = true;
       slotsEl.innerHTML = "";
-      slotsMsg.textContent = "Uygun saatler yükleniyor...";
+      slotsMsg.textContent = t("loadingSlots");
 
       const dateKey = dateToKey(fDate.value);
       try {
@@ -759,10 +926,10 @@
         });
         const slots = res.data.slots || [];
         if (!slots.length) {
-          slotsMsg.textContent = "Bu gün için müsaitlik bilgisi bulunamadı, başka bir tarih deneyin.";
+          slotsMsg.textContent = t("noSlotsForDay");
           return;
         }
-        slotsMsg.textContent = "Uygun bir saat seçin:";
+        slotsMsg.textContent = t("chooseSlot");
         slots.forEach((s) => {
           const btn = document.createElement("button");
           btn.type = "button";
@@ -778,7 +945,7 @@
           slotsEl.appendChild(btn);
         });
       } catch (e) {
-        slotsMsg.textContent = "Müsaitlik bilgisi alınamadı: " + (e.message || e);
+        slotsMsg.textContent = t("slotsError") + (e.message || e);
       }
     }
 
@@ -787,19 +954,19 @@
       submitMsg.className = "msg";
 
       if (!currentCompany || !selectedSlot) {
-        submitMsg.textContent = "Lütfen bir saat seçin.";
+        submitMsg.textContent = t("pickSlotFirst");
         submitMsg.className = "msg err";
         return;
       }
       const customerName = fName.value.trim();
       const customerPhone = fPhone.value.trim();
       if (customerName.length < 2) {
-        submitMsg.textContent = "Lütfen ad soyad girin.";
+        submitMsg.textContent = t("nameRequired");
         submitMsg.className = "msg err";
         return;
       }
       if (customerPhone.replace(/\D/g, "").length < 10) {
-        submitMsg.textContent = "Lütfen geçerli bir telefon numarası girin.";
+        submitMsg.textContent = t("phoneRequired");
         submitMsg.className = "msg err";
         return;
       }
@@ -815,11 +982,11 @@
           startMin: selectedSlot.startMin,
           endMin: selectedSlot.endMin,
         });
-        submitMsg.textContent = "Randevu talebiniz gönderildi. İşletme onayladığında bilgilendirileceksiniz.";
+        submitMsg.textContent = t("requestSent");
         submitMsg.className = "msg ok";
-        btnSubmitRequest.textContent = "Gönderildi";
+        btnSubmitRequest.textContent = t("sentBtn");
       } catch (e) {
-        submitMsg.textContent = e.message || "Talep gönderilemedi.";
+        submitMsg.textContent = e.message || t("requestFailed");
         submitMsg.className = "msg err";
         btnSubmitRequest.disabled = false;
       } finally {

@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ReggBook – Gizlilik Politikası ve KVKK Aydınlatma Metni</title>
+  <script>window.REGGBOOK_LANG_PAIR = { tr: "/gizliliksozlesmesi", en: "/privacy-policy" };</script>
+  <script src="/i18n.js" defer></script>
 
   <style>
     :root{
@@ -171,6 +173,7 @@
       gap: 14px;
       margin-top: 14px;
     }
+    .grid > *{ min-width: 0; }
 
     @media(min-width: 980px){
       .grid{
@@ -288,9 +291,11 @@
     .kpi .box .v{ margin-top: 6px; font-size: 14px; color: var(--text); }
 
     table{
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       width: 100%;
       border-collapse: collapse;
-      overflow: hidden;
       border-radius: 14px;
       border: 1px solid var(--border);
       background: rgba(255,255,255,.02);
@@ -388,7 +393,7 @@
         </div>
         <div class="box">
           <div class="t">Son güncelleme</div>
-          <div class="v"><strong>04.12.2025</strong></div>
+          <div class="v"><strong>02.08.2026</strong></div>
         </div>
       </div>
 
@@ -664,6 +669,13 @@ Alınan konum bilgisi cihaz üzerinde işlenir ve yalnızca kullanıcı “Kayde
               <strong>Yurt dışına aktarım notu:</strong> Kullanılan altyapı servisleri (ör. Firebase/Google) nedeniyle veriler,
               sunucu konumuna bağlı olarak yurt dışında işlenebilir/saklanabilir.
             </div>
+            <div class="callout">
+              <strong>İşletme devri, birleşme ve satın alma:</strong> ReggBook'un tamamının veya bir kısmının satışı, devri, birleşme,
+              devralma, yeniden yapılanma ya da varlık satışı gibi bir ticari işlemin gerçekleşmesi halinde, kullanıcı verileri bu
+              işlemin bir parçası olarak devralan tarafa aktarılabilir. Bu durumda devralan taraf, verileri en az bu Gizlilik
+              Politikası'nda taahhüt edilen koruma düzeyine uygun şekilde işlemekle yükümlü olur; kullanıcılar böyle bir devir
+              söz konusu olduğunda uygulama içi bildirim, e-posta veya reggbook.com üzerinden yapılacak bir duyuru ile bilgilendirilir.
+            </div>
             <p class="muted">
 Platform üzerindeki işletme profilleri kullanıcı beyanına dayalıdır ve ReggBook bu profillerin gerçekliğini garanti etmez.
 </p>
@@ -683,6 +695,12 @@ Platform üzerindeki işletme profilleri kullanıcı beyanına dayalıdır ve Re
   Analiz yalnızca cihaz üzerinde geçici olarak çalışır ve işlem tamamlandıktan sonra geçici veriler atılır.
   Kullanıcı veya işletme yetkilisi bir saç modeli seçerse, yalnızca seçilen saç stilinin dosya adı/görsel referansı müşteri kaydıyla ilişkili olarak saklanabilir.
 </li>
+              <li>
+                <strong>Pasif hesapların temizlenmesi:</strong> Kullanıcı tarafından giriş yapılmayan veya herhangi bir şekilde
+                kullanılmayan hesaplar <strong>2 ay</strong> pasif kaldıktan sonra ReggBook tarafından otomatik olarak temizlenebilir;
+                bu kapsamda ilgili hesaba bağlı veriler önceden bildirimde bulunularak veya bulunulmaksızın silinebilir ya da
+                anonimleştirilebilir. Yasal olarak daha uzun süre saklanması gereken veriler bu kapsam dışındadır.
+              </li>
               <li>Mevzuat gereği daha uzun saklama zorunluluğu doğarsa ilgili süre uygulanır.</li>
             </ul>
           </section>
