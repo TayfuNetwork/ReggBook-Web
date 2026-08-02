@@ -82,8 +82,8 @@
       // Yönlendirme niyeti sadece Android / iOS / Windows için oluşursa Pixel at
       if (redirectTarget.platform !== "fallback") {
         if (typeof fbq === "function") {
-          fbq('trackCustom', 'DownloadPage', {
-            value: 2,
+          fbq('trackCustom', 'Meta-DownloadPage', {
+            value: 1,
             currency: 'TRY'
           });
 
