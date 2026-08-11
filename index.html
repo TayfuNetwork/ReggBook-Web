@@ -8,7 +8,7 @@
 
   <meta name="description" content="ReggBook; profesyonel dijital randevu defteri ve müşteri takip uygulamasıdır." />
   <script src="/i18n.js" defer></script>
-  <meta name="keywords" content="randevu uygulaması, kuaför randevu uygulaması, berber yönetim yazılımı, müşteri takip sistemi, ReggBook" />
+  <meta name="keywords" content="randevu uygulaması, kuaför randevu uygulaması, berber yönetim yazılımı, müşteri takip sistemi, stok takibi, ReggBook" />
   <meta name="author" content="Tayfun Kaya" />
 
   <script type="application/ld+json">
@@ -59,6 +59,7 @@
           "Otomatik hatırlatma bildirimleri",
           "Çalışan yönetimi",
           "Müşteri kayıtlarını takip etme",
+          "Stok takibi",
           "Gold paket kullanan kadın ve erkek kuaförlerine özel AI saç stili, yüz tipi analizi ve makyaj tavsiyesi",
           "Gold Business ile çalışanların Gold özelliklerinden yararlanması"
         ],
@@ -71,35 +72,35 @@
               "name": "ReggBook Premium",
               "price": "150",
               "priceCurrency": "TRY",
-              "description": "15 gün deneme süresi, randevu talebi alma, manuel randevu ekleme, hatırlatma bildirimleri alma, işletme numarası görünürlüğü ve sınırsız çalışan kaydı."
+              "description": "15 gün deneme süresi, randevu talebi alma, manuel randevu ekleme, hatırlatma bildirimleri alma, işletme numarası görünürlüğü, stok takibi ve sınırsız çalışan kaydı."
             },
             {
               "@type": "Offer",
               "name": "ReggBook Business",
               "price": "350",
               "priceCurrency": "TRY",
-              "description": "350 TL + KDV / ay. 7 gün deneme süresi, sınırsız çalışan kaydı ve çalışanlara ReggBook Premium paket tanımlanması."
+              "description": "350 TL + KDV / ay. 7 gün deneme süresi, stok takibi, sınırsız çalışan kaydı ve çalışanlara ReggBook Premium paket tanımlanması."
             },
             {
               "@type": "Offer",
               "name": "ReggBook Gold",
               "price": "350",
               "priceCurrency": "TRY",
-              "description": "350 TL + KDV / ay. Kadın ve erkek kuaförlerine özel AI saç stili, yüz tipi analizi, makyaj tavsiyesi, aramalarda ön planda görünme ve müşteri istikrar filtresi."
+              "description": "350 TL + KDV / ay. Stok takibi, kadın ve erkek kuaförlerine özel AI saç stili, yüz tipi analizi, makyaj tavsiyesi, aramalarda ön planda görünme ve müşteri istikrar filtresi."
             },
             {
               "@type": "Offer",
               "name": "ReggBook Gold Business",
               "price": "700",
               "priceCurrency": "TRY",
-              "description": "700 TL + KDV / ay. Ekipler için Gold avantajı; çalışanların Gold özelliklerinden yararlanmasını sağlar."
+              "description": "700 TL + KDV / ay. Stok takibi ve ekipler için Gold avantajı; çalışanların Gold özelliklerinden yararlanmasını sağlar."
             },
             {
               "@type": "Offer",
               "name": "ReggBook Platinum",
               "price": "2000",
               "priceCurrency": "TRY",
-              "description": "2000 TL + KDV / ay. Gold Business özelliklerine ek olarak şube tanımlama, şube çalışanları yetkilendirme, şube açma-kapatma ve şube raporlarına erişim."
+              "description": "2000 TL + KDV / ay. Stok takibi ve Gold Business özelliklerine ek olarak şube tanımlama, şube çalışanları yetkilendirme, şube açma-kapatma ve şube raporlarına erişim."
             }
           ]
         }
@@ -348,6 +349,10 @@
       grid-template-columns: 1.4fr .9fr;
       gap: 14px;
       margin: 0 0 16px;
+    }
+
+    .pricing-cards .stock-card {
+      grid-column: 1 / -1;
     }
 
     .info-cards {
@@ -609,6 +614,36 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
+      }
+
+      .pricing-table {
+        min-width: 640px;
+        font-size: 11px;
+      }
+
+      .pricing-table th,
+      .pricing-table td {
+        padding: 8px 6px;
+      }
+
+      .pricing-table thead th {
+        font-size: 11px;
+      }
+
+      .pricing-table th:first-child,
+      .pricing-table td:first-child {
+        width: 130px;
+      }
+
+      .plan-note {
+        font-size: 9px;
+      }
+
+      .yes,
+      .no {
+        width: 19px;
+        height: 19px;
+        font-size: 11px;
       }
     }
 
@@ -979,6 +1014,14 @@
             ekip büyüdükçe fark daha da artar.
           </p>
         </div>
+
+        <div class="pricing-card stock-card">
+          <h3 data-tr="Kolay Stok Takibi" data-en="Easy Stock Tracking">Kolay Stok Takibi</h3>
+          <p data-tr="Ürün stoklarınızı girerek onları hizmet başına harcama tutarları ile ilişkilendirin. Bu sayede bundan sonra randevularınıza atadığınız her hizmette stoklar kendiliğinden düşecektir."
+             data-en="Enter your product stock and link each item to the amount consumed per service. From then on, stock will automatically be deducted every time you assign that service to an appointment.">
+            Ürün stoklarınızı girerek onları hizmet başına harcama tutarları ile ilişkilendirin. Bu sayede bundan sonra randevularınıza atadığınız her hizmette stoklar kendiliğinden düşecektir.
+          </p>
+        </div>
       </div>
 
       <div class="pricing-scroll">
@@ -1057,6 +1100,14 @@
             </tr>
             <tr>
               <td data-tr="Sınırsız çalışan kaydı" data-en="Unlimited employee records">Sınırsız çalışan kaydı</td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+              <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
+            </tr>
+            <tr>
+              <td data-tr="Stok takibi" data-en="Stock tracking">Stok takibi</td>
               <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
               <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
               <td><span class="yes" aria-label="Var" data-tr="Var" data-en="Yes" data-i18n-attr="aria-label">✓</span></td>
