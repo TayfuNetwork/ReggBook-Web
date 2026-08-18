@@ -35,11 +35,32 @@ fbq('trackCustom', 'DownloadPageVisited');
 </script>
 
   <script>
+    const ANDROID_PACKAGE = "com.tayfunetwork.yasevya";
+
     const PLAY_STORE_URL =
-      "https://play.google.com/store/apps/details?id=com.tayfunetwork.yasevya";
+      "https://play.google.com/store/apps/details?id=" + ANDROID_PACKAGE;
+
+    // Forces the native Play Store app to open (with a fallback to the
+    // store web page) even on a script-triggered redirect, which Chrome
+    // otherwise blocks for plain https Play Store links.
+    const PLAY_STORE_INTENT_URL =
+      "intent://details?id=" +
+      ANDROID_PACKAGE +
+      "#Intent;scheme=market;package=com.android.vending;S.browser_fallback_url=" +
+      encodeURIComponent(PLAY_STORE_URL) +
+      ";end";
 
     const APP_STORE_URL =
       "https://apps.apple.com/tr/app/yasevya/id6777557830?l=tr";
+
+    // itms-apps:// forces the native App Store app to open on a
+    // script-triggered redirect, same reasoning as the Android intent above.
+    // It has no built-in web fallback, so the visible manual link always
+    // uses the plain https APP_STORE_URL instead.
+    const APP_STORE_INTENT_URL = APP_STORE_URL.replace(
+      /^https:/,
+      "itms-apps:"
+    );
 
     const WINDOWS_ZIP_URL =
       "https://reggbook.com";
@@ -47,6 +68,7 @@ fbq('trackCustom', 'DownloadPageVisited');
     const FALLBACK_URL = "https://reggbook.com";
 
     let redirectUrl = FALLBACK_URL;
+    let manualLinkUrl = FALLBACK_URL;
     let platformName = "uygun sayfaya";
 
     function detectPlatform() {
@@ -54,14 +76,16 @@ fbq('trackCustom', 'DownloadPageVisited');
 
       // Android
       if (/android/i.test(ua)) {
-        redirectUrl = PLAY_STORE_URL;
+        redirectUrl = PLAY_STORE_INTENT_URL;
+        manualLinkUrl = PLAY_STORE_URL;
         platformName = "Google Play Mağazası";
         return;
       }
 
       // iOS
       if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-        redirectUrl = APP_STORE_URL;
+        redirectUrl = APP_STORE_INTENT_URL;
+        manualLinkUrl = APP_STORE_URL;
         platformName = "Apple App Store";
         return;
       }
@@ -69,12 +93,14 @@ fbq('trackCustom', 'DownloadPageVisited');
       // Windows
       if (/Windows NT/i.test(ua)) {
         redirectUrl = WINDOWS_ZIP_URL;
+        manualLinkUrl = WINDOWS_ZIP_URL;
         platformName = "Windows sürümü";
         return;
       }
 
       // Diğer cihazlar
       redirectUrl = FALLBACK_URL;
+      manualLinkUrl = FALLBACK_URL;
       platformName = "ReggBook";
     }
 
@@ -85,7 +111,7 @@ fbq('trackCustom', 'DownloadPageVisited');
       const storeLinkEl = document.getElementById("storeLink");
 
       storeTextEl.innerText = `${platformName} açılıyor...`;
-      storeLinkEl.href = redirectUrl;
+      storeLinkEl.href = manualLinkUrl;
 
       // Windows özel pixel eventi
       if (/Windows NT/i.test(navigator.userAgent)) {
