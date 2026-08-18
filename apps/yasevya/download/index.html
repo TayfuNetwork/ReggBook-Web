@@ -1,207 +1,680 @@
+
 <!doctype html>
 <html lang="tr">
+
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>YasevYa İndir</title>
 
-  <!-- Facebook Pixel -->
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+
+  <title>YasevYa İndir | Ücretsiz İlişki Analizi</title>
+
+  <!-- ===================================================== -->
+  <!-- TEMEL SAYFA BİLGİLERİ -->
+  <!-- ===================================================== -->
+
+  <meta
+    name="description"
+    content="YasevYa ile ilişkinizi farklı kategorilerde analiz edin. Android ve iOS için YasevYa uygulamasını indirin."
+  />
+
+  <meta
+    name="robots"
+    content="index, follow"
+  />
+
+  <link
+    rel="canonical"
+    href="https://reggbook.com/apps/yasevya/download"
+  />
+
+
+  <!-- ===================================================== -->
+  <!-- OPEN GRAPH / META -->
+  <!-- ===================================================== -->
+
+  <meta
+    property="og:title"
+    content="YasevYa | Ücretsiz İlişki Analizi"
+  />
+
+  <meta
+    property="og:description"
+    content="İlişkinizi farklı kategorilerde analiz edin. YasevYa'yı Android veya iOS cihazınıza indirin."
+  />
+
+  <meta
+    property="og:url"
+    content="https://reggbook.com/apps/yasevya/download"
+  />
+
+  <meta
+    property="og:type"
+    content="website"
+  />
+
+  <meta
+    property="og:site_name"
+    content="YasevYa"
+  />
+
+  <meta
+    property="og:locale"
+    content="tr_TR"
+  />
+
+  <meta
+    property="og:image"
+    content="https://reggbook.com/apps/yasevya/download/yasevya_telefon_geri_sayim_3_2_1.gif"
+  />
+
+  <meta
+    property="og:image:secure_url"
+    content="https://reggbook.com/apps/yasevya/download/yasevya_telefon_geri_sayim_3_2_1.gif"
+  />
+
+  <meta
+    property="og:image:type"
+    content="image/gif"
+  />
+
+  <meta
+    property="og:image:alt"
+    content="YasevYa ilişki analizi uygulaması"
+  />
+
+
+  <!-- ===================================================== -->
+  <!-- META / FACEBOOK PIXEL -->
+  <!-- ===================================================== -->
+
   <script>
-  !function(f,b,e,v,n,t,s){
-  if(f.fbq)return;
-  n=f.fbq=function(){
-  n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)
-  };
-  if(!f._fbq)f._fbq=n;
-  n.push=n;
-  n.loaded=!0;
-  n.version='2.0';
-  n.queue=[];
-  t=b.createElement(e);
-  t.async=!0;
-  t.src=v;
-  s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)
-  }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    !function(f,b,e,v,n,t,s) {
+      if (f.fbq) return;
 
-  fbq('init', '4403577006598103');
+      n = f.fbq = function() {
+        n.callMethod
+          ? n.callMethod.apply(n, arguments)
+          : n.queue.push(arguments);
+      };
 
-fbq('trackCustom', 'YasevYa-Download', {
-  value: 1,
-  currency: 'TRY'
-});
+      if (!f._fbq) f._fbq = n;
 
-fbq('trackCustom', 'DownloadPageVisited');
-</script>
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+
+    }(
+      window,
+      document,
+      'script',
+      'https://connect.facebook.net/en_US/fbevents.js'
+    );
+
+
+    fbq('init', '4403577006598103');
+
+    /*
+      Standart sayfa görüntüleme eventi.
+    */
+    fbq('track', 'PageView');
+
+    /*
+      Kullanıcı YasevYa indirme sayfasına geldi.
+    */
+    fbq('trackCustom', 'DownloadPageVisited');
+  </script>
+
+
+  <!-- ===================================================== -->
+  <!-- MAĞAZA YÖNLENDİRME -->
+  <!-- ===================================================== -->
 
   <script>
-    const ANDROID_PACKAGE = "com.tayfunetwork.yasevya";
+
+    const ANDROID_PACKAGE =
+      "com.tayfunetwork.yasevya";
+
 
     const PLAY_STORE_URL =
-      "https://play.google.com/store/apps/details?id=" + ANDROID_PACKAGE;
+      "https://play.google.com/store/apps/details?id=" +
+      ANDROID_PACKAGE;
 
-    // Forces the native Play Store app to open (with a fallback to the
-    // store web page) even on a script-triggered redirect, which Chrome
-    // otherwise blocks for plain https Play Store links.
+
+    /*
+      Android cihazda doğrudan Google Play
+      uygulamasını açmayı dener.
+    */
     const PLAY_STORE_INTENT_URL =
       "intent://details?id=" +
       ANDROID_PACKAGE +
-      "#Intent;scheme=market;package=com.android.vending;S.browser_fallback_url=" +
+      "#Intent;" +
+      "scheme=market;" +
+      "package=com.android.vending;" +
+      "S.browser_fallback_url=" +
       encodeURIComponent(PLAY_STORE_URL) +
       ";end";
+
 
     const APP_STORE_URL =
       "https://apps.apple.com/tr/app/yasevya/id6777557830?l=tr";
 
-    // itms-apps:// forces the native App Store app to open on a
-    // script-triggered redirect, same reasoning as the Android intent above.
-    // It has no built-in web fallback, so the visible manual link always
-    // uses the plain https APP_STORE_URL instead.
-    const APP_STORE_INTENT_URL = APP_STORE_URL.replace(
-      /^https:/,
-      "itms-apps:"
-    );
 
+    /*
+      iOS cihazda doğrudan App Store
+      uygulamasını açmayı dener.
+    */
+    const APP_STORE_INTENT_URL =
+      APP_STORE_URL.replace(
+        /^https:/,
+        "itms-apps:"
+      );
+
+
+    /*
+      Windows ve bilinmeyen cihaz fallback.
+    */
     const WINDOWS_ZIP_URL =
       "https://reggbook.com";
 
-    const FALLBACK_URL = "https://reggbook.com";
+    const FALLBACK_URL =
+      "https://reggbook.com/apps/yasevya";
+
 
     let redirectUrl = FALLBACK_URL;
     let manualLinkUrl = FALLBACK_URL;
-    let platformName = "uygun sayfaya";
+    let platformName = "YasevYa";
+    let detectedPlatform = "other";
+
 
     function detectPlatform() {
-      const ua = navigator.userAgent || navigator.vendor || window.opera;
 
-      // Android
+      const ua =
+        navigator.userAgent ||
+        navigator.vendor ||
+        window.opera;
+
+
+      /*
+        ANDROID
+      */
       if (/android/i.test(ua)) {
-        redirectUrl = PLAY_STORE_INTENT_URL;
-        manualLinkUrl = PLAY_STORE_URL;
-        platformName = "Google Play Mağazası";
+
+        redirectUrl =
+          PLAY_STORE_INTENT_URL;
+
+        manualLinkUrl =
+          PLAY_STORE_URL;
+
+        platformName =
+          "Google Play Mağazası";
+
+        detectedPlatform =
+          "android";
+
         return;
       }
 
-      // iOS
-      if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-        redirectUrl = APP_STORE_INTENT_URL;
-        manualLinkUrl = APP_STORE_URL;
-        platformName = "Apple App Store";
+
+      /*
+        IOS
+      */
+      if (
+        /iPad|iPhone|iPod/.test(ua) &&
+        !window.MSStream
+      ) {
+
+        redirectUrl =
+          APP_STORE_INTENT_URL;
+
+        manualLinkUrl =
+          APP_STORE_URL;
+
+        platformName =
+          "Apple App Store";
+
+        detectedPlatform =
+          "ios";
+
         return;
       }
 
-      // Windows
+
+      /*
+        WINDOWS
+      */
       if (/Windows NT/i.test(ua)) {
-        redirectUrl = WINDOWS_ZIP_URL;
-        manualLinkUrl = WINDOWS_ZIP_URL;
-        platformName = "Windows sürümü";
+
+        redirectUrl =
+          WINDOWS_ZIP_URL;
+
+        manualLinkUrl =
+          WINDOWS_ZIP_URL;
+
+        platformName =
+          "ReggBook";
+
+        detectedPlatform =
+          "windows";
+
         return;
       }
 
-      // Diğer cihazlar
-      redirectUrl = FALLBACK_URL;
-      manualLinkUrl = FALLBACK_URL;
-      platformName = "ReggBook";
+
+      /*
+        DİĞER CİHAZLAR
+      */
+      redirectUrl =
+        FALLBACK_URL;
+
+      manualLinkUrl =
+        FALLBACK_URL;
+
+      platformName =
+        "YasevYa";
+
+      detectedPlatform =
+        "other";
     }
+
+
+    function trackStoreRedirect() {
+
+      /*
+        Mevcut YasevYa-Download eventini koruyoruz.
+
+        Bu event mağazaya yönlendirme aşamasında
+        gönderilir.
+
+        Gerçek uygulama kurulumu ise uygulamadaki
+        Meta SDK tarafından ölçülür.
+      */
+      fbq(
+        'trackCustom',
+        'YasevYa-Download',
+        {
+          platform: detectedPlatform,
+          value: 1,
+          currency: 'TRY'
+        }
+      );
+
+
+      /*
+        Ayrı mağaza yönlendirme eventi.
+      */
+      fbq(
+        'trackCustom',
+        'StoreRedirect',
+        {
+          platform: detectedPlatform
+        }
+      );
+
+
+      /*
+        Windows özel eventi.
+      */
+      if (detectedPlatform === "windows") {
+
+        fbq(
+          'trackCustom',
+          'WindowsDesktopDownload'
+        );
+      }
+    }
+
 
     function redirectNow() {
+
       detectPlatform();
 
-      const storeTextEl = document.getElementById("storeText");
-      const storeLinkEl = document.getElementById("storeLink");
 
-      storeTextEl.innerText = `${platformName} açılıyor...`;
-      storeLinkEl.href = manualLinkUrl;
+      const storeTextEl =
+        document.getElementById("storeText");
 
-      // Windows özel pixel eventi
-      if (/Windows NT/i.test(navigator.userAgent)) {
-        fbq('trackCustom', 'WindowsDesktopDownload');
-      }
+      const storeLinkEl =
+        document.getElementById("storeLink");
 
-      window.location.replace(redirectUrl);
+
+      storeTextEl.innerText =
+        `${platformName} açılıyor...`;
+
+      storeLinkEl.href =
+        manualLinkUrl;
+
+
+      /*
+        Manuel butona basılırsa da
+        doğru mağazaya gider.
+      */
+      storeLinkEl.onclick = function() {
+
+        fbq(
+          'trackCustom',
+          'ManualStoreRedirect',
+          {
+            platform: detectedPlatform
+          }
+        );
+      };
+
+
+      /*
+        Meta Pixel eventlerini gönder.
+      */
+      trackStoreRedirect();
+
+
+      /*
+        Pixel eventlerinin gönderilmesine
+        kısa süre tanıyoruz.
+      */
+      setTimeout(
+        function() {
+
+          window.location.replace(
+            redirectUrl
+          );
+
+        },
+        500
+      );
     }
 
-    window.onload = redirectNow;
+
+    window.addEventListener(
+      "load",
+      redirectNow
+    );
+
   </script>
 
+
+  <!-- ===================================================== -->
+  <!-- TASARIM -->
+  <!-- ===================================================== -->
+
   <style>
+
     * {
       box-sizing: border-box;
     }
 
+
+    html,
     body {
       margin: 0;
+      padding: 0;
+      min-height: 100%;
+    }
+
+
+    body {
+
       background:
-        radial-gradient(circle at 50% 35%, rgba(255, 35, 128, 0.22), transparent 38%),
-        linear-gradient(145deg, #070513, #15081f 48%, #070513);
+        radial-gradient(
+          circle at 50% 35%,
+          rgba(255, 35, 128, 0.22),
+          transparent 38%
+        ),
+        linear-gradient(
+          145deg,
+          #070513,
+          #15081f 48%,
+          #070513
+        );
+
       color: white;
-      font-family: Arial, sans-serif;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
+
       min-height: 100vh;
+
       text-align: center;
+
       padding: 22px;
     }
 
+
     .container {
+
       width: 100%;
+
       max-width: 430px;
+
       display: flex;
+
       flex-direction: column;
+
       align-items: center;
     }
 
+
     h1 {
-      margin: 0 0 18px;
-      font-size: 34px;
-      line-height: 1.12;
-      font-weight: 900;
-      letter-spacing: 0;
+
+      margin:
+        0 0 18px;
+
+      font-size:
+        34px;
+
+      line-height:
+        1.12;
+
+      font-weight:
+        900;
+
+      letter-spacing:
+        0;
     }
+
+
+    .description {
+
+      max-width:
+        380px;
+
+      margin:
+        0 0 20px;
+
+      font-size:
+        15px;
+
+      line-height:
+        1.55;
+
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          0.78
+        );
+    }
+
 
     .store-text {
-      margin: 0 0 20px;
-      font-size: 18px;
-      line-height: 1.45;
-      font-weight: 700;
-      color: #ff6fb0;
-      text-shadow: 0 0 18px rgba(255, 43, 128, 0.45);
+
+      margin:
+        0 0 20px;
+
+      font-size:
+        18px;
+
+      line-height:
+        1.45;
+
+      font-weight:
+        700;
+
+      color:
+        #ff6fb0;
+
+      text-shadow:
+        0 0 18px
+        rgba(
+          255,
+          43,
+          128,
+          0.45
+        );
     }
+
 
     .store-link {
-      display: inline-block;
-      padding: 12px 26px;
-      border-radius: 999px;
-      background: #ff2b80;
-      color: white;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 15px;
-      box-shadow: 0 14px 40px rgba(255, 30, 130, 0.35);
+
+      display:
+        inline-block;
+
+      padding:
+        12px 26px;
+
+      border-radius:
+        999px;
+
+      background:
+        #ff2b80;
+
+      color:
+        white;
+
+      text-decoration:
+        none;
+
+      font-weight:
+        700;
+
+      font-size:
+        15px;
+
+      box-shadow:
+        0 14px 40px
+        rgba(
+          255,
+          30,
+          130,
+          0.35
+        );
+
+      transition:
+        transform 0.15s ease,
+        opacity 0.15s ease;
     }
+
+
+    .store-link:active {
+
+      transform:
+        scale(0.97);
+
+      opacity:
+        0.9;
+    }
+
 
     @media (max-width: 480px) {
+
       h1 {
-        font-size: 29px;
+        font-size:
+          29px;
       }
+
+
+      .description {
+        font-size:
+          14px;
+      }
+
 
       .store-text {
-        font-size: 16px;
+        font-size:
+          16px;
       }
     }
+
   </style>
+
 </head>
 
-<body>
-  <div class="container">
-    <h1>Ücretsiz Reklamsız İlişki Analizi</h1>
 
-    <div class="store-text" id="storeText">
+<body>
+
+
+  <!-- ===================================================== -->
+  <!-- PIXEL NOSCRIPT FALLBACK -->
+  <!-- ===================================================== -->
+
+  <noscript>
+
+    <img
+      height="1"
+      width="1"
+      style="display:none"
+      src="https://www.facebook.com/tr?id=4403577006598103&ev=PageView&noscript=1"
+      alt=""
+    />
+
+  </noscript>
+
+
+  <!-- ===================================================== -->
+  <!-- SAYFA İÇERİĞİ -->
+  <!-- ===================================================== -->
+
+  <div class="container">
+
+    <h1>
+      Ücretsiz Reklamsız İlişki Analizi
+    </h1>
+
+
+    <p class="description">
+      YasevYa ile ilişkinizi farklı kategorilerde
+      değerlendirin. Android veya iOS cihazınıza
+      uygulamayı indirerek analizinizi başlatabilirsiniz.
+    </p>
+
+
+    <div
+      class="store-text"
+      id="storeText"
+    >
       Mağazaya yönlendiriliyorsunuz...
     </div>
 
-    <a class="store-link" id="storeLink" href="#">Yönlendirilmediyseniz tıklayınız</a>
+
+    <a
+      class="store-link"
+      id="storeLink"
+      href="#"
+    >
+      Yönlendirilmediyseniz tıklayınız
+    </a>
+
   </div>
+
+
 </body>
+
 </html>
