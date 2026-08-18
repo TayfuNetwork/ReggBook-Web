@@ -30,11 +30,13 @@ fbq('trackCustom', 'YasevYa-Download', {
   value: 1,
   currency: 'TRY'
 });
+
+fbq('trackCustom', 'DownloadPageVisited');
 </script>
 
   <script>
     const PLAY_STORE_URL =
-      "https://reggbook.com";
+      "https://play.google.com/store/apps/details?id=com.tayfunetwork.yasevya";
 
     const APP_STORE_URL =
       "https://apps.apple.com/tr/app/yasevya/id6777557830?l=tr";
@@ -76,36 +78,24 @@ fbq('trackCustom', 'YasevYa-Download', {
       platformName = "ReggBook";
     }
 
-    function startCountdown() {
+    function redirectNow() {
       detectPlatform();
 
-      const redirectText = document.getElementById("redirectText");
-      const countdownEl = document.getElementById("countdown");
+      const storeTextEl = document.getElementById("storeText");
+      const storeLinkEl = document.getElementById("storeLink");
 
-      redirectText.innerText =
-        `${platformName} yönlendirmesi hazırlanıyor...`;
+      storeTextEl.innerText = `${platformName} açılıyor...`;
+      storeLinkEl.href = redirectUrl;
 
-      let countdown = 4;
-      countdownEl.innerText = countdown;
+      // Windows özel pixel eventi
+      if (/Windows NT/i.test(navigator.userAgent)) {
+        fbq('trackCustom', 'WindowsDesktopDownload');
+      }
 
-      const timer = setInterval(() => {
-        countdown--;
-        countdownEl.innerText = countdown;
-
-        if (countdown <= 0) {
-          clearInterval(timer);
-
-          // Windows özel pixel eventi
-          if (/Windows NT/i.test(navigator.userAgent)) {
-            fbq('trackCustom', 'WindowsDesktopDownload');
-          }
-
-          window.location.replace(redirectUrl);
-        }
-      }, 1000);
+      window.location.replace(redirectUrl);
     }
 
-    window.onload = startCountdown;
+    window.onload = redirectNow;
   </script>
 
   <style>
@@ -145,7 +135,7 @@ fbq('trackCustom', 'YasevYa-Download', {
     }
 
     .store-text {
-      margin: 0 0 14px;
+      margin: 0 0 20px;
       font-size: 18px;
       line-height: 1.45;
       font-weight: 700;
@@ -153,31 +143,16 @@ fbq('trackCustom', 'YasevYa-Download', {
       text-shadow: 0 0 18px rgba(255, 43, 128, 0.45);
     }
 
-    .loader-gif {
-      width: min(100%, 360px);
-      height: auto;
-      border-radius: 26px;
-      box-shadow: 0 26px 80px rgba(255, 30, 130, 0.22);
-      display: block;
-    }
-
-    .small {
-      margin-top: 16px;
-      font-size: 14px;
-      line-height: 1.5;
-      color: rgba(255, 255, 255, 0.68);
-    }
-
-    .sr-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
+    .store-link {
+      display: inline-block;
+      padding: 12px 26px;
+      border-radius: 999px;
+      background: #ff2b80;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      box-shadow: 0 14px 40px rgba(255, 30, 130, 0.35);
     }
 
     @media (max-width: 480px) {
@@ -188,10 +163,6 @@ fbq('trackCustom', 'YasevYa-Download', {
       .store-text {
         font-size: 16px;
       }
-
-      .loader-gif {
-        width: min(100%, 330px);
-      }
     }
   </style>
 </head>
@@ -200,25 +171,11 @@ fbq('trackCustom', 'YasevYa-Download', {
   <div class="container">
     <h1>Ücretsiz Reklamsız İlişki Analizi</h1>
 
-    <div class="store-text">
-      Apple Store'ye yönlendiriliyorsunuz...
+    <div class="store-text" id="storeText">
+      Mağazaya yönlendiriliyorsunuz...
     </div>
 
-    <img
-  class="loader-gif"
-  src="yasevya_telefon_geri_sayim_3_2_1.gif"
-  alt="YasevYa geri sayım animasyonu"
-/>
-
-    <div class="small">
-      Yönlendirme otomatik olarak yapılacaktır.
-    </div>
-
-    <div class="sr-hidden" id="redirectText">
-      Mağaza yönlendirmesi hazırlanıyor...
-    </div>
-
-    <div class="sr-hidden" id="countdown">3</div>
+    <a class="store-link" id="storeLink" href="#">Yönlendirilmediyseniz tıklayınız</a>
   </div>
 </body>
 </html>
