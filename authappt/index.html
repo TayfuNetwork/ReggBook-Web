@@ -367,6 +367,7 @@
     const callGetCompanyAvailability = functions.httpsCallable("getCompanyAvailability");
     const callSubmitWebAppointmentRequest = functions.httpsCallable("submitWebAppointmentRequest");
     const callGetMyAppointmentRequests = functions.httpsCallable("getMyAppointmentRequests");
+    const callGetCompanyById = functions.httpsCallable("getCompanyById");
 
     // ============================================================
     // 1b) i18n yardımcıları
@@ -993,6 +994,34 @@
         submitSpinner.classList.add("hidden");
       }
     });
+
+    // Paylaşılan işletme profili linkinden (?company=<id>) gelen ziyaretçiyi
+    // doğrudan o işletmenin sonuç kartına ve (webAppt açıksa) randevu
+    // ekranına götürür.
+    (async function openFromDirectCompanyLink() {
+      const params = new URLSearchParams(window.location.search);
+      const companyId = (params.get("company") || "").trim();
+      if (!companyId) return;
+
+      try {
+        const res = await callGetCompanyById({ companyId });
+        const company = res.data && res.data.company;
+        if (!company) {
+          searchMsg.textContent = t("noResults");
+          searchMsg.className = "msg err";
+          return;
+        }
+        renderResults([company]);
+        if (company.webAppt) {
+          openBooking(company);
+        } else {
+          resultsWrap.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      } catch (e) {
+        searchMsg.textContent = t("searchError") + (e.message || e);
+        searchMsg.className = "msg err";
+      }
+    })();
   </script>
 </body>
 </html>

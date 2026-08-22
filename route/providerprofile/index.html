@@ -6,10 +6,24 @@
     <meta name="theme-color" content="#0f766e" />
     <meta name="description" content="ReggBook ile işletmeden kolayca randevu alın." />
     <meta property="og:title" content="ReggBook | Randevu Al" />
-    <meta property="og:description" content="İşletmeden randevu almak için ReggBook'u indirin." />
+    <meta property="og:description" content="İşletmeden web üzerinden randevu alın." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://reggbook.com/route/providerprofile/logo.png" />
     <title>ReggBook | Randevu Al</title>
+
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var companyId = (params.get("id") || "").trim();
+        var target = companyId
+          ? "https://reggbook.com/authappt/?company=" + encodeURIComponent(companyId)
+          : "https://reggbook.com/authappt/";
+        window.location.replace(target);
+      })();
+    </script>
+    <noscript>
+      <meta http-equiv="refresh" content="0; url=https://reggbook.com/authappt/" />
+    </noscript>
 
     <style>
       :root {
@@ -57,40 +71,20 @@
 
       h1 {
         margin: 0;
-        font-size: clamp(25px, 7vw, 34px);
+        font-size: clamp(22px, 6vw, 28px);
         line-height: 1.15;
       }
 
       p {
         margin: 14px auto 26px;
         color: #526b69;
-        font-size: 17px;
+        font-size: 16px;
         line-height: 1.6;
       }
 
-      .download-link {
-        display: inline-block;
-        border-radius: 18px;
-        transition: transform 160ms ease, filter 160ms ease;
-      }
-
-      .download-link:hover,
-      .download-link:focus-visible {
-        transform: translateY(-2px);
-        filter: brightness(1.03);
-      }
-
-      .download-link img {
-        display: block;
-        width: min(300px, 78vw);
-        height: auto;
-        border-radius: 18px;
-      }
-
-      .note {
-        margin: 20px 0 0;
-        font-size: 13px;
-        color: #76908d;
+      a.manual-link {
+        color: #0f766e;
+        font-weight: 600;
       }
     </style>
   </head>
@@ -98,25 +92,11 @@
   <body>
     <main>
       <img class="logo" src="logo.png" alt="ReggBook" />
-
-      <h1>Uygulamayı yüklemek ister misiniz?</h1>
-
+      <h1>Randevu sayfasına yönlendiriliyorsunuz…</h1>
       <p>
-        İşletmenin profilini görüntülemek ve randevu almak için ReggBook'u
-        cihazınıza indirin.
+        Birkaç saniye içinde yönlenmezseniz
+        <a class="manual-link" href="https://reggbook.com/authappt/">buraya tıklayın</a>.
       </p>
-
-      <a
-        class="download-link"
-        href="https://reggbook.com/download/"
-        aria-label="ReggBook'u indir"
-      >
-        <img src="download.png" alt="ReggBook'u indir" />
-      </a>
-
-      <div class="note">
-        Cihazınıza uygun mağazaya yönlendirileceksiniz.
-      </div>
     </main>
   </body>
 </html>
