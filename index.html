@@ -5,6 +5,11 @@
   <meta charset="UTF-8" />
   <title>ReggBook | Dijital Randevu Defteri ve İşletme Yönetim Sistemi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#4C3FBF" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <meta name="description" content="ReggBook; profesyonel dijital randevu defteri ve müşteri takip uygulamasıdır." />
   <script src="/i18n.js" defer></script>
@@ -149,150 +154,183 @@
 
   <style>
     :root{
-      --bg:#f3f8ff;
-      --card:rgba(255,255,255,.82);
-      --text:#14233b;
-      --muted:rgba(20,35,59,.68);
-      --line:rgba(28,55,96,.14);
-      --shadow:0 18px 55px rgba(28,55,96,.16);
-      --r:18px;
+      --brand-900:#241f47;
+      --brand-700:#4C3FBF;
+      --brand-600:#5B4CDB;
+      --brand-500:#6D5BEA;
+      --brand-400:#8f82f0;
+      --brand-100:#EEEAFE;
+      --brand-50:#F6F4FF;
+      --ink:#201c3d;
+      --muted:rgba(32,28,61,.64);
+      --muted-2:rgba(32,28,61,.48);
+      --surface:#ffffff;
+      --line:rgba(76,63,191,.14);
+      --line-soft:rgba(76,63,191,.08);
+      --shadow-sm:0 6px 18px rgba(43,32,117,.08);
+      --shadow-md:0 20px 48px rgba(43,32,117,.14);
+      --shadow-lg:0 28px 64px rgba(43,32,117,.20);
+      --success:#0e9f6e;
+      --success-bg:rgba(14,159,110,.12);
+      --danger:#e0384a;
+      --danger-bg:rgba(224,56,74,.10);
+      --r-lg:26px;
+      --r-md:18px;
+      --r-sm:12px;
     }
 
     *{ box-sizing:border-box; -webkit-tap-highlight-color: transparent; }
 
     body{
       margin:0;
-      padding: 0 10px 118px;
-      font-family: Arial, sans-serif;
-      color:var(--text);
-      background: radial-gradient(900px 650px at 15% 10%, rgba(79,115,255,.16), transparent 60%), var(--bg);
+      padding: 0 14px 120px;
+      font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--ink);
+      -webkit-font-smoothing:antialiased;
+      background:
+        radial-gradient(1100px 620px at 12% -6%, rgba(109,91,234,.16), transparent 60%),
+        radial-gradient(900px 560px at 100% 8%, rgba(139,130,240,.14), transparent 55%),
+        var(--brand-50);
     }
 
     .card{
-      max-width: 1120px;
-      margin: 0 auto;
-      background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.78));
+      max-width: 1140px;
+      margin: 24px auto 0;
+      background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.86));
       border: 1px solid var(--line);
-      padding: 0 20px 20px;
-      border-radius: var(--r);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
+      padding: 36px 28px 28px;
+      border-radius: var(--r-lg);
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(14px);
       overflow: hidden;
     }
 
-    .banner-area {
-      height: clamp(104px, 23vw, 218px);
-      margin: 0 -20px 8px;
-      overflow: hidden;
-      background: #fff;
-      border-radius: var(--r) var(--r) 12px 12px;
+    .hero-badge{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      margin-bottom:18px;
     }
 
-    .banner-area img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 46%;
-      display: block;
+    .hero-logo{ width:40px; height:40px; display:block; border-radius:10px; }
+
+    .hero-wordmark-group{ display:flex; flex-direction:column; align-items:flex-start; }
+
+    .hero-wordmark{
+      font-size:20px;
+      font-weight:800;
+      letter-spacing:.3px;
+      background:linear-gradient(135deg,var(--brand-600),var(--brand-400));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      line-height:1;
+    }
+
+    .hero-subwordmark{
+      font-size:11px;
+      font-weight:600;
+      color:var(--muted-2);
+      letter-spacing:.2px;
+      margin-top:3px;
     }
 
     h1 {
-      font-size: 28px;
-      line-height: 1.2;
+      font-size: clamp(26px, 5vw, 38px);
+      font-weight:800;
+      line-height: 1.18;
       text-align: center;
-      margin: 8px 0 10px;
+      margin: 6px 0 12px;
+      color:var(--brand-900);
     }
 
     .tagline {
       text-align: center;
       color: var(--muted);
-      font-size: 16px;
-      margin: 0 0 20px;
+      font-size: 16.5px;
+      line-height:1.5;
+      max-width:560px;
+      margin: 0 auto 26px;
     }
 
-    .book-appt-wrap {
+    .hero-cta-row {
       display: flex;
       justify-content: center;
-      margin: 0 0 22px;
+      margin: 0 0 26px;
     }
 
     .book-appt-btn {
       display: inline-block;
-      background: linear-gradient(135deg, #285ed8, #1d4ed8);
+      background: linear-gradient(135deg, var(--brand-500), var(--brand-700));
       color: #fff;
       text-decoration: none;
-      font-size: 19px;
-      font-weight: bold;
-      padding: 14px 36px;
+      font-size: 17px;
+      font-weight: 700;
+      padding: 15px 38px;
       border-radius: 999px;
-      box-shadow: 0 14px 30px rgba(29,78,216,.32);
+      box-shadow: 0 16px 34px rgba(76,63,191,.34);
       transition: transform .15s ease, box-shadow .15s ease;
     }
 
     .book-appt-btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 18px 36px rgba(29,78,216,.4);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 42px rgba(76,63,191,.42);
     }
 
     .trust-strip {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
-      margin: 20px 0;
+      margin: 0 0 28px;
     }
 
     .trust-item {
       border: 1px solid var(--line);
-      background: #fff;
-      padding: 12px;
+      background: var(--brand-50);
+      padding: 12px 10px;
       border-radius: 14px;
       text-align: center;
-      font-size: 13px;
-      font-weight: bold;
+      font-size: 12.5px;
+      font-weight: 700;
+      line-height:1.35;
+      color:var(--brand-900);
     }
 
     .preview {
-      margin: 18px -4px 0;
-      overflow: hidden;
+      margin: 22px 0 0;
     }
 
-    .album {
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding: 0 48px 12px 0;
-      -webkit-overflow-scrolling: touch;
-      touch-action: pan-x pan-y;
-      overscroll-behavior-x: contain;
-      scrollbar-width: none;
+    .carousel {
+      position: relative;
+      height: clamp(280px, 74vw, 560px);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--brand-50);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      touch-action: pan-y;
       cursor: grab;
     }
 
-    .album.is-dragging {
-      cursor: grabbing;
-      scroll-snap-type: none;
-      user-select: none;
+    .carousel.is-dragging { cursor: grabbing; }
+
+    .carousel-track {
+      display: flex;
+      height: 100%;
+      transition: transform .45s cubic-bezier(.4,0,.2,1);
+      will-change: transform;
     }
 
-    .album::-webkit-scrollbar { display: none; }
-
-    .album-slide {
-      flex: 0 0 84%;
-      height: clamp(260px, 72vw, 620px);
-      scroll-snap-align: start;
-      scroll-snap-stop: always;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: #fff;
-      box-shadow: 0 14px 34px rgba(28,55,96,.12);
+    .carousel-slide {
+      flex: 0 0 100%;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .album-slide img {
+    .carousel-slide img {
       width: 100%;
       height: 100%;
       object-fit: contain;
@@ -302,7 +340,58 @@
       pointer-events: none;
     }
 
-    .album-slide.fill img { object-fit: cover; }
+    .carousel-slide.is-cover img { object-fit: cover; }
+
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,.92);
+      color: var(--brand-700);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      z-index: 2;
+      padding: 0;
+      transition: background .15s ease, transform .15s ease;
+    }
+
+    .carousel-arrow:hover { background: #fff; transform: translateY(-50%) scale(1.06); }
+
+    .carousel-arrow.prev { left: 12px; }
+    .carousel-arrow.next { right: 12px; }
+    .carousel-arrow svg { width: 20px; height: 20px; }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 7px;
+      margin-top: 14px;
+    }
+
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: none;
+      padding: 0;
+      background: rgba(76,63,191,.25);
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+
+    .carousel-dot.is-active {
+      width: 22px;
+      border-radius: 5px;
+      background: linear-gradient(135deg, var(--brand-500), var(--brand-700));
+    }
 
     .store-buttons {
       display: flex;
@@ -327,28 +416,41 @@
     }
 
     .pricing-section {
-      margin-top: 26px;
+      margin-top: 34px;
+    }
+
+    .section-eyebrow{
+      display:block;
+      text-align:center;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:1.2px;
+      text-transform:uppercase;
+      color:var(--brand-600);
+      margin-bottom:8px;
     }
 
     .pricing-section h2 {
       text-align: center;
-      font-size: 23px;
+      font-size: 26px;
+      font-weight:800;
       line-height: 1.25;
-      margin: 0 0 8px;
+      margin: 0 0 10px;
+      color:var(--brand-900);
     }
 
     .pricing-note {
       text-align: center;
       color: var(--muted);
-      font-size: 14px;
-      margin: 0 0 14px;
+      font-size: 14.5px;
+      margin: 0 0 20px;
     }
 
     .pricing-cards {
       display: grid;
       grid-template-columns: 1.4fr .9fr;
-      gap: 14px;
-      margin: 0 0 16px;
+      gap: 16px;
+      margin: 0 0 18px;
     }
 
     .pricing-cards .stock-card {
@@ -358,28 +460,47 @@
     .info-cards {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin: 0 0 14px;
+      gap: 16px;
+      margin: 0 0 16px;
     }
 
     .pricing-card {
       border: 1px solid var(--line);
-      border-radius: 16px;
-      background: rgba(255,255,255,.68);
-      padding: 16px;
+      border-radius: var(--r-md);
+      background: #fff;
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
     }
 
+    .icon-badge{
+      width:38px;
+      height:38px;
+      border-radius:11px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,var(--brand-500),var(--brand-700));
+      color:#fff;
+      margin-bottom:12px;
+      box-shadow:0 8px 18px rgba(76,63,191,.28);
+      flex-shrink:0;
+    }
+
+    .icon-badge svg{ width:19px; height:19px; }
+
     .pricing-card h3 {
-      font-size: 17px;
-      line-height: 1.25;
+      font-size: 17.5px;
+      font-weight:700;
+      line-height: 1.3;
       margin: 0 0 10px;
+      color:var(--brand-900);
     }
 
     .pricing-card p {
       margin: 0;
-      color: #334155;
+      color: #3c3660;
       font-size: 14px;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     .audience-list {
@@ -392,34 +513,36 @@
     }
 
     .audience-list li {
-      border: 1px solid rgba(28,55,96,.14);
+      border: 1px solid var(--line);
       border-radius: 999px;
-      background: #fff;
-      color: #23324a;
+      background: var(--brand-50);
+      color: var(--brand-900);
       font-size: 12px;
+      font-weight:600;
       line-height: 1.2;
-      padding: 7px 10px;
+      padding: 7px 11px;
       white-space: nowrap;
     }
 
     .audience-toggle {
       display: none;
       margin-top: 12px;
-      border: 1px solid rgba(40,94,216,.22);
+      border: 1px solid rgba(76,63,191,.28);
       border-radius: 999px;
       background: #fff;
-      color: #285ed8;
+      color: var(--brand-600);
       font-size: 13px;
-      font-weight: bold;
-      padding: 9px 13px;
+      font-weight: 700;
+      padding: 9px 14px;
       cursor: pointer;
     }
 
     .pricing-scroll {
       overflow-x: auto;
       border: 1px solid var(--line);
-      border-radius: 16px;
-      background: rgba(255,255,255,.72);
+      border-radius: var(--r-md);
+      background: #fff;
+      box-shadow: var(--shadow-sm);
       -webkit-overflow-scrolling: touch;
     }
 
@@ -432,9 +555,9 @@
 
     .pricing-table th,
     .pricing-table td {
-      border-bottom: 1px solid var(--line);
-      border-right: 1px solid var(--line);
-      padding: 12px 10px;
+      border-bottom: 1px solid var(--line-soft);
+      border-right: 1px solid var(--line-soft);
+      padding: 13px 11px;
       text-align: center;
       vertical-align: middle;
     }
@@ -448,10 +571,15 @@
       border-right: 0;
     }
 
+    .pricing-table tbody tr:nth-child(even){
+      background: rgba(109,91,234,.035);
+    }
+
     .pricing-table thead th {
-      background: rgba(243,248,255,.96);
-      color: var(--text);
-      font-size: 13px;
+      background: linear-gradient(135deg, var(--brand-700), var(--brand-500));
+      color: #fff;
+      font-size: 13.5px;
+      font-weight:700;
       line-height: 1.3;
     }
 
@@ -460,15 +588,15 @@
       position: sticky;
       left: 0;
       z-index: 2;
-      width: 210px;
+      width: 220px;
       text-align: left;
-      background: rgba(255,255,255,.96);
+      background: #fff;
       font-weight: bold;
     }
 
     .pricing-table thead th:first-child {
       z-index: 3;
-      background: rgba(243,248,255,.98);
+      background: linear-gradient(135deg, var(--brand-700), var(--brand-600));
     }
 
     .plan-name {
@@ -479,14 +607,14 @@
     .plan-note {
       display: block;
       margin-top: 4px;
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: normal;
+      color: rgba(255,255,255,.82);
+      font-size: 10.5px;
+      font-weight: 600;
     }
 
     .price {
       font-weight: bold;
-      color: #1d4ed8;
+      color: var(--brand-600);
     }
 
     .yes,
@@ -502,57 +630,82 @@
     }
 
     .yes {
-      color: #047857;
-      background: rgba(4,120,87,.1);
+      color: var(--success);
+      background: var(--success-bg);
     }
 
     .no {
-      color: #dc2626;
-      background: rgba(220,38,38,.1);
+      color: var(--danger);
+      background: var(--danger-bg);
     }
 
     .seo-sections {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      margin-top: 30px;
+      gap: 16px;
+      margin-top: 34px;
     }
 
     .seo-box {
-      padding: 18px;
-      border-radius: 16px;
+      padding: 20px;
+      border-radius: var(--r-md);
       border: 1px solid var(--line);
-      background: rgba(255,255,255,.6);
+      background: #fff;
+      box-shadow: var(--shadow-sm);
     }
 
-    .seo-box h2 { font-size: 19px; margin-bottom: 10px; }
+    .seo-box h2 {
+      font-size: 18px;
+      font-weight:700;
+      margin-bottom: 12px;
+      color:var(--brand-900);
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .seo-box h2 .icon-badge{ margin-bottom:0; }
 
     .seo-box p {
       font-size: 14px;
-      line-height: 1.6;
-      color: #444;
+      line-height: 1.65;
+      color: #3c3660;
     }
 
     .bottom {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      margin-top: 30px;
-      padding-top: 20px;
+      gap: 16px;
+      margin-top: 34px;
+      padding-top: 22px;
       border-top: 1px solid var(--line);
+      align-items:center;
     }
 
     .contact {
       font-size: 14px;
-      line-height: 1.8;
+      line-height: 1.85;
+      color:var(--muted);
     }
 
+    .contact strong{ color:var(--brand-900); }
+
+    .contact a{ color:var(--brand-600); font-weight:600; text-decoration:none; }
+    .contact a:hover{ text-decoration:underline; }
+
+    .contact a.ig-link{ display:inline-flex; align-items:center; gap:5px; vertical-align:middle; }
+
+    .legal-links { text-align:right; }
+
     .legal-links a {
-      color: #285ed8;
+      color: var(--brand-600);
       text-decoration: none;
-      margin-right: 15px;
+      margin-left: 14px;
       font-size: 13px;
+      font-weight:600;
     }
+
+    .legal-links a:hover{ text-decoration:underline; }
 
     .sticky-bottom-bar {
       position: fixed;
@@ -561,7 +714,7 @@
       right: 0;
       z-index: 9999;
       background: transparent;
-      padding: 0 12px calc(6px + env(safe-area-inset-bottom));
+      padding: 0 12px calc(10px + env(safe-area-inset-bottom));
       display: flex;
       justify-content: center;
       pointer-events: none;
@@ -574,6 +727,7 @@
       max-width: 320px;
       display: block;
       pointer-events: auto;
+      filter: drop-shadow(0 14px 30px rgba(76,63,191,.35));
     }
 
     .download-link img {
@@ -587,9 +741,16 @@
         grid-template-columns: 1fr;
       }
 
+      .card{ padding: 30px 18px 22px; border-radius: 22px; }
+
+      .bottom{ text-align:left; }
+      .legal-links{ text-align:left; }
+      .legal-links a{ margin-left:0; margin-right:14px; }
+
       h1 { font-size: 24px; }
 
-      .album-slide { flex-basis: 86%; }
+      .carousel-arrow { width: 36px; height: 36px; }
+      .carousel-arrow svg { width: 17px; height: 17px; }
 
       .pricing-section h2 { font-size: 21px; }
 
@@ -719,118 +880,93 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      var album = document.querySelector('.album');
-      if (!album) return;
+      var carousel = document.querySelector('.carousel');
+      if (carousel) {
+        var track = carousel.querySelector('.carousel-track');
+        var slides = Array.prototype.slice.call(track.querySelectorAll('.carousel-slide'));
+        var dotsWrap = document.querySelector('.carousel-dots');
+        var prevBtn = carousel.querySelector('.carousel-arrow.prev');
+        var nextBtn = carousel.querySelector('.carousel-arrow.next');
+        var index = 0;
+        var dots = [];
 
-      var slides = Array.prototype.slice.call(album.querySelectorAll('.album-slide'));
-      var startX = 0;
-      var startY = 0;
-      var draggingX = false;
-      var pointerDragging = false;
-      var pointerMoved = false;
-      var pointerStartX = 0;
-      var pointerStartScroll = 0;
+        slides.forEach(function(_, i) {
+          var dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'carousel-dot';
+          dot.setAttribute('aria-label', 'Görsel ' + (i + 1));
+          dot.addEventListener('click', function() { goTo(i); });
+          dotsWrap.appendChild(dot);
+          dots.push(dot);
+        });
 
-      function currentIndex() {
-        var center = album.scrollLeft + album.clientWidth / 2;
-        var closest = 0;
-        var closestDistance = Infinity;
+        function render() {
+          track.style.transform = 'translateX(-' + (index * 100) + '%)';
+          dots.forEach(function(dot, i) {
+            dot.classList.toggle('is-active', i === index);
+          });
+        }
 
-        slides.forEach(function(slide, index) {
-          var slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
-          var distance = Math.abs(center - slideCenter);
+        function goTo(i) {
+          index = Math.max(0, Math.min(slides.length - 1, i));
+          render();
+        }
 
-          if (distance < closestDistance) {
-            closest = index;
-            closestDistance = distance;
+        prevBtn.addEventListener('click', function() { goTo(index - 1); });
+        nextBtn.addEventListener('click', function() { goTo(index + 1); });
+
+        var dragging = false;
+        var dragStartX = 0;
+        var dragDeltaX = 0;
+
+        function setDragTransform(deltaX) {
+          track.style.transition = 'none';
+          track.style.transform = 'translateX(calc(-' + (index * 100) + '% + ' + deltaX + 'px))';
+        }
+
+        function endDrag(e) {
+          if (!dragging) return;
+          dragging = false;
+          carousel.classList.remove('is-dragging');
+          track.style.transition = '';
+
+          if (carousel.releasePointerCapture) {
+            try { carousel.releasePointerCapture(e.pointerId); } catch (err) {}
+          }
+
+          if (Math.abs(dragDeltaX) > 40) {
+            goTo(index + (dragDeltaX < 0 ? 1 : -1));
+          } else {
+            render();
+          }
+        }
+
+        carousel.addEventListener('pointerdown', function(e) {
+          if (e.button !== undefined && e.button !== 0) return;
+          if (e.target.closest('.carousel-arrow')) return;
+
+          dragging = true;
+          dragDeltaX = 0;
+          dragStartX = e.clientX;
+          carousel.classList.add('is-dragging');
+
+          if (carousel.setPointerCapture) {
+            carousel.setPointerCapture(e.pointerId);
           }
         });
 
-        return closest;
-      }
-
-      function goToSlide(index) {
-        var next = Math.max(0, Math.min(slides.length - 1, index));
-        album.scrollTo({
-          left: slides[next].offsetLeft,
-          behavior: 'smooth'
+        carousel.addEventListener('pointermove', function(e) {
+          if (!dragging) return;
+          dragDeltaX = e.clientX - dragStartX;
+          setDragTransform(dragDeltaX);
         });
+
+        carousel.addEventListener('pointerup', endDrag);
+        carousel.addEventListener('pointercancel', endDrag);
+
+        window.addEventListener('resize', render);
+        render();
       }
-
-      function finishPointerDrag(e) {
-        if (!pointerDragging) return;
-
-        pointerDragging = false;
-        album.classList.remove('is-dragging');
-
-        if (album.releasePointerCapture) {
-          try {
-            album.releasePointerCapture(e.pointerId);
-          } catch (err) {}
-        }
-
-        if (pointerMoved) {
-          goToSlide(currentIndex());
-        }
-      }
-
-      album.addEventListener('pointerdown', function(e) {
-        if (e.pointerType === 'touch' || e.button !== 0) return;
-
-        pointerDragging = true;
-        pointerMoved = false;
-        pointerStartX = e.clientX;
-        pointerStartScroll = album.scrollLeft;
-        album.classList.add('is-dragging');
-
-        if (album.setPointerCapture) {
-          album.setPointerCapture(e.pointerId);
-        }
-      });
-
-      album.addEventListener('pointermove', function(e) {
-        if (!pointerDragging) return;
-
-        var diffX = e.clientX - pointerStartX;
-
-        if (Math.abs(diffX) > 3) {
-          pointerMoved = true;
-        }
-
-        album.scrollLeft = pointerStartScroll - diffX;
-        e.preventDefault();
-      });
-
-      album.addEventListener('pointerup', finishPointerDrag);
-      album.addEventListener('pointercancel', finishPointerDrag);
-
-      album.addEventListener('touchstart', function(e) {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-        draggingX = false;
-      }, { passive: true });
-
-      album.addEventListener('touchmove', function(e) {
-        var diffX = e.touches[0].clientX - startX;
-        var diffY = e.touches[0].clientY - startY;
-
-        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 10) {
-          draggingX = true;
-        }
-      }, { passive: true });
-
-      album.addEventListener('touchend', function(e) {
-        if (!draggingX) return;
-
-        var diffX = e.changedTouches[0].clientX - startX;
-
-        if (Math.abs(diffX) < 35) {
-          goToSlide(currentIndex());
-          return;
-        }
-
-        goToSlide(currentIndex() + (diffX < 0 ? 1 : -1));
-      });
 
       var audienceCard = document.querySelector('.audience-card');
       var audienceToggle = document.querySelector('.audience-toggle');
@@ -871,38 +1007,50 @@
 
 <body>
   <div class="card">
-    <div class="banner-area">
-      <img src="banner.png" alt="ReggBook">
-    </div>
+    <header class="hero">
+      <div class="hero-badge">
+        <img class="hero-logo" src="logoo.png" alt="ReggBook logosu" data-tr="ReggBook logosu" data-en="ReggBook logo" data-i18n-attr="alt">
+        <div class="hero-wordmark-group">
+          <span class="hero-wordmark">ReggBook</span>
+          <span class="hero-subwordmark" data-tr="Randevu • Müşteri • İşletme Yönetimi" data-en="Appointments • Customers • Business Management">Randevu • Müşteri • İşletme Yönetimi</span>
+        </div>
+      </div>
 
-    <h1 data-tr="WhatsApp Karmaşasını Bitir." data-en="End the WhatsApp Chaos.">WhatsApp Karmaşasını Bitir.</h1>
-    <p class="tagline" data-tr="Boş saatlerini müşteriler görsün, hızlıca talep göndersinler." data-en="Let customers see your open slots and send requests instantly.">Boş saatlerini müşteriler görsün, hızlıca talep göndersinler.</p>
+      <h1 data-tr="WhatsApp Karmaşasını Bitir." data-en="End the WhatsApp Chaos.">WhatsApp Karmaşasını Bitir.</h1>
+      <p class="tagline" data-tr="Boş saatlerini müşteriler görsün, hızlıca talep göndersinler." data-en="Let customers see your open slots and send requests instantly.">Boş saatlerini müşteriler görsün, hızlıca talep göndersinler.</p>
 
-    <div class="book-appt-wrap">
-      <a href="/authappt/" class="book-appt-btn" data-tr="Randevu Al" data-en="Book an Appointment">Randevu Al</a>
-    </div>
+      <div class="hero-cta-row">
+        <a href="/authappt/" class="book-appt-btn" data-tr="Randevu Al" data-en="Book an Appointment">Randevu Al</a>
+      </div>
 
-    <div class="trust-strip">
-      <div class="trust-item" data-tr="✅ Müşteri ve İşletmelere Tamamen Reklamsız" data-en="✅ Completely Ad-Free for Customers &amp; Businesses">✅ Müşteri ve İşletmelere Tamamen Reklamsız</div>
-      <div class="trust-item" data-tr="✅ Tüm Paketlerde Ücretsiz Deneme" data-en="✅ Free Trial on Every Plan">✅ Tüm Paketlerde Ücretsiz Deneme</div>
-      <div class="trust-item" data-tr="✅ Otomatik Hatırlatma" data-en="✅ Automatic Reminders">✅ Otomatik Hatırlatma</div>
-      <div class="trust-item" data-tr="✅ Reklam Yok" data-en="✅ No Ads">✅ Reklam Yok</div>
-      <div class="trust-item" data-tr="✅ Ödeme Bilgisi İsteme Yok" data-en="✅ No Payment Info Required">✅ Ödeme Bilgisi İsteme Yok</div>
-      <div class="trust-item" data-tr="✅ Kurulum Gerektirmez" data-en="✅ No Installation Required">✅ Kurulum Gerektirmez</div>
-    </div>
+      <div class="trust-strip">
+        <div class="trust-item" data-tr="✅ Müşteri ve İşletmelere Tamamen Reklamsız" data-en="✅ Completely Ad-Free for Customers &amp; Businesses">✅ Müşteri ve İşletmelere Tamamen Reklamsız</div>
+        <div class="trust-item" data-tr="✅ Tüm Paketlerde Ücretsiz Deneme" data-en="✅ Free Trial on Every Plan">✅ Tüm Paketlerde Ücretsiz Deneme</div>
+        <div class="trust-item" data-tr="✅ Otomatik Hatırlatma" data-en="✅ Automatic Reminders">✅ Otomatik Hatırlatma</div>
+        <div class="trust-item" data-tr="✅ Reklam Yok" data-en="✅ No Ads">✅ Reklam Yok</div>
+        <div class="trust-item" data-tr="✅ Ödeme Bilgisi İsteme Yok" data-en="✅ No Payment Info Required">✅ Ödeme Bilgisi İsteme Yok</div>
+        <div class="trust-item" data-tr="✅ Kurulum Gerektirmez" data-en="✅ No Installation Required">✅ Kurulum Gerektirmez</div>
+      </div>
+    </header>
 
     <div class="preview">
-      <div class="album" aria-label="ReggBook görsel albümü">
-        <div class="album-slide fill"><img src="as-optimized.jpg" alt="ReggBook randevu takip ekranı"></div>
-        <div class="album-slide"><img src="1.png" alt="ReggBook ekran görüntüsü 1"></div>
-        <div class="album-slide"><img src="2.png" alt="ReggBook ekran görüntüsü 2"></div>
-        <div class="album-slide"><img src="hm.jpeg" alt="ReggBook ekran görüntüsü 3"></div>
-        <div class="album-slide"><img src="re.jpeg" alt="ReggBook ekran görüntüsü 4"></div>
-        <div class="album-slide"><img src="reggbook_7in_01.jpeg" alt="ReggBook tanıtım görseli 1"></div>
-        <div class="album-slide"><img src="reggbook_7in_04.jpg" alt="ReggBook tanıtım görseli 2"></div>
-        <div class="album-slide"><img src="reggbook_7in_06.jpg" alt="ReggBook tanıtım görseli 3"></div>
-        <div class="album-slide"><img src="rt.jpeg" alt="ReggBook ekran görüntüsü 5"></div>
+      <div class="carousel" aria-label="ReggBook görsel albümü">
+        <div class="carousel-track">
+          <div class="carousel-slide is-cover"><img src="as-optimized.jpg" alt="ReggBook randevu takip ekranı"></div>
+          <div class="carousel-slide"><img src="1.png" alt="ReggBook ekran görüntüsü 1"></div>
+          <div class="carousel-slide"><img src="2.png" alt="ReggBook ekran görüntüsü 2"></div>
+          <div class="carousel-slide"><img src="reggbook_7in_01.jpeg" alt="ReggBook tanıtım görseli 1"></div>
+          <div class="carousel-slide"><img src="reggbook_7in_04.jpg" alt="ReggBook tanıtım görseli 2"></div>
+          <div class="carousel-slide"><img src="reggbook_7in_06.jpg" alt="ReggBook tanıtım görseli 3"></div>
+        </div>
+        <button class="carousel-arrow prev" type="button" aria-label="Önceki görsel" data-tr="Önceki görsel" data-en="Previous image" data-i18n-attr="aria-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="carousel-arrow next" type="button" aria-label="Sonraki görsel" data-tr="Sonraki görsel" data-en="Next image" data-i18n-attr="aria-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
       </div>
+      <div class="carousel-dots" aria-hidden="true"></div>
     </div>
 
     <div class="store-buttons">
@@ -916,11 +1064,13 @@
 </div>
 
     <section class="pricing-section" aria-labelledby="pricing-title">
+      <span class="section-eyebrow" data-tr="Paketler" data-en="Plans">Paketler</span>
       <h2 id="pricing-title" data-tr="ReggBook Paketleri" data-en="ReggBook Plans">ReggBook Paketleri</h2>
       <p class="pricing-note" data-tr="İşletmeler, tüm paketlerde makul ücretsiz deneme süresiyle başlayabilir." data-en="Businesses can start on any plan with a fair free trial period.">İşletmeler, tüm paketlerde makul ücretsiz deneme süresiyle başlayabilir.</p>
 
       <div class="info-cards" aria-label="ReggBook hakkında kısa bilgiler">
         <div class="pricing-card">
+          <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
           <h3 data-tr="ReggBook Nedir?" data-en="What is ReggBook?">ReggBook Nedir?</h3>
           <p data-i18n-html
              data-tr="ReggBook; kuaförler, güzellik uzmanları, antrenörler, ustalar, temizlik firmaları
@@ -945,6 +1095,7 @@
         </div>
 
         <div class="pricing-card">
+          <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></span>
           <h3 data-tr="Çalışanlar Nasıl Eklenir?" data-en="How Are Employees Added?">Çalışanlar Nasıl Eklenir?</h3>
           <p data-i18n-html
              data-tr="Çalışanlar ReggBook'a üye olurken 2. aşamada
@@ -972,6 +1123,7 @@
 
       <div class="pricing-cards" aria-label="ReggBook kullanım alanları ve paket avantajları">
         <div class="pricing-card audience-card is-collapsed">
+          <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
           <h3 data-tr="Kimler İçin?" data-en="Who Is It For?">Kimler İçin?</h3>
           <ul class="audience-list" id="audience-list">
             <li data-tr="Erkek kuaförü" data-en="Men's hairdresser">Erkek kuaförü</li>
@@ -1005,6 +1157,7 @@
         </div>
 
         <div class="pricing-card">
+          <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.86L12 17.77l-6.18 3.23L7 14.14 2 9.27l7.1-1.01z"/></svg></span>
           <h3 data-tr="Gold Business Neden Avantajlı?" data-en="Why Is Gold Business Worth It?">Gold Business Neden Avantajlı?</h3>
           <p data-tr="Tek tek Gold almak yerine işletmeniz Gold Business ile ekibini tek paket altında toplar.
             Çalışanlarınız Gold özelliklerinden yararlanır; 3 çalışanlı ekipte bile maliyet avantajı başlar,
@@ -1019,6 +1172,7 @@
         </div>
 
         <div class="pricing-card stock-card">
+          <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></span>
           <h3 data-tr="Kolay Stok Takibi" data-en="Easy Stock Tracking">Kolay Stok Takibi</h3>
           <p data-tr="Ürün stoklarınızı girerek onları hizmet başına harcama tutarları ile ilişkilendirin. Bu sayede bundan sonra randevularınıza atadığınız her hizmette stoklar kendiliğinden düşecektir."
              data-en="Enter your product stock and link each item to the amount consumed per service. From then on, stock will automatically be deducted every time you assign that service to an appointment.">
@@ -1204,24 +1358,24 @@
 
     <div class="seo-sections">
       <div class="seo-box">
-        <h2 data-tr="Randevu İptallerine Son" data-en="Put an End to Appointment Cancellations">Randevu İptallerine Son</h2>
+        <h2><span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M9 16l2 2 4-4"/></svg></span><span data-tr="Randevu İptallerine Son" data-en="Put an End to Appointment Cancellations">Randevu İptallerine Son</span></h2>
         <p data-tr="ReggBook ile müşteri katılım oranlarını takip edin. Onaylanmış randevular ve otomatik hatırlatmalarla işletme düzeninizi koruyun." data-en="Track customer attendance rates with ReggBook. Keep your business organized with confirmed appointments and automatic reminders.">ReggBook ile müşteri katılım oranlarını takip edin. Onaylanmış randevular ve otomatik hatırlatmalarla işletme düzeninizi koruyun.</p>
       </div>
 
       <div class="seo-box">
-        <h2 data-tr="Yapay Zeka Desteği" data-en="AI-Powered Support">Yapay Zeka Desteği</h2>
+        <h2><span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2l1.6 4.8L18 8l-4.4 1.6L12 14l-1.6-4.4L6 8l4.4-1.2z"/><path d="M19 14l.8 2.2L22 17l-2.2.8L19 20l-.8-2.2L16 17l2.2-.8z"/></svg></span><span data-tr="Yapay Zeka Desteği" data-en="AI-Powered Support">Yapay Zeka Desteği</span></h2>
         <p data-tr="Gold paket kullanan kadın ve erkek kuaförlerine özel AI tabanlı saç stili, yüz tipi analizi ve makyaj tavsiyesiyle müşterilerinize modern bir deneyim sunun." data-en="Offer your customers a modern experience with AI-based hairstyle, face shape analysis and makeup advice, exclusive to women's and men's hairdressers on the Gold plan.">Gold paket kullanan kadın ve erkek kuaförlerine özel AI tabanlı saç stili, yüz tipi analizi ve makyaj tavsiyesiyle müşterilerinize modern bir deneyim sunun.</p>
       </div>
 
       <div class="seo-box">
-        <h2 data-tr="Profesyonel Randevu Defteri, Berber Yönetim Yazılımı, Kuaför Randevu Sistemi ve Modern İşletme Paneli Bir Arada." data-en="Professional Appointment Book, Barber Management Software, Hairdresser Booking System and a Modern Business Panel — All in One.">Profesyonel Randevu Defteri, Berber Yönetim Yazılımı, Kuaför Randevu Sistemi ve Modern İşletme Paneli Bir Arada.</h2>
+        <h2><span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M2 13h20"/></svg></span><span data-tr="Profesyonel Randevu Defteri, Berber Yönetim Yazılımı, Kuaför Randevu Sistemi ve Modern İşletme Paneli Bir Arada." data-en="Professional Appointment Book, Barber Management Software, Hairdresser Booking System and a Modern Business Panel — All in One.">Profesyonel Randevu Defteri, Berber Yönetim Yazılımı, Kuaför Randevu Sistemi ve Modern İşletme Paneli Bir Arada.</span></h2>
         <p data-tr="Berberler, kuaförler, güzellik salonları, bakım merkezleri ve randevu sistemi ile çalışan diğer işletmeler için geliştirilen ReggBook; sade arayüzü, müşteri yönetimi ve profesyonel görünümü tek bir mobil deneyimde birleştirir." data-en="Built for barbers, hairdressers, beauty salons, care centers and other appointment-based businesses, ReggBook combines a clean interface, customer management and a professional look in a single mobile experience.">
           Berberler, kuaförler, güzellik salonları, bakım merkezleri ve randevu sistemi ile çalışan diğer işletmeler için geliştirilen ReggBook; sade arayüzü, müşteri yönetimi ve profesyonel görünümü tek bir mobil deneyimde birleştirir.
         </p>
       </div>
 
       <div class="seo-box">
-        <h2 data-tr="Müşteri katılım oranı takibi ile randevu iptallerine son." data-en="Track customer attendance rates and put an end to appointment cancellations.">Müşteri katılım oranı takibi ile randevu iptallerine son.</h2>
+        <h2><span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></span><span data-tr="Müşteri katılım oranı takibi ile randevu iptallerine son." data-en="Track customer attendance rates and put an end to appointment cancellations.">Müşteri katılım oranı takibi ile randevu iptallerine son.</span></h2>
         <p data-tr="ReggBook, yalnızca randevu oluşturmayı değil; müşteri devamlılığını, katılım alışkanlıklarını ve işletme düzenini daha görünür hale getirmeyi hedefler. Böylece işletmeler hem planlarını daha doğru yapabilir hem de zaman kaybını azaltabilir. Bunların yanı sıra, ilgili işletmeleri yalnızca onaylanmış randevuları bulunan ziyaretçiler puanlayabilir." data-en="ReggBook aims to make not just appointment creation, but also customer retention, attendance habits and overall business organization more visible. This helps businesses plan more accurately and reduce wasted time. In addition, a business can only be rated by visitors who have a confirmed appointment with it.">
           ReggBook, yalnızca randevu oluşturmayı değil; müşteri devamlılığını, katılım alışkanlıklarını ve işletme düzenini daha görünür hale getirmeyi hedefler. Böylece işletmeler hem planlarını daha doğru yapabilir hem de zaman kaybını azaltabilir. Bunların yanı sıra, ilgili işletmeleri yalnızca onaylanmış randevuları bulunan ziyaretçiler puanlayabilir.
         </p>
@@ -1231,13 +1385,19 @@
     <div class="bottom">
       <div class="contact" data-i18n-html
            data-tr="<strong>© 2026 ReggBook. Tüm hakları saklıdır.</strong><br>
-        <strong>İletişim:</strong> info@reggbook.com<br>
+        <strong>İletişim:</strong> <a href=&quot;mailto:info@reggbook.com&quot; class=&quot;ig-link&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><rect x=&quot;2&quot; y=&quot;4&quot; width=&quot;20&quot; height=&quot;16&quot; rx=&quot;3&quot;/><path d=&quot;M3 6l9 7 9-7&quot;/></svg>info@reggbook.com</a><br>
+        <strong>Instagram:</strong> <a href=&quot;https://instagram.com/reggbook&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; class=&quot;ig-link&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><rect x=&quot;2&quot; y=&quot;2&quot; width=&quot;20&quot; height=&quot;20&quot; rx=&quot;5&quot;/><circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;4&quot;/><circle cx=&quot;17.5&quot; cy=&quot;6.5&quot; r=&quot;1&quot; fill=&quot;currentColor&quot; stroke=&quot;none&quot;/></svg>ReggBook</a><br>
+        <strong>Diğer Uygulamalarımız:</strong> <a href=&quot;/apps/yasevya/&quot; class=&quot;ig-link&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6&quot;/><path d=&quot;M15 3h6v6&quot;/><path d=&quot;M10 14L21 3&quot;/></svg>YasevYa</a><br>
         <strong>Tayfun Kaya</strong> tarafından geliştirilmiştir."
            data-en="<strong>© 2026 ReggBook. All rights reserved.</strong><br>
-        <strong>Contact:</strong> info@reggbook.com<br>
+        <strong>Contact:</strong> <a href=&quot;mailto:info@reggbook.com&quot; class=&quot;ig-link&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><rect x=&quot;2&quot; y=&quot;4&quot; width=&quot;20&quot; height=&quot;16&quot; rx=&quot;3&quot;/><path d=&quot;M3 6l9 7 9-7&quot;/></svg>info@reggbook.com</a><br>
+        <strong>Instagram:</strong> <a href=&quot;https://instagram.com/reggbook&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; class=&quot;ig-link&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><rect x=&quot;2&quot; y=&quot;2&quot; width=&quot;20&quot; height=&quot;20&quot; rx=&quot;5&quot;/><circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;4&quot;/><circle cx=&quot;17.5&quot; cy=&quot;6.5&quot; r=&quot;1&quot; fill=&quot;currentColor&quot; stroke=&quot;none&quot;/></svg>ReggBook</a><br>
+        <strong>Our Other Apps:</strong> <a href=&quot;/apps/yasevya/&quot; class=&quot;ig-link&quot;><svg viewBox=&quot;0 0 24 24&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6&quot;/><path d=&quot;M15 3h6v6&quot;/><path d=&quot;M10 14L21 3&quot;/></svg>YasevYa</a><br>
         Developed by <strong>Tayfun Kaya</strong>.">
         <strong>© 2026 ReggBook. Tüm hakları saklıdır.</strong><br>
-        <strong>İletişim:</strong> info@reggbook.com<br>
+        <strong>İletişim:</strong> <a href="mailto:info@reggbook.com" class="ig-link"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M3 6l9 7 9-7"/></svg>info@reggbook.com</a><br>
+        <strong>Instagram:</strong> <a href="https://instagram.com/reggbook" target="_blank" rel="noopener" class="ig-link"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>ReggBook</a><br>
+        <strong>Diğer Uygulamalarımız:</strong> <a href="/apps/yasevya/" class="ig-link"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>YasevYa</a><br>
         <strong>Tayfun Kaya</strong> tarafından geliştirilmiştir.
       </div>
 

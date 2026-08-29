@@ -92,14 +92,15 @@
     var style = document.createElement("style");
     style.textContent =
       ".rb-lang-switch{position:fixed;top:12px;right:12px;z-index:99999;display:flex;gap:4px;" +
-      "background:rgba(255,255,255,.92);border:1px solid rgba(28,55,96,.14);border-radius:999px;" +
-      "padding:4px;box-shadow:0 8px 22px rgba(28,55,96,.16);backdrop-filter:blur(6px);}" +
+      "background:rgba(255,255,255,.92);border:1px solid rgba(76,63,191,.16);border-radius:999px;" +
+      "padding:4px;box-shadow:0 8px 22px rgba(43,32,117,.18);backdrop-filter:blur(6px);}" +
       ".rb-lang-switch button{display:flex;align-items:center;gap:5px;border:none;background:transparent;" +
-      "cursor:pointer;font-family:Arial,sans-serif;font-size:11px;font-weight:bold;color:#14233b;" +
+      "cursor:pointer;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;" +
+      "font-size:11px;font-weight:bold;color:#201c3d;" +
       "padding:6px 9px;border-radius:999px;line-height:1;transition:background .15s ease,color .15s ease;}" +
       ".rb-lang-switch button svg{border-radius:2px;flex-shrink:0;display:block;}" +
-      ".rb-lang-switch button.rb-lang-active{background:#285ed8;color:#fff;}" +
-      ".rb-lang-switch button:hover:not(.rb-lang-active){background:rgba(40,94,216,.1);}" +
+      ".rb-lang-switch button.rb-lang-active{background:linear-gradient(135deg,#6D5BEA,#4C3FBF);color:#fff;}" +
+      ".rb-lang-switch button:hover:not(.rb-lang-active){background:rgba(109,91,234,.12);}" +
       "@media (max-width:480px){.rb-lang-switch{top:8px;right:8px;padding:3px;}" +
       ".rb-lang-switch button{padding:5px 7px;font-size:10px;}}";
     document.head.appendChild(style);
