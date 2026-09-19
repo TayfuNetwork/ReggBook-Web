@@ -91,7 +91,8 @@
   function injectStyles() {
     var style = document.createElement("style");
     style.textContent =
-      ".rb-lang-switch{position:fixed;top:12px;right:12px;z-index:99999;display:flex;gap:4px;" +
+      ".rb-top-right{position:fixed;top:12px;right:12px;z-index:99999;display:flex;align-items:center;gap:8px;}" +
+      ".rb-lang-switch{display:flex;gap:4px;" +
       "background:rgba(255,255,255,.92);border:1px solid rgba(76,63,191,.16);border-radius:999px;" +
       "padding:4px;box-shadow:0 8px 22px rgba(43,32,117,.18);backdrop-filter:blur(6px);}" +
       ".rb-lang-switch button{display:flex;align-items:center;gap:5px;border:none;background:transparent;" +
@@ -101,16 +102,33 @@
       ".rb-lang-switch button svg{border-radius:2px;flex-shrink:0;display:block;}" +
       ".rb-lang-switch button.rb-lang-active{background:linear-gradient(135deg,#6D5BEA,#4C3FBF);color:#fff;}" +
       ".rb-lang-switch button:hover:not(.rb-lang-active){background:rgba(109,91,234,.12);}" +
-      "@media (max-width:480px){.rb-lang-switch{top:8px;right:8px;padding:3px;}" +
-      ".rb-lang-switch button{padding:5px 7px;font-size:10px;}}";
+      ".rb-login-btn{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;" +
+      "font-size:12px;font-weight:bold;color:#fff;text-decoration:none;white-space:nowrap;" +
+      "background:linear-gradient(135deg,#6D5BEA,#4C3FBF);border-radius:999px;padding:9px 16px;" +
+      "box-shadow:0 8px 22px rgba(43,32,117,.22);transition:filter .15s ease;}" +
+      ".rb-login-btn:hover{filter:brightness(1.08);}" +
+      "@media (max-width:480px){.rb-top-right{top:8px;right:8px;gap:6px;}" +
+      ".rb-lang-switch{padding:3px;}.rb-lang-switch button{padding:5px 7px;font-size:10px;}" +
+      ".rb-login-btn{padding:7px 12px;font-size:11px;}}";
     document.head.appendChild(style);
   }
 
   function buildSwitcher() {
     var wrap = document.createElement("div");
-    wrap.className = "rb-lang-switch";
-    wrap.setAttribute("role", "group");
-    wrap.setAttribute("aria-label", "Dil seçimi / Language");
+    wrap.className = "rb-top-right";
+
+    var loginBtn = document.createElement("a");
+    loginBtn.className = "rb-login-btn";
+    loginBtn.href = "/panel/";
+    loginBtn.setAttribute("data-tr", "Giriş Yap");
+    loginBtn.setAttribute("data-en", "Log in");
+    loginBtn.textContent = "Giriş Yap";
+    wrap.appendChild(loginBtn);
+
+    var langWrap = document.createElement("div");
+    langWrap.className = "rb-lang-switch";
+    langWrap.setAttribute("role", "group");
+    langWrap.setAttribute("aria-label", "Dil seçimi / Language");
 
     var trBtn = document.createElement("button");
     trBtn.type = "button";
@@ -128,8 +146,9 @@
       setLang("en");
     });
 
-    wrap.appendChild(trBtn);
-    wrap.appendChild(enBtn);
+    langWrap.appendChild(trBtn);
+    langWrap.appendChild(enBtn);
+    wrap.appendChild(langWrap);
     document.body.appendChild(wrap);
   }
 
