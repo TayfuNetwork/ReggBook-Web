@@ -125,7 +125,7 @@
       margin-bottom:10px;
       display:flex;
       gap:12px;
-      align-items:center;
+      align-items:flex-start;
       background:#fff;
       transition:box-shadow .15s ease, transform .15s ease;
     }
@@ -141,6 +141,36 @@
       display:inline-block; margin-left:6px; font-size:10px; font-weight:bold;
       color:#a8710a; background:#fff4da; border-radius:999px; padding:2px 7px;
     }
+    .service-list{
+      margin-top:10px; display:flex; flex-direction:column; gap:8px;
+    }
+    .service-title{
+      margin:0; font-size:12px; font-weight:bold; color:var(--text);
+    }
+    .service-option{
+      border:1px solid var(--line); border-radius:12px; padding:9px 10px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      background:#fbfdff;
+    }
+    .service-details{ min-width:0; }
+    .service-name{
+      margin:0; font-size:13px; font-weight:bold; color:var(--text);
+      overflow-wrap:anywhere;
+    }
+    .service-price{
+      margin:3px 0 0; font-size:12px; color:var(--muted);
+    }
+    .service-apply{
+      flex-shrink:0; padding:8px 10px; border-radius:10px; font-size:12px;
+    }
+    .service-empty{
+      margin:8px 0 0; font-size:12px; color:var(--muted);
+    }
+    .selected-service{
+      margin:-2px 0 12px; border:1px solid var(--line); border-radius:12px;
+      padding:10px 12px; background:#fbfdff; font-size:13px; color:var(--text);
+    }
+    .selected-service b{ display:block; margin-bottom:2px; }
 
     .warn{
       font-size:12px; color:#b42318; background:#fff2f0; border:1px solid #ffd6d1;
@@ -270,6 +300,7 @@
       </div>
 
       <h2 id="bookingCompanyName" style="font-size:16px; margin:4px 0 10px;"></h2>
+      <div id="bookingServiceSummary" class="selected-service hidden"></div>
 
       <div id="signInGate">
         <p class="muted" data-tr="Randevu talebi göndermek için Google hesabınızla giriş yapmanız gerekiyor." data-en="You need to sign in with your Google account to send an appointment request.">Randevu talebi göndermek için Google hesabınızla giriş yapmanız gerekiyor.</p>
@@ -380,6 +411,12 @@
       tr: {
         noResults: "Bu kriterlere uygun işletme bulunamadı.",
         bookBtn: "Randevu Al",
+        servicesTitle: "Hizmetler ve fiyatlar",
+        applyServiceBtn: "Bu hizmete başvur",
+        noServices: "Bu işletme henüz hizmet/fiyat listesi eklememiş.",
+        priceNotSet: "Fiyat belirtilmemiş",
+        selectedService: "Seçilen hizmet",
+        durationSuffix: "dk",
         webApptWarn: "Bu işletme yalnızca ReggBook mobil uygulaması üzerinden randevu kabul ediyor.",
         downloadInline: "ReggBook indir",
         searchValidation: "Lütfen hizmet, il ve ilçe seçin.",
@@ -406,6 +443,7 @@
         nameRequired: "Lütfen ad soyad girin.",
         phoneRequired: "Lütfen geçerli bir telefon numarası girin.",
         requestSent: "Randevu talebiniz gönderildi. İşletme onayladığında bilgilendirileceksiniz.",
+        submitBtn: "Randevu Talebi Gönder",
         sentBtn: "Gönderildi",
         requestFailed: "Talep gönderilemedi.",
         citySelect: "İl seçin",
@@ -415,6 +453,12 @@
       en: {
         noResults: "No business matches these criteria.",
         bookBtn: "Book Appointment",
+        servicesTitle: "Services and prices",
+        applyServiceBtn: "Apply for this service",
+        noServices: "This business has not added a service/price list yet.",
+        priceNotSet: "Price not specified",
+        selectedService: "Selected service",
+        durationSuffix: "min",
         webApptWarn: "This business only accepts appointments through the ReggBook mobile app.",
         downloadInline: "Get ReggBook",
         searchValidation: "Please select a service, province and district.",
@@ -441,6 +485,7 @@
         nameRequired: "Please enter your full name.",
         phoneRequired: "Please enter a valid phone number.",
         requestSent: "Your appointment request has been sent. You'll be notified once the business responds.",
+        submitBtn: "Send Appointment Request",
         sentBtn: "Sent",
         requestFailed: "The request could not be sent.",
         citySelect: "Select a province",
@@ -585,6 +630,67 @@
       return `${h}:${m}`;
     }
 
+    function parseServicePrice(value) {
+      if (typeof value === "number" && Number.isFinite(value)) return value;
+      if (typeof value !== "string") return null;
+      const cleaned = value
+        .replace(/[^0-9,.-]/g, "")
+        .replace(/\./g, "")
+        .replace(",", ".")
+        .trim();
+      if (!cleaned) return null;
+      const parsed = Number(cleaned);
+      return Number.isFinite(parsed) ? parsed : null;
+    }
+
+    function currencyLabel(currency) {
+      const c = (currency || "TRY").toString().trim().toUpperCase();
+      if (c === "TRY" || c === "TL") return "TL";
+      return c || "TL";
+    }
+
+    function formatServicePrice(service) {
+      const price = parseServicePrice(service && service.price);
+      if (price === null) return t("priceNotSet");
+      const fractionDigits = Number.isInteger(price) ? 0 : 2;
+      const amount = new Intl.NumberFormat(lang() === "en" ? "en-US" : "tr-TR", {
+        minimumFractionDigits: fractionDigits,
+        maximumFractionDigits: 2,
+      }).format(price);
+      return amount + " " + currencyLabel(service.currency);
+    }
+
+    function serviceSubline(service) {
+      const parts = [formatServicePrice(service)];
+      const duration = serviceDurationMin(service);
+      if (Number.isFinite(duration) && duration > 0) {
+        parts.push(duration + " " + t("durationSuffix"));
+      }
+      return parts.join(" • ");
+    }
+
+    function serviceDurationMin(service) {
+      const duration = Number(service && service.durationMin);
+      return Number.isFinite(duration) && duration > 0 ? Math.round(duration) : null;
+    }
+
+    function slotFreeForDuration(slots, slot, durationMin, closeMin) {
+      const endMin = slot.startMin + durationMin;
+      if (Number.isFinite(closeMin) && endMin > closeMin) return false;
+      return slots.every((candidate) => {
+        const overlaps =
+          candidate.startMin < endMin &&
+          candidate.endMin > slot.startMin;
+        return !overlaps || candidate.free;
+      });
+    }
+
+    function companyServices(company) {
+      return Array.isArray(company && company.services)
+        ? company.services.filter((s) => s && (s.name || "").toString().trim())
+        : [];
+    }
+
     let lastSearchResults = null;
     let resultsMode = null; // "search" | "myRequests"
 
@@ -629,14 +735,64 @@
         info.appendChild(name);
         info.appendChild(meta);
 
-        if (c.webAppt) {
+        const services = companyServices(c);
+        if (services.length) {
+          const servicesWrap = document.createElement("div");
+          servicesWrap.className = "service-list";
+
+          const servicesTitle = document.createElement("p");
+          servicesTitle.className = "service-title";
+          servicesTitle.textContent = t("servicesTitle");
+          servicesWrap.appendChild(servicesTitle);
+
+          services.forEach((service) => {
+            const item = document.createElement("div");
+            item.className = "service-option";
+
+            const details = document.createElement("div");
+            details.className = "service-details";
+
+            const serviceName = document.createElement("p");
+            serviceName.className = "service-name";
+            serviceName.textContent = service.name;
+
+            const servicePrice = document.createElement("p");
+            servicePrice.className = "service-price";
+            servicePrice.textContent = serviceSubline(service);
+
+            details.appendChild(serviceName);
+            details.appendChild(servicePrice);
+            item.appendChild(details);
+
+            if (c.webAppt) {
+              const btn = document.createElement("button");
+              btn.className = "btn-secondary service-apply";
+              btn.textContent = t("applyServiceBtn");
+              btn.onclick = () => openBooking(c, service);
+              item.appendChild(btn);
+            }
+
+            servicesWrap.appendChild(item);
+          });
+
+          info.appendChild(servicesWrap);
+        } else {
+          const empty = document.createElement("p");
+          empty.className = "service-empty";
+          empty.textContent = t("noServices");
+          info.appendChild(empty);
+        }
+
+        if (c.webAppt && !services.length) {
           const btn = document.createElement("button");
           btn.className = "btn-secondary";
           btn.textContent = t("bookBtn");
           btn.style.marginTop = "8px";
           btn.onclick = () => openBooking(c);
           info.appendChild(btn);
-        } else {
+        }
+
+        if (!c.webAppt) {
           const warn = document.createElement("div");
           warn.className = "warn";
           warn.innerHTML = t("webApptWarn") + ' <a class="download-inline" href="https://reggbook.com/download/" target="_blank" rel="noopener"><img src="https://reggbook.com/logoo.png" alt="">' + t("downloadInline") + "</a>";
@@ -749,7 +905,14 @@
 
         const meta = document.createElement("p");
         meta.className = "company-meta";
-        const parts = [it.serviceType, `${keyToDate(it.dateKey)} ${minToTime(it.startMin)}`].filter(Boolean);
+        const requestedService = it.serviceName || it.selectedServiceName || it.serviceType;
+        const serviceLabel = it.selectedServicePrice == null
+          ? requestedService
+          : requestedService + " • " + formatServicePrice({
+              price: it.selectedServicePrice,
+              currency: it.selectedServiceCurrency || "TRY",
+            });
+        const parts = [serviceLabel, `${keyToDate(it.dateKey)} ${minToTime(it.startMin)}`].filter(Boolean);
         meta.textContent = parts.join(" • ");
 
         const statusInfo = statusLabel(it.status);
@@ -803,6 +966,7 @@
     // ============================================================
     const bookingWrap = document.getElementById("bookingWrap");
     const bookingCompanyName = document.getElementById("bookingCompanyName");
+    const bookingServiceSummary = document.getElementById("bookingServiceSummary");
     const signInGate = document.getElementById("signInGate");
     const bookingForm = document.getElementById("bookingForm");
     const authStatusText = document.getElementById("authStatusText");
@@ -820,6 +984,7 @@
     const submitMsg = document.getElementById("submitMsg");
 
     let currentCompany = null;
+    let currentService = null;
     let selectedSlot = null; // {startMin, endMin}
 
     function dateToKey(dateStr) {
@@ -827,13 +992,35 @@
       return dateStr.replace(/-/g, "");
     }
 
-    function openBooking(company) {
+    function renderSelectedServiceSummary() {
+      if (!currentService) {
+        bookingServiceSummary.classList.add("hidden");
+        bookingServiceSummary.innerHTML = "";
+        return;
+      }
+      bookingServiceSummary.classList.remove("hidden");
+      bookingServiceSummary.innerHTML = "";
+
+      const label = document.createElement("b");
+      label.textContent = t("selectedService");
+
+      const value = document.createElement("span");
+      value.textContent = currentService.name + " • " + serviceSubline(currentService);
+
+      bookingServiceSummary.appendChild(label);
+      bookingServiceSummary.appendChild(value);
+    }
+
+    function openBooking(company, service) {
       currentCompany = company;
+      currentService = service || null;
       selectedSlot = null;
       bookingCompanyName.textContent = company.companyName;
       submitMsg.textContent = "";
       slotsEl.innerHTML = "";
       slotsMsg.textContent = "";
+      btnSubmitRequest.textContent = t("submitBtn");
+      renderSelectedServiceSummary();
 
       const today = new Date();
       const iso = today.toISOString().slice(0, 10);
@@ -850,6 +1037,7 @@
     btnCloseBooking.addEventListener("click", () => {
       bookingWrap.classList.add("hidden");
       currentCompany = null;
+      currentService = null;
     });
 
     async function doGoogleSignIn(msgEl) {
@@ -906,7 +1094,13 @@
       }
     }
 
-    window.addEventListener("reggbook:langchange", updateAuthUi);
+    window.addEventListener("reggbook:langchange", () => {
+      updateAuthUi();
+      renderSelectedServiceSummary();
+      if (btnSubmitRequest.textContent !== t("sentBtn")) {
+        btnSubmitRequest.textContent = t("submitBtn");
+      }
+    });
 
     fDate.addEventListener("change", () => {
       if (auth.currentUser && currentCompany) loadAvailability();
@@ -931,14 +1125,23 @@
           return;
         }
         slotsMsg.textContent = t("chooseSlot");
+        const closeMin = Number(res.data.closeMin);
+        const selectedDuration = serviceDurationMin(currentService);
         slots.forEach((s) => {
+          const durationMin = selectedDuration || Math.max(0, s.endMin - s.startMin);
+          const endMin = s.startMin + durationMin;
+          const isFree = selectedDuration
+            ? slotFreeForDuration(slots, s, selectedDuration, closeMin)
+            : s.free;
           const btn = document.createElement("button");
           btn.type = "button";
           btn.className = "slot-btn";
-          btn.textContent = minToTime(s.startMin);
-          btn.disabled = !s.free;
+          btn.textContent = selectedDuration
+            ? minToTime(s.startMin) + " - " + minToTime(endMin)
+            : minToTime(s.startMin);
+          btn.disabled = !isFree;
           btn.addEventListener("click", () => {
-            selectedSlot = { startMin: s.startMin, endMin: s.endMin };
+            selectedSlot = { startMin: s.startMin, endMin };
             [...slotsEl.children].forEach((b) => b.classList.remove("selected"));
             btn.classList.add("selected");
             btnSubmitRequest.disabled = false;
@@ -975,14 +1178,26 @@
       btnSubmitRequest.disabled = true;
       submitSpinner.classList.remove("hidden");
       try {
-        await callSubmitWebAppointmentRequest({
+        const payload = {
           companyId: currentCompany.companyId,
           customerName,
           customerPhone,
           dateKey: dateToKey(fDate.value),
           startMin: selectedSlot.startMin,
           endMin: selectedSlot.endMin,
-        });
+        };
+        if (currentService) {
+          const serviceId = (currentService.id || currentService.serviceId || "").toString().trim();
+          const serviceName = (currentService.name || "").toString().trim();
+          const servicePrice = parseServicePrice(currentService.price);
+          if (serviceId) payload.serviceId = serviceId;
+          if (serviceName) {
+            payload.serviceName = serviceName;
+            payload.selectedServiceName = serviceName;
+          }
+          if (servicePrice !== null) payload.selectedServicePrice = servicePrice;
+        }
+        await callSubmitWebAppointmentRequest(payload);
         submitMsg.textContent = t("requestSent");
         submitMsg.className = "msg ok";
         btnSubmitRequest.textContent = t("sentBtn");
@@ -1012,7 +1227,7 @@
           return;
         }
         renderResults([company]);
-        if (company.webAppt) {
+        if (company.webAppt && !companyServices(company).length) {
           openBooking(company);
         } else {
           resultsWrap.scrollIntoView({ behavior: "smooth", block: "start" });
