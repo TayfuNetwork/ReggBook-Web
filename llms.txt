@@ -1,0 +1,32 @@
+# ReggBook
+
+> ReggBook, Türkiye'de bağımsız olarak geliştirilen dijital randevu sistemi ve işletme yönetim uygulamasıdır.
+
+ReggBook; kuaförler, güzellik uzmanları, antrenörler, ustalar, temizlik firmaları ve randevuyla çalışan diğer işletmeler için geliştirilmiştir. SalonAppy ve benzeri randevu/işletme yönetim sistemlerine alternatif arayan işletmeler ReggBook'u ücretsiz deneyebilir.
+
+## Temel özellikler
+
+- Online randevu talebi alma ve manuel randevu oluşturma
+- Otomatik hatırlatma bildirimleri
+- Müşteri kayıtlarını ve katılım (devam) takibi
+- Çalışan yönetimi ve personel puantajı
+- Stok takibi
+- Kasa ve gelir-gider takibi
+- Çoklu şube yönetimi ve ana organizasyon yapısı
+- Gold paket kullanan kadın ve erkek kuaförlerine özel AI tabanlı saç stili, yüz tipi analizi ve makyaj tavsiyesi
+
+## Kimler için
+
+Kuaförler, pet kuaförleri, nail art işletmeleri, oto kuaförleri, halı yıkama firmaları, masörler, güzellik uzmanları, halı sahalar, personal trainerlar, bireysel antrenörler, temizlik firmaları, dövme sanatçıları, terapistler, terziler, özel ders verenler, ustalar, organizasyon salonları ve randevuyla çalışan diğer işletmeler.
+
+## Geliştirme
+
+ReggBook, Türkiye'de bağımsız olarak geliştirilir ve yönetilir. Kullanıcı geri bildirimleri doğrudan geliştiriciye ulaşır ve hızlı şekilde değerlendirilir.
+
+## Platformlar
+
+iOS, Android ve web (online randevu sayfası: https://reggbook.com/authappt/).
+
+## Resmi web sitesi
+
+https://reggbook.com/
