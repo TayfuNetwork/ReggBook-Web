@@ -201,6 +201,7 @@
 
     body{
       margin:0;
+      overflow-x:hidden;
       padding: 0 14px 120px;
       font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
       color:var(--ink);
@@ -709,6 +710,55 @@
       font-size: 14px;
       line-height: 1.65;
       color: #3c3660;
+    }
+
+    .maker-banner {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      margin-top: 40px;
+      background: linear-gradient(165deg, #201c3d, #14111f 70%);
+      padding: 56px 24px;
+    }
+
+    .maker-banner-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .maker-kicker {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .4px;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 14px;
+    }
+
+    .maker-banner h2 {
+      font-size: clamp(22px, 3.4vw, 30px);
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 20px;
+      line-height: 1.25;
+    }
+
+    .maker-banner p {
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: rgba(255,255,255,.78);
+      margin: 0 0 18px;
+    }
+
+    .maker-banner p:last-child { margin-bottom: 0; }
+
+    .maker-banner strong { color: #fff; }
+
+    @media (max-width: 768px) {
+      .maker-banner { padding: 40px 20px; }
     }
 
     .bottom {
@@ -1488,6 +1538,35 @@
         <h2><span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></span><span data-tr="Müşteri katılım oranı takibi ile randevu iptallerine son." data-en="Track customer attendance rates and put an end to appointment cancellations.">Müşteri katılım oranı takibi ile randevu iptallerine son.</span></h2>
         <p data-tr="ReggBook, yalnızca randevu oluşturmayı değil; müşteri devamlılığını, katılım alışkanlıklarını ve işletme düzenini daha görünür hale getirmeyi hedefler. Böylece işletmeler hem planlarını daha doğru yapabilir hem de zaman kaybını azaltabilir. Bunların yanı sıra, ilgili işletmeleri yalnızca onaylanmış randevuları bulunan ziyaretçiler puanlayabilir." data-en="ReggBook aims to make not just appointment creation, but also customer retention, attendance habits and overall business organization more visible. This helps businesses plan more accurately and reduce wasted time. In addition, a business can only be rated by visitors who have a confirmed appointment with it.">
           ReggBook, yalnızca randevu oluşturmayı değil; müşteri devamlılığını, katılım alışkanlıklarını ve işletme düzenini daha görünür hale getirmeyi hedefler. Böylece işletmeler hem planlarını daha doğru yapabilir hem de zaman kaybını azaltabilir. Bunların yanı sıra, ilgili işletmeleri yalnızca onaylanmış randevuları bulunan ziyaretçiler puanlayabilir.
+        </p>
+      </div>
+    </div>
+
+    <div class="maker-banner">
+      <div class="maker-banner-inner">
+        <span class="maker-kicker" data-tr="ReggBook – Üretici Hakkında" data-en="ReggBook – About the Maker">ReggBook – Üretici Hakkında</span>
+        <h2 data-tr="ReggBook’un Arkasında Kim Var?" data-en="Who’s Behind ReggBook?">ReggBook’un Arkasında Kim Var?</h2>
+        <p data-i18n-html
+           data-tr="ReggBook, işletmelerin günlük işlerini daha düzenli, hızlı ve kontrol edilebilir hale getirmek amacıyla <strong>Türkiye’de geliştirilen yerli bir yazılım platformudur.</strong>"
+           data-en="ReggBook is a <strong>locally developed software platform built in Turkey</strong>, created to make businesses’ daily operations more organized, faster and more controllable.">
+          ReggBook, işletmelerin günlük işlerini daha düzenli, hızlı ve kontrol edilebilir hale getirmek amacıyla <strong>Türkiye’de geliştirilen yerli bir yazılım platformudur.</strong>
+        </p>
+        <p data-tr="Geliştirme, güncelleme ve teknik altyapı süreçleri doğrudan geliştiricisi tarafından yürütülür. Bu sayede kullanıcı geri bildirimleri uzun süreçlere takılmadan değerlendirilir ve ihtiyaç duyulan geliştirmeler ürüne doğrudan yansıtılabilir."
+           data-en="Development, updates and technical infrastructure are managed directly by its developer. This means user feedback is evaluated without getting stuck in long processes, and the improvements that are needed can be reflected in the product right away.">
+          Geliştirme, güncelleme ve teknik altyapı süreçleri doğrudan geliştiricisi tarafından yürütülür. Bu sayede kullanıcı geri bildirimleri uzun süreçlere takılmadan değerlendirilir ve ihtiyaç duyulan geliştirmeler ürüne doğrudan yansıtılabilir.
+        </p>
+        <p data-tr="ReggBook yalnızca bir randevu uygulaması değil; işletmelerin randevu, müşteri, çalışan, şube, stok ve mali süreçlerini tek yapı altında yönetebileceği, sürekli gelişen bir işletme platformu olarak tasarlanmıştır."
+           data-en="ReggBook is not just an appointment app; it’s designed as a continuously evolving business platform where businesses can manage appointments, customers, staff, branches, stock and financial processes all under one structure.">
+          ReggBook yalnızca bir randevu uygulaması değil; işletmelerin randevu, müşteri, çalışan, şube, stok ve mali süreçlerini tek yapı altında yönetebileceği, sürekli gelişen bir işletme platformu olarak tasarlanmıştır.
+        </p>
+        <p data-tr="Yerel ihtiyaçları yakından takip eden ReggBook, Türkiye’deki işletmelerin çalışma alışkanlıkları ve operasyonel gereksinimleri dikkate alınarak geliştirilmeye devam etmektedir."
+           data-en="Closely following local needs, ReggBook continues to be developed with the working habits and operational requirements of businesses in Turkey in mind.">
+          Yerel ihtiyaçları yakından takip eden ReggBook, Türkiye’deki işletmelerin çalışma alışkanlıkları ve operasyonel gereksinimleri dikkate alınarak geliştirilmeye devam etmektedir.
+        </p>
+        <p data-i18n-html
+           data-tr="<strong>Geliştirme ve teknik yönetim: Tayfun KAYA</strong>"
+           data-en="<strong>Development and technical management: Tayfun KAYA</strong>">
+          <strong>Geliştirme ve teknik yönetim: Tayfun KAYA</strong>
         </p>
       </div>
     </div>
