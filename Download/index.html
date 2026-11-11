@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ReggBook İndir</title>
+
+  <!-- Facebook Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;
+      n=f.fbq=function(){
+        n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)
+      };
+      if(!f._fbq)f._fbq=n;
+      n.push=n;
+      n.loaded=!0;
+      n.version='2.0';
+      n.queue=[];
+      t=b.createElement(e);
+      t.async=!0;
+      t.src=v;
+      s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '4403577006598103');
+  </script>
+
+  <script>
+    const PLAY_STORE_URL =
+      "https://play.google.com/store/apps/details?id=com.tayfunetwork.reggbook";
+
+    const APP_STORE_URL =
+      "https://apps.apple.com/tr/app/reggbook/id6761694998?l=tr";
+
+    const WINDOWS_ZIP_URL =
+      "https://github.com/TayfuNetwork/ReggBook-Web/releases/latest/download/reggbook-windows.zip";
+
+    const FALLBACK_URL = "https://reggbook.com";
+
+    function getRedirectTarget() {
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+      if (/android/i.test(ua)) {
+        return {
+          url: PLAY_STORE_URL,
+          platform: "android"
+        };
+      }
+
+      if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+        return {
+          url: APP_STORE_URL,
+          platform: "ios"
+        };
+      }
+
+      if (/Windows NT/i.test(ua)) {
+        return {
+          url: WINDOWS_ZIP_URL,
+          platform: "windows"
+        };
+      }
+
+      return {
+        url: FALLBACK_URL,
+        platform: "fallback"
+      };
+    }
+
+    const redirectTarget = getRedirectTarget();
+    const redirectUrl = redirectTarget.url;
+
+    function redirectNow() {
+      const manualLink = document.getElementById("manualLink");
+
+      if (manualLink) {
+        manualLink.href = redirectUrl;
+      }
+
+      // Yönlendirme niyeti sadece Android / iOS / Windows için oluşursa Pixel at
+      if (redirectTarget.platform !== "fallback") {
+        if (typeof fbq === "function") {
+          fbq('trackCustom', 'Meta-DownloadPage', {
+            value: 1,
+            currency: 'TRY'
+          });
+
+          if (redirectTarget.platform === "windows") {
+            fbq('trackCustom', 'WindowsDesktopDownload');
+          }
+        }
+
+        // Pixel'in kuyruğa girmesi için çok kısa bekleme
+        setTimeout(() => {
+          window.location.replace(redirectUrl);
+        }, 150);
+
+        // Bazı tarayıcılarda replace takılırsa ikinci deneme
+        setTimeout(() => {
+          window.location.href = redirectUrl;
+        }, 1000);
+
+      } else {
+        // Uygun platform bulunamazsa Pixel atma, sadece ana siteye yönlendir
+        setTimeout(() => {
+          window.location.replace(redirectUrl);
+        }, 300);
+      }
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", redirectNow);
+    } else {
+      redirectNow();
+    }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .box {
+      max-width: 420px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #cbd5e1;
+      margin: 0;
+    }
+
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <h1>ReggBook sizi yönlendiriyor...</h1>
+    <p>
+      Yönlendirme otomatik başlamazsa
+      <a id="manualLink" href="https://reggbook.com">buraya dokunun.</a>
+    </p>
+  </div>
+
+  <noscript>
+    <p>
+      JavaScript kapalı olduğu için otomatik yönlendirme yapılamadı.
+      <a href="https://reggbook.com">ReggBook sitesine git</a>
+    </p>
+  </noscript>
+</body>
+</html>
