@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="tr">
 <head>
 <meta charset="utf-8"/>
@@ -33,12 +32,12 @@ header nav a{font-size:13px}header nav a[aria-current="page"]{text-decoration:un
 <body>
 <header><div class="brand">RaGinda <span style="opacity:.64;font-weight:400">/ Yasal Bilgiler</span></div><nav aria-label="Yasal belgeler"><a aria-current="page" href="/raginda/gizlilik-politikasi/">Gizlilik</a><a href="/raginda/isletme-sozlesmesi/">İşletme sözleşmesi</a><a href="/raginda/musteri-kullanim-kosullari/">Müşteri koşulları</a><a href="/raginda/kvkk-aydinlatma/">KVKK</a><a href="/raginda/hesap-silme/">Hesap silme</a></nav></header>
 <main>
-<div class="hero"><div class="eyebrow">RaGinda · Yasal Bilgilendirme</div><h1>Gizlilik Politikası</h1><p class="lead">Hangi kişisel verileri, hangi amaçla işlediğimizi ve haklarınızı anlaşılır biçimde açıklıyoruz.</p><p class="meta">Taslak sürüm: 0.2 · Güncelleme: 15 Kasım 2026</p></div>
-<div class="draft"><strong>YAYIN ÖNCESİ TAMAMLANACAK TASLAK:</strong> Köşeli parantezli alanlar ve gerçek veri işleme/sözleşme akışları doğrulanmadan bu metni kamuya açık nihai belge olarak kullanmayın. Bu sayfa hukukî incelemenin yerine geçmez.</div>
+<div class="hero"><div class="eyebrow">RaGinda · Yasal Bilgilendirme</div><h1>Gizlilik Politikası</h1><p class="lead">Hangi kişisel verileri, hangi amaçla işlediğimizi ve haklarınızı anlaşılır biçimde açıklıyoruz.</p><p class="meta">Güncelleme: 15 Kasım 2026</p></div>
+
 <div aria-label="Bölümler" class="toc"><a href="#madde-01">01 · Kapsam ve veri sorumlusu</a><a href="#madde-02">02 · Hangi veriler işlenir?</a><a href="#madde-03">03 · İşleme amaçları ve hukuki sebepler</a><a href="#madde-04">04 · Verilere kim erişebilir? Aktarım</a><a href="#madde-05">05 · Saklama, güvenlik ve log kayıtları</a><a href="#madde-06">06 · Veri silme, hesap kapatma ve haklar</a><a href="#madde-07">07 · Politika değişiklikleri</a></div>
 <section id="madde-01"><div class="n">MADDE 01</div><h2>Kapsam ve veri sorumlusu</h2><p>Bu Gizlilik Politikası RaGinda mobil uygulamasının ve ilgili web hizmetlerinin kişisel veri işleme uygulamalarını açıklar. RaGinda; işletme menüleri, yemek siparişleri ve işletme yönetimi için dijital altyapı sağlar.</p><p><strong>Hizmet sağlayıcı / veri sorumlusu:</strong> Tayfun Kaya (gerçek kişi)<br/><strong>Faaliyet yeri:</strong> Artvin / Borçka, Türkiye<br/><strong>İletişim:</strong> <a href="mailto:info@reggbook.com">info@reggbook.com</a></p><p>RaGinda'nın henüz kayıtlı bir şirketi bulunmadığından gerçek kişi bilgisi kullanılmıştır. İşletmeler, müşterileriyle kendi satış ilişkileri kapsamında işledikleri kişisel veriler bakımından ayrıca veri sorumlusu olabilir.</p></section>
 <section id="madde-02"><div class="n">MADDE 02</div><h2>Hangi veriler işlenir?</h2><p>Müşteriler ve işletmeler Google veya Apple hesabıyla giriş yapabilir. Müşteri, sipariş vermeden önce menü ve işletmeleri inceleyebilir; teslimat için gerekli ad, telefon, adres ve sipariş bilgileri sipariş oluşturulurken istenir.</p><ul><li><strong>Üyelik ve doğrulama:</strong> Apple/Google girişinden elde edilen e-posta (varsa), Firebase Auth kullanıcı kimliği (UID), oturum ve yetki bilgileri.</li><li><strong>Sipariş ve teslimat:</strong> Sipariş verenin paylaştığı ad, telefon, adres, ürünler, tutar, sipariş notu, teslimat ve ödeme yöntemi seçimi.</li><li><strong>İşletme / çalışan:</strong> İşletme kimliği, iletişim ve adres bilgileri, çalışan rolleri, ürünler, kampanyalar, işlem ve kasa/veresiye kayıtları.</li><li>
-  <strong>Yaklaşık konum bilgisi:</strong>
+<strong>Yaklaşık konum bilgisi:</strong>
   RaGinda, sipariş verilen işletmenin hizmet bölgesinin
   doğrulanması ve bölge dışından oluşturulabilecek sahte
   siparişlerin önlenmesine yardımcı olmak amacıyla,
@@ -55,74 +54,28 @@ header nav a{font-size:13px}header nav a[aria-current="page"]{text-decoration:un
   Konum koordinatları Firestore veritabanına kaydedilmez.
   Bu bilgiler yalnızca anlık hizmet bölgesi kontrolünde
   işlenir ve kontrol tamamlandığında tutulmaz.
-</li><li><strong>Teknik işlem ve güvenlik:</strong> İşlem günlükleri, gerekiyorsa cihaz, bildirim ve doğrulama tanımlayıcıları.</li><li><strong>Dijital kredi işlemleri:</strong> Satın alma ürün kimliği, işlem doğrulama kaydı ve kredi hareketleri. Kart bilgileri RaGinda'ya aktarılmaz; Apple/Google mağaza ödeme sistemleri kullanılır.</li><li><strong>Destek:</strong> Kullanıcının isteyerek ilettiği yardım talebi ve yazışmalar.</li></ul><p>Uygulamanın veri saklama ve SDK kullanım davranışları nihai yayımdan önce kaynak kodu ve Firebase konsoluyla karşılaştırılacaktır; yalnızca girişte e-posta ve UID alınması, sipariş veya teknik işlemler esnasında başka verilerin hiç işlenmediği anlamına gelmez.</p></section>
-<section id="madde-03"><div class="n">MADDE 03</div><h2>İşleme amaçları ve hukuki sebepler</h2><p>Veriler; hesap ve rol yönetimi, siparişin ilgili işletmeye iletilmesi, sipariş teslimine yardımcı olunması, kredi işlemlerinin doğrulanması, sistem güvenliği, kötüye kullanımın önlenmesi, destek talepleri ve kanuni yükümlülükler için işlenebilir.</p><p>Somut veriye göre KVKK m.5/2 kapsamında sözleşmenin kurulması/ifası, bir hakkın tesisi veya korunması, kanuni yükümlülük ve temel haklara zarar vermeyen meşru menfaat hukuki sebepleri gündeme gelebilir. Ayrı rıza gereken faaliyetler için ayrıca değerlendirme ve gerektiğinde rıza yapılır.</p><p>Hesap silme sonrasında tekrar hoş geldin kredisi alınmasını önlemek amacıyla e-posta adresi ve UID'nin ayrı bir kontrol kaydında tutulması öngörülmektedir. Bu kayıt kişisel veridir; yalnızca gerçekten gerekli ve hukuken geçerli bir sebep ile sınırlı süre tutulabilir. Veri minimizasyonu ve saklama süresi yayın öncesinde doğrulanmalıdır.</p></section>
-<section id="madde-04"><div class="n">MADDE 04</div><h2>Verilere kim erişebilir? Aktarım</h2><p>Sipariş bilgileri yalnızca siparişin yürütülmesi için ilgili işletmenin yetkili kullanıcılarıyla paylaşılabilir. Google/Firebase altyapısı ile Apple ve Google mağaza sağlayıcıları, ilgili teknik hizmetleri sağlamak için belirli verileri işleyebilir. Gerekli hallerde yetkili kamu kurumlarıyla yasal çerçevede paylaşım yapılabilir.</p><p>
-  RaGinda; kimlik doğrulama, veri saklama, bildirim,
-  uygulama güvenliği ve dijital satın alma işlemlerinde
-  Google, Firebase ve Apple hizmetlerinden yararlanır.
-
-  Google Cloud Functions işlemleri Almanya'nın Frankfurt
-  bölgesinde (europe-west3) yürütülmektedir.
-
-  Firebase Authentication, Firestore, Storage, Cloud
-  Messaging ve App Check hizmetlerinde kişisel veriler
-  yurt dışındaki hizmet sağlayıcılar tarafından
-  işlenebilmektedir.
-
-  Bu hizmetlerin veri saklama bölgeleri ve teknik
-  aktarım süreçleri kullanılan hizmete göre değişebilir.
-  Kişisel verilerin yurt dışına aktarımında 6698 sayılı
-  KVKK'nın 9. maddesi kapsamındaki yükümlülükler
-  geçerlidir.
-</p></section>
-<section id="madde-05">
-  <div class="n">MADDE 05</div>
-  <h2>Saklama, güvenlik ve log kayıtları</h2>
-
-  <p>
-    Kullanıcı hesap silme işlemini onayladığında hesap kapatma
-    ve kişisel veri silme süreci başlatılır. Firebase
-    Authentication hesabı, kişisel profil bilgileri ve
-    saklanması artık gerekli olmayan ilişkili kişisel
-    veriler silinir veya anonimleştirilir.
-  </p>
-
-  <p>
-    Hukuken saklanması gereken mali ve işlemsel kayıtlar
-    ile somut uyuşmazlıklara ilişkin zorunlu bilgiler,
-    yalnızca gerekli olduğu ölçüde korunabilir.
-  </p>
-
-  <p>
-    İşlem günlükleri, teknik hata mesajları, kullanıcı
-    kimlikleri ve güvenlik kayıtları; sistem güvenliğinin
-    sağlanması, hataların incelenmesi ve hukuki hakların
-    korunması amacıyla işlenebilir.
-  </p>
-
-  <p>
-    Saklama amacı ve hukuki gerekliliği sona eren kişisel
-    veriler, 6698 sayılı Kişisel Verilerin Korunması
-    Kanunu kapsamında silinir, yok edilir veya
-    anonimleştirilir.
-  </p>
-
-  <p>
-    Daha önce sağlanan hoş geldin kredilerinin tekrar
-    alınmasını engellemek amacıyla, hukuken uygun ve
-    gerekli olduğu ölçüde asgari kontrol bilgisi
-    saklanabilir. Bu kayıtlar kullanıcıya aktif bir
-    hesap erişimi sağlamaz.
-  </p>
-
-  <p>
-    Kullanıcılar kişisel verilerine ilişkin bilgi alma,
-    düzeltme ve silme taleplerini
-    <a href="mailto:info@reggbook.com">info@reggbook.com</a>
-    adresine iletebilir.
-  </p>
-</section><section id="madde-06"><div class="n">MADDE 06</div><h2>Veri silme, hesap kapatma ve haklar</h2><p>Müşteri: <strong>Profil → en alta kaydır → Verilerimi Sil</strong>. İşletme sahibi: <strong>Ayarlar → en alta kaydır → İşletme Verilerimi Sil</strong>. Kullanıcı son onayı verdiğinde işlem otomatik başlar; ayrıca RaGinda yöneticisinden onay beklemez. Uygulamaya erişiminiz yoksa <a href="mailto:info@reggbook.com">info@reggbook.com</a> adresinden talepte bulunabilirsiniz.</p><p>Silme işlemi öncelikle kişisel profil ve sipariş geçmişine uygulanır. Tekrar hoş geldin kredisi alınmasını önlemek için e-posta/UID kayıtları tutulabildiğinden tüm tanımlayıcıların koşulsuz ve anında yok edildiği iddia edilmez. Bu kayıtların gerekliliği ve hukuki saklama süresi ayrıca değerlendirilir. Ayrıntılar için <a href="/raginda/hesap-silme/">Hesap Silme ve Veri Talepleri</a> sayfasına bakınız.</p><p>KVKK m.11 çerçevesinde kişisel veri hakkında bilgi, düzeltme, silme veya diğer yasal haklar için <a href="mailto:info@reggbook.com">info@reggbook.com</a> üzerinden başvurabilirsiniz.</p></section>
+</li><li><strong>Teknik işlem ve güvenlik:</strong> İşlem günlükleri, gerekiyorsa cihaz, bildirim ve doğrulama tanımlayıcıları.</li><li><strong>Dijital kredi işlemleri:</strong> Satın alma ürün kimliği, işlem doğrulama kaydı ve kredi hareketleri. Kart bilgileri RaGinda'ya aktarılmaz; Apple/Google mağaza ödeme sistemleri kullanılır.</li><li><strong>Destek:</strong> Kullanıcının isteyerek ilettiği yardım talebi ve yazışmalar.</li></ul></section>
+<section id="madde-03"><div class="n">MADDE 03</div><h2>İşleme amaçları ve hukuki sebepler</h2>
+<p>Kişisel veriler; kullanıcı girişi, yetki ve işletme yönetimi, siparişlerin işletmeye iletilmesi, kredi işlemleri, hizmet bölgesi kontrolü, güvenlik, hata giderme, uyuşmazlıkların incelenmesi ve kanuni yükümlülükler için işlenir. İşleme faaliyetine göre KVKK m.5 kapsamında sözleşmenin kurulması veya ifası, hukuki yükümlülük, bir hakkın tesisi veya korunması ya da şartları mevcutsa meşru menfaat hukuki sebepleri gündeme gelebilir.</p>
+<p>İlk kayıtla tanınan hoş geldin kredisinin yeniden hesap açılarak tekrar alınmasını önlemek için <strong>accountBenefits ve hash tabanlı kredi kilidi</strong> kullanılmaktadır. Bu kontrollerin amacı sınırlıdır; hash değeri, kişiyle eşleştirilebiliyorsa kişisel veri olarak değerlendirilebilir. Kayıtların gerekliliği ve saklama süresi KVKK ilkelerine tabidir.</p>
+<p>KVKK kapsamında ayrıca açık rıza gerektiren işlemler için uygun ayrı süreçler uygulanır. İşletim sistemi tarafından istenen konum izni, tek başına KVKK kapsamında her türlü işleme ve yurt dışı aktarıma verilen açık rıza anlamına gelmez.</p>
+</section>
+<section id="madde-04"><div class="n">MADDE 04</div><h2>Verilere kim erişebilir? Aktarım</h2>
+<p>Siparişin yürütülmesi için gerekli ad, iletişim ve teslimat bilgileri siparişi alan işletmenin yetkili kullanıcılarına iletilir. Yetkili kamu kurumlarına ancak hukuken gerekli olduğunda veri aktarımı yapılabilir.</p>
+<p>RaGinda, kimlik doğrulama, veri saklama, bildirim, uygulama güvenliği ve mağaza içi satın alma hizmetlerinde Google/Firebase ile Apple altyapısından yararlanır. Cloud Functions işlemleri <strong>Almanya, Frankfurt (europe-west3)</strong> bölgesinde yürütülür. Firebase Authentication, Firestore, Storage, FCM ve App Check hizmetlerinin veri konumları birbirinden farklı olabilir; tüm verilerin Frankfurt'ta saklandığı ileri sürülmez.</p>
+<p>Kullanılan altyapı nedeniyle kişisel verilerin yurt dışında işlenmesi veya yurt dışındaki hizmet sağlayıcılara aktarılması söz konusu olabilir. Bu aktarımların KVKK m.9 kapsamında uygun bir hukuki mekanizmaya dayanması gerekir. Hizmet sağlayıcıların teknik saklama ve aktarım uygulamaları ilgili hizmete göre farklılık gösterebilir.</p>
+</section>
+<section id="madde-05"><div class="n">MADDE 05</div><h2>Saklama, güvenlik ve log kayıtları</h2>
+<p>Kullanıcı uygulama içinden silmeyi onayladığında hesap kapatma ve veri silme işlemi başlatılır. Silme akışında Firebase Authentication hesabı, profil ve bildirim token kayıtları kaldırılır. Geçmiş sipariş, müşteri rehberi, borç, tahsilat ve kasa kayıtlarındaki müşteriyi tanımlayan alanlar, ticari kayıtların gerekli yapısı korunarak silinir veya anonimleştirilir.</p>
+<p>İşletme verilerinin silinmesi hâlinde ilgili operasyonel kayıtlar ve işletmeye ait Storage görselleri kaldırılır; gerekli finansal ve denetim kayıtları kişisel bilgilerden arındırılarak korunabilir. Yetkiler kapatılır. Silme işlemi teknik hata nedeniyle kısmen tamamlanırsa süreç yeniden yürütülebilir; kullanıcıya tüm işlemler bitmeden eksiksiz silme tamamlandı bilgisi verilmemelidir.</p>
+<p>Mükerrer hoş geldin kredisini önlemek için açık e-posta adresi yerine hash temelli, asgari kontrol bilgisi tutulabilir. Bu kayıt kullanıcıya aktif hesap erişimi sağlamaz; saklama amacının gerekliliği ve hukuki dayanağı sona erdiğinde silinir veya anonimleştirilir.</p>
+<p>Güvenlik ve hata incelemesi için işlem günlükleri, teknik hata mesajları, stack trace, işlem zamanı, kullanıcı veya işletme kimliği gibi veriler Firebase üzerinde işlenebilir. Saklama süresi somut amaç, uygulanabilir hukuk ve hizmet sağlayıcıların yedek politikalarına göre sınırlandırılır. Hizmet sağlayıcı yedeklerinin silinmesi asıl kayıtlarla eş zamanlı olmayabilir.</p>
+<p>Kişisel verilere ilişkin bilgi, düzeltme ve silme talepleri <a href="mailto:info@reggbook.com">info@reggbook.com</a> üzerinden iletilebilir. Ek bilgi için <a href="/raginda/hesap-silme/">Hesap Silme ve Veri Talepleri</a> sayfasına bakılabilir.</p>
+</section><section id="madde-06"><div class="n">MADDE 06</div><h2>Veri silme, hesap kapatma ve haklar</h2>
+<p><strong>Müşteri:</strong> Profil → sayfanın altına kaydır → <strong>“Verilerimi Sil”</strong>. <strong>İşletme sahibi:</strong> Ayarlar → sayfanın altına kaydır → <strong>“İşletme Verilerimi Sil”</strong>. Kullanıcı onayı sonrası işlem otomatik başlatılır; ayrıca yönetici onayı istenmez.</p>
+<p>Firebase Authentication hesabı silinir. Önceki siparişler ve mali işlem geçmişinde müşteriyi tanımlayan kişisel bilgiler gerektiği ölçüde silinir veya anonimleştirilir; hukuken saklanması gerekli olabilecek tutar, tarih, ürün ve işlem yapısı korunabilir. İlk kayıt kredisi kötüye kullanımını önlemeye yönelik asgari hash kaydı ile teknik ve yasal olarak korunması gereken kayıtlar ayrı değerlendirilir.</p>
+<p>Uygulamaya erişemiyorsanız <a href="/raginda/hesap-silme/">web üzerinden silme talebi</a> başlatabilir veya <a href="mailto:info@reggbook.com">info@reggbook.com</a> adresine yazabilirsiniz. KVKK m.11 kapsamındaki haklarınız saklıdır.</p>
+</section>
 <section id="madde-07"><div class="n">MADDE 07</div><h2>Politika değişiklikleri</h2><p>RaGinda hizmetleri veya mevzuat değişirse bu metin güncellenebilir. Önemli değişiklikler uygun kanallarla duyurulur. Yeni metin yayımlandığı tarihten itibaren geçerli olur; geçmişe dönük haklar mevzuata aykırı şekilde ortadan kaldırılamaz.</p></section>
 <div class="callout">Sorularınız ve hak talepleriniz için: <span class="todo"><a href="mailto:info@reggbook.com">info@reggbook.com</a></span></div>
 </main>
